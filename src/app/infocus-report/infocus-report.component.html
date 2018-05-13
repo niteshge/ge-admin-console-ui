@@ -3,14 +3,440 @@
 </mat-form-field>
 <app-dynamic-select [placeholder]="'Roles'" [options]="infocusRoles | async" (optionSelected)="roleSelected($event)"></app-dynamic-select>
 <app-dynamic-select *ngIf="infocusIndustry" [placeholder]="'Industries'" [options]="infocusIndustry | async" (optionSelected)="industrySelected($event)"></app-dynamic-select>
-<app-dynamic-select *ngIf="infocusIndustrySegment1" [placeholder]="'Industries Segment 1'" [options]="infocusIndustrySegment1 | async" (optionSelected)="industrySegment1Selected($event)"></app-dynamic-select>
-<app-dynamic-select *ngIf="infocusIndustrySegment2" [placeholder]="'Industries Segment 2'" [options]="infocusIndustrySegment2 | async" (optionSelected)="industrySegment2Selected($event)"></app-dynamic-select>
+<app-dynamic-select *ngIf="infocusIndustrySegment1" [placeholder]="'Industries Segment 1'" [options]="infocusIndustrySegment1 | async"
+  (optionSelected)="industrySegment1Selected($event)"></app-dynamic-select>
+<app-dynamic-select *ngIf="infocusIndustrySegment2" [placeholder]="'Industries Segment 2'" [options]="infocusIndustrySegment2 | async"
+  (optionSelected)="industrySegment2Selected($event)"></app-dynamic-select>
 
 <hr *ngIf=infocusBusinessPriority1>
 
-<app-dynamic-select *ngIf="infocusBusinessPriority1" [placeholder]="'Business Priority 1'" [options]="infocusBusinessPriority1 | async" (optionSelected)="businessPriority1Selected($event)"></app-dynamic-select>
-
+<app-dynamic-select *ngIf="infocusBusinessPriority1" [placeholder]="'Business Priority 1'" [options]="infocusBusinessPriority1 | async"
+  (optionSelected)="businessPriority1Selected($event)"></app-dynamic-select>
+<!-- 
 <hr *ngIf="businessPriority2">
 <ng-container *ngFor="let bp2model of listOfBp2Model">
-<app-dynamic-select *ngIf="businessPriority2" [placeholder]= bp2model.placeholder [options]= 'businessPriority2 | async' (optionSelected)=bp2model.optionSelected></app-dynamic-select>
-</ng-container>
+<app-dynamic-select *ngIf="businessPriority2" [placeholder]= bp2model.placeholder [options]= 'businessPriority2 | async' 
+(optionSelected)=bp2model.optionSelected></app-dynamic-select>
+</ng-container> -->
+
+<hr *ngIf="businessPriority2">
+<app-dynamic-select *ngIf="businessPriority2" [placeholder]="'Business Priority 2a'" [options]='businessPriority2 | async'
+  (optionSelected)="businessPriority2aSelected($event)"></app-dynamic-select>
+<app-dynamic-select *ngIf="businessPriority2" [placeholder]="'Business Priority 2a'" [options]='businessPriority2 | async'
+  (optionSelected)="businessPriority2bSelected($event)"></app-dynamic-select>
+<app-dynamic-select *ngIf="businessPriority2" [placeholder]="'Business Priority 2a'" [options]='businessPriority2 | async'
+  (optionSelected)="businessPriority2cSelected($event)"></app-dynamic-select>
+<app-dynamic-select *ngIf="businessPriority2" [placeholder]="'Business Priority 2a'" [options]='businessPriority2 | async'
+  (optionSelected)="businessPriority2dSelected($event)"></app-dynamic-select>
+
+<!-- Business priority BP3a -->
+
+<hr *ngIf="businessPriority3">
+<app-dynamic-select *ngIf="businessPriority3" [placeholder]="'Business Priority 3a'" [options]='businessPriority3 | async'
+  (optionSelected)="businessPriority3aSelected($event)"></app-dynamic-select>
+
+<app-dynamic-select *ngIf="businessPriority3aSolution1" [placeholder]="'Solution 1'" [options]='businessPriority3aSolution1'
+  (optionSelected)="businessPriority3aSolution1Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3aSolution1CompanyDetails" (change)="bp3aSolution1Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3aSolution1CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3aSolution1CompanyDetails" (change)="bp3aSolution1Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3aSolution1CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3aSolution2" [placeholder]="'Solution 2'" [options]='businessPriority3aSolution2'
+  (optionSelected)="businessPriority3aSolution2Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3aSolution2CompanyDetails" (change)="bp3aSolution2Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3aSolution2CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3aSolution2CompanyDetails" (change)="bp3aSolution2Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3aSolution2CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3aSolution3" [placeholder]="'Solution 3'" [options]='businessPriority3aSolution3'
+  (optionSelected)="businessPriority3aSolution3Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3aSolution3CompanyDetails" (change)="bp3aSolution3Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3aSolution3CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3aSolution3CompanyDetails" (change)="bp3aSolution3Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3aSolution3CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3aSolution4" [placeholder]="'Solution 4'" [options]='businessPriority3aSolution4'
+  (optionSelected)="businessPriority3aSolution4Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3aSolution4CompanyDetails" (change)="bp3aSolution4Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3aSolution4CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3aSolution4CompanyDetails" (change)="bp3aSolution4Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3aSolution4CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3aSolution5" [placeholder]="'Solution 5'" [options]='businessPriority3aSolution5'
+  (optionSelected)="businessPriority3aSolution5Selected($event)"></app-dynamic-select>
+
+<select *ngIf="infocusBusinessPriority3aSolution5CompanyDetails" (change)="bp3aSolution5Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3aSolution5CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3aSolution5CompanyDetails" (change)="bp3aSolution5Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3aSolution5CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<!-- Business priority BP3b -->
+
+<hr *ngIf="businessPriority3">
+<app-dynamic-select *ngIf="businessPriority3" [placeholder]="'Business Priority 3b'" [options]='businessPriority3 | async'
+  (optionSelected)="businessPriority3bSelected($event)"></app-dynamic-select>
+
+<app-dynamic-select *ngIf="businessPriority3bSolution1" [placeholder]="'Solution 1'" [options]='businessPriority3bSolution1'
+  (optionSelected)="businessPriority3bSolution1Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3bSolution1CompanyDetails" (change)="bp3bSolution1Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3bSolution1CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3bSolution1CompanyDetails" (change)="bp3bSolution1Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3bSolution1CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3bSolution2" [placeholder]="'Solution 2'" [options]='businessPriority3bSolution2'
+  (optionSelected)="businessPriority3bSolution2Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3bSolution2CompanyDetails" (change)="bp3bSolution2Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3bSolution2CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3bSolution2CompanyDetails" (change)="bp3bSolution2Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3bSolution2CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3bSolution3" [placeholder]="'Solution 3'" [options]='businessPriority3bSolution3'
+  (optionSelected)="businessPriority3bSolution3Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3bSolution3CompanyDetails" (change)="bp3bSolution3Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3bSolution3CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3bSolution3CompanyDetails" (change)="bp3bSolution3Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3bSolution3CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3bSolution4" [placeholder]="'Solution 4'" [options]='businessPriority3bSolution4'
+  (optionSelected)="businessPriority3bSolution4Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3bSolution4CompanyDetails" (change)="bp3bSolution4Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3bSolution4CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3bSolution4CompanyDetails" (change)="bp3bSolution4Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3bSolution4CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3bSolution5" [placeholder]="'Solution 5'" [options]='businessPriority3bSolution5'
+  (optionSelected)="businessPriority3bSolution5Selected($event)"></app-dynamic-select>
+
+<select *ngIf="infocusBusinessPriority3bSolution5CompanyDetails" (change)="bp3bSolution5Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3bSolution5CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3bSolution5CompanyDetails" (change)="bp3bSolution5Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3bSolution5CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<!-- Business priority BP3c -->
+
+<hr *ngIf="businessPriority3">
+<app-dynamic-select *ngIf="businessPriority3" [placeholder]="'Business Priority 3c'" [options]='businessPriority3 | async'
+  (optionSelected)="businessPriority3cSelected($event)"></app-dynamic-select>
+
+<app-dynamic-select *ngIf="businessPriority3cSolution1" [placeholder]="'Solution 1'" [options]='businessPriority3cSolution1'
+  (optionSelected)="businessPriority3cSolution1Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3cSolution1CompanyDetails" (change)="bp3cSolution1Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3cSolution1CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3cSolution1CompanyDetails" (change)="bp3cSolution1Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3cSolution1CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3cSolution2" [placeholder]="'Solution 2'" [options]='businessPriority3cSolution2'
+  (optionSelected)="businessPriority3cSolution2Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3cSolution2CompanyDetails" (change)="bp3cSolution2Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3cSolution2CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3cSolution2CompanyDetails" (change)="bp3cSolution2Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3cSolution2CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3cSolution3" [placeholder]="'Solution 3'" [options]='businessPriority3cSolution3'
+  (optionSelected)="businessPriority3cSolution3Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3cSolution3CompanyDetails" (change)="bp3cSolution3Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3cSolution3CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3cSolution3CompanyDetails" (change)="bp3cSolution3Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3cSolution3CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3cSolution4" [placeholder]="'Solution 4'" [options]='businessPriority3cSolution4'
+  (optionSelected)="businessPriority3cSolution4Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3cSolution4CompanyDetails" (change)="bp3cSolution4Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3cSolution4CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3cSolution4CompanyDetails" (change)="bp3cSolution4Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3cSolution4CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3cSolution5" [placeholder]="'Solution 5'" [options]='businessPriority3cSolution5'
+  (optionSelected)="businessPriority3cSolution5Selected($event)"></app-dynamic-select>
+
+<select *ngIf="infocusBusinessPriority3cSolution5CompanyDetails" (change)="bp3cSolution5Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3cSolution5CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3cSolution5CompanyDetails" (change)="bp3cSolution5Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3cSolution5CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<!-- Business priority BP3d -->
+
+<hr *ngIf="businessPriority3">
+<app-dynamic-select *ngIf="businessPriority3" [placeholder]="'Business Priority 3d'" [options]='businessPriority3 | async'
+  (optionSelected)="businessPriority3dSelected($event)"></app-dynamic-select>
+
+<app-dynamic-select *ngIf="businessPriority3dSolution1" [placeholder]="'Solution 1'" [options]='businessPriority3dSolution1'
+  (optionSelected)="businessPriority3dSolution1Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3dSolution1CompanyDetails" (change)="bp3dSolution1Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3dSolution1CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3dSolution1CompanyDetails" (change)="bp3dSolution1Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3dSolution1CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3dSolution2" [placeholder]="'Solution 2'" [options]='businessPriority3dSolution2'
+  (optionSelected)="businessPriority3dSolution2Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3dSolution2CompanyDetails" (change)="bp3dSolution2Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3dSolution2CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3dSolution2CompanyDetails" (change)="bp3dSolution2Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3dSolution2CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3dSolution3" [placeholder]="'Solution 3'" [options]='businessPriority3dSolution3'
+  (optionSelected)="businessPriority3dSolution3Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3dSolution3CompanyDetails" (change)="bp3dSolution3Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3dSolution3CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3dSolution3CompanyDetails" (change)="bp3dSolution3Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3dSolution3CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3dSolution4" [placeholder]="'Solution 4'" [options]='businessPriority3dSolution4'
+  (optionSelected)="businessPriority3dSolution4Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3dSolution4CompanyDetails" (change)="bp3dSolution4Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3dSolution4CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3dSolution4CompanyDetails" (change)="bp3dSolution4Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3dSolution4CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3dSolution5" [placeholder]="'Solution 5'" [options]='businessPriority3dSolution5'
+  (optionSelected)="businessPriority3dSolution5Selected($event)"></app-dynamic-select>
+
+<select *ngIf="infocusBusinessPriority3dSolution5CompanyDetails" (change)="bp3dSolution5Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3dSolution5CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3dSolution5CompanyDetails" (change)="bp3dSolution5Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3dSolution5CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<!-- Business priority BP3e -->
+
+<hr *ngIf="businessPriority3">
+<app-dynamic-select *ngIf="businessPriority3" [placeholder]="'Business Priority 3e'" [options]='businessPriority3 | async'
+  (optionSelected)="businessPriority3eSelected($event)"></app-dynamic-select>
+
+<app-dynamic-select *ngIf="businessPriority3eSolution1" [placeholder]="'Solution 1'" [options]='businessPriority3eSolution1'
+  (optionSelected)="businessPriority3eSolution1Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3eSolution1CompanyDetails" (change)="bp3eSolution1Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3eSolution1CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3eSolution1CompanyDetails" (change)="bp3eSolution1Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3eSolution1CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3eSolution2" [placeholder]="'Solution 2'" [options]='businessPriority3eSolution2'
+  (optionSelected)="businessPriority3eSolution2Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3eSolution2CompanyDetails" (change)="bp3eSolution2Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3eSolution2CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3eSolution2CompanyDetails" (change)="bp3eSolution2Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3eSolution2CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3eSolution3" [placeholder]="'Solution 3'" [options]='businessPriority3eSolution3'
+  (optionSelected)="businessPriority3eSolution3Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3eSolution3CompanyDetails" (change)="bp3eSolution3Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3eSolution3CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3eSolution3CompanyDetails" (change)="bp3eSolution3Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3eSolution3CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3eSolution4" [placeholder]="'Solution 4'" [options]='businessPriority3eSolution4'
+  (optionSelected)="businessPriority3eSolution4Selected($event)"></app-dynamic-select>
+<select *ngIf="infocusBusinessPriority3eSolution4CompanyDetails" (change)="bp3eSolution4Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3eSolution4CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3eSolution4CompanyDetails" (change)="bp3eSolution4Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3eSolution4CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<app-dynamic-select *ngIf="businessPriority3eSolution5" [placeholder]="'Solution 5'" [options]='businessPriority3eSolution5'
+  (optionSelected)="businessPriority3eSolution5Selected($event)"></app-dynamic-select>
+
+<select *ngIf="infocusBusinessPriority3eSolution5CompanyDetails" (change)="bp3eSolution5Company1Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3eSolution5CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+<select *ngIf="infocusBusinessPriority3eSolution5CompanyDetails" (change)="bp3eSolution5Company2Seleted($event.target.value)">
+  <option value="0">--All--</option>
+  <option *ngFor="let companyDetail of infocusBusinessPriority3eSolution5CompanyDetails" [value]="companyDetail.id">
+    {{companyDetail.company_name}}-{{companyDetail.GE_PII_SCORE}}
+  </option>
+</select>
+
+<button  mat-raised-button color=warn (click)="postInfocusReport()">Submit</button>
