@@ -1,0 +1,16 @@
+<mat-form-field>
+  <input matInput placeholder="Infocus Report Title" [(ngModel)]="infocusReportTitle">
+</mat-form-field>
+<app-dynamic-select [placeholder]="'Roles'" [options]="infocusRoles | async" (optionSelected)="roleSelected($event)"></app-dynamic-select>
+<app-dynamic-select *ngIf="infocusIndustry" [placeholder]="'Industries'" [options]="infocusIndustry | async" (optionSelected)="industrySelected($event)"></app-dynamic-select>
+<app-dynamic-select *ngIf="infocusIndustrySegment1" [placeholder]="'Industries Segment 1'" [options]="infocusIndustrySegment1 | async" (optionSelected)="industrySegment1Selected($event)"></app-dynamic-select>
+<app-dynamic-select *ngIf="infocusIndustrySegment2" [placeholder]="'Industries Segment 2'" [options]="infocusIndustrySegment2 | async" (optionSelected)="industrySegment2Selected($event)"></app-dynamic-select>
+
+<hr *ngIf=infocusBusinessPriority1>
+
+<app-dynamic-select *ngIf="infocusBusinessPriority1" [placeholder]="'Business Priority 1'" [options]="infocusBusinessPriority1 | async" (optionSelected)="businessPriority1Selected($event)"></app-dynamic-select>
+
+<hr *ngIf="businessPriority2">
+<ng-container *ngFor="let bp2model of listOfBp2Model">
+<app-dynamic-select *ngIf="businessPriority2" [placeholder]= bp2model.placeholder [options]= 'businessPriority2 | async' (optionSelected)=bp2model.optionSelected></app-dynamic-select>
+</ng-container>
