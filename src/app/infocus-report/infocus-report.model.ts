@@ -1,7 +1,7 @@
 export class InfocusReportModel {
     public id = null;
     public infocusReportTitle:string = null;
-    public roles:string = null;
+    public role:string = null;
     public industry:string= null;
     public industrySegment1:string = null;
     public industrySegment2:string = null;

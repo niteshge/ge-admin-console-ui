@@ -88,13 +88,13 @@ export class InfocusReportComponent implements OnInit {
 
   roleSelected(value) {
     this.infocusModel.infocusReportTitle = this.infocusReportTitle;
-    this.infocusModel.roles = value;
+    this.infocusModel.role = value;
     this.infocusIndustry = this.infocusCoreService.getInfocusIndustriesByRole(value);
   }
 
   industrySelected(value) {
     this.infocusModel.industry = value;
-    this.infocusIndustrySegment1 = this.infocusCoreService.getInfocusIndustrySegment1ByRolendIndustry(this.infocusModel.roles, this.infocusModel.industry);
+    this.infocusIndustrySegment1 = this.infocusCoreService.getInfocusIndustrySegment1ByRolendIndustry(this.infocusModel.role, this.infocusModel.industry);
     console.log(this.infocusModel);
   }
   industrySegment1Selected(value) {
@@ -106,13 +106,13 @@ export class InfocusReportComponent implements OnInit {
   industrySegment2Selected(value) {
     this.infocusModel.industrySegment2 = value;
     console.log(this.infocusModel);
-    this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.roles, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2);
+    this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2);
   }
 
   businessPriority1Selected(value) {
     this.infocusModel.businessPriority1 = value;
     console.log(this.infocusModel);
-    this.businessPriority2 = this.infocusCoreService.getInfocusBusinessPriority2(this.infocusModel.roles, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1);
+    this.businessPriority2 = this.infocusCoreService.getInfocusBusinessPriority2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1);
     this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2a', 'businessPriority2 | async', 'businessPriority2aSelected($event)'));
     this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2b', 'businessPriority2 | async', 'businessPriority2bSelected($event)'));
     this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2c', 'businessPriority2 | async', 'businessPriority2cSelected($event)'));
@@ -121,7 +121,7 @@ export class InfocusReportComponent implements OnInit {
 
   businessPriority2aSelected(value) {
     this.infocusModel.businessPriority2a = value
-    this.businessPriority3 = this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a);
+    this.businessPriority3 = this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a);
     console.log(value)
   }
 
@@ -141,7 +141,7 @@ export class InfocusReportComponent implements OnInit {
 
   businessPriority3aSelected(value){
     this.infocusModel.businessPriority3a = value
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
     .subscribe(
       (response: Response) => {
         this.businessPriority3aSolution1 = response[0].Solution_1;
@@ -149,7 +149,7 @@ export class InfocusReportComponent implements OnInit {
 
       }
     )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
     .subscribe(
       (response: Response) => {
         this.businessPriority3aSolution2 = response[0].Solution_2;
@@ -157,7 +157,7 @@ export class InfocusReportComponent implements OnInit {
 
       }
     )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
     .subscribe(
       (response: Response) => {
         this.businessPriority3aSolution3 = response[0].Solution_3;
@@ -165,7 +165,7 @@ export class InfocusReportComponent implements OnInit {
 
       }
     )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
     .subscribe(
       (response: Response) => {
         this.businessPriority3aSolution4 = response[0].Solution_4;
@@ -173,7 +173,7 @@ export class InfocusReportComponent implements OnInit {
 
       }
     )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
     .subscribe(
       (response: Response) => {
         this.businessPriority3aSolution5 = response[0].Solution_5;
@@ -355,7 +355,7 @@ export class InfocusReportComponent implements OnInit {
 
 businessPriority3bSelected(value){
   this.infocusModel.businessPriority3b = value
-  this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
   .subscribe(
     (response: Response) => {
       this.businessPriority3bSolution1 = response[0].Solution_1;
@@ -363,7 +363,7 @@ businessPriority3bSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
   .subscribe(
     (response: Response) => {
       this.businessPriority3bSolution2 = response[0].Solution_2;
@@ -371,7 +371,7 @@ businessPriority3bSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
   .subscribe(
     (response: Response) => {
       this.businessPriority3bSolution3 = response[0].Solution_3;
@@ -379,7 +379,7 @@ businessPriority3bSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
   .subscribe(
     (response: Response) => {
       this.businessPriority3bSolution4 = response[0].Solution_4;
@@ -387,7 +387,7 @@ businessPriority3bSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
   .subscribe(
     (response: Response) => {
       this.businessPriority3bSolution5 = response[0].Solution_5;
@@ -568,7 +568,7 @@ bp3bSolution5Company2Seleted(value){
 
 businessPriority3cSelected(value){
   this.infocusModel.businessPriority3c = value
-  this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
   .subscribe(
     (response: Response) => {
       this.businessPriority3cSolution1 = response[0].Solution_1;
@@ -576,7 +576,7 @@ businessPriority3cSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
   .subscribe(
     (response: Response) => {
       this.businessPriority3cSolution2 = response[0].Solution_2;
@@ -584,7 +584,7 @@ businessPriority3cSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
   .subscribe(
     (response: Response) => {
       this.businessPriority3cSolution3 = response[0].Solution_3;
@@ -592,7 +592,7 @@ businessPriority3cSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
   .subscribe(
     (response: Response) => {
       this.businessPriority3cSolution4 = response[0].Solution_4;
@@ -600,7 +600,7 @@ businessPriority3cSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
   .subscribe(
     (response: Response) => {
       this.businessPriority3cSolution5 = response[0].Solution_5;
@@ -781,7 +781,7 @@ bp3cSolution5Company2Seleted(value){
 
 businessPriority3dSelected(value){
   this.infocusModel.businessPriority3d = value
-  this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
   .subscribe(
     (response: Response) => {
       this.businessPriority3dSolution1 = response[0].Solution_1;
@@ -789,7 +789,7 @@ businessPriority3dSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
   .subscribe(
     (response: Response) => {
       this.businessPriority3dSolution2 = response[0].Solution_2;
@@ -797,7 +797,7 @@ businessPriority3dSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
   .subscribe(
     (response: Response) => {
       this.businessPriority3dSolution3 = response[0].Solution_3;
@@ -805,7 +805,7 @@ businessPriority3dSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
   .subscribe(
     (response: Response) => {
       this.businessPriority3dSolution4 = response[0].Solution_4;
@@ -813,7 +813,7 @@ businessPriority3dSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
   .subscribe(
     (response: Response) => {
       this.businessPriority3dSolution5 = response[0].Solution_5;
@@ -994,7 +994,7 @@ bp3dSolution5Company2Seleted(value){
 
 businessPriority3eSelected(value){
   this.infocusModel.businessPriority3e = value
-  this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
   .subscribe(
     (response: Response) => {
       this.businessPriority3eSolution1 = response[0].Solution_1;
@@ -1002,7 +1002,7 @@ businessPriority3eSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
   .subscribe(
     (response: Response) => {
       this.businessPriority3eSolution2 = response[0].Solution_2;
@@ -1010,7 +1010,7 @@ businessPriority3eSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
   .subscribe(
     (response: Response) => {
       this.businessPriority3eSolution3 = response[0].Solution_3;
@@ -1018,7 +1018,7 @@ businessPriority3eSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
   .subscribe(
     (response: Response) => {
       this.businessPriority3eSolution4 = response[0].Solution_4;
@@ -1026,7 +1026,7 @@ businessPriority3eSelected(value){
 
     }
   )
-  this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.roles,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
+  this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role,this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
   .subscribe(
     (response: Response) => {
       this.businessPriority3eSolution5 = response[0].Solution_5;
@@ -1205,7 +1205,12 @@ bp3eSolution5Company2Seleted(value){
 // Submit report
 
 postInfocusReport(){
-  this.infocusCoreService.postInfocusReportDetails(this.infocusModel);
+  var temp = this.infocusCoreService.postInfocusReportDetails(this.infocusModel);
+  temp.subscribe(
+    (response:Response) => {
+      console.log(response)
+    }
+  )
 }
 
 }

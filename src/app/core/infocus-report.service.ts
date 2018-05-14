@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Headers, RequestOptions} from '@angular/http';
 import { InfocusReportModel } from '../infocus-report/infocus-report.model';
 @Injectable({
   providedIn: 'root'
 })
 export class InfocusReportService {
+  opts = new RequestOptions();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const headers: any = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.opts = new RequestOptions({ headers: headers });
+   }
 
   getInfocusReportRoles() {
     return this.http.get('http://localhost:8787/api/getroles')
@@ -61,7 +67,11 @@ export class InfocusReportService {
   }
 
   postInfocusReportDetails(infocus:InfocusReportModel){
+    // const headers = new Headers();
+    //     headers.append('Content-Type', 'application/json');
+    //     const options = new RequestOptions({headers: headers});
+  
     console.log("Infocus Report Details service layer", infocus);
-    return this.http.post('http://localhost:8787/api/generateinfocusreport/',infocus);
+    return this.http.post("http://localhost:8787/api/generateinfocusreport/", infocus);
   }
 }
