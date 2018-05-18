@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Headers, RequestOptions} from '@angular/http';
 import { InfocusReportModel } from '../infocus-report/infocus-report.model';
+import { Observable } from 'rxjs';
+import { InfocusMeta } from '../infocus-report/infocus-report-view/infocus-report-view.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -72,6 +74,17 @@ export class InfocusReportService {
     //     const options = new RequestOptions({headers: headers});
   
     console.log("Infocus Report Details service layer", infocus);
-    return this.http.post("http://localhost:8787/api/generateinfocusreport/", infocus);
+    return this.http.post("http://localhost:8787/api/saveinfocusreport/", infocus);
   }
+
+  getInfocusPDFbyId(id){
+    console.log(id.id)
+    return this.http.get('http://localhost:8787/api/viewinfocuspdf/'+id.id+'.pdf');
+  }
+
+getAllInfocusMeta():Observable<InfocusMeta[]>{
+  return this.http.get<InfocusMeta[]>('http://localhost:8787/api/getallinfocusmetalist');
 }
+
+}
+

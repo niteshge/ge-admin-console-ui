@@ -1,14 +1,27 @@
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span><button routerLink="/" mat-button>Growth Enabler</button></span>
-      <span><button [matMenuTriggerFor]="appMenu" mat-button>Report</button></span>
-      <mat-menu #appMenu="matMenu">
-        <ng-template matMenuContent>
-          <button  routerLink="infocus-report" mat-menu-item>Infocus Report</button>
-          <button routingLink="/" mat-menu-item>Tech Report</button>
-        </ng-template>
-      </mat-menu>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <router-outlet></router-outlet>
-  
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>
+      <button routerLink="/" mat-button>Growth Enabler</button>
+    </span>
+    <span>
+      <button [matMenuTriggerFor]="appMenu" mat-button>Report</button>
+    </span>
+    <mat-menu #appMenu="matMenu">
+      <ng-template matMenuContent>
+        <button [matMenuTriggerFor]="infocusMenu" mat-menu-item>Infocus Report</button>
+        <button [matMenuTriggerFor]="techMenu" mat-menu-item>Tech Report</button>
+      </ng-template>
+    </mat-menu>
+
+    <mat-menu #infocusMenu="matMenu">
+      <button routerLink="infocus-report/submit" mat-menu-item>Submit Report</button>
+      <button routerLink="infocus-report/view" mat-menu-item>View and Generate</button>
+    </mat-menu>
+    <mat-menu #techMenu="matMenu">
+      <button routerLink="/" mat-menu-item>Submit Report</button>
+      <button routerLink="/" mat-menu-item>View and Generate</button>
+
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

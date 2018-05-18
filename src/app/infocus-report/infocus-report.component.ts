@@ -12,7 +12,7 @@ export class InfocusReportComponent implements OnInit {
   infocusModel: InfocusReportModel = new InfocusReportModel();
   listOfBp2Model: InfocusBusinessPriority2Model[] = [];
 
-
+  id;
   infocusReportTitle;
   infocusRoles;
   infocusIndustry;
@@ -85,6 +85,11 @@ export class InfocusReportComponent implements OnInit {
   ngOnInit() {
     this.infocusRoles = this.infocusCoreService.getInfocusReportRoles();
   }
+  
+  analystName(value){
+    this.infocusModel.analystName = value;
+    console.log(this.infocusModel.analystName);
+  }
 
   roleSelected(value) {
     this.infocusModel.infocusReportTitle = this.infocusReportTitle;
@@ -113,10 +118,10 @@ export class InfocusReportComponent implements OnInit {
     this.infocusModel.businessPriority1 = value;
     console.log(this.infocusModel);
     this.businessPriority2 = this.infocusCoreService.getInfocusBusinessPriority2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1);
-    this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2a', 'businessPriority2 | async', 'businessPriority2aSelected($event)'));
-    this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2b', 'businessPriority2 | async', 'businessPriority2bSelected($event)'));
-    this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2c', 'businessPriority2 | async', 'businessPriority2cSelected($event)'));
-    this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2d', 'businessPriority2 | async', 'businessPriority2dSelected($event)'));
+    // this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2a', 'businessPriority2 | async', 'businessPriority2aSelected($event:Object)'));
+    // this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2b', 'businessPriority2 | async', 'businessPriority2bSelected($event)'));
+    // this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2c', 'businessPriority2 | async', 'businessPriority2cSelected($event)'));
+    // this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2d', 'businessPriority2 | async', 'businessPriority2dSelected($event)'));
   }
 
   businessPriority2aSelected(value) {
@@ -1209,8 +1214,17 @@ postInfocusReport(){
   temp.subscribe(
     (response:Response) => {
       console.log(response)
+      this.id = response;
     }
   )
+}
+viewPDF(){
+this.infocusCoreService.getInfocusPDFbyId(this.id)
+.subscribe(
+  (response:Response) => {
+    
+  }
+)
 }
 
 }
