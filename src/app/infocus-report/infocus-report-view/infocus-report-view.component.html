@@ -1,39 +1,4 @@
-<!-- <app-dynamic-tables></app-dynamic-tables>
 <div>
-  <mat-table [dataSource]="dataSource">
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-      <mat-cell *matCellDef="let infocus"> {{infocus.id}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="created_by">
-      <mat-header-cell *matHeaderCellDef> Created By </mat-header-cell>
-      <mat-cell *matCellDef="let infocus"> {{infocus.created_by}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="infocus_report_title">
-      <mat-header-cell *matHeaderCellDef> Infocus Report Title </mat-header-cell>
-      <mat-cell *matCellDef="let infocus"> {{infocus.infocus_report_title}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="created_at">
-      <mat-header-cell *matHeaderCellDef> Created At </mat-header-cell>
-      <mat-cell *matCellDef="let infocus"> {{infocus.created_at}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="report_id">
-      <mat-header-cell *matHeaderCellDef> Report Id </mat-header-cell>
-      <mat-cell *matCellDef="let infocus"> {{infocus.report_id}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-      <mat-cell *matCellDef="let infocus"> {{infocus.status}} </mat-cell>
-    </ng-container>
-    <ng-container>
-      <mat-header-cell *matHeaderCellDef=""> Action </mat-header-cell>
-      <mat-cell *matCellDef="let infocus" (click)=getPDFView(infocus)> <span>view</span> </mat-cell>
-      <mat-cell *matCellDef="let infocus" (click)=deleteReport(infocus)> <span>delete</span> </mat-cell>
-      <mat-cell *matCellDef="let infocus" (click)=publishReport(infocus)> <span>publish</span> </mat-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="getPDFView(row)"></mat-row>
-  </mat-table>
-</div> -->
-
-<app-dynamic-tables></app-dynamic-tables>
+    <app-dynamic-tables *ngIf="modelData" [jsonData]="modelData" (rowSelected)="openDialog($event)"></app-dynamic-tables>
+  </div>
+  

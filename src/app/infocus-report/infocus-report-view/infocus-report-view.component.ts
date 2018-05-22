@@ -3,6 +3,8 @@ import { DataSource } from '@angular/cdk/table';
 import { InfocusReportService } from '../../core/infocus-report.service';
 import { Observable } from 'rxjs';
 import { InfocusMeta } from './infocus-report-view.model';
+import { DynamicReportPopupComponent } from '../../shared/dynamic-report-popup/dynamic-report-popup.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-infocus-report-view',
@@ -10,30 +12,55 @@ import { InfocusMeta } from './infocus-report-view.model';
   styleUrls: ['./infocus-report-view.component.css']
 })
 export class InfocusReportViewComponent implements OnInit {
-dataSource = new InfocusMetaDataSource(this.infocusService);
-displayedColumns = ['id','created_at','created_by','infocus_report_title','report_id','status']
-  constructor(private infocusService:InfocusReportService) { }
+  rowValue:any = {};
+  modelData;
+  action;
+  constructor(private infocusCoreService: InfocusReportService, public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.getInfocusMetadata();
   }
 
-  getPDFView(value){
-    console.log("pdf view",value)
+  getInfocusMetadata(){
+    this.infocusCoreService.getAllInfocusMeta().subscribe(
+      (response: Response) => {
+        this.modelData = response;
+      }
+    );
   }
-  deleteReport(value){
-    console.log("report deleted",value)
+  openDialog(value): void {
+    console.log(value);
+    this.rowValue = value;
+    let dialogRef = this.dialog.open(DynamicReportPopupComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.action = result;
+      console.log("The action to take is ", this.action);
+      this.takeAction(this.action);
+    });
   }
-  publishReport(value){
-    console.log("Pulbishing report",value)
+  takeAction(value) {
+    if (value === '1') {
+      console.log("View On ", this.rowValue.report_id);
+    } else if (value === '2') {
+      console.log("delete On ", this.rowValue.id);
+      this.deleteReport(this.rowValue.id);
+    }
   }
 
-}
-export class InfocusMetaDataSource extends DataSource<any>{
-  constructor(private infocusService: InfocusReportService) {
-    super();
+  deleteReport(id:LongRange){
+    this.infocusCoreService.deleteInfocusReportById(id)
+    .subscribe(
+      (response:Response) => {
+        console.log(response);
+        if(response.status === 200){
+          this.getInfocusMetadata();
+        }
+      }
+    )
   }
-  connect(): Observable<InfocusMeta[]> {
-    return this.infocusService.getAllInfocusMeta();
-  }
-  disconnect() {}
+
 }

@@ -1,4 +1,4 @@
-.demo-actions {
+/* .demo-actions {
   margin-top: 24px;
 }
 
@@ -10,3 +10,18 @@
 .demo-track-by-label {
   margin-right: 8px;
 }
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  overflow: auto;
+}
+
+.mat-column-select {
+  overflow: visible;
+}
+.mat-header-cell.mat-sort-header-sorted {
+  color: black;
+} */

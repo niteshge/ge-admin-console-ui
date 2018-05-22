@@ -1,3 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~bootstrap/dist/css/bootstrap.min.css';    
+
+.demo-actions {
+    margin-top: 24px;
+  }
+  
+  .demo-track-by-select {
+    display: flex;
+    align-items: center;
+  }
+  
+  .demo-track-by-label {
+    margin-right: 8px;
+  }
+  
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+    overflow: auto;
+  }
+  
+  .mat-column-select {
+    overflow: visible;
+  }
+  .mat-header-cell.mat-sort-header-sorted {
+    color: black;
+  }
+  .mat-column-select {
+    overflow: initial;
+  }
+  
