@@ -9,7 +9,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class DynamicSelectComponent implements OnInit, OnChanges {
   @Input() options = [];
   @Input() placeholder;
+  @Input() anyObject;
   @Output() optionSelected = new EventEmitter();
+  @Output() objectSelected = new EventEmitter();
   
   form: FormGroup;
   displayedOptions;
@@ -33,4 +35,10 @@ export class DynamicSelectComponent implements OnInit, OnChanges {
   onOptionSelected(event) {
     this.optionSelected.emit(event.option.value);
   }
+
+  onObjectSelected(event){
+    this.objectSelected.emit(event);
+  }
+
+
 }

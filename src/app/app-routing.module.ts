@@ -6,8 +6,8 @@ const routes: Routes = [{
   loadChildren: './infocus-report/infocus-report.module#InfocusReportModule'
 },
 {
-  path: 'infocus-view',
-  loadChildren: './infocus-view/infocus-view.module#InfocusViewModule'
+  path: 'master-tables',
+  loadChildren: './master-tables/master-tables.module#MasterTablesModule'
 }
 ];
 

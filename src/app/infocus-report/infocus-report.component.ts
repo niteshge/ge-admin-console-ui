@@ -21,61 +21,61 @@ export class InfocusReportComponent implements OnInit {
   businessPriority2;
 
 
-  businessPriority3;
-  businessPriority3aSolution1;
+  bp2abusinessPriority3;
+  bp2abusinessPriority3aSolution1;
   infocusBusinessPriority3aSolution1CompanyDetails;
-  businessPriority3aSolution2;
+  bp2abusinessPriority3aSolution2;
   infocusBusinessPriority3aSolution2CompanyDetails;
-  businessPriority3aSolution3;
+  bp2abusinessPriority3aSolution3;
   infocusBusinessPriority3aSolution3CompanyDetails;
-  businessPriority3aSolution4;
+  bp2abusinessPriority3aSolution4;
   infocusBusinessPriority3aSolution4CompanyDetails;
-  businessPriority3aSolution5;
+  bp2abusinessPriority3aSolution5;
   infocusBusinessPriority3aSolution5CompanyDetails;
 
-  businessPriority3bSolution1;
+  bp2abusinessPriority3bSolution1;
   infocusBusinessPriority3bSolution1CompanyDetails;
-  businessPriority3bSolution2;
+  bp2abusinessPriority3bSolution2;
   infocusBusinessPriority3bSolution2CompanyDetails;
-  businessPriority3bSolution3;
+  bp2abusinessPriority3bSolution3;
   infocusBusinessPriority3bSolution3CompanyDetails;
-  businessPriority3bSolution4;
+  bp2abusinessPriority3bSolution4;
   infocusBusinessPriority3bSolution4CompanyDetails;
-  businessPriority3bSolution5;
+  bp2abusinessPriority3bSolution5;
   infocusBusinessPriority3bSolution5CompanyDetails;
 
-  businessPriority3cSolution1;
+  bp2abusinessPriority3cSolution1;
   infocusBusinessPriority3cSolution1CompanyDetails;
-  businessPriority3cSolution2;
+  bp2abusinessPriority3cSolution2;
   infocusBusinessPriority3cSolution2CompanyDetails;
-  businessPriority3cSolution3;
+  bp2abusinessPriority3cSolution3;
   infocusBusinessPriority3cSolution3CompanyDetails;
-  businessPriority3cSolution4;
+  bp2abusinessPriority3cSolution4;
   infocusBusinessPriority3cSolution4CompanyDetails;
-  businessPriority3cSolution5;
+  bp2abusinessPriority3cSolution5;
   infocusBusinessPriority3cSolution5CompanyDetails;
 
 
-  businessPriority3dSolution1;
+  bp2abusinessPriority3dSolution1;
   infocusBusinessPriority3dSolution1CompanyDetails;
-  businessPriority3dSolution2;
+  bp2abusinessPriority3dSolution2;
   infocusBusinessPriority3dSolution2CompanyDetails;
-  businessPriority3dSolution3;
+  bp2abusinessPriority3dSolution3;
   infocusBusinessPriority3dSolution3CompanyDetails;
-  businessPriority3dSolution4;
+  bp2abusinessPriority3dSolution4;
   infocusBusinessPriority3dSolution4CompanyDetails;
-  businessPriority3dSolution5;
+  bp2abusinessPriority3dSolution5;
   infocusBusinessPriority3dSolution5CompanyDetails;
 
-  businessPriority3eSolution1;
+  bp2abusinessPriority3eSolution1;
   infocusBusinessPriority3eSolution1CompanyDetails;
-  businessPriority3eSolution2;
+  bp2abusinessPriority3eSolution2;
   infocusBusinessPriority3eSolution2CompanyDetails;
-  businessPriority3eSolution3;
+  bp2abusinessPriority3eSolution3;
   infocusBusinessPriority3eSolution3CompanyDetails;
-  businessPriority3eSolution4;
+  bp2abusinessPriority3eSolution4;
   infocusBusinessPriority3eSolution4CompanyDetails;
-  businessPriority3eSolution5;
+  bp2abusinessPriority3eSolution5;
   infocusBusinessPriority3eSolution5CompanyDetails;
 
 
@@ -126,7 +126,7 @@ export class InfocusReportComponent implements OnInit {
 
   businessPriority2aSelected(value) {
     this.infocusModel.businessPriority2a = value
-    this.businessPriority3 = this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a);
+    this.bp2abusinessPriority3 = this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a);
     console.log(value)
   }
 
@@ -144,50 +144,50 @@ export class InfocusReportComponent implements OnInit {
 
   // Business priority 3a
 
-  businessPriority3aSelected(value) {
-    this.infocusModel.businessPriority3a = value
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
+  bp2abusinessPriority3aSelected(value) {
+    this.infocusModel.bp2abusinessPriority3a = value
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3aSolution1 = response[0].Solution_1;
+          this.bp2abusinessPriority3aSolution1 = response[0].Solution_1;
           this.infocusModel.bp2abp3aSolution1Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3aSolution2 = response[0].Solution_2;
+          this.bp2abusinessPriority3aSolution2 = response[0].Solution_2;
           this.infocusModel.bp2abp3aSolution2Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3aSolution3 = response[0].Solution_3;
+          this.bp2abusinessPriority3aSolution3 = response[0].Solution_3;
           this.infocusModel.bp2abp3aSolution3Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3aSolution4 = response[0].Solution_4;
+          this.bp2abusinessPriority3aSolution4 = response[0].Solution_4;
           this.infocusModel.bp2abp3aSolution4Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3aSolution5 = response[0].Solution_5;
+          this.bp2abusinessPriority3aSolution5 = response[0].Solution_5;
           this.infocusModel.bp2abp3aSolution5Code = response[0].Solution_Code;
 
         }
       )
   }
-  businessPriority3aSolution1Selected(value) {
+  bp2abusinessPriority3aSolution1Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3aSolution1 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution1Code)
@@ -198,7 +198,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3aSolution2Selected(value) {
+  bp2abusinessPriority3aSolution2Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3aSolution2 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution2Code)
@@ -209,7 +209,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3aSolution3Selected(value) {
+  bp2abusinessPriority3aSolution3Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3aSolution3 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution3Code)
@@ -220,7 +220,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3aSolution4Selected(value) {
+  bp2abusinessPriority3aSolution4Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3aSolution4 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution4Code)
@@ -231,7 +231,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3aSolution5Selected(value) {
+  bp2abusinessPriority3aSolution5Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3aSolution5 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution5Code)
@@ -358,50 +358,50 @@ export class InfocusReportComponent implements OnInit {
 
   // Business priority 3b
 
-  businessPriority3bSelected(value) {
-    this.infocusModel.businessPriority3b = value
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
+  bp2abusinessPriority3bSelected(value) {
+    this.infocusModel.bp2abusinessPriority3b = value
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3bSolution1 = response[0].Solution_1;
+          this.bp2abusinessPriority3bSolution1 = response[0].Solution_1;
           this.infocusModel.bp2abp3bSolution1Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3bSolution2 = response[0].Solution_2;
+          this.bp2abusinessPriority3bSolution2 = response[0].Solution_2;
           this.infocusModel.bp2abp3bSolution2Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3bSolution3 = response[0].Solution_3;
+          this.bp2abusinessPriority3bSolution3 = response[0].Solution_3;
           this.infocusModel.bp2abp3bSolution3Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3bSolution4 = response[0].Solution_4;
+          this.bp2abusinessPriority3bSolution4 = response[0].Solution_4;
           this.infocusModel.bp2abp3bSolution4Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3b)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3bSolution5 = response[0].Solution_5;
+          this.bp2abusinessPriority3bSolution5 = response[0].Solution_5;
           this.infocusModel.bp2abp3bSolution5Code = response[0].Solution_Code;
 
         }
       )
   }
-  businessPriority3bSolution1Selected(value) {
+  bp2abusinessPriority3bSolution1Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3bSolution1 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution1Code)
@@ -412,7 +412,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3bSolution2Selected(value) {
+  bp2abusinessPriority3bSolution2Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3bSolution2 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution2Code)
@@ -423,7 +423,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3bSolution3Selected(value) {
+  bp2abusinessPriority3bSolution3Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3bSolution3 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution3Code)
@@ -434,7 +434,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3bSolution4Selected(value) {
+  bp2abusinessPriority3bSolution4Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3bSolution4 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution4Code)
@@ -445,7 +445,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3bSolution5Selected(value) {
+  bp2abusinessPriority3bSolution5Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3bSolution5 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution5Code)
@@ -571,50 +571,50 @@ export class InfocusReportComponent implements OnInit {
 
   // Business priority 3c
 
-  businessPriority3cSelected(value) {
-    this.infocusModel.businessPriority3c = value
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
+  bp2abusinessPriority3cSelected(value) {
+    this.infocusModel.bp2abusinessPriority3c = value
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3cSolution1 = response[0].Solution_1;
+          this.bp2abusinessPriority3cSolution1 = response[0].Solution_1;
           this.infocusModel.bp2abp3cSolution1Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3cSolution2 = response[0].Solution_2;
+          this.bp2abusinessPriority3cSolution2 = response[0].Solution_2;
           this.infocusModel.bp2abp3cSolution2Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3cSolution3 = response[0].Solution_3;
+          this.bp2abusinessPriority3cSolution3 = response[0].Solution_3;
           this.infocusModel.bp2abp3cSolution3Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3cSolution4 = response[0].Solution_4;
+          this.bp2abusinessPriority3cSolution4 = response[0].Solution_4;
           this.infocusModel.bp2abp3cSolution4Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3c)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3cSolution5 = response[0].Solution_5;
+          this.bp2abusinessPriority3cSolution5 = response[0].Solution_5;
           this.infocusModel.bp2abp3cSolution5Code = response[0].Solution_Code;
 
         }
       )
   }
-  businessPriority3cSolution1Selected(value) {
+  bp2abusinessPriority3cSolution1Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3cSolution1 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution1Code)
@@ -625,7 +625,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3cSolution2Selected(value) {
+  bp2abusinessPriority3cSolution2Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3cSolution2 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution2Code)
@@ -636,7 +636,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3cSolution3Selected(value) {
+  bp2abusinessPriority3cSolution3Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3cSolution3 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution3Code)
@@ -647,7 +647,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3cSolution4Selected(value) {
+  bp2abusinessPriority3cSolution4Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3cSolution4 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution4Code)
@@ -658,7 +658,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3cSolution5Selected(value) {
+  bp2abusinessPriority3cSolution5Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3cSolution5 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution5Code)
@@ -784,50 +784,50 @@ export class InfocusReportComponent implements OnInit {
 
   // Business priority 3d
 
-  businessPriority3dSelected(value) {
-    this.infocusModel.businessPriority3d = value
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
+  bp2abusinessPriority3dSelected(value) {
+    this.infocusModel.bp2abusinessPriority3d = value
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3dSolution1 = response[0].Solution_1;
+          this.bp2abusinessPriority3dSolution1 = response[0].Solution_1;
           this.infocusModel.bp2abp3dSolution1Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3dSolution2 = response[0].Solution_2;
+          this.bp2abusinessPriority3dSolution2 = response[0].Solution_2;
           this.infocusModel.bp2abp3dSolution2Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3dSolution3 = response[0].Solution_3;
+          this.bp2abusinessPriority3dSolution3 = response[0].Solution_3;
           this.infocusModel.bp2abp3dSolution3Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3dSolution4 = response[0].Solution_4;
+          this.bp2abusinessPriority3dSolution4 = response[0].Solution_4;
           this.infocusModel.bp2abp3dSolution4Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3d)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3dSolution5 = response[0].Solution_5;
+          this.bp2abusinessPriority3dSolution5 = response[0].Solution_5;
           this.infocusModel.bp2abp3dSolution5Code = response[0].Solution_Code;
 
         }
       )
   }
-  businessPriority3dSolution1Selected(value) {
+  bp2abusinessPriority3dSolution1Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3dSolution1 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution1Code)
@@ -838,7 +838,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3dSolution2Selected(value) {
+  bp2abusinessPriority3dSolution2Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3dSolution2 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution2Code)
@@ -849,7 +849,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3dSolution3Selected(value) {
+  bp2abusinessPriority3dSolution3Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3dSolution3 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution3Code)
@@ -860,7 +860,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3dSolution4Selected(value) {
+  bp2abusinessPriority3dSolution4Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3dSolution4 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution4Code)
@@ -871,7 +871,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3dSolution5Selected(value) {
+  bp2abusinessPriority3dSolution5Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3dSolution5 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution5Code)
@@ -997,50 +997,50 @@ export class InfocusReportComponent implements OnInit {
 
   // Business priority 3e
 
-  businessPriority3eSelected(value) {
-    this.infocusModel.businessPriority3e = value
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
+  bp2abusinessPriority3eSelected(value) {
+    this.infocusModel.bp2abusinessPriority3e = value
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3eSolution1 = response[0].Solution_1;
+          this.bp2abusinessPriority3eSolution1 = response[0].Solution_1;
           this.infocusModel.bp2abp3eSolution1Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3eSolution2 = response[0].Solution_2;
+          this.bp2abusinessPriority3eSolution2 = response[0].Solution_2;
           this.infocusModel.bp2abp3eSolution2Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3eSolution3 = response[0].Solution_3;
+          this.bp2abusinessPriority3eSolution3 = response[0].Solution_3;
           this.infocusModel.bp2abp3eSolution3Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3eSolution4 = response[0].Solution_4;
+          this.bp2abusinessPriority3eSolution4 = response[0].Solution_4;
           this.infocusModel.bp2abp3eSolution4Code = response[0].Solution_Code;
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.businessPriority3e)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e)
       .subscribe(
         (response: Response) => {
-          this.businessPriority3eSolution5 = response[0].Solution_5;
+          this.bp2abusinessPriority3eSolution5 = response[0].Solution_5;
           this.infocusModel.bp2abp3eSolution5Code = response[0].Solution_Code;
 
         }
       )
   }
-  businessPriority3eSolution1Selected(value) {
+  bp2abusinessPriority3eSolution1Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3eSolution1 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution1Code)
@@ -1051,7 +1051,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3eSolution2Selected(value) {
+  bp2abusinessPriority3eSolution2Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3eSolution2 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution2Code)
@@ -1062,7 +1062,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3eSolution3Selected(value) {
+  bp2abusinessPriority3eSolution3Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3eSolution3 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution3Code)
@@ -1073,7 +1073,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3eSolution4Selected(value) {
+  bp2abusinessPriority3eSolution4Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3eSolution4 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution4Code)
@@ -1084,7 +1084,7 @@ export class InfocusReportComponent implements OnInit {
         }
       )
   }
-  businessPriority3eSolution5Selected(value) {
+  bp2abusinessPriority3eSolution5Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3eSolution5 = value
     this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution5Code)

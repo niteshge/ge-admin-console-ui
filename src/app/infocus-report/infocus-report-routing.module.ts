@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { InfocusReportComponent } from './infocus-report.component';
 import { InfocusReportViewComponent } from './infocus-report-view/infocus-report-view.component';
 import { InfocusReportRootComponent } from './infocus-report-root/infocus-report-root.component';
+import { InfocusTemplateOneComponent } from './infocus-template-one/infocus-template-one.component';
 
 const routes: Routes = [{
   path: '',
@@ -15,6 +16,10 @@ const routes: Routes = [{
     {
       path: 'view',
       component: InfocusReportViewComponent
+    },
+    {
+      path: 'templateone',
+      component: InfocusTemplateOneComponent
     }
   ]
 }];

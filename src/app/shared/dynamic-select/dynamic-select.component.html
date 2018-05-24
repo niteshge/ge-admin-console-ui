@@ -3,7 +3,7 @@
 <form [formGroup]="form">
   <mat-form-field>
     <input type="text" matInput [placeholder]="placeholder" formControlName="value" required [matAutocomplete]="autoGroup" />
-    <mat-autocomplete #autoGroup="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+    <mat-autocomplete #autoGroup="matAutocomplete" (optionSelected)="onOptionSelected($event)" (optionSelected)="onObjectSelected(anyObject)">
       <mat-option *ngFor="let option of displayedOptions" [value]="option">
         {{ option }}
       </mat-option>
