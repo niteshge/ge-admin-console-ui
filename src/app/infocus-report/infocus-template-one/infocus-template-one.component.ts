@@ -34,7 +34,19 @@ export class InfocusTemplateOneComponent implements OnInit {
   solutionNames;
   solutionCodes;
   businessPriority1;
-  totalRecommedations: number[] = [];
+  totalRecommedations;
+  totalNumberOfRecommendations;
+  recommendation1MainPara;
+  recommendation1SubHeading;
+  recommendation1SubPoint1;
+  recommendation1SubPoint2;
+  recommendation1SubPoint3;
+  recommendation2MainPara;
+  recommendation2SubHeading;
+  recommendation2SubPoint1;
+  recommendation2SubPoint2;
+  recommendation2SubPoint3;
+
 
   constructor(private infocusCoreService: InfocusReportService) { }
 
@@ -186,19 +198,19 @@ export class InfocusTemplateOneComponent implements OnInit {
       )
   }
   businessPriority2bBP3(value) {
-    if (this.totalRecommedations != null) {
+    if (this.totalRecommedations == null) {
       this.totalRecommedations = [1, 2];
     }
     console.log(value);
   }
   businessPriority2cBP3(value) {
-    if (this.totalRecommedations != null) {
+    if (this.totalRecommedations == null) {
       this.totalRecommedations = [1, 2];
     }
     console.log(value);
   }
   businessPriority2dBP3(value) {
-    if (this.totalRecommedations != null) {
+    if (this.totalRecommedations == null) {
       this.totalRecommedations = [1, 2];
     }
     console.log(value);
@@ -227,14 +239,59 @@ export class InfocusTemplateOneComponent implements OnInit {
   }
 
   businessPriority2aBP3(value) {
-    if (this.totalRecommedations != null) {
-      this.totalRecommedations = [1, 2];
+    if (this.totalRecommedations == null) {
+      this.totalRecommedations = ['1', '2'];
     }
+    console.log(this.totalRecommedations);
 
     console.log("From child componenet ", value);
     console.log("infocus Model data after child component ", this.infocusModel);
   }
+  numberOfRecommentations(value) {
+    this.totalNumberOfRecommendations = value;
+  }
+  recommendationOneSelected() {
+    if (this.recommendation1MainPara != null) {
+      this.infocusModel.recommendation1MainPara = this.recommendation1MainPara;
+    }
+    if (this.recommendation1SubHeading != null) {
+      this.infocusModel.recommendation1SubHeading = this.recommendation1SubHeading;
+    }
+    if (this.recommendation1SubPoint1 != null) {
+      this.infocusModel.recommendation1SubPoint1 = this.recommendation1SubPoint1;
+    }
+    if (this.recommendation1SubPoint2 != null) {
+      this.infocusModel.recommendation1SubPoint2 = this.recommendation1SubPoint2;
+    }
+    if (this.recommendation1SubPoint3 != null) {
+      this.infocusModel.recommendation1SubPoint3 = this.recommendation1SubPoint3;
+    }
+
+  }
+  recommendationTwoSelected() {
+    if (this.recommendation2MainPara != null) {
+      this.infocusModel.recommendation2MainPara = this.recommendation2MainPara;
+    }
+    if (this.recommendation2SubHeading != null) {
+      this.infocusModel.recommendation2SubHeading = this.recommendation2SubHeading;
+    }
+    if (this.recommendation2SubPoint1 != null) {
+      this.infocusModel.recommendation2SubPoint1 = this.recommendation2SubPoint1;
+    }
+    if (this.recommendation2SubPoint2 != null) {
+      this.infocusModel.recommendation2SubPoint2 = this.recommendation2SubPoint2;
+    }
+    if (this.recommendation2SubPoint3 != null) {
+      this.infocusModel.recommendation2SubPoint3 = this.recommendation2SubPoint3;
+    }
+
+  }
+
+
+
 }
+
+
 
 export class BusinessPriority3Model {
   public businessPriority3;

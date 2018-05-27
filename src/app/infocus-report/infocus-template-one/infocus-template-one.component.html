@@ -127,7 +127,68 @@
       </mat-tab-group>
     </div>
   </div>
-  <div *ngIf="totalRecommedations">
+  <!-- <div *ngIf="totalRecommedations">
+      <app-dynamic-select [anyObject]="'NUMBER OF RECOMMENDATIONS'" [placeholder]="'NUMBER OF RECOMMENDATIONS'" [options]="totalRecommedations"
+      (optionSelected)="numberOfRecommentations($event)"></app-dynamic-select>
+  </div>
+  <div *ngIf="totalNumberOfRecommendations">
+      <app-infocus-report-recommendation [infocusModel]="infocusModel" [totalRecommendations]="this.totalNumberOfRecommendations"></app-infocus-report-recommendation>
+  </div> -->
 
+  <div class="row" *ngIf="totalRecommedations">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Recommendations 1:
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Please Fill The Page One Recommendation</p>
+        <mat-form-field>
+          <textarea matInput placeholder="Recommendation Main Paragraph" [(ngModel)]="recommendation1MainPara"> </textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput placeholder="Recommendation Sub Heading" [(ngModel)]="recommendation1SubHeading"> </textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput placeholder="Recommendation Point 1" [(ngModel)]="recommendation1SubPoint1"> </textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput placeholder="Recommendation Point 2" [(ngModel)]="recommendation1SubPoint2"> </textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput placeholder="Recommendation Point 3" [(ngModel)]="recommendation1SubPoint3"> </textarea>
+        </mat-form-field>
+        <div col="row">
+          <button mat-raised-button color=primary (click)="recommendationOneSelected()">Done</button>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Recommendations 2:
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>Please Fill The Page Two Recommendation</p>
+          <mat-form-field>
+            <textarea matInput placeholder="Recommendation Main Paragraph" [(ngModel)]="recommendation2MainPara"> </textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput placeholder="Recommendation Sub Heading" [(ngModel)]="recommendation2SubHeading"> </textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput placeholder="Recommendation Point 1" [(ngModel)]="recommendation2SubPoint1"> </textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput placeholder="Recommendation Point 2" [(ngModel)]="recommendation2SubPoint2"> </textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput placeholder="Recommendation Point 3" [(ngModel)]="recommendation2SubPoint3"> </textarea>
+          </mat-form-field>
+          <div col="row">
+            <button mat-raised-button color=primary (click)="recommendationTwoSelected()">Done</button>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
   </div>
 </div>
