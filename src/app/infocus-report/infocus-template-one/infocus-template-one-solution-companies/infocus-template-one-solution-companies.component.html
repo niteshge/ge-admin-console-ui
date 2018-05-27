@@ -1,0 +1,36 @@
+<!-- <div class="col-2">
+  <app-dynamic-select [anyObject]=solutionCode [placeholder]=solutionPlaceholder [options]='solutionNames' (optionSelected)="business3SolutionSeleted($event)"
+    (objectSelected)="business3SolutionCode($event)" (placeholderSelected)="business3SolutionPlaceholderSelected($event)"></app-dynamic-select>
+</div> -->
+<!-- <div class="col-1"></div>
+  <div class="col-2">
+    <app-dynamic-select [anyObject]="Company one" [placeholder]=bp3Placeholders.value.businessPriority3Company1
+      [options]="bp2aBusinessPriority3 | async" (optionSelected)="businessPriority2Selected($event)" (objectSelected)="businessPriority2PlaceholderValue($event)"></app-dynamic-select>
+  </div>
+  <div class="col-1"></div>
+  <div class="col-2">
+    <app-dynamic-select [anyObject]=bp3Placeholders.value.businessPriority3Company2 [placeholder]=bp3Placeholders.value.businessPriority3Company2
+      [options]="bp2aBusinessPriority3 | async" (optionSelected)="businessPriority2Selected($event)" (objectSelected)="businessPriority2PlaceholderValue($event)"></app-dynamic-select>
+  </div> -->
+<div class="row">
+  <div class="col-12">
+    <div class="col-2">
+      <app-dynamic-select [anyObject]=businessPriorityPlaceholder [placeholder]=businessPriorityPlaceholder [options]="businessPriority3"
+        (optionSelected)="business3ValueSeleted($event)" (objectSelected)="businessPriority3PlaceholderValue($event)"></app-dynamic-select>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-2" *ngIf=solutionNames>
+      <app-dynamic-select [placeholder]="'Solutions'" [options]='solutionNames' (optionSelected)="businessPriority3SolutionsSelected($event)"></app-dynamic-select>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-2" *ngIf=companyDetails>
+      <app-dynamic-select [anyObject]="'Company 1'" [placeholder]="'Company 1'" [options]='listOfAllCompanies' (optionSelected)="business3CompanySelected($event)"
+        (objectSelected)="business3CompanyPlaceholder($event)"></app-dynamic-select>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-2" *ngIf=companyDetails>
+      <app-dynamic-select [anyObject]="'Company 2'" [placeholder]="'Company 2'" [options]='listOfAllCompanies' (optionSelected)="business3CompanySelected($event)"
+        (objectSelected)="business3CompanyPlaceholder($event)"></app-dynamic-select>
+    </div>
+  </div>
+</div>

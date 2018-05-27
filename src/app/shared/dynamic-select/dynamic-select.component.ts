@@ -7,11 +7,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./dynamic-select.component.css']
 })
 export class DynamicSelectComponent implements OnInit, OnChanges {
-  @Input() options = [];
+  @Input() options;
   @Input() placeholder;
   @Input() anyObject;
   @Output() optionSelected = new EventEmitter();
   @Output() objectSelected = new EventEmitter();
+  @Output() placeholderSelected = new EventEmitter();
   
   form: FormGroup;
   displayedOptions;
@@ -36,8 +37,9 @@ export class DynamicSelectComponent implements OnInit, OnChanges {
     this.optionSelected.emit(event.option.value);
   }
 
-  onObjectSelected(event){
+  onObjectSelected(event,placeholderSelected){
     this.objectSelected.emit(event);
+    this.placeholderSelected.emit(placeholderSelected);
   }
 
 

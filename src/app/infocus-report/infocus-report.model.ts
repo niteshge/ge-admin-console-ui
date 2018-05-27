@@ -1255,5 +1255,11 @@ export class InfocusReportModel {
     public recommendation1SubPoint1: string;
     public recommendation1SubPoint2: string;
     public recommendation1SubPoint3: string;
+
+    public recommendation2MainPara: string;
+    public recommendation2SubHeading: string;
+    public recommendation2SubPoint1: string;
+    public recommendation2SubPoint2: string;
+    public recommendation2SubPoint3: string;
 }
 
