@@ -42,10 +42,11 @@ export class InfocusTemplateOneComponent implements OnInit {
   recommendation1SubPoint2;
   recommendation1SubPoint3;
   recommendation2MainPara;
-  recommendation2SubHeading;
-  recommendation2SubPoint1;
-  recommendation2SubPoint2;
-  recommendation2SubPoint3;
+  recommendation1SubPoint4;
+  recommendation1SubPoint5;
+  recommendation1SubPoint6;
+  recommendationSaveStatus;
+  contextSaved;
 
 
   constructor(private infocusCoreService: InfocusReportService) { }
@@ -79,11 +80,15 @@ export class InfocusTemplateOneComponent implements OnInit {
     this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2);
   }
 
-  businessPriority1Selected(value) {
+  saveContext(){
     this.infocusModel.infocusContextHeading = this.infocusContextHeading;
     this.infocusModel.infocusContextSubHeading = this.infocusContextSubHeading;
     this.infocusModel.infocusContextDesc = this.infocusContextDesc;
+    this.contextSaved = "Saved Context";
 
+  }
+
+  businessPriority1Selected(value) {
     this.infocusModel.businessPriority1 = value;
     this.businessPriority1 = value;
     console.log(this.infocusModel);
@@ -266,28 +271,36 @@ export class InfocusTemplateOneComponent implements OnInit {
     if (this.recommendation1SubPoint3 != null) {
       this.infocusModel.recommendation1SubPoint3 = this.recommendation1SubPoint3;
     }
-
-  }
-  recommendationTwoSelected() {
-    if (this.recommendation2MainPara != null) {
-      this.infocusModel.recommendation2MainPara = this.recommendation2MainPara;
+    if (this.recommendation1SubPoint4 != null) {
+      this.infocusModel.recommendation1SubPoint4 = this.recommendation1SubPoint4;
     }
-    if (this.recommendation2SubHeading != null) {
-      this.infocusModel.recommendation2SubHeading = this.recommendation2SubHeading;
+    if (this.recommendation1SubPoint5 != null) {
+      this.infocusModel.recommendation1SubPoint5 = this.recommendation1SubPoint5;
     }
-    if (this.recommendation2SubPoint1 != null) {
-      this.infocusModel.recommendation2SubPoint1 = this.recommendation2SubPoint1;
-    }
-    if (this.recommendation2SubPoint2 != null) {
-      this.infocusModel.recommendation2SubPoint2 = this.recommendation2SubPoint2;
-    }
-    if (this.recommendation2SubPoint3 != null) {
-      this.infocusModel.recommendation2SubPoint3 = this.recommendation2SubPoint3;
+    if (this.recommendation1SubPoint6 != null) {
+      this.infocusModel.recommendation1SubPoint6 = this.recommendation1SubPoint6;
     }
 
+    this.recommendationSaveStatus = "done";
   }
 
+  postInfocusReport() {
+    let temp = this.infocusCoreService.postInfocusReportDetails(this.infocusModel);
+    temp.subscribe(
+      (response: Response) => {
+        console.log(response)
+        this.id = response;
+      }
+    )
+  }
+  viewPDF() {
+    this.infocusCoreService.getInfocusPDFbyId(this.id)
+      .subscribe(
+        (response: Response) => {
 
+        }
+      )
+  }
 
 }
 

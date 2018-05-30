@@ -43,40 +43,40 @@
     </div>
   </div>
   <div class="row" *ngIf="infocusIndustrySegment2">
-    <div class="col-12">
-      <mat-form-field>
-        <textarea matInput placeholder="Infocus Context Heading" [(ngModel)]="infocusContextHeading"> </textarea>
-      </mat-form-field>
-    </div>
+    <mat-form-field class="col-12">
+      <textarea matInput placeholder="Infocus Context Heading" [(ngModel)]="infocusContextHeading"> </textarea>
+    </mat-form-field>
   </div>
   <div class="row" *ngIf="infocusContextHeading">
-    <div class="col-12">
-      <mat-form-field>
-        <textarea matInput placeholder="Infocus Context Sub Heading" [(ngModel)]="infocusContextSubHeading"> </textarea>
-      </mat-form-field>
-    </div>
+    <mat-form-field class="col-12">
+      <textarea matInput placeholder="Infocus Context Sub Heading" [(ngModel)]="infocusContextSubHeading"> </textarea>
+    </mat-form-field>
   </div>
   <div class="row" *ngIf="infocusContextSubHeading">
-    <div class="col">
-      <mat-form-field>
-        <textarea matInput placeholder="Infocus Context Desc" [(ngModel)]="infocusContextDesc"> </textarea>
-      </mat-form-field>
-    </div>
+    <mat-form-field class="col-12">
+      <textarea matInput placeholder="Infocus Context Desc" [(ngModel)]="infocusContextDesc"> </textarea>
+    </mat-form-field>
   </div>
+  <div class="row" *ngIf="infocusIndustrySegment2">
+      <button mat-raised-button color=primary (click)="saveContext()">Save Context</button>
+      <p *ngIf="contextSaved">
+          <i>{{contextSaved}}</i>
+        </p>
+  </div>
+
   <div class="row" *ngIf="infocusContextDesc">
     <div class="col-12">
       <hr>
-      <div class="col-3">
-        <app-dynamic-select [placeholder]="'Business Priority 1'" [options]="infocusBusinessPriority1 | async" (optionSelected)="businessPriority1Selected($event)"></app-dynamic-select>
-      </div>
+      <app-dynamic-select [placeholder]="'Business Priority 1'" [options]="infocusBusinessPriority1 | async" (optionSelected)="businessPriority1Selected($event)"></app-dynamic-select>
     </div>
   </div>
+  <hr *ngIf="businessPriority1">
   <div class="row" *ngIf="businessPriority1">
+   
     <!-- <div class="col-4" *ngFor="let placeholder of listBp2Placeholders"> 
       <app-dynamic-select [anyObject]=placeholder [placeholder]=placeholder [options]="businessPriority2 | async" (optionSelected)="businessPriority2Selected($event)"
         (objectSelected)="businessPriority2PlaceholderValue($event)"></app-dynamic-select>
     </div> -->
-
     <app-dynamic-select [anyObject]="'Business Priority 2A'" [placeholder]="'Business Priority 2A'" [options]="businessPriority2 | async"
       (optionSelected)="businessPriority2aSelected($event)"></app-dynamic-select>
 
@@ -89,44 +89,44 @@
     <app-dynamic-select [anyObject]="'Business Priority 2D'" [placeholder]="'Business Priority 2D'" [options]="businessPriority2 | async"
       (optionSelected)="businessPriority2dSelected($event)"></app-dynamic-select>
   </div>
-  <div class="row" *ngIf="bp2aBusinessPriority3">
-    <div class="col-12">
-      <mat-tab-group>
-        <mat-tab *ngIf="bp2aBusinessPriority3" label="BP2A_BP3">
-          <div *ngFor="let bp3Placeholders of listBp2aBp3Placeholders | keys">
-            <div *ngIf="bp2aBusinessPriority3">
-              <app-infocus-template-one-solution-companies [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3" [businessPriority3]="bp2aBusinessPriority3"
-                [infocusModel]="infocusModel" [numberOfSolutions]="1" (infocusData)=businessPriority2aBP3($event)></app-infocus-template-one-solution-companies>
-            </div>
-          </div>
-        </mat-tab>
-        <mat-tab *ngIf="bp2bBusinessPriority3" label="BP2B_BP3">
-          <div *ngFor="let bp3Placeholders of listBp2bBp3Placeholders | keys">
-            <div *ngIf="bp2bBusinessPriority3">
-              <app-infocus-template-one-solution-companies [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3" [businessPriority3]="bp2bBusinessPriority3"
-                [infocusModel]="infocusModel" [numberOfSolutions]="1" (infocusData)=businessPriority2bBP3($event)></app-infocus-template-one-solution-companies>
-            </div>
-          </div>
-        </mat-tab>
-        <mat-tab *ngIf="bp2cBusinessPriority3" label="BP2C_BP3">
-          <div *ngFor="let bp3Placeholders of listBp2cBp3Placeholders | keys">
-            <div *ngIf="bp2cBusinessPriority3">
-              <app-infocus-template-one-solution-companies [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3" [businessPriority3]="bp2cBusinessPriority3"
-                [infocusModel]="infocusModel" [numberOfSolutions]="1" (infocusData)=businessPriority2cBP3($event)></app-infocus-template-one-solution-companies>
-            </div>
-          </div>
-        </mat-tab>
-        <mat-tab *ngIf="bp2dBusinessPriority3" label="BP2D_BP3">
-          <div *ngFor="let bp3Placeholders of listBp2dBp3Placeholders | keys">
-            <div *ngIf="bp2dBusinessPriority3">
-              <app-infocus-template-one-solution-companies [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3" [businessPriority3]="bp2dBusinessPriority3"
-                [infocusModel]="infocusModel" [numberOfSolutions]="1" (infocusData)=businessPriority2dBP3($event)></app-infocus-template-one-solution-companies>
-            </div>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-  </div>
+  <!-- <div class="row" *ngIf="bp2aBusinessPriority3">
+    <div class="col-12"> -->
+  <mat-tab-group>
+    <mat-tab *ngIf="bp2aBusinessPriority3" label="BP2A_BP3">
+      <div *ngFor="let bp3Placeholders of listBp2aBp3Placeholders | keys">
+        <div *ngIf="bp2aBusinessPriority3">
+          <app-infocus-template-one-solution-companies [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3" [businessPriority3]="bp2aBusinessPriority3"
+            [infocusModel]="infocusModel" [numberOfSolutions]="1" (infocusData)=businessPriority2aBP3($event)></app-infocus-template-one-solution-companies>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab *ngIf="bp2bBusinessPriority3" label="BP2B_BP3">
+      <div *ngFor="let bp3Placeholders of listBp2bBp3Placeholders | keys">
+        <div *ngIf="bp2bBusinessPriority3">
+          <app-infocus-template-one-solution-companies [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3" [businessPriority3]="bp2bBusinessPriority3"
+            [infocusModel]="infocusModel" [numberOfSolutions]="1" (infocusData)=businessPriority2bBP3($event)></app-infocus-template-one-solution-companies>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab *ngIf="bp2cBusinessPriority3" label="BP2C_BP3">
+      <div *ngFor="let bp3Placeholders of listBp2cBp3Placeholders | keys">
+        <div *ngIf="bp2cBusinessPriority3">
+          <app-infocus-template-one-solution-companies [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3" [businessPriority3]="bp2cBusinessPriority3"
+            [infocusModel]="infocusModel" [numberOfSolutions]="1" (infocusData)=businessPriority2cBP3($event)></app-infocus-template-one-solution-companies>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab *ngIf="bp2dBusinessPriority3" label="BP2D_BP3">
+      <div *ngFor="let bp3Placeholders of listBp2dBp3Placeholders | keys">
+        <div *ngIf="bp2dBusinessPriority3">
+          <app-infocus-template-one-solution-companies [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3" [businessPriority3]="bp2dBusinessPriority3"
+            [infocusModel]="infocusModel" [numberOfSolutions]="1" (infocusData)=businessPriority2dBP3($event)></app-infocus-template-one-solution-companies>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <!-- </div>
+    </div> -->
   <!-- <div *ngIf="totalRecommedations">
       <app-dynamic-select [anyObject]="'NUMBER OF RECOMMENDATIONS'" [placeholder]="'NUMBER OF RECOMMENDATIONS'" [options]="totalRecommedations"
       (optionSelected)="numberOfRecommentations($event)"></app-dynamic-select>
@@ -135,60 +135,55 @@
       <app-infocus-report-recommendation [infocusModel]="infocusModel" [totalRecommendations]="this.totalNumberOfRecommendations"></app-infocus-report-recommendation>
   </div> -->
 
-  <div class="row" *ngIf="totalRecommedations">
+  <!-- <div class="row" *ngIf="totalRecommedations"> -->
+  <mat-grid-list cols="12" rowHeight="1:1" *ngIf="totalRecommedations">
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Recommendations 1:
+            Recommendations:
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <p>Please Fill The Page One Recommendation</p>
-        <mat-form-field>
+        <mat-form-field class="col-12">
           <textarea matInput placeholder="Recommendation Main Paragraph" [(ngModel)]="recommendation1MainPara"> </textarea>
         </mat-form-field>
-        <mat-form-field>
-          <textarea matInput placeholder="Recommendation Sub Heading" [(ngModel)]="recommendation1SubHeading"> </textarea>
-        </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="col-12">
           <textarea matInput placeholder="Recommendation Point 1" [(ngModel)]="recommendation1SubPoint1"> </textarea>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="col-12">
           <textarea matInput placeholder="Recommendation Point 2" [(ngModel)]="recommendation1SubPoint2"> </textarea>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="col-12">
           <textarea matInput placeholder="Recommendation Point 3" [(ngModel)]="recommendation1SubPoint3"> </textarea>
         </mat-form-field>
+        <p>Second Page Points - </p>
+        <mat-form-field class="col-12">
+          <textarea matInput placeholder="Recommendation Point 4" [(ngModel)]="recommendation1SubPoint4"> </textarea>
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <textarea matInput placeholder="Recommendation Point 5" [(ngModel)]="recommendation1SubPoint5"> </textarea>
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <textarea matInput placeholder="Recommendation Point 6" [(ngModel)]="recommendation1SubPoint6"> </textarea>
+        </mat-form-field>
+        <br>
         <div col="row">
-          <button mat-raised-button color=primary (click)="recommendationOneSelected()">Done</button>
+          <button mat-raised-button color=primary (click)="recommendationOneSelected()">Save Recommendation</button>
+
+          <p *ngIf="recommendationSaveStatus">
+            <i>Successfully Save Recommendations</i>
+          </p>
         </div>
       </mat-expansion-panel>
-      <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Recommendations 2:
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p>Please Fill The Page Two Recommendation</p>
-          <mat-form-field>
-            <textarea matInput placeholder="Recommendation Main Paragraph" [(ngModel)]="recommendation2MainPara"> </textarea>
-          </mat-form-field>
-          <mat-form-field>
-            <textarea matInput placeholder="Recommendation Sub Heading" [(ngModel)]="recommendation2SubHeading"> </textarea>
-          </mat-form-field>
-          <mat-form-field>
-            <textarea matInput placeholder="Recommendation Point 1" [(ngModel)]="recommendation2SubPoint1"> </textarea>
-          </mat-form-field>
-          <mat-form-field>
-            <textarea matInput placeholder="Recommendation Point 2" [(ngModel)]="recommendation2SubPoint2"> </textarea>
-          </mat-form-field>
-          <mat-form-field>
-            <textarea matInput placeholder="Recommendation Point 3" [(ngModel)]="recommendation2SubPoint3"> </textarea>
-          </mat-form-field>
-          <div col="row">
-            <button mat-raised-button color=primary (click)="recommendationTwoSelected()">Done</button>
-          </div>
-        </mat-expansion-panel>
     </mat-accordion>
+  </mat-grid-list>
+  <br>
+  <div class="row">
+    <div class="col-4">
+      <button mat-raised-button color=primary (click)="postInfocusReport()">Submit</button>
+    </div>
+    <div class="col-4" *ngIf="id">
+      <button mat-raised-button color=warn (click)="viewPDF()">View PDF</button>
+    </div>
   </div>
 </div>

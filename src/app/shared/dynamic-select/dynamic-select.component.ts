@@ -24,6 +24,13 @@ export class DynamicSelectComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+    // let dummyList = [];
+    // this.options.forEach(opt => {
+    //   if(opt!=null){
+    //     dummyList.push(opt);
+    //   }
+    // });
+    // this.options = dummyList;
     this.displayedOptions = this.options;
   }
 

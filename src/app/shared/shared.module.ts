@@ -6,7 +6,8 @@ import {MatButtonModule,
   MatDialogModule,
 MatButtonToggleModule,
 MatTabsModule,
-MatAccordion} from '@angular/material';
+MatAccordion,
+MatGridListModule} from '@angular/material';
 import { DynamicSelectComponent } from './dynamic-select/dynamic-select.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -35,13 +36,14 @@ import { DynamicReportPopupComponent } from './dynamic-report-popup/dynamic-repo
     MatListModule,
     MatDialogModule,
     MatButtonToggleModule,
-    MatTabsModule
+    MatTabsModule,
+    MatGridListModule
   ],
   declarations: [DynamicSelectComponent, DynamicTablesComponent, DynamicReportPopupComponent],
   exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatMenuModule, MatIconModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, HttpClientModule, FormsModule,
     ReactiveFormsModule,DynamicSelectComponent, MatInputModule,MatExpansionPanel,MatExpansionPanelHeader,MatExpansionPanelTitle, DynamicTablesComponent,
   MatTableModule, CdkTableModule,MatCardModule,MatRadioModule, MatPaginatorModule,MatSortModule,MatSelectModule,
-  MatListModule, MatDialogModule, DynamicReportPopupComponent,MatTabsModule, MatAccordion],
+  MatListModule, MatDialogModule, DynamicReportPopupComponent,MatTabsModule, MatAccordion,MatGridListModule],
   entryComponents: [
     DynamicReportPopupComponent
 ]
