@@ -3,6 +3,11 @@ export class InfocusReportModel {
 
     public analystName: string = null;
     public infocusReportTitle: string = null;
+    public introductionTitle: string = null;
+    public introductionPara1: string = null;
+    public introductionPara2: string = null;
+    public introductionPara3: string = null;
+
     public infocusContextHeading: string = null;
     public infocusContextSubHeading: string = null;
     public infocusContextDesc: string = null;

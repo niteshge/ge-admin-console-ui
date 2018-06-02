@@ -12,6 +12,10 @@ export class InfocusTemplateOneComponent implements OnInit {
   id
   infocusReportTitle;
   infocusRoles;
+  infocusIntroductionTitle;
+  infocusIntroductionPara1;
+  infocusIntroductionPara2;
+  infocusIntroductionPara3;
   infocusIndustry;
   infocusIndustrySegment1;
   infocusIndustrySegment2;
@@ -47,6 +51,7 @@ export class InfocusTemplateOneComponent implements OnInit {
   recommendation1SubPoint6;
   recommendationSaveStatus;
   contextSaved;
+  introductionSaveStatus;
 
 
   constructor(private infocusCoreService: InfocusReportService) { }
@@ -80,7 +85,7 @@ export class InfocusTemplateOneComponent implements OnInit {
     this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2);
   }
 
-  saveContext(){
+  saveContext() {
     this.infocusModel.infocusContextHeading = this.infocusContextHeading;
     this.infocusModel.infocusContextSubHeading = this.infocusContextSubHeading;
     this.infocusModel.infocusContextDesc = this.infocusContextDesc;
@@ -282,6 +287,21 @@ export class InfocusTemplateOneComponent implements OnInit {
     }
 
     this.recommendationSaveStatus = "done";
+  }
+  saveIntroduction() {
+    if (this.infocusIntroductionTitle != null) {
+      this.infocusModel.introductionTitle = this.infocusIntroductionTitle;
+    }
+    if (this.infocusIntroductionPara1 != null) {
+      this.infocusModel.introductionPara1 = this.infocusIntroductionPara1;
+    }
+    if (this.infocusIntroductionPara2 != null) {
+      this.infocusModel.introductionPara2 = this.infocusIntroductionPara2;
+    }
+    if (this.infocusIntroductionPara3 != null) {
+      this.infocusModel.introductionPara3 = this.infocusIntroductionPara3;
+    }
+    this.introductionSaveStatus = "Saved Introduction";
   }
 
   postInfocusReport() {

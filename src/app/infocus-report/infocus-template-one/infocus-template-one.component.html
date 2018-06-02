@@ -38,31 +38,75 @@
   <hr *ngIf="infocusIndustrySegment2">
   <div class="row" *ngIf="infocusIndustrySegment2">
     <div class="col-12">
+      <h4 class="mat-primary">Introduction</h4>
+      <!-- style not working need to check on that-->
+    </div>
+  </div>
+  <mat-grid-list cols="12" rowHeight="1:1" *ngIf="infocusIndustrySegment2">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Introduction:
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field class="col-12">
+          <textarea matInput placeholder="Infocus Introduction Title" [(ngModel)]="infocusIntroductionTitle"> </textarea>
+        </mat-form-field>
+        <mat-form-field class="col-12" *ngIf="infocusIntroductionTitle">
+          <textarea matInput placeholder="Infocus Introduction Para1" [(ngModel)]="infocusIntroductionPara1"> </textarea>
+        </mat-form-field>
+        <mat-form-field class="col-12" *ngIf="infocusIntroductionPara1">
+          <textarea matInput placeholder="Infocus Introduction Para2" [(ngModel)]="infocusIntroductionPara2"> </textarea>
+        </mat-form-field>
+        <mat-form-field class="col-12" *ngIf="infocusIntroductionPara2">
+          <textarea matInput placeholder="Infocus Introduction Para3" [(ngModel)]="infocusIntroductionPara3"> </textarea>
+        </mat-form-field>
+        <div class="row" *ngIf="infocusIntroductionTitle">
+            <button mat-raised-button color=primary (click)="saveIntroduction()">Save Introduction</button>
+            <br/>
+            <p *ngIf="introductionSaveStatus">
+              <i>{{introductionSaveStatus}}</i> 
+            </p>
+          </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-grid-list>
+
+  <hr *ngIf="introductionSaveStatus">
+  <div class="row" *ngIf="introductionSaveStatus">
+    <div class="col-12">
       <h4 class="mat-primary">Context Page Details</h4>
       <!-- style not working need to check on that-->
     </div>
   </div>
-  <div class="row" *ngIf="infocusIndustrySegment2">
-    <mat-form-field class="col-12">
-      <textarea matInput placeholder="Infocus Context Heading" [(ngModel)]="infocusContextHeading"> </textarea>
-    </mat-form-field>
-  </div>
-  <div class="row" *ngIf="infocusContextHeading">
-    <mat-form-field class="col-12">
-      <textarea matInput placeholder="Infocus Context Sub Heading" [(ngModel)]="infocusContextSubHeading"> </textarea>
-    </mat-form-field>
-  </div>
-  <div class="row" *ngIf="infocusContextSubHeading">
-    <mat-form-field class="col-12">
-      <textarea matInput placeholder="Infocus Context Desc" [(ngModel)]="infocusContextDesc"> </textarea>
-    </mat-form-field>
-  </div>
-  <div class="row" *ngIf="infocusIndustrySegment2">
-      <button mat-raised-button color=primary (click)="saveContext()">Save Context</button>
-      <p *ngIf="contextSaved">
-          <i>{{contextSaved}}</i>
-        </p>
-  </div>
+  <mat-grid-list cols="12" rowHeight="1:1" *ngIf="introductionSaveStatus">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Context:
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field class="col-12">
+          <textarea matInput placeholder="Infocus Context Heading" [(ngModel)]="infocusContextHeading"> </textarea>
+        </mat-form-field>
+        <mat-form-field class="col-12" *ngIf="infocusContextHeading">
+          <textarea matInput placeholder="Infocus Context Sub Heading" [(ngModel)]="infocusContextSubHeading"> </textarea>
+        </mat-form-field>
+        <mat-form-field class="col-12" *ngIf="infocusContextSubHeading">
+          <textarea matInput placeholder="Infocus Context Desc" [(ngModel)]="infocusContextDesc"> </textarea>
+        </mat-form-field>
+        <div class="row" *ngIf="infocusIndustrySegment2">
+          <button mat-raised-button color=primary (click)="saveContext()">Save Context</button>
+          <br/>
+          <p *ngIf="contextSaved">
+            <i>{{contextSaved}}</i>
+          </p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-grid-list>
 
   <div class="row" *ngIf="infocusContextDesc">
     <div class="col-12">
@@ -72,7 +116,7 @@
   </div>
   <hr *ngIf="businessPriority1">
   <div class="row" *ngIf="businessPriority1">
-   
+
     <!-- <div class="col-4" *ngFor="let placeholder of listBp2Placeholders"> 
       <app-dynamic-select [anyObject]=placeholder [placeholder]=placeholder [options]="businessPriority2 | async" (optionSelected)="businessPriority2Selected($event)"
         (objectSelected)="businessPriority2PlaceholderValue($event)"></app-dynamic-select>
