@@ -27,7 +27,7 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.business3CompanyPlaceholder);
+    console.log(this.businessPriorityPlaceholder);
     console.log(this.businessPriority3);
     console.log(this.infocusModel);
     console.log(this.numberOfSolutions);

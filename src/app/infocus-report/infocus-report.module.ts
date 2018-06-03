@@ -9,6 +9,8 @@ import { InfocusReportRootComponent } from './infocus-report-root/infocus-report
 import { InfocusTemplateOneComponent, KeysPipe } from './infocus-template-one/infocus-template-one.component';
 import { InfocusTemplateOneSolutionCompaniesComponent } from './infocus-template-one/infocus-template-one-solution-companies/infocus-template-one-solution-companies.component';
 import { InfocusReportRecommendationComponent } from './infocus-report-recommendation/infocus-report-recommendation.component';
+import { InfocusTemplateOneFourThreeTwoTwoComponent } from './infocus-template-one-four-three-two-two/infocus-template-one-four-three-two-two.component';
+import { InfocusTemplateTwoSolutionsTwoCompainesComponent } from './infocus-template-one-four-three-two-two/infocus-template-two-solutions-two-compaines/infocus-template-two-solutions-two-compaines.component';
 
 @NgModule({
   imports: [
@@ -16,6 +18,6 @@ import { InfocusReportRecommendationComponent } from './infocus-report-recommend
     SharedModule,
     InfocusReportRoutingModule
   ],
-  declarations: [InfocusReportComponent, InfocusReportViewComponent, InfocusReportRootComponent, InfocusTemplateOneComponent, KeysPipe, InfocusTemplateOneSolutionCompaniesComponent, InfocusReportRecommendationComponent]
+  declarations: [InfocusReportComponent, InfocusReportViewComponent, InfocusReportRootComponent, InfocusTemplateOneComponent, KeysPipe, InfocusTemplateOneSolutionCompaniesComponent, InfocusReportRecommendationComponent, InfocusTemplateOneFourThreeTwoTwoComponent, InfocusTemplateTwoSolutionsTwoCompainesComponent]
 })
 export class InfocusReportModule { }

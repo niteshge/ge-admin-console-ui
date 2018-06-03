@@ -1,6 +1,7 @@
 export class InfocusReportModel {
     public id = null;
 
+    public templateType = null;
     public analystName: string = null;
     public infocusReportTitle: string = null;
     public introductionTitle: string = null;
