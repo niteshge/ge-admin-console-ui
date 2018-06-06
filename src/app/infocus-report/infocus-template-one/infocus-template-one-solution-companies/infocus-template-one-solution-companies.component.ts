@@ -115,7 +115,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
 
   getSolutions(numberSolutions, businessPriority2, businessPriority3, value) {
     if (numberSolutions == 1) {
-      this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, businessPriority2, businessPriority3)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, businessPriority2, businessPriority3,randomValue)
         .subscribe(
           (response: Response) => {
             this.solutionNames = response[0].Solution_1;
@@ -190,7 +191,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
   businessPriority3SolutionsSelected(solution) {
     if (this.businessPriorityPlaceholder == "BP2A Business Priority 3A") {
       this.infocusModel.bp2abp3aSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -199,7 +201,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2A Business Priority 3B") {
       this.infocusModel.bp2abp3bSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -208,7 +211,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2A Business Priority 3C") {
       this.infocusModel.bp2abp3cSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -217,7 +221,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2A Business Priority 3D") {
       this.infocusModel.bp2abp3dSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -226,7 +231,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2A Business Priority 3E") {
       this.infocusModel.bp2abp3eSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -237,7 +243,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
     // BP2B BP3
     else if (this.businessPriorityPlaceholder == "BP2B Business Priority 3A") {
       this.infocusModel.bp2bbp3aSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3aSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3aSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -246,7 +253,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2B Business Priority 3B") {
       this.infocusModel.bp2bbp3bSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3bSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3bSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -255,7 +263,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2B Business Priority 3C") {
       this.infocusModel.bp2bbp3cSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3cSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3cSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -264,7 +273,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2B Business Priority 3D") {
       this.infocusModel.bp2bbp3dSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3dSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3dSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -273,7 +283,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2B Business Priority 3E") {
       this.infocusModel.bp2bbp3eSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3eSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3eSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -284,7 +295,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
     // BP2C BP3
     else if (this.businessPriorityPlaceholder == "BP2C Business Priority 3A") {
       this.infocusModel.bp2cbp3aSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3aSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3aSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -293,7 +305,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2C Business Priority 3B") {
       this.infocusModel.bp2cbp3bSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3bSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3bSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -302,7 +315,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2C Business Priority 3C") {
       this.infocusModel.bp2cbp3cSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3cSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3cSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -311,7 +325,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2C Business Priority 3D") {
       this.infocusModel.bp2cbp3dSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3dSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3dSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -320,7 +335,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2C Business Priority 3E") {
       this.infocusModel.bp2cbp3eSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3eSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3eSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -331,7 +347,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
     // BP2D BP3
     else if (this.businessPriorityPlaceholder == "BP2D Business Priority 3A") {
       this.infocusModel.bp2dbp3aSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3aSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3aSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -340,7 +357,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2D Business Priority 3B") {
       this.infocusModel.bp2dbp3bSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3bSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3bSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -349,7 +367,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2D Business Priority 3C") {
       this.infocusModel.bp2dbp3cSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3cSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3cSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -358,7 +377,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2D Business Priority 3D") {
       this.infocusModel.bp2dbp3dSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3dSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3dSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;
@@ -367,7 +387,8 @@ export class InfocusTemplateOneSolutionCompaniesComponent implements OnInit {
         )
     } else if (this.businessPriorityPlaceholder == "BP2D Business Priority 3E") {
       this.infocusModel.bp2dbp3eSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3eSolution1Code)
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3eSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails = response;

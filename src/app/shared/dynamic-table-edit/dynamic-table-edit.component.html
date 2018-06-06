@@ -1,0 +1,10 @@
+<form class="example-form" *ngIf=rowData>
+  <mat-form-field class="example-full-width" *ngFor="let entry of (rowData | keys)">
+    <input matInput [disabled]="entry.key=='id' ? true : null" (change) = onchangeEventRowData(entry.key,$event.target.value) [placeholder]=entry.key [value]=entry.value>
+  </mat-form-field>
+  <button mat-raised-button color=Primary [mat-dialog-close]="rowData" cdkFocusInitial>Done</button>
+  <button mat-raised-button color=Basic (click)="onNoClick()">Cancel</button>
+</form>
+<!-- <span *ngFor="let entry of rowData | keys">           
+    Key: {{entry.key}}, value: {{entry.value}}
+  </span> -->

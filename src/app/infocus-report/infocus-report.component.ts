@@ -83,7 +83,8 @@ export class InfocusReportComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.infocusRoles = this.infocusCoreService.getInfocusReportRoles();
+    let randomValue = Math.random()*10;
+    this.infocusRoles = this.infocusCoreService.getInfocusReportRoles(randomValue);
   }
 
   analystName(value) {
@@ -94,30 +95,35 @@ export class InfocusReportComponent implements OnInit {
   roleSelected(value) {
     this.infocusModel.infocusReportTitle = this.infocusReportTitle;
     this.infocusModel.role = value;
-    this.infocusIndustry = this.infocusCoreService.getInfocusIndustriesByRole(value);
+    let randomValue = Math.random();
+    this.infocusIndustry = this.infocusCoreService.getInfocusIndustriesByRole(value,randomValue);
   }
 
   industrySelected(value) {
     this.infocusModel.industry = value;
-    this.infocusIndustrySegment1 = this.infocusCoreService.getInfocusIndustrySegment1ByRolendIndustry(this.infocusModel.role, this.infocusModel.industry);
+    let randomValue = Math.random();
+    this.infocusIndustrySegment1 = this.infocusCoreService.getInfocusIndustrySegment1ByRolendIndustry(this.infocusModel.role, this.infocusModel.industry,randomValue);
     console.log(this.infocusModel);
   }
   industrySegment1Selected(value) {
     this.infocusModel.industrySegment1 = value;
     console.log(this.infocusModel);
-    this.infocusIndustrySegment2 = this.infocusCoreService.getInfocusIndustrySegment2ByIndustryndIndustrySegment1(this.infocusModel.industry, this.infocusModel.industrySegment1);
+    let randomValue = Math.random();
+    this.infocusIndustrySegment2 = this.infocusCoreService.getInfocusIndustrySegment2ByIndustryndIndustrySegment1(this.infocusModel.industry, this.infocusModel.industrySegment1,randomValue);
   }
 
   industrySegment2Selected(value) {
     this.infocusModel.industrySegment2 = value;
     console.log(this.infocusModel);
-    this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2);
+    let randomValue = Math.random();
+    this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,randomValue);
   }
 
   businessPriority1Selected(value) {
     this.infocusModel.businessPriority1 = value;
     console.log(this.infocusModel);
-    this.businessPriority2 = this.infocusCoreService.getInfocusBusinessPriority2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1);
+    let randomValue = Math.random();
+    this.businessPriority2 = this.infocusCoreService.getInfocusBusinessPriority2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1,randomValue);
     // this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2a', 'businessPriority2 | async', 'businessPriority2aSelected($event:Object)'));
     // this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2b', 'businessPriority2 | async', 'businessPriority2bSelected($event)'));
     // this.listOfBp2Model.push(new InfocusBusinessPriority2Model('Business Priority 2c', 'businessPriority2 | async', 'businessPriority2cSelected($event)'));
@@ -126,7 +132,8 @@ export class InfocusReportComponent implements OnInit {
 
   businessPriority2aSelected(value) {
     this.infocusModel.businessPriority2a = value
-    this.bp2abusinessPriority3 = this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a);
+    let randomValue = Math.random();
+    this.bp2abusinessPriority3 = this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a,randomValue);
     console.log(value)
   }
 
@@ -146,7 +153,8 @@ export class InfocusReportComponent implements OnInit {
 
   bp2abusinessPriority3aSelected(value) {
     this.infocusModel.bp2abusinessPriority3a = value
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3aSolution1 = response[0].Solution_1;
@@ -154,7 +162,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3aSolution2 = response[0].Solution_2;
@@ -162,7 +170,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3aSolution3 = response[0].Solution_3;
@@ -170,7 +178,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3aSolution4 = response[0].Solution_4;
@@ -178,7 +186,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3a,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3aSolution5 = response[0].Solution_5;
@@ -190,7 +198,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3aSolution1Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3aSolution1 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution1Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution1Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -201,7 +210,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3aSolution2Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3aSolution2 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution2Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution2Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -212,7 +222,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3aSolution3Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3aSolution3 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution3Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution3Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -223,7 +234,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3aSolution4Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3aSolution4 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution4Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution4Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -234,7 +246,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3aSolution5Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3aSolution5 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution5Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution5Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -360,7 +373,8 @@ export class InfocusReportComponent implements OnInit {
 
   bp2abusinessPriority3bSelected(value) {
     this.infocusModel.bp2abusinessPriority3b = value
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3bSolution1 = response[0].Solution_1;
@@ -368,7 +382,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3bSolution2 = response[0].Solution_2;
@@ -376,7 +390,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3bSolution3 = response[0].Solution_3;
@@ -384,7 +398,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3bSolution4 = response[0].Solution_4;
@@ -392,7 +406,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3b,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3bSolution5 = response[0].Solution_5;
@@ -404,7 +418,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3bSolution1Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3bSolution1 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution1Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution1Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -415,7 +430,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3bSolution2Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3bSolution2 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution2Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution2Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -426,7 +442,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3bSolution3Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3bSolution3 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution3Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution3Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -437,7 +454,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3bSolution4Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3bSolution4 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution4Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution4Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -448,7 +466,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3bSolution5Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3bSolution5 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution5Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution5Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -572,8 +591,9 @@ export class InfocusReportComponent implements OnInit {
   // Business priority 3c
 
   bp2abusinessPriority3cSelected(value) {
-    this.infocusModel.bp2abusinessPriority3c = value
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c)
+    this.infocusModel.bp2abusinessPriority3c = value;
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3cSolution1 = response[0].Solution_1;
@@ -581,7 +601,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3cSolution2 = response[0].Solution_2;
@@ -589,7 +609,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3cSolution3 = response[0].Solution_3;
@@ -597,7 +617,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3cSolution4 = response[0].Solution_4;
@@ -605,7 +625,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3c,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3cSolution5 = response[0].Solution_5;
@@ -617,7 +637,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3cSolution1Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3cSolution1 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution1Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution1Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -627,8 +648,9 @@ export class InfocusReportComponent implements OnInit {
   }
   bp2abusinessPriority3cSolution2Selected(value) {
     console.log(value)
-    this.infocusModel.bp2abp3cSolution2 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution2Code)
+    this.infocusModel.bp2abp3cSolution2 = value;
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution2Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -639,7 +661,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3cSolution3Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3cSolution3 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution3Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution3Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -649,8 +672,9 @@ export class InfocusReportComponent implements OnInit {
   }
   bp2abusinessPriority3cSolution4Selected(value) {
     console.log(value)
-    this.infocusModel.bp2abp3cSolution4 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution4Code)
+    this.infocusModel.bp2abp3cSolution4 = value;
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution4Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -661,7 +685,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3cSolution5Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3cSolution5 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution5Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution5Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -786,7 +811,8 @@ export class InfocusReportComponent implements OnInit {
 
   bp2abusinessPriority3dSelected(value) {
     this.infocusModel.bp2abusinessPriority3d = value
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3dSolution1 = response[0].Solution_1;
@@ -794,7 +820,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3dSolution2 = response[0].Solution_2;
@@ -802,7 +828,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3dSolution3 = response[0].Solution_3;
@@ -810,7 +836,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3dSolution4 = response[0].Solution_4;
@@ -818,7 +844,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3d,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3dSolution5 = response[0].Solution_5;
@@ -830,7 +856,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3dSolution1Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3dSolution1 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution1Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution1Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -841,7 +868,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3dSolution2Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3dSolution2 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution2Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution2Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -851,8 +879,9 @@ export class InfocusReportComponent implements OnInit {
   }
   bp2abusinessPriority3dSolution3Selected(value) {
     console.log(value)
-    this.infocusModel.bp2abp3dSolution3 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution3Code)
+    this.infocusModel.bp2abp3dSolution3 = value;
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution3Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -862,8 +891,9 @@ export class InfocusReportComponent implements OnInit {
   }
   bp2abusinessPriority3dSolution4Selected(value) {
     console.log(value)
-    this.infocusModel.bp2abp3dSolution4 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution4Code)
+    this.infocusModel.bp2abp3dSolution4 = value;
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution4Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -873,8 +903,9 @@ export class InfocusReportComponent implements OnInit {
   }
   bp2abusinessPriority3dSolution5Selected(value) {
     console.log(value)
-    this.infocusModel.bp2abp3dSolution5 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution5Code)
+    this.infocusModel.bp2abp3dSolution5 = value;
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3dSolution5Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -998,8 +1029,9 @@ export class InfocusReportComponent implements OnInit {
   // Business priority 3e
 
   bp2abusinessPriority3eSelected(value) {
-    this.infocusModel.bp2abusinessPriority3e = value
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e)
+    this.infocusModel.bp2abusinessPriority3e = value;
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3eSolution1 = response[0].Solution_1;
@@ -1007,7 +1039,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3eSolution2 = response[0].Solution_2;
@@ -1015,7 +1047,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3eSolution3 = response[0].Solution_3;
@@ -1023,7 +1055,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution4(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3eSolution4 = response[0].Solution_4;
@@ -1031,7 +1063,7 @@ export class InfocusReportComponent implements OnInit {
 
         }
       )
-    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e)
+    this.infocusCoreService.getInfocusBusinessPriority3Solution5(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, this.infocusModel.bp2abusinessPriority3e,randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2abusinessPriority3eSolution5 = response[0].Solution_5;
@@ -1043,7 +1075,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3eSolution1Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3eSolution1 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution1Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution1Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -1053,8 +1086,9 @@ export class InfocusReportComponent implements OnInit {
   }
   bp2abusinessPriority3eSolution2Selected(value) {
     console.log(value)
-    this.infocusModel.bp2abp3eSolution2 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution2Code)
+    this.infocusModel.bp2abp3eSolution2 = value;
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution2Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -1064,8 +1098,9 @@ export class InfocusReportComponent implements OnInit {
   }
   bp2abusinessPriority3eSolution3Selected(value) {
     console.log(value)
-    this.infocusModel.bp2abp3eSolution3 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution3Code)
+    this.infocusModel.bp2abp3eSolution3 = value;
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution3Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -1076,7 +1111,8 @@ export class InfocusReportComponent implements OnInit {
   bp2abusinessPriority3eSolution4Selected(value) {
     console.log(value)
     this.infocusModel.bp2abp3eSolution4 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution4Code)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution4Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)
@@ -1086,8 +1122,9 @@ export class InfocusReportComponent implements OnInit {
   }
   bp2abusinessPriority3eSolution5Selected(value) {
     console.log(value)
-    this.infocusModel.bp2abp3eSolution5 = value
-    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution5Code)
+    this.infocusModel.bp2abp3eSolution5 = value;
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3eSolution5Code,randomValue)
       .subscribe(
         (response: Response) => {
           console.log(response)

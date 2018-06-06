@@ -37,32 +37,41 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
     if (value == "BP2A Business Priority 3A") {
       this.infocusModel.bp2abusinessPriority3a = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2a, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2a, this.businessPriority3Value, value);
     } else if (value == "BP2A Business Priority 3B") {
       this.infocusModel.bp2abusinessPriority3b = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2a, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2a, this.businessPriority3Value, value);
     } else if (value == "BP2A Business Priority 3C") {
       this.infocusModel.bp2abusinessPriority3c = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2a, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2a, this.businessPriority3Value, value);
 
     } else if (value == "BP2B Business Priority 3A") {
       this.infocusModel.bp2bbusinessPriority3a = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2b, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2b, this.businessPriority3Value, value);
     } else if (value == "BP2B Business Priority 3B") {
       this.infocusModel.bp2bbusinessPriority3b = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2b, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2b, this.businessPriority3Value, value);
     } else if (value == "BP2B Business Priority 3C") {
       this.infocusModel.bp2bbusinessPriority3c = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2b, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2b, this.businessPriority3Value, value);
 
     } else if (value == "BP2C Business Priority 3A") {
       this.infocusModel.bp2cbusinessPriority3a = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2c, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2c, this.businessPriority3Value, value);
     } else if (value == "BP2C Business Priority 3B") {
       this.infocusModel.bp2cbusinessPriority3b = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2c, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2c, this.businessPriority3Value, value);
     } else if (value == "BP2C Business Priority 3C") {
       this.infocusModel.bp2cbusinessPriority3c = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2c, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2c, this.businessPriority3Value, value);
 
     } else if (value == "BP2D Business Priority 3A") {
       this.infocusModel.bp2dbusinessPriority3a = this.businessPriority3Value;
@@ -78,111 +87,31 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
   }
 
   getSolutions1(businessPriority2, businessPriority3, value) {
-    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, businessPriority2, businessPriority3)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusBusinessPriority3Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, businessPriority2, businessPriority3,randomValue)
       .subscribe(
         (response: Response) => {
-          this.solution1 = response[0].Solution_1;
-          if (value == "BP2A Business Priority 3A") {
-            this.infocusModel.bp2abp3aSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2abp3aSolution1Code);
-          } else if (value == "BP2A Business Priority 3B") {
-            this.infocusModel.bp2abp3bSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2abp3bSolution1Code);
-          } else if (value == "BP2A Business Priority 3C") {
-            this.infocusModel.bp2abp3cSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2abp3cSolution1Code);
-
-            // BP2B SOLUTION CODE
-          } else if (value == "BP2B Business Priority 3A") {
-            this.infocusModel.bp2bbp3aSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2bbp3aSolution1Code);
-          } else if (value == "BP2B Business Priority 3B") {
-            this.infocusModel.bp2bbp3bSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2bbp3bSolution1Code);
-          } else if (value == "BP2B Business Priority 3C") {
-            this.infocusModel.bp2bbp3cSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2bbp3cSolution1Code);
-            // BP2C SOLUTION CODE
-          } else if (value == "BP2C Business Priority 3A") {
-            this.infocusModel.bp2cbp3aSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2cbp3aSolution1Code);
-          } else if (value == "BP2C Business Priority 3B") {
-            this.infocusModel.bp2cbp3bSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2cbp3bSolution1Code);
-          } else if (value == "BP2C Business Priority 3C") {
-            this.infocusModel.bp2cbp3cSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2cbp3cSolution1Code);
-
-            // BP2D SOLUTION CODE
-          } else if (value == "BP2D Business Priority 3A") {
-            this.infocusModel.bp2dbp3aSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2dbp3aSolution1Code);
-          } else if (value == "BP2D Business Priority 3B") {
-            this.infocusModel.bp2dbp3bSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2dbp3bSolution1Code);
-          } else if (value == "BP2D Business Priority 3C") {
-            this.infocusModel.bp2dbp3cSolution1Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2dbp3cSolution1Code);
-          }
+          this.solution1 = response;
         }
-      )
+      );
   }
 
   getSolutions2(businessPriority2, businessPriority3, value) {
-    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, businessPriority2, businessPriority3)
+    let randomValue = Math.random();
+    this.infocusCoreService.getInfocusBusinessPriority3Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, businessPriority2, businessPriority3,randomValue)
       .subscribe(
         (response: Response) => {
-          this.solution2 = response[0].Solution_2;
-          if (value == "BP2A Business Priority 3A") {
-            this.infocusModel.bp2abp3aSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2abp3aSolution2Code);
-          } else if (value == "BP2A Business Priority 3B") {
-            this.infocusModel.bp2abp3bSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2abp3bSolution2Code);
-          } else if (value == "BP2A Business Priority 3C") {
-            this.infocusModel.bp2abp3cSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2abp3cSolution2Code);
-
-            // BP2B SOLUTION CODE
-          } else if (value == "BP2B Business Priority 3A") {
-            this.infocusModel.bp2bbp3aSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2bbp3aSolution2Code);
-          } else if (value == "BP2B Business Priority 3B") {
-            this.infocusModel.bp2bbp3bSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2bbp3bSolution2Code);
-          } else if (value == "BP2B Business Priority 3C") {
-            this.infocusModel.bp2bbp3cSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2bbp3cSolution2Code);
-
-            // BP2C SOLUTION CODE
-          } else if (value == "BP2C Business Priority 3A") {
-            this.infocusModel.bp2cbp3aSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2cbp3aSolution2Code);
-          } else if (value == "BP2C Business Priority 3B") {
-            this.infocusModel.bp2cbp3bSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2cbp3bSolution2Code);
-          } else if (value == "BP2C Business Priority 3C") {
-            this.infocusModel.bp2cbp3cSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2cbp3cSolution2Code);
-
-            // BP2D SOLUTION CODE
-          } else if (value == "BP2D Business Priority 3A") {
-            this.infocusModel.bp2dbp3aSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2dbp3aSolution2Code);
-          } else if (value == "BP2D Business Priority 3B") {
-            this.infocusModel.bp2dbp3bSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2dbp3bSolution2Code);
-          } else if (value == "BP2D Business Priority 3C") {
-            this.infocusModel.bp2dbp3cSolution2Code = response[0].Solution_Code;
-            console.log(this.infocusModel.bp2dbp3cSolution2Code);
-          }
+          this.solution2 = response;
         }
-      )
+      );
   }
   businessPriority3Solutions1Selected(solution) {
     if (this.businessPriorityPlaceholder == "BP2A Business Priority 3A") {
-      this.infocusModel.bp2abp3aSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2abp3aSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2abp3aSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -190,8 +119,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2A Business Priority 3B") {
-      this.infocusModel.bp2abp3bSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2abp3bSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2abp3bSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -199,8 +131,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2A Business Priority 3C") {
-      this.infocusModel.bp2abp3cSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2abp3cSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2abp3cSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -210,8 +145,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
     }
     // BP2B BP3
     else if (this.businessPriorityPlaceholder == "BP2B Business Priority 3A") {
-      this.infocusModel.bp2bbp3aSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3aSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2bbp3aSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2bbp3aSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3aSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -219,8 +157,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2B Business Priority 3B") {
-      this.infocusModel.bp2bbp3bSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3bSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2bbp3bSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2bbp3bSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3bSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -228,8 +169,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2B Business Priority 3C") {
-      this.infocusModel.bp2bbp3cSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3cSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2bbp3cSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2bbp3cSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3cSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -239,8 +183,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
     }
     // BP2C BP3
     else if (this.businessPriorityPlaceholder == "BP2C Business Priority 3A") {
-      this.infocusModel.bp2cbp3aSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3aSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2cbp3aSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2cbp3aSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3aSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -248,8 +195,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2C Business Priority 3B") {
-      this.infocusModel.bp2cbp3bSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3bSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2cbp3bSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2cbp3bSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3bSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -257,8 +207,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2C Business Priority 3C") {
-      this.infocusModel.bp2cbp3cSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3cSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2cbp3cSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2cbp3cSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3cSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -268,8 +221,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
     }
     // BP2D BP3
     else if (this.businessPriorityPlaceholder == "BP2D Business Priority 3A") {
-      this.infocusModel.bp2dbp3aSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3aSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2dbp3aSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2dbp3aSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3aSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -277,8 +233,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2D Business Priority 3B") {
-      this.infocusModel.bp2dbp3bSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3bSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2dbp3bSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2dbp3bSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3bSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -286,8 +245,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2D Business Priority 3C") {
-      this.infocusModel.bp2dbp3cSolution1 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3cSolution1Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2dbp3cSolution1 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2dbp3cSolution1Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3cSolution1Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails1 = response;
@@ -301,8 +263,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
 
   businessPriority3Solutions2Selected(solution) {
     if (this.businessPriorityPlaceholder == "BP2A Business Priority 3A") {
-      this.infocusModel.bp2abp3aSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2abp3aSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2abp3aSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3aSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -310,8 +275,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2A Business Priority 3B") {
-      this.infocusModel.bp2abp3bSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2abp3bSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2abp3bSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3bSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -319,8 +287,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2A Business Priority 3C") {
-      this.infocusModel.bp2abp3cSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2abp3cSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2abp3cSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2abp3cSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -330,8 +301,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
     }
     // BP2B BP3
     else if (this.businessPriorityPlaceholder == "BP2B Business Priority 3A") {
-      this.infocusModel.bp2bbp3aSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3aSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2bbp3aSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2bbp3aSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3aSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -339,8 +313,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2B Business Priority 3B") {
-      this.infocusModel.bp2bbp3bSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3bSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2bbp3bSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2bbp3bSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3bSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -348,8 +325,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2B Business Priority 3C") {
-      this.infocusModel.bp2bbp3cSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3cSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2bbp3cSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2bbp3cSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2bbp3cSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -359,8 +339,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
     }
     // BP2C BP3
     else if (this.businessPriorityPlaceholder == "BP2C Business Priority 3A") {
-      this.infocusModel.bp2cbp3aSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3aSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2cbp3aSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2cbp3aSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3aSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -368,8 +351,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2C Business Priority 3B") {
-      this.infocusModel.bp2cbp3bSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3bSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2cbp3bSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2cbp3bSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3bSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -377,8 +363,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2C Business Priority 3C") {
-      this.infocusModel.bp2cbp3cSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3cSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2cbp3cSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2cbp3cSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2cbp3cSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -388,8 +377,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
     }
     // BP2D BP3
     else if (this.businessPriorityPlaceholder == "BP2D Business Priority 3A") {
-      this.infocusModel.bp2dbp3aSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3aSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2dbp3aSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2dbp3aSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3aSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -397,8 +389,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2D Business Priority 3B") {
-      this.infocusModel.bp2dbp3bSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3bSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2dbp3bSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2dbp3bSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3bSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -406,8 +401,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
           }
         )
     } else if (this.businessPriorityPlaceholder == "BP2D Business Priority 3C") {
-      this.infocusModel.bp2dbp3cSolution2 = solution;
-      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3cSolution2Code)
+      let splitedSolutionNameNdCode = this.splitSolutionNameNdCode(solution)
+      this.infocusModel.bp2dbp3cSolution2 = splitedSolutionNameNdCode[0];
+      this.infocusModel.bp2dbp3cSolution2Code = splitedSolutionNameNdCode[1];
+      let randomValue = Math.random();
+      this.infocusCoreService.getInfocusCompanyDetails(this.infocusModel.bp2dbp3cSolution2Code,randomValue)
         .subscribe(
           (response: Response) => {
             this.companyDetails2 = response;
@@ -743,6 +741,11 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
       }
     }
     this.infocusEmitEvent();
+  }
+
+  splitSolutionNameNdCode(value: string) {
+    let solNameNdCodeArray = value.split("^");
+    return solNameNdCodeArray;
   }
 
   infocusEmitEvent() {

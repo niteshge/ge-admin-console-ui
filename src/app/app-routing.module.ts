@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [{
   path: 'infocus-report',
@@ -8,7 +9,7 @@ const routes: Routes = [{
 {
   path: 'master-tables',
   loadChildren: './master-tables/master-tables.module#MasterTablesModule'
-}
+},
 ];
 
 @NgModule({

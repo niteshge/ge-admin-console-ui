@@ -35,15 +35,15 @@
         (optionSelected)="industrySegment2Selected($event)"></app-dynamic-select>
     </div>
   </div>
-  <hr *ngIf="infocusIndustrySegment2">
-  <div class="row" *ngIf="infocusIndustrySegment2">
+  <hr *ngIf="infocusIndustry">
+  <div class="row" *ngIf="infocusIndustry">
     <div class="col-12">
       <h4 class="mat-primary">Introduction</h4>
       <!-- style not working need to check on that-->
     </div>
   </div>
 
-  <mat-grid-list cols="12" rowHeight="1:1" *ngIf="infocusIndustrySegment2">
+  <mat-grid-list cols="12" rowHeight="1:1" *ngIf="infocusIndustry">
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -97,7 +97,7 @@
         <mat-form-field class="col-12" *ngIf="infocusContextSubHeading">
           <textarea matInput placeholder="Infocus Context Desc" [(ngModel)]="infocusContextDesc"> </textarea>
         </mat-form-field>
-        <div class="row" *ngIf="infocusIndustrySegment2">
+        <div class="row" *ngIf="infocusContextHeading">
           <button mat-raised-button color=primary (click)="saveContext()">Save Context</button>
           <br/>
           <p *ngIf="contextSaved">

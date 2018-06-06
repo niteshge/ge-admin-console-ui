@@ -16,56 +16,58 @@ export class InfocusReportService {
     // this.opts = new RequestOptions({ headers: headers });
   }
 
-  getInfocusReportRoles() {
-    return this.http.get('http://localhost:8787/api/getroles')
+  getInfocusReportRoles(randomValue) {
+    console.log(randomValue);
+    return this.http.get('http://localhost:8787/api/getroles?ver='+randomValue)
   }
 
-  getInfocusIndustriesByRole(role: string) {
-    return this.http.get('http://localhost:8787/api/getindustriesbyrole/?role=' + role)
+  getInfocusIndustriesByRole(role: string,randomValue) {
+    console.log(randomValue);
+    return this.http.get('http://localhost:8787/api/getindustriesbyrole/?role=' + role+'&ver='+randomValue)
   }
 
-  getInfocusIndustrySegment1ByRolendIndustry(role: string, industry: string) {
-    return this.http.get('http://localhost:8787/api/getindustryseg1byindustryndrole/?role=' + role + '&industry=' + industry)
+  getInfocusIndustrySegment1ByRolendIndustry(role: string, industry: string, randomValue) {
+    return this.http.get('http://localhost:8787/api/getindustryseg1byindustryndrole/?role=' + role + '&industry=' + industry+'&ver='+randomValue)
   }
 
-  getInfocusIndustrySegment2ByIndustryndIndustrySegment1(industry: string, industrySegment1: string) {
-    return this.http.get('http://localhost:8787/api/getindustryseg2byindustryndindseg1/?industry=' + industry + '&industryseg1=' + industrySegment1)
+  getInfocusIndustrySegment2ByIndustryndIndustrySegment1(industry: string, industrySegment1: string,randomValue) {
+    return this.http.get('http://localhost:8787/api/getindustryseg2byindustryndindseg1/?industry=' + industry + '&industryseg1=' + industrySegment1+'&ver='+randomValue)
   }
 
-  getInfocusBusinessPriority1(role: string, industry: string, industrySegment1: string, industrySegment2: string) {
+  getInfocusBusinessPriority1(role: string, industry: string, industrySegment1: string, industrySegment2: string,randomValue) {
     return this.http.get('http://localhost:8787/api/getbp1/?industry=' + industry +
-      '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2)
+      '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2+'&ver='+randomValue)
 
   }
 
-  getInfocusBusinessPriority2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string) {
-    return this.http.get('http://localhost:8787/api/getbp2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1)
+  getInfocusBusinessPriority2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string,randomValue) {
+    return this.http.get('http://localhost:8787/api/getbp2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1+'&ver='+randomValue)
   }
 
 
-  getInfocusBusinessPriority3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string) {
-    return this.http.get('http://localhost:8787/api/getbp3/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2)
+  getInfocusBusinessPriority3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string,randomValue) {
+    return this.http.get('http://localhost:8787/api/getbp3/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 +'&ver='+randomValue)
   }
 
-  getInfocusBusinessPriority3Solution1(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string) {
-    return this.http.get('http://localhost:8787/api/getsolution1/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3)
+  getInfocusBusinessPriority3Solution1(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
+    return this.http.get('http://localhost:8787/api/getsolution1/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3+'&ver='+randomValue)
 
   }
-  getInfocusBusinessPriority3Solution2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string) {
-    return this.http.get('http://localhost:8787/api/getsolution2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3)
+  getInfocusBusinessPriority3Solution2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
+    return this.http.get('http://localhost:8787/api/getsolution2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3+'&ver='+randomValue)
 
   }
-  getInfocusBusinessPriority3Solution3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string) {
-    return this.http.get('http://localhost:8787/api/getsolution3/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3)
+  getInfocusBusinessPriority3Solution3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
+    return this.http.get('http://localhost:8787/api/getsolution3/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3+'&ver='+randomValue)
   }
-  getInfocusBusinessPriority3Solution4(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string) {
-    return this.http.get('http://localhost:8787/api/getsolution4/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3)
+  getInfocusBusinessPriority3Solution4(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
+    return this.http.get('http://localhost:8787/api/getsolution4/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3+'&ver='+randomValue)
   }
-  getInfocusBusinessPriority3Solution5(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string) {
-    return this.http.get('http://localhost:8787/api/getsolution5/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3)
+  getInfocusBusinessPriority3Solution5(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
+    return this.http.get('http://localhost:8787/api/getsolution5/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3+'&ver='+randomValue)
   }
-  getInfocusCompanyDetails(solutionCode: string) {
-    return this.http.get('http://localhost:8787/api/getcompanydetialsbycode/?solutioncode=' + solutionCode)
+  getInfocusCompanyDetails(solutionCode: string,randomValue) {
+    return this.http.get('http://localhost:8787/api/getcompanydetialsbycode/?solutioncode=' + solutionCode+'&ver='+randomValue)
   }
 
   postInfocusReportDetails(infocus: InfocusReportModel) {

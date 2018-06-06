@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { InfocusMeta } from './infocus-report-view.model';
 import { DynamicReportPopupComponent } from '../../shared/dynamic-report-popup/dynamic-report-popup.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { DynamicYesNoPopupComponent } from '../../shared/dynamic-yes-no-popup/dynamic-yes-no-popup.component';
 
 @Component({
   selector: 'app-infocus-report-view',
@@ -32,7 +33,7 @@ export class InfocusReportViewComponent implements OnInit {
     console.log(value);
     this.rowValue = value;
     let dialogRef = this.dialog.open(DynamicReportPopupComponent, {
-      width: '400px',
+      width: '500px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -44,11 +45,26 @@ export class InfocusReportViewComponent implements OnInit {
   }
   takeAction(value) {
     if (value === '1') {
-      console.log("View On ", this.rowValue.report_id);
+      console.log("View On ", this.rowValue.id);
     } else if (value === '2') {
       console.log("delete On ", this.rowValue.id);
       this.deleteReport(this.rowValue.id);
+    }else if (value === '3'){
+      console.log("Publish Report ",this.rowValue.id);
+      let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent,{
+        width:'300px',
+      });
+      dialogConfirm.afterClosed().subscribe(result => {
+        console.log("The dialog confirm is closed with a action:",result);
+        if(result==100){
+          this.publishInfocusReport(this.rowValue.id);
+        }
+      });
     }
+  }
+
+  publishInfocusReport(reportMetaId){
+    console.log("publish report with meta id: ",reportMetaId);
   }
 
   deleteReport(id:LongRange){

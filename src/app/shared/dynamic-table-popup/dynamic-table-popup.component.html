@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Hi </h1>
+<div mat-dialog-content>
+  <p>Please Take An Action On The Record You Selected</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color=Basic (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button color=Primary [mat-dialog-close]="'1'" cdkFocusInitial>Edit</button>
+  <button mat-raised-button color=Warn [mat-dialog-close]="'2'" cdkFocusInitial>Remove</button>
+</div>
+
