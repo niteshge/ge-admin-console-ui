@@ -9,6 +9,6 @@ export class BusinessSolutionsService {
   constructor(private http: HttpClient) { }
 
   getAllBusinessSolutons(){
-    return this.http.get('http://localhost:8787/mastertables/businesssolutions')
+    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/mastertables/businesssolutions')
   }
 }
