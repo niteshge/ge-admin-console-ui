@@ -229,7 +229,7 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
     )
   }
   viewPDF() {
-    window.open('http://localhost:8787/api/viewinfocuspdf/' +this.id.id+ '.pdf')
+    window.open('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/viewinfocuspdf/' +this.id.id+ '.pdf')
     this.infocusCoreService.getInfocusPDFbyId(this.id)
       .subscribe(
         (response: Response) => {
