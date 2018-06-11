@@ -77,12 +77,15 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
     } else if (value == "BP2D Business Priority 3A") {
       this.infocusModel.bp2dbusinessPriority3a = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2d, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2d, this.businessPriority3Value, value);
     } else if (value == "BP2D Business Priority 3B") {
       this.infocusModel.bp2dbusinessPriority3b = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2d, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2d, this.businessPriority3Value, value);
     } else if (value == "BP2D Business Priority 3C") {
       this.infocusModel.bp2dbusinessPriority3c = this.businessPriority3Value;
       this.getSolutions1(this.infocusModel.businessPriority2d, this.businessPriority3Value, value);
+      this.getSolutions2(this.infocusModel.businessPriority2d, this.businessPriority3Value, value);
     }
 
   }
@@ -626,7 +629,7 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
   solution2companyDetail(companyPlaceholder) {
     if (companyPlaceholder == "Solution 2 Company 1") {
       let temp: any = null;
-      temp = this.companyDetails1.filter(companyDetail => companyDetail.id == this.companyId);
+      temp = this.companyDetails2.filter(companyDetail => companyDetail.id == this.companyId);
       console.log("The temp value of the company 1", temp);
       // BP2A COMPANY DETAILS 1
       if (this.businessPriorityPlaceholder == "BP2A Business Priority 3A") {
@@ -710,7 +713,7 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
       }
     } else if (companyPlaceholder == "Solution 2 Company 2") {
       let temp: any = null;
-      temp = this.companyDetails1.filter(companyDetail => companyDetail.id == this.companyId);
+      temp = this.companyDetails2.filter(companyDetail => companyDetail.id == this.companyId);
       console.log("The temp value of the company 1", temp);
       // BP2A COMPANY DETAILS2
       if (this.businessPriorityPlaceholder == "BP2A Business Priority 3A") {
