@@ -65,6 +65,13 @@ export class InfocusReportViewComponent implements OnInit {
 
   publishInfocusReport(reportMetaId){
     console.log("publish report with meta id: ",reportMetaId);
+    let randomValue = Math.random();
+    this.infocusCoreService.publishPdfById(reportMetaId,randomValue)
+    .subscribe(
+      (response:Response) => {
+        console.log(response);
+      }
+    )
   }
 
   deleteReport(id:LongRange){
