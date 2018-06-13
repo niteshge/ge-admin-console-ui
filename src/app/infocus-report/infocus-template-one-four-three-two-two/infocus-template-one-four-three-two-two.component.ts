@@ -1,6 +1,7 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
 import { InfocusReportModel } from '../infocus-report.model';
 import { InfocusReportService } from '../../core/infocus-report.service';
+import { MatAccordion } from '@angular/material';
 
 @Component({
   selector: 'app-infocus-template-one-four-three-two-two',
@@ -10,20 +11,31 @@ import { InfocusReportService } from '../../core/infocus-report.service';
 export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
   infocusModel: InfocusReportModel = new InfocusReportModel();
   id;
+  technologies;
   infocusReportTitle;
   infocusRoles;
   infocusIntroductionTitle;
+  infocusIntroductionTitleMaxValue;
   infocusIntroductionPara1;
+  infocusIntroductionPara1MaxValue;
   infocusIntroductionPara2;
+  infocusIntroductionPara2MaxValue;
   infocusIntroductionPara3;
+  infocusIntroductionPara3MaxValue;
+  infocusIntroductionSaveParameter;
+  infocusContextSaveParameter;
+  infocusTechnologySubSegement;
   infocusIndustry;
   infocusIndustrySegment1;
   infocusIndustrySegment2;
   infocusBusinessPriority1;
   introductionSaveStatus;
   infocusContextHeading;
+  infocusContextHeadingMaxValue;
   infocusContextSubHeading;
+  infocusContextSubHeadingMaxValue;
   infocusContextDesc;
+  infocusContextDescMaxValue;
   contextSaved;
   listBp2Placeholders: string[] = [];
   businessPriority2;
@@ -37,22 +49,32 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
   listBp2bBp3Placeholders: object[] = [];
   listBp2cBp3Placeholders: object[] = [];
   listBp2dBp3Placeholders: object[] = [];
-  recommendation1MainPara;
+  recommendation1MainPara:string;
+  recommendation1MainParaMaxValue;
   recommendation1SubHeading;
-  recommendation1SubPoint1;
-  recommendation1SubPoint2;
-  recommendation1SubPoint3;
+  recommendation1SubPoint1:string;
+  recommendation1SubPoint1MaxValue;
+  recommendation1SubPoint2:string;
+  recommendation1SubPoint2MaxValue;
+  recommendation1SubPoint3:string;
+  recommendation1SubPoint3MaxValue;
   recommendation2MainPara;
-  recommendation1SubPoint4;
-  recommendation1SubPoint5;
-  recommendation1SubPoint6;
+  recommendation1SubPoint4:string;
+  recommendation1SubPoint4MaxValue;
+  recommendation1SubPoint5:string;
+  recommendation1SubPoint5MaxValue;
+  recommendation1SubPoint6:string;
+  recommendation1SubPoint6MaxValue;
   recommendationSaveStatus;
+  infocusRecommendationSaveParameter;
+  maxInputIntro;
 
   constructor(private infocusCoreService: InfocusReportService) { }
 
   ngOnInit() {
-    let randomValue = Math.random()*10;
+    let randomValue = Math.random() * 10;
     this.infocusRoles = this.infocusCoreService.getInfocusReportRoles(randomValue);
+    this.technologies = this.infocusCoreService.getTechnologies(randomValue)
   }
 
   analystName(value) {
@@ -60,32 +82,97 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
     console.log(this.infocusModel.analystName);
   }
 
+  regionName(value) {
+    this.infocusModel.region = value;
+    console.log(this.infocusModel.region);
+  }
+
+  readTime(value) {
+    this.infocusModel.readtime = value;
+    console.log(this.infocusModel.readtime);
+  }
+
+  technology(value) {
+    this.infocusModel.technology = value;
+    console.log(this.infocusModel.technology);
+    let randomValue = Math.random();
+    this.infocusTechnologySubSegement=this.infocusCoreService.getTechnologiesSubSegment(value,randomValue);
+  }
+  technologySubSegment(value){
+    this.infocusModel.technologySubSegemt = value;
+  }
+
   roleSelected(value) {
     this.infocusModel.infocusReportTitle = this.infocusReportTitle;
     this.infocusModel.role = value;
     let randomValue = Math.random();
-    this.infocusIndustry = this.infocusCoreService.getInfocusIndustriesByRole(value,randomValue);
+    this.infocusIndustry = this.infocusCoreService.getInfocusIndustriesByRole(value, randomValue);
   }
   industrySelected(value) {
     this.infocusModel.industry = value;
     let randomValue = Math.random();
-    this.infocusIndustrySegment1 = this.infocusCoreService.getInfocusIndustrySegment1ByRolendIndustry(this.infocusModel.role, this.infocusModel.industry,randomValue);
-    this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,randomValue);
+    this.infocusIndustrySegment1 = this.infocusCoreService.getInfocusIndustrySegment1ByRolendIndustry(this.infocusModel.role, this.infocusModel.industry, randomValue);
+    this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, randomValue);
     console.log(this.infocusModel);
   }
   industrySegment1Selected(value) {
     this.infocusModel.industrySegment1 = value;
     console.log(this.infocusModel);
     let randomValue = Math.random();
-    this.infocusIndustrySegment2 = this.infocusCoreService.getInfocusIndustrySegment2ByIndustryndIndustrySegment1(this.infocusModel.industry, this.infocusModel.industrySegment1,randomValue);
-    this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,randomValue);
+    this.infocusIndustrySegment2 = this.infocusCoreService.getInfocusIndustrySegment2ByIndustryndIndustrySegment1(this.infocusModel.industry, this.infocusModel.industrySegment1, randomValue);
+    this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, randomValue);
   }
 
   industrySegment2Selected(value) {
     this.infocusModel.industrySegment2 = value;
     console.log(this.infocusModel);
     let randomValue = Math.random();
-    this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2,randomValue);
+    this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, randomValue);
+  }
+  introductionTitle() {
+    this.infocusIntroductionTitleMaxValue = this.lenCount(this.infocusIntroductionTitle, this.infocusIntroductionTitleMaxValue,63);
+    if (this.infocusIntroductionTitleMaxValue === null && this.infocusIntroductionPara3MaxValue === null && this.infocusIntroductionPara2MaxValue === null && this.infocusIntroductionPara1MaxValue === null) {
+      this.infocusIntroductionSaveParameter = 1;
+    } else {
+      this.infocusIntroductionSaveParameter = null;
+    }
+    if(this.infocusIntroductionTitle.length<1){
+      this.infocusIntroductionSaveParameter = null;
+    }
+  }
+  introductionPara1() {
+    this.infocusIntroductionPara1MaxValue = this.lenCount(this.infocusIntroductionPara1, this.infocusIntroductionPara1MaxValue,1046);
+    if (this.infocusIntroductionTitleMaxValue === null && this.infocusIntroductionPara3MaxValue === null && this.infocusIntroductionPara2MaxValue === null && this.infocusIntroductionPara1MaxValue === null) {
+      this.infocusIntroductionSaveParameter = 1;
+    } else {
+      this.infocusIntroductionSaveParameter = null;
+    }
+    if(this.infocusIntroductionPara1.length<1){
+      this.infocusIntroductionSaveParameter = null;
+    }
+  }
+  introductionPara2() {
+    this.infocusIntroductionPara2MaxValue = this.lenCount(this.infocusIntroductionPara2, this.infocusIntroductionPara2MaxValue, 948);
+    if (this.infocusIntroductionTitleMaxValue === null && this.infocusIntroductionPara3MaxValue === null && this.infocusIntroductionPara2MaxValue === null && this.infocusIntroductionPara1MaxValue === null) {
+      this.infocusIntroductionSaveParameter = 1;
+    } else {
+      this.infocusIntroductionSaveParameter = null;
+     
+    }
+    if(this.infocusIntroductionPara2.length<1){
+      this.infocusIntroductionSaveParameter = null;
+    }
+  }
+  introductionPara3() {
+    this.infocusIntroductionPara3MaxValue = this.lenCount(this.infocusIntroductionPara3, this.infocusIntroductionPara3MaxValue,910);
+    if (this.infocusIntroductionTitleMaxValue === null && this.infocusIntroductionPara3MaxValue === null && this.infocusIntroductionPara2MaxValue === null && this.infocusIntroductionPara1MaxValue === null) {
+      this.infocusIntroductionSaveParameter = 1;
+    } else {
+      this.infocusIntroductionSaveParameter = null;
+    }
+    if(this.infocusIntroductionPara3.length<1){
+      this.infocusIntroductionSaveParameter = null;
+    }
   }
   saveIntroduction() {
     if (this.infocusIntroductionTitle != null) {
@@ -102,10 +189,53 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
     }
     this.introductionSaveStatus = "Saved Introduction";
   }
+
+  contextHeading() {
+    this.infocusContextHeadingMaxValue = this.lenCount(this.infocusContextHeading, this.infocusContextHeadingMaxValue,40);
+    if (this.infocusContextHeadingMaxValue === null && this.infocusContextSubHeadingMaxValue === null && this.infocusContextDescMaxValue === null) {
+      this.infocusContextSaveParameter = 1;
+    } else {
+      this.infocusContextSaveParameter = null;
+    }
+    if(this.infocusContextHeading.length<1){
+      this.infocusContextSaveParameter = null;
+    }
+  }
+  contextSubHeading() {
+    this.infocusContextSubHeadingMaxValue = this.lenCount(this.infocusContextSubHeading, this.infocusContextSubHeadingMaxValue, 105);
+    if (this.infocusContextHeadingMaxValue === null && this.infocusContextSubHeadingMaxValue === null && this.infocusContextDescMaxValue === null) {
+      this.infocusContextSaveParameter = 1;
+    } else {
+      this.infocusContextSaveParameter = null;
+      
+    }
+    if(this.infocusContextSubHeading.length<1){
+      this.infocusContextSaveParameter = null;
+    }
+  }
+  contextDesc() {
+    this.infocusContextDescMaxValue = this.lenCount(this.infocusContextDesc, this.infocusContextDescMaxValue,1097);
+    if (this.infocusContextHeadingMaxValue === null && this.infocusContextSubHeadingMaxValue === null && this.infocusContextDescMaxValue === null) {
+      this.infocusContextSaveParameter = 1;
+    } else {
+      this.infocusContextSaveParameter = null;
+      
+    }
+    if(this.infocusContextDesc.length<1){
+      this.infocusContextSaveParameter = null;
+    }
+  }
   saveContext() {
-    this.infocusModel.infocusContextHeading = this.infocusContextHeading;
-    this.infocusModel.infocusContextSubHeading = this.infocusContextSubHeading;
-    this.infocusModel.infocusContextDesc = this.infocusContextDesc;
+    if(this.infocusContextHeading!=null){
+      this.infocusModel.infocusContextHeading = this.infocusContextHeading;
+    }
+    if(this.infocusContextSubHeading!=null){
+      this.infocusModel.infocusContextSubHeading = this.infocusContextSubHeading;
+    }
+    if(this.infocusContextDesc!=null){
+      this.infocusModel.infocusContextDesc = this.infocusContextDesc;
+    }
+    
     this.contextSaved = "Saved Context";
 
   }
@@ -114,7 +244,7 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
     this.businessPriority1 = value;
     console.log(this.infocusModel);
     let randomValue = Math.random();
-    this.businessPriority2 = this.infocusCoreService.getInfocusBusinessPriority2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1,randomValue);
+    this.businessPriority2 = this.infocusCoreService.getInfocusBusinessPriority2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, randomValue);
     this.listBp2Placeholders.push('Business Priority 2A')
     this.listBp2Placeholders.push('Business Priority 2B')
     this.listBp2Placeholders.push('Business Priority 2C')
@@ -126,7 +256,7 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
     this.listBp2aBp3Placeholders.push(new BusinessPriority3Model("BP2A Business Priority 3C"));
     this.infocusModel.businessPriority2a = value;
     let randomValue = Math.random();
-    this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a,randomValue)
+    this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2a, randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2aBusinessPriority3 = response;
@@ -140,7 +270,7 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
     this.listBp2bBp3Placeholders.push(new BusinessPriority3Model("BP2B Business Priority 3C"));
     this.infocusModel.businessPriority2b = value;
     let randomValue = Math.random();
-    this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2b,randomValue)
+    this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2b, randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2bBusinessPriority3 = response;
@@ -154,7 +284,7 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
     this.listBp2cBp3Placeholders.push(new BusinessPriority3Model("BP2C Business Priority 3C"));
     this.infocusModel.businessPriority2c = value;
     let randomValue = Math.random();
-    this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2c,randomValue)
+    this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2c, randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2cBusinessPriority3 = response;
@@ -168,7 +298,7 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
     this.listBp2dBp3Placeholders.push(new BusinessPriority3Model("BP2D Business Priority 3C"));
     this.infocusModel.businessPriority2d = value;
     let randomValue = Math.random();
-    this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2d,randomValue)
+    this.infocusCoreService.getInfocusBusinessPriority3(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, this.infocusModel.businessPriority2d, randomValue)
       .subscribe(
         (response: Response) => {
           this.bp2dBusinessPriority3 = response;
@@ -189,6 +319,83 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
     console.log(value);
   }
 
+  recommendationMain() {
+    this.recommendation1MainParaMaxValue = this.lenCount(this.recommendation1MainPara, this.recommendation1MainParaMaxValue,1725);
+    if (this.recommendation1MainParaMaxValue === null && this.recommendation1SubPoint1MaxValue === null && this.recommendation1SubPoint2MaxValue === null, this.recommendation1SubPoint3MaxValue === null) {
+      this.infocusRecommendationSaveParameter = 1;
+    } else {
+      this.infocusRecommendationSaveParameter = null;
+      
+    }
+    if(this.recommendation1MainPara.length<1){
+      this.infocusRecommendationSaveParameter = null;
+    }
+  }
+  recommendationPoint1() {
+    this.recommendation1SubPoint1MaxValue = this.lenCount(this.recommendation1SubPoint1, this.recommendation1SubPoint1MaxValue, 574);
+    if (this.recommendation1MainParaMaxValue === null && this.recommendation1SubPoint1MaxValue === null && this.recommendation1SubPoint2MaxValue === null&& this.recommendation1SubPoint3MaxValue === null) {
+      this.infocusRecommendationSaveParameter = 1;
+    } else {
+      this.infocusRecommendationSaveParameter = null;
+      
+    }
+    if(this.recommendation1SubPoint1.length<1){
+      this.infocusRecommendationSaveParameter = null;
+    }
+  }
+  recommendationPoint2() {
+    this.recommendation1SubPoint2MaxValue = this.lenCount(this.recommendation1SubPoint2, this.recommendation1SubPoint2MaxValue, 574);
+    if (this.recommendation1MainParaMaxValue === null && this.recommendation1SubPoint1MaxValue === null && this.recommendation1SubPoint2MaxValue === null&& this.recommendation1SubPoint3MaxValue === null) {
+      this.infocusRecommendationSaveParameter = 1;
+    } else {
+      this.infocusRecommendationSaveParameter = null;
+      
+    }
+    if(this.recommendation1SubPoint2.length<1){
+      this.infocusRecommendationSaveParameter = null;
+    }
+  }
+  recommendationPoint3() {
+    this.recommendation1SubPoint3MaxValue = this.lenCount(this.recommendation1SubPoint3, this.recommendation1SubPoint3MaxValue, 574);
+    if (this.recommendation1MainParaMaxValue === null && this.recommendation1SubPoint1MaxValue === null && this.recommendation1SubPoint2MaxValue === null && this.recommendation1SubPoint3MaxValue === null) {
+      this.infocusRecommendationSaveParameter = 1;
+    } else {
+      this.infocusRecommendationSaveParameter = null;
+      
+    }
+    if(this.recommendation1SubPoint3.length<1){
+      this.infocusRecommendationSaveParameter = null;
+    }
+  }
+  recommendationPoint4() {
+    this.recommendation1SubPoint4MaxValue = this.lenCount(this.recommendation1SubPoint4, this.recommendation1SubPoint4MaxValue, 574);
+    if (this.recommendation1SubPoint4MaxValue === null && this.recommendation1SubPoint5MaxValue === null&& this.recommendation1SubPoint6MaxValue === null) {
+      this.infocusRecommendationSaveParameter = 1;
+    } else {
+      this.infocusRecommendationSaveParameter = null;
+      
+    }
+  }
+  recommendationPoint5() {
+    this.recommendation1SubPoint5MaxValue = this.lenCount(this.recommendation1SubPoint5, this.recommendation1SubPoint5MaxValue, 574);
+    if (this.recommendation1SubPoint4MaxValue === null && this.recommendation1SubPoint5MaxValue === null&& this.recommendation1SubPoint6MaxValue === null) {
+      this.infocusRecommendationSaveParameter = 1;
+    } else {
+      this.infocusRecommendationSaveParameter = null;
+      
+    }
+  }
+  recommendationPoint6() {
+    this.recommendation1SubPoint6MaxValue = this.lenCount(this.recommendation1SubPoint6, this.recommendation1SubPoint6MaxValue, 574);
+    if (this.recommendation1SubPoint4MaxValue === null && this.recommendation1SubPoint5MaxValue === null&& this.recommendation1SubPoint6MaxValue === null) {
+      this.infocusRecommendationSaveParameter = 1;
+    } else {
+      this.infocusRecommendationSaveParameter = null;
+      
+    }
+  }
+
+
   recommendationOneSelected() {
     if (this.recommendation1MainPara != null) {
       this.infocusModel.recommendation1MainPara = this.recommendation1MainPara;
@@ -205,18 +412,25 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
     if (this.recommendation1SubPoint3 != null) {
       this.infocusModel.recommendation1SubPoint3 = this.recommendation1SubPoint3;
     }
-    if (this.recommendation1SubPoint4 != null) {
+    if (this.recommendation1SubPoint4 != "" || this.recommendation1SubPoint4.length>1||this.recommendation1SubPoint4 != null) {
       this.infocusModel.recommendation1SubPoint4 = this.recommendation1SubPoint4;
+    }else{
+      this.infocusModel.recommendation1SubPoint4 = null;
     }
-    if (this.recommendation1SubPoint5 != null) {
+    if (this.recommendation1SubPoint5 != "" || this.recommendation1SubPoint5.length>1 || this.recommendation1SubPoint5 != null) {
       this.infocusModel.recommendation1SubPoint5 = this.recommendation1SubPoint5;
+    }else{
+      this.infocusModel.recommendation1SubPoint5 = null;
     }
-    if (this.recommendation1SubPoint6 != null) {
+    if ( this.recommendation1SubPoint6 != "" || this.recommendation1SubPoint6.length>1 || this.recommendation1SubPoint6 != null) {
       this.infocusModel.recommendation1SubPoint6 = this.recommendation1SubPoint6;
+    }else{
+      this.infocusModel.recommendation1SubPoint6 = null;
     }
 
     this.recommendationSaveStatus = "done";
   }
+
 
   postInfocusReport() {
     this.infocusModel.templateType = 2;
@@ -229,7 +443,7 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
     )
   }
   viewPDF() {
-    window.open('http://localhost:8787/api/viewinfocuspdf/' +this.id.id+ '.pdf')
+    window.open('http://localhost:8787/api/viewinfocuspdf/' + this.id.id + '.pdf')
     this.infocusCoreService.getInfocusPDFbyId(this.id)
       .subscribe(
         (response: Response) => {
@@ -237,6 +451,16 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
         }
       )
   }
+  lenCount(value: string, maxValueParameter,maxlen) {
+    if (value.length > maxlen) {
+      maxValueParameter = value.length;
+    } else if (value.length <= maxlen) {
+      maxValueParameter = null;
+      console.log("the len is :",value.length)
+    }
+    return maxValueParameter;
+  }
+
 
 
 }
@@ -249,7 +473,7 @@ export class BusinessPriority3Model {
   }
 
 }
-@Pipe({ name:'keys'})
+@Pipe({ name: 'keys' })
 export class KeysPipe implements PipeTransform {
   transform(value, args: string[]): any {
     let keys = [];

@@ -3,6 +3,11 @@ export class InfocusReportModel {
 
     public templateType = null;
     public analystName: string = null;
+    public region: string = null;
+    public technology: string = null;
+    public technologySubSegemt:string = null;
+    public readtime: string = null;
+
     public infocusReportTitle: string = null;
     public introductionTitle: string = null;
     public introductionPara1: string = null;
