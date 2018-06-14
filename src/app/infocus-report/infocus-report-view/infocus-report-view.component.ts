@@ -46,6 +46,7 @@ export class InfocusReportViewComponent implements OnInit {
   takeAction(value) {
     if (value === '1') {
       console.log("View On ", this.rowValue.id);
+      this.viewPDF(this.rowValue.id);
     } else if (value === '2') {
       console.log("delete On ", this.rowValue.id);
       this.deleteReport(this.rowValue.id);
@@ -61,6 +62,16 @@ export class InfocusReportViewComponent implements OnInit {
         }
       });
     }
+  }
+
+  viewPDF(id) {
+    window.open('http://localhost:8787/api/viewinfocuspdf/' + id + '.pdf')
+    this.infocusCoreService.getInfocusPDFbyId(id)
+      .subscribe(
+        (response: Response) => {
+
+        }
+      )
   }
 
   publishInfocusReport(reportMetaId){
