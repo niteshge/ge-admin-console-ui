@@ -25,9 +25,9 @@
     <div class="col-2">
       <app-dynamic-select *ngIf="infocusModel.readtime" [placeholder]="'Technology Name'" [options]="technologies | async" (optionSelected)="technology($event)"></app-dynamic-select>
     </div>
-    <div class="col-2">
+    <!-- <div class="col-2">
         <app-dynamic-select *ngIf="infocusTechnologySubSegement" [placeholder]="'Technology Sub Segment'" [options]="infocusTechnologySubSegement | async" (optionSelected)="technologySubSegment($event)"></app-dynamic-select>
-      </div>
+      </div> -->
   </div>
   <br/>
   <div class="row" *ngIf="infocusModel.technology">
