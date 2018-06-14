@@ -46,25 +46,25 @@ export class InfocusReportService {
 
 
   getInfocusBusinessPriority3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string,randomValue) {
-    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getbp3/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 +'&ver='+randomValue)
+    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getbp3/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + encodeURIComponent(businessPriority2) +'&ver='+randomValue)
   }
 
   getInfocusBusinessPriority3Solution1(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
-    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getsolution1/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3+'&ver='+randomValue)
+    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getsolution1/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + businessPriority3+'&ver='+randomValue)
 
   }
   getInfocusBusinessPriority3Solution2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
-    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getsolution2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3+'&ver='+randomValue)
+    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getsolution2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + businessPriority3+'&ver='+randomValue)
 
   }
   getInfocusBusinessPriority3Solution3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
-    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getsolution3/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3+'&ver='+randomValue)
+    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getsolution3/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + businessPriority3+'&ver='+randomValue)
   }
   getInfocusBusinessPriority3Solution4(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
-    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getsolution4/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3+'&ver='+randomValue)
+    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getsolution4/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + businessPriority3+'&ver='+randomValue)
   }
   getInfocusBusinessPriority3Solution5(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
-    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getsolution5/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + businessPriority2 + '&bp3=' + businessPriority3+'&ver='+randomValue)
+    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getsolution5/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + businessPriority1 + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + businessPriority3+'&ver='+randomValue)
   }
   getInfocusCompanyDetails(solutionCode: string,randomValue) {
     return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/getcompanydetialsbycode/?solutioncode=' + solutionCode+'&ver='+randomValue)
