@@ -426,14 +426,14 @@ export class InfocusTemplateTwoSolutionsTwoCompainesComponent implements OnInit 
 
   concatenateCompanyNameScoreAndId(companyDetail, listOfCompanies) {
     companyDetail.forEach(company => {
-      let companyString: string = company.company_name + "-" + company.GE_PII_SCORE + "-" + company.id
+      let companyString: string = company.company_name + "^" + company.GE_PII_SCORE + "^" + company.id
       listOfCompanies.push(companyString);
     });
     console.log(listOfCompanies);
   }
 
   business3CompanySelected(company) {
-    let companySplitValue = company.split('-');
+    let companySplitValue = company.split('^');
     this.companyId = companySplitValue[2];
 
   }
