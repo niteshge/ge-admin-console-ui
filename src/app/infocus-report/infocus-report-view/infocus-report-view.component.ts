@@ -65,7 +65,7 @@ export class InfocusReportViewComponent implements OnInit {
   }
 
   viewPDF(id) {
-    window.open('http://localhost:8787/api/viewinfocuspdf/' + id + '.pdf')
+    window.open('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/viewinfocuspdf/' + id + '.pdf')
     this.infocusCoreService.getInfocusPDFbyId(id)
       .subscribe(
         (response: Response) => {

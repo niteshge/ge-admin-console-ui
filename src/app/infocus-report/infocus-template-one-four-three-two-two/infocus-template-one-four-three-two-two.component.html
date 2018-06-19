@@ -229,7 +229,7 @@
           <button mat-raised-button color=primary (click)="recommendationOneSelected()">Save Recommendation</button>
 
           <p *ngIf="recommendationSaveStatus">
-            <i>Successfully Save Recommendations</i>
+            <i [style.background-color]="'green'">Successfully Save Recommendations</i>
           </p>
         </div>
       </mat-expansion-panel>
