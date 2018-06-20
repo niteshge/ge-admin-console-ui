@@ -1,4 +1,11 @@
 <div>
-    <app-dynamic-tables *ngIf="businessSolutions" [jsonData]="businessSolutions" (rowSelected)="openDialog($event)"></app-dynamic-tables>
+  <app-dynamic-tables *ngIf="businessSolutions" [jsonData]="businessSolutions" (rowSelected)="openDialog($event)"></app-dynamic-tables>
 </div>
-  
+<br/>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <button mat-raised-button color=warn (click)="addRowData()">Add</button>
+    </div>
+  </div>
+</div>

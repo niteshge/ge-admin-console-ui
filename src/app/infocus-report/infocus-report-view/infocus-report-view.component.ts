@@ -23,7 +23,8 @@ export class InfocusReportViewComponent implements OnInit {
   }
 
   getInfocusMetadata(){
-    this.infocusCoreService.getAllInfocusMeta().subscribe(
+    let randomValue = Math.random();
+    this.infocusCoreService.getAllInfocusMeta(randomValue).subscribe(
       (response: Response) => {
         this.modelData = response;
       }

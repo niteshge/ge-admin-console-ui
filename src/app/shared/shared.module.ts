@@ -17,6 +17,8 @@ import { DynamicReportPopupComponent } from './dynamic-report-popup/dynamic-repo
 import { DynamicYesNoPopupComponent } from './dynamic-yes-no-popup/dynamic-yes-no-popup.component';
 import { DynamicTablePopupComponent } from './dynamic-table-popup/dynamic-table-popup.component';
 import { DynamicTableEditComponent, KeysPipesModule } from './dynamic-table-edit/dynamic-table-edit.component';
+import { DynamicBusinessSolutionClonePopupComponent } from './dynamic-business-solution-clone-popup/dynamic-business-solution-clone-popup.component';
+import { DynamicTableAddComponent } from './dynamic-table-add/dynamic-table-add.component';
 
 @NgModule({
   imports: [
@@ -42,7 +44,7 @@ import { DynamicTableEditComponent, KeysPipesModule } from './dynamic-table-edit
     MatTabsModule,
     MatGridListModule
   ],
-  declarations: [DynamicSelectComponent, DynamicTablesComponent, DynamicReportPopupComponent, DynamicYesNoPopupComponent, DynamicTablePopupComponent, DynamicTableEditComponent, KeysPipesModule],
+  declarations: [DynamicSelectComponent, DynamicTablesComponent, DynamicReportPopupComponent, DynamicYesNoPopupComponent, DynamicTablePopupComponent, DynamicTableEditComponent, KeysPipesModule, DynamicBusinessSolutionClonePopupComponent, DynamicBusinessSolutionClonePopupComponent, DynamicTableAddComponent],
   exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatMenuModule, MatIconModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, HttpClientModule, FormsModule,
     ReactiveFormsModule,DynamicSelectComponent, MatInputModule,MatExpansionPanel,MatExpansionPanelHeader,MatExpansionPanelTitle, DynamicTablesComponent,
   MatTableModule, CdkTableModule,MatCardModule,MatRadioModule, MatPaginatorModule,MatSortModule,MatSelectModule,
@@ -51,7 +53,9 @@ import { DynamicTableEditComponent, KeysPipesModule } from './dynamic-table-edit
     DynamicReportPopupComponent,
     DynamicYesNoPopupComponent,
     DynamicTablePopupComponent,
-    DynamicTableEditComponent
+    DynamicTableEditComponent,
+    DynamicBusinessSolutionClonePopupComponent,
+    DynamicTableAddComponent
 ]
 })
 export class SharedModule { }

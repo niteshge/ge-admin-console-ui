@@ -5,6 +5,7 @@ import { MasterTablesRoutingModule } from './master-tables-routing.module';
 import { BusinessSolutionComponent } from './business-solution/business-solution.component';
 import { MasterTablesRootComponent } from './master-tables-root/master-tables-root.component';
 import { SharedModule } from '../shared/shared.module';
+import { HorizontalTechnologyComponent } from './horizontal-technology/horizontal-technology.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     MasterTablesRoutingModule
   ],
-  declarations: [BusinessSolutionComponent, MasterTablesRootComponent]
+  declarations: [BusinessSolutionComponent, MasterTablesRootComponent, HorizontalTechnologyComponent]
 })
 export class MasterTablesModule { }

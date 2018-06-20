@@ -27,8 +27,8 @@
     <app-dynamic-select [anyObject]=businessPriorityPlaceholder [placeholder]=businessPriorityPlaceholder [options]="businessPriority3"
       (optionSelected)="business3ValueSeleted($event)" (objectSelected)="businessPriority3PlaceholderValue($event)"></app-dynamic-select>
   </mat-grid-tile>
-  <mat-grid-tile *ngIf=solutionNames>
-    <app-dynamic-select [placeholder]="'Solutions'" [options]='solutionNames' (optionSelected)="businessPriority3SolutionsSelected($event)"></app-dynamic-select>
+  <mat-grid-tile *ngIf=solution1>
+    <app-dynamic-select [placeholder]="'Solutions'" [options]='solution1' (optionSelected)="businessPriority3SolutionsSelected($event)"></app-dynamic-select>
   </mat-grid-tile>
   <mat-grid-tile *ngIf=companyDetails>
     <app-dynamic-select [anyObject]="'Company 1'" [placeholder]="'Company 1'" [options]='listOfAllCompanies' (optionSelected)="business3CompanySelected($event)"

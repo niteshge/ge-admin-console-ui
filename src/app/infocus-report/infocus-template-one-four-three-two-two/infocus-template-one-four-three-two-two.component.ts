@@ -95,8 +95,8 @@ export class InfocusTemplateOneFourThreeTwoTwoComponent implements OnInit {
   technology(value) {
     this.infocusModel.technology = value;
     console.log(this.infocusModel.technology);
-    // let randomValue = Math.random();
-    // this.infocusTechnologySubSegement=this.infocusCoreService.getTechnologiesSubSegment(value,randomValue);
+    let randomValue = Math.random();
+    this.infocusTechnologySubSegement=this.infocusCoreService.getTechnologiesSubSegment(value,randomValue);
   }
   // technologySubSegment(value){
   //   this.infocusModel.technologySubSegemt = value;

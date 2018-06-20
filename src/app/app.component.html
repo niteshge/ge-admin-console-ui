@@ -30,6 +30,11 @@
     </mat-menu>
     <mat-menu #masterTables="matMenu">
       <button routerLink="master-tables/business-solutions" mat-menu-item>Business Solutions</button>
+      <button [matMenuTriggerFor]="technologies" mat-menu-item>Technology</button>
+      
+    </mat-menu>
+    <mat-menu #technologies="matMenu">
+        <button routerLink="master-tables/horizontal-technology" mat-menu-item>Technologies</button>
     </mat-menu>
 
 
