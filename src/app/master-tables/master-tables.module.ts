@@ -6,6 +6,7 @@ import { BusinessSolutionComponent } from './business-solution/business-solution
 import { MasterTablesRootComponent } from './master-tables-root/master-tables-root.component';
 import { SharedModule } from '../shared/shared.module';
 import { HorizontalTechnologyComponent } from './horizontal-technology/horizontal-technology.component';
+import { SubTechnologiesComponent } from './sub-technologies/sub-technologies.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { HorizontalTechnologyComponent } from './horizontal-technology/horizonta
     SharedModule,
     MasterTablesRoutingModule
   ],
-  declarations: [BusinessSolutionComponent, MasterTablesRootComponent, HorizontalTechnologyComponent]
+  declarations: [BusinessSolutionComponent, MasterTablesRootComponent, HorizontalTechnologyComponent, SubTechnologiesComponent]
 })
 export class MasterTablesModule { }

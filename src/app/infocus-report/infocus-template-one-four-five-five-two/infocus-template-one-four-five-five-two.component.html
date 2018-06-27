@@ -196,6 +196,36 @@
       </div>
     </mat-tab>
   </mat-tab-group>
+  <mat-grid-list cols="12" rowHeight="1:1" *ngIf="businessPriority1">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              How To Work With Start Ups:
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field class="col-12">
+          <textarea matInput placeholder="How to work with start ups Para1 (till 1046 chars)" [(ngModel)]="infocusHowToStartupPara1" (ngModelChange)="howToStartPara1()"> </textarea>
+        </mat-form-field>
+        <p *ngIf="infocusHowToStartupPara1MaxValue" [style.background-color]="'red'">Max Lenght of Infocus Introduction Para 1 Exceeded</p>
+        <mat-form-field class="col-12" *ngIf="infocusHowToStartupPara1">
+          <textarea matInput placeholder="How to work with start ups Para1 (till 948 chars)" [(ngModel)]="infocusHowToStartupPara2" (ngModelChange)="howToStartPara2()"> </textarea>
+        </mat-form-field>
+        <p *ngIf="infocusHowToStartupPara2MaxValue" [style.background-color]="'red'">Max Lenght of Infocus Introduction Para 2 Exceeded</p>
+        <mat-form-field class="col-12" *ngIf="infocusHowToStartupPara2">
+          <textarea matInput placeholder="How to work with start ups Para1 (till 910 chars)" [(ngModel)]="infocusHowToStartupPara3" (ngModelChange)="howToStartPara3()"> </textarea>
+        </mat-form-field>
+        <p *ngIf="infocusHowToStartupPara3MaxValue" [style.background-color]="'red'">Max Lenght of Infocus Introduction Para 3 Exceeded</p>
+        <div class="row" *ngIf="infocusHowToStartupSaveParameter">
+          <button mat-raised-button color=primary (click)="saveHowToWorkStartup()">Save How to work with Start Ups</button>
+          <br/>
+          <p *ngIf="howToWorkWithStartupsSaveStatus">
+            <i [style.background-color]="'green'">{{howToWorkWithStartupsSaveStatus}}</i>
+          </p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-grid-list>
   <!-- </div>
     </div> -->
   <!-- <div *ngIf="totalRecommedations">
@@ -207,7 +237,7 @@
   </div> -->
 
   <!-- <div class="row" *ngIf="totalRecommedations"> -->
-    <mat-grid-list cols="12" rowHeight="1:1" *ngIf="businessPriority1">
+    <mat-grid-list cols="12" rowHeight="1:1" *ngIf="howToWorkWithStartupsSaveStatus">
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>

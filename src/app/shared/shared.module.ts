@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import * as _ from 'lodash';
 import {MatButtonModule, 
   MatCheckboxModule, MatToolbarModule, MatMenuModule, MatIconModule, MatFormFieldModule, MatListModule, MatAutocompleteModule, MatInputModule, MatExpansionModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatTableModule, MatCardModule, MatRadioModule,MatPaginatorModule,MatSortModule,
    MatSelectModule,
@@ -7,7 +8,22 @@ import {MatButtonModule,
 MatButtonToggleModule,
 MatTabsModule,
 MatAccordion,
-MatGridListModule} from '@angular/material';
+MatGridListModule,
+MatTreeModule,
+MatBadgeModule,
+MatBottomSheetModule,
+MatChipsModule,
+MatDatepickerModule,
+MatDividerModule,
+MatNativeDateModule,
+MatProgressBarModule,
+MatProgressSpinnerModule,
+MatRippleModule,
+MatSidenavModule,
+MatSliderModule,
+MatSlideToggleModule,
+MatSnackBarModule,
+MatTooltipModule} from '@angular/material';
 import { DynamicSelectComponent } from './dynamic-select/dynamic-select.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -19,6 +35,8 @@ import { DynamicTablePopupComponent } from './dynamic-table-popup/dynamic-table-
 import { DynamicTableEditComponent, KeysPipesModule } from './dynamic-table-edit/dynamic-table-edit.component';
 import { DynamicBusinessSolutionClonePopupComponent } from './dynamic-business-solution-clone-popup/dynamic-business-solution-clone-popup.component';
 import { DynamicTableAddComponent } from './dynamic-table-add/dynamic-table-add.component';
+import { DynamicUiTreeComponent } from './dynamic-ui-tree/dynamic-ui-tree.component';
+import { TreeStructureComponent } from './tree-structure/tree-structure.component';
 
 @NgModule({
   imports: [
@@ -42,13 +60,46 @@ import { DynamicTableAddComponent } from './dynamic-table-add/dynamic-table-add.
     MatDialogModule,
     MatButtonToggleModule,
     MatTabsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTreeModule,
+    MatIconModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRippleModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatTooltipModule,
   ],
-  declarations: [DynamicSelectComponent, DynamicTablesComponent, DynamicReportPopupComponent, DynamicYesNoPopupComponent, DynamicTablePopupComponent, DynamicTableEditComponent, KeysPipesModule, DynamicBusinessSolutionClonePopupComponent, DynamicBusinessSolutionClonePopupComponent, DynamicTableAddComponent],
+  declarations: [DynamicSelectComponent, DynamicTablesComponent, DynamicReportPopupComponent, DynamicYesNoPopupComponent, DynamicTablePopupComponent, DynamicTableEditComponent, KeysPipesModule, DynamicBusinessSolutionClonePopupComponent, DynamicBusinessSolutionClonePopupComponent, DynamicTableAddComponent, DynamicUiTreeComponent, TreeStructureComponent],
   exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatMenuModule, MatIconModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, HttpClientModule, FormsModule,
     ReactiveFormsModule,DynamicSelectComponent, MatInputModule,MatExpansionPanel,MatExpansionPanelHeader,MatExpansionPanelTitle, DynamicTablesComponent,
   MatTableModule, CdkTableModule,MatCardModule,MatRadioModule, MatPaginatorModule,MatSortModule,MatSelectModule,
-  MatListModule, MatDialogModule, DynamicReportPopupComponent,MatTabsModule, MatAccordion,MatGridListModule],
+  MatListModule, MatDialogModule, DynamicReportPopupComponent,MatTabsModule, MatAccordion,MatGridListModule, MatTreeModule,DynamicUiTreeComponent,
+  MatBadgeModule,
+  MatBottomSheetModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDividerModule,
+  MatNativeDateModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRippleModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatTooltipModule,
+  TreeStructureComponent],
   entryComponents: [
     DynamicReportPopupComponent,
     DynamicYesNoPopupComponent,

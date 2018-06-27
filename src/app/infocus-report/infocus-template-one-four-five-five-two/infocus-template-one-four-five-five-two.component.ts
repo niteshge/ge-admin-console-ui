@@ -22,6 +22,14 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
   infocusIntroductionPara3;
   infocusIntroductionPara3MaxValue;
   infocusIntroductionSaveParameter;
+  infocusHowToStartupPara1;
+  infocusHowToStartupPara1MaxValue;
+  infocusHowToStartupPara2;
+  infocusHowToStartupPara2MaxValue;
+  infocusHowToStartupPara3;
+  infocusHowToStartupPara3MaxValue;
+  infocusHowToStartupSaveParameter;
+  howToWorkWithStartupsSaveStatus;
   infocusContextSaveParameter;
   infocusTechnologySubSegement;
   infocusIndustry;
@@ -188,6 +196,54 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
     this.introductionSaveStatus = "Saved Introduction";
   }
+
+  howToStartPara1() {
+    this.infocusHowToStartupPara1MaxValue = this.lenCount(this.infocusHowToStartupPara1, this.infocusHowToStartupPara1MaxValue,1046);
+    if (this.infocusHowToStartupPara3MaxValue === null && this.infocusHowToStartupPara2MaxValue === null && this.infocusHowToStartupPara1MaxValue === null) {
+      this.infocusHowToStartupSaveParameter = 1;
+    } else {
+      this.infocusHowToStartupSaveParameter = null;
+    }
+    if(this.infocusHowToStartupPara1.length<1){
+      this.infocusHowToStartupSaveParameter = null;
+    }
+  }
+  howToStartPara2() {
+    this.infocusHowToStartupPara2MaxValue = this.lenCount(this.infocusHowToStartupPara2, this.infocusHowToStartupPara2MaxValue, 948);
+    if (this.infocusHowToStartupPara3MaxValue === null && this.infocusHowToStartupPara2MaxValue === null && this.infocusHowToStartupPara1MaxValue === null) {
+      this.infocusHowToStartupSaveParameter = 1;
+    } else {
+      this.infocusHowToStartupSaveParameter = null;
+     
+    }
+    if(this.infocusHowToStartupPara2.length<1){
+      this.infocusHowToStartupSaveParameter = null;
+    }
+  }
+  howToStartPara3() {
+    this.infocusHowToStartupPara3MaxValue = this.lenCount(this.infocusHowToStartupPara3, this.infocusHowToStartupPara3MaxValue,910);
+    if (this.infocusHowToStartupPara3MaxValue === null && this.infocusHowToStartupPara2MaxValue === null && this.infocusHowToStartupPara1MaxValue === null) {
+      this.infocusHowToStartupSaveParameter = 1;
+    } else {
+      this.infocusHowToStartupSaveParameter = null;
+    }
+    if(this.infocusHowToStartupPara3.length<1){
+      this.infocusHowToStartupSaveParameter = null;
+    }
+  }
+  saveHowToWorkStartup() {
+    if (this.infocusHowToStartupPara1 != null) {
+      this.infocusModel.howToWorkStartupsPara1 = this.infocusHowToStartupPara1;
+    }
+    if (this.infocusHowToStartupPara2 != null) {
+      this.infocusModel.howToWorkStartupsPara2 = this.infocusHowToStartupPara2;
+    }
+    if (this.infocusHowToStartupPara3 != null) {
+      this.infocusModel.howToWorkStartupsPara3 = this.infocusHowToStartupPara3;
+    }
+    this.howToWorkWithStartupsSaveStatus = "Saved How To Work With Start-Ups";
+  }
+
 
   contextHeading() {
     this.infocusContextHeadingMaxValue = this.lenCount(this.infocusContextHeading, this.infocusContextHeadingMaxValue,40);

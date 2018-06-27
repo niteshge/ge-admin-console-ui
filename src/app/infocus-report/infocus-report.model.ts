@@ -14,6 +14,10 @@ export class InfocusReportModel {
     public introductionPara2: string = null;
     public introductionPara3: string = null;
 
+    public howToWorkStartupsPara1: string = null;
+    public howToWorkStartupsPara2: string = null;
+    public howToWorkStartupsPara3: string = null;
+    
     public infocusContextHeading: string = null;
     public infocusContextSubHeading: string = null;
     public infocusContextDesc: string = null;
