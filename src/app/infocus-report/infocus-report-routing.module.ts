@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { InfocusReportComponent } from './infocus-report.component';
 import { InfocusReportViewComponent } from './infocus-report-view/infocus-report-view.component';
 import { InfocusReportRootComponent } from './infocus-report-root/infocus-report-root.component';
 import { InfocusTemplateOneFourFiveFiveTwoComponent } from './infocus-template-one-four-five-five-two/infocus-template-one-four-five-five-two.component';
@@ -11,15 +10,11 @@ const routes: Routes = [{
   component: InfocusReportRootComponent,
   children: [
     {
-      path: 'submit',
-      component: InfocusReportComponent
-    },
-    {
       path: 'view',
       component: InfocusReportViewComponent
     },
     {
-      path: 'templateone',
+      path: 'template14552',
       component: InfocusTemplateOneFourFiveFiveTwoComponent
     },
     {

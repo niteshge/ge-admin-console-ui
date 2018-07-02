@@ -1,6 +1,7 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { InfocusReportModel } from '../infocus-report.model';
 import { InfocusReportService } from '../../core/infocus-report.service';
+import * as myGlobals from '../../app-globals';
 
 @Component({
   selector: 'app-infocus-template-one-four-five-five-two',
@@ -11,23 +12,30 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
   infocusModel: InfocusReportModel = new InfocusReportModel();
   id
   technologies;
-  infocusReportTitle;
+  infocusReportTitle:string = null;
   infocusRoles;
   infocusIntroductionTitle;
+  infocusIntroductionTitleLen:number = 0;
   infocusIntroductionTitleMaxValue;
   infocusIntroductionPara1;
+  infocusIntroductionPara1Len:number = 0;
   infocusIntroductionPara1MaxValue;
   infocusIntroductionPara2;
+  infocusIntroductionPara2Len:number = 0;
   infocusIntroductionPara2MaxValue;
   infocusIntroductionPara3;
+  infocusIntroductionPara3Len:number = 0;
   infocusIntroductionPara3MaxValue;
   infocusIntroductionSaveParameter;
   infocusHowToStartupPara1;
+  infocusHowToStartupPara1Len:number = 0;
   infocusHowToStartupPara1MaxValue;
   infocusHowToStartupPara2;
+  infocusHowToStartupPara2Len:number = 0;
   infocusHowToStartupPara2MaxValue;
   infocusHowToStartupPara3;
   infocusHowToStartupPara3MaxValue;
+  infocusHowToStartupPara3Len:number = 0;
   infocusHowToStartupSaveParameter;
   howToWorkWithStartupsSaveStatus;
   infocusContextSaveParameter;
@@ -38,10 +46,13 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
   infocusBusinessPriority1;
   introductionSaveStatus;
   infocusContextHeading;
+  infocusContextHeadingLen:number=0;
   infocusContextHeadingMaxValue;
   infocusContextSubHeading;
+  infocusContextSubHeadingLen:number=0;
   infocusContextSubHeadingMaxValue;
   infocusContextDesc;
+  infocusContextDescLen:number=0;
   infocusContextDescMaxValue;
   contextSaved;
   listBp2Placeholders: string[] = [];
@@ -62,20 +73,27 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
   totalRecommedations;
   totalNumberOfRecommendations;
   recommendation1MainPara:string;
+  recommendation1MainParaLen:number = 0;
   recommendation1MainParaMaxValue;
   recommendation1SubHeading;
   recommendation1SubPoint1:string;
+  recommendation1SubPoint1Len:number = 0;
   recommendation1SubPoint1MaxValue;
   recommendation1SubPoint2:string;
+  recommendation1SubPoint2Len:number = 0;
   recommendation1SubPoint2MaxValue;
   recommendation1SubPoint3:string;
+  recommendation1SubPoint3Len:number = 0;
   recommendation1SubPoint3MaxValue;
   recommendation2MainPara;
   recommendation1SubPoint4:string;
+  recommendation1SubPoint4Len:number = 0;
   recommendation1SubPoint4MaxValue;
   recommendation1SubPoint5:string;
+  recommendation1SubPoint5Len:number = 0;
   recommendation1SubPoint5MaxValue;
   recommendation1SubPoint6:string;
+  recommendation1SubPoint6Len:number = 0;
   recommendation1SubPoint6MaxValue;
   recommendationSaveStatus;
   infocusRecommendationSaveParameter;
@@ -109,34 +127,35 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     let randomValue = Math.random();
     this.infocusTechnologySubSegement=this.infocusCoreService.getTechnologiesSubSegment(value,randomValue);
   }
-  roleSelected(value) {
-    this.infocusModel.infocusReportTitle = this.infocusReportTitle;
-    this.infocusModel.role = value;
+  roleSelected(value:string) {
+    this.infocusModel.infocusReportTitle = this.infocusReportTitle.toUpperCase();
+    this.infocusModel.role = value.toUpperCase();
     let randomValue = Math.random();
     this.infocusIndustry = this.infocusCoreService.getInfocusIndustriesByRole(value,randomValue);
   }
-  industrySelected(value) {
-    this.infocusModel.industry = value;
+  industrySelected(value:string) {
+    this.infocusModel.industry = value.toUpperCase();
     let randomValue = Math.random();
     this.infocusIndustrySegment1 = this.infocusCoreService.getInfocusIndustrySegment1ByRolendIndustry(this.infocusModel.role, this.infocusModel.industry,randomValue);
     this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, randomValue);
     console.log(this.infocusModel);
   }
-  industrySegment1Selected(value) {
-    this.infocusModel.industrySegment1 = value;
+  industrySegment1Selected(value:string) {
+    this.infocusModel.industrySegment1 = value.toUpperCase();
     console.log(this.infocusModel);
     let randomValue = Math.random();
     this.infocusIndustrySegment2 = this.infocusCoreService.getInfocusIndustrySegment2ByIndustryndIndustrySegment1(this.infocusModel.industry, this.infocusModel.industrySegment1,randomValue);
     this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, randomValue);
   }
 
-  industrySegment2Selected(value) {
-    this.infocusModel.industrySegment2 = value;
+  industrySegment2Selected(value:string) {
+    this.infocusModel.industrySegment2 = value.toUpperCase();
     console.log(this.infocusModel);
     let randomValue = Math.random();
     this.infocusBusinessPriority1 = this.infocusCoreService.getInfocusBusinessPriority1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, randomValue);
   }
   introductionTitle() {
+    this.infocusIntroductionTitleLen = this.infocusIntroductionTitle.length;
     this.infocusIntroductionTitleMaxValue = this.lenCount(this.infocusIntroductionTitle, this.infocusIntroductionTitleMaxValue,63);
     if (this.infocusIntroductionTitleMaxValue === null && this.infocusIntroductionPara3MaxValue === null && this.infocusIntroductionPara2MaxValue === null && this.infocusIntroductionPara1MaxValue === null) {
       this.infocusIntroductionSaveParameter = 1;
@@ -148,6 +167,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   introductionPara1() {
+    this.infocusIntroductionPara1Len = this.infocusIntroductionPara1.length;
     this.infocusIntroductionPara1MaxValue = this.lenCount(this.infocusIntroductionPara1, this.infocusIntroductionPara1MaxValue,1046);
     if (this.infocusIntroductionTitleMaxValue === null && this.infocusIntroductionPara3MaxValue === null && this.infocusIntroductionPara2MaxValue === null && this.infocusIntroductionPara1MaxValue === null) {
       this.infocusIntroductionSaveParameter = 1;
@@ -159,6 +179,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   introductionPara2() {
+    this.infocusIntroductionPara2Len = this.infocusIntroductionPara2.length;
     this.infocusIntroductionPara2MaxValue = this.lenCount(this.infocusIntroductionPara2, this.infocusIntroductionPara2MaxValue, 948);
     if (this.infocusIntroductionTitleMaxValue === null && this.infocusIntroductionPara3MaxValue === null && this.infocusIntroductionPara2MaxValue === null && this.infocusIntroductionPara1MaxValue === null) {
       this.infocusIntroductionSaveParameter = 1;
@@ -171,6 +192,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   introductionPara3() {
+    this.infocusIntroductionPara3Len = this.infocusIntroductionPara3.length;
     this.infocusIntroductionPara3MaxValue = this.lenCount(this.infocusIntroductionPara3, this.infocusIntroductionPara3MaxValue,910);
     if (this.infocusIntroductionTitleMaxValue === null && this.infocusIntroductionPara3MaxValue === null && this.infocusIntroductionPara2MaxValue === null && this.infocusIntroductionPara1MaxValue === null) {
       this.infocusIntroductionSaveParameter = 1;
@@ -194,10 +216,11 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     if (this.infocusIntroductionPara3 != null) {
       this.infocusModel.introductionPara3 = this.infocusIntroductionPara3;
     }
-    this.introductionSaveStatus = "Saved Introduction";
+    this.introductionSaveStatus = "SUCCESSFULLY SAVED INTRODUCTION";
   }
 
   howToStartPara1() {
+    this.infocusHowToStartupPara1Len = this.infocusHowToStartupPara1.length;
     this.infocusHowToStartupPara1MaxValue = this.lenCount(this.infocusHowToStartupPara1, this.infocusHowToStartupPara1MaxValue,1046);
     if (this.infocusHowToStartupPara3MaxValue === null && this.infocusHowToStartupPara2MaxValue === null && this.infocusHowToStartupPara1MaxValue === null) {
       this.infocusHowToStartupSaveParameter = 1;
@@ -209,6 +232,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   howToStartPara2() {
+    this.infocusHowToStartupPara2Len = this.infocusHowToStartupPara2.length;
     this.infocusHowToStartupPara2MaxValue = this.lenCount(this.infocusHowToStartupPara2, this.infocusHowToStartupPara2MaxValue, 948);
     if (this.infocusHowToStartupPara3MaxValue === null && this.infocusHowToStartupPara2MaxValue === null && this.infocusHowToStartupPara1MaxValue === null) {
       this.infocusHowToStartupSaveParameter = 1;
@@ -221,6 +245,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   howToStartPara3() {
+    this.infocusHowToStartupPara3Len = this.infocusHowToStartupPara3.length;
     this.infocusHowToStartupPara3MaxValue = this.lenCount(this.infocusHowToStartupPara3, this.infocusHowToStartupPara3MaxValue,910);
     if (this.infocusHowToStartupPara3MaxValue === null && this.infocusHowToStartupPara2MaxValue === null && this.infocusHowToStartupPara1MaxValue === null) {
       this.infocusHowToStartupSaveParameter = 1;
@@ -241,11 +266,12 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     if (this.infocusHowToStartupPara3 != null) {
       this.infocusModel.howToWorkStartupsPara3 = this.infocusHowToStartupPara3;
     }
-    this.howToWorkWithStartupsSaveStatus = "Saved How To Work With Start-Ups";
+    this.howToWorkWithStartupsSaveStatus = "SUCCESSFULLY SAVED HOW TO WORK WITH START UPS";
   }
 
 
   contextHeading() {
+    this.infocusContextHeadingLen = this.infocusContextHeading.length;
     this.infocusContextHeadingMaxValue = this.lenCount(this.infocusContextHeading, this.infocusContextHeadingMaxValue,40);
     if (this.infocusContextHeadingMaxValue === null && this.infocusContextSubHeadingMaxValue === null && this.infocusContextDescMaxValue === null) {
       this.infocusContextSaveParameter = 1;
@@ -257,6 +283,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   contextSubHeading() {
+    this.infocusContextSubHeadingLen = this.infocusContextSubHeading.length;
     this.infocusContextSubHeadingMaxValue = this.lenCount(this.infocusContextSubHeading, this.infocusContextSubHeadingMaxValue, 105);
     if (this.infocusContextHeadingMaxValue === null && this.infocusContextSubHeadingMaxValue === null && this.infocusContextDescMaxValue === null) {
       this.infocusContextSaveParameter = 1;
@@ -269,6 +296,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   contextDesc() {
+    this.infocusContextDescLen = this.infocusContextDesc.length;
     this.infocusContextDescMaxValue = this.lenCount(this.infocusContextDesc, this.infocusContextDescMaxValue,1097);
     if (this.infocusContextHeadingMaxValue === null && this.infocusContextSubHeadingMaxValue === null && this.infocusContextDescMaxValue === null) {
       this.infocusContextSaveParameter = 1;
@@ -291,7 +319,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
       this.infocusModel.infocusContextDesc = this.infocusContextDesc;
     }
     
-    this.contextSaved = "Saved Context";
+    this.contextSaved = "SUCCESSFULLY SAVED CONTEXT";
 
   }
 
@@ -432,7 +460,8 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
  
 
   recommendationMain() {
-    this.recommendation1MainParaMaxValue = this.lenCount(this.recommendation1MainPara, this.recommendation1MainParaMaxValue,1725);
+    this.recommendation1MainParaLen = this.recommendation1MainPara.length;
+    this.recommendation1MainParaMaxValue = this.lenCount(this.recommendation1MainPara, this.recommendation1MainParaMaxValue,918);
     if (this.recommendation1MainParaMaxValue === null && this.recommendation1SubPoint1MaxValue === null && this.recommendation1SubPoint2MaxValue === null, this.recommendation1SubPoint3MaxValue === null) {
       this.infocusRecommendationSaveParameter = 1;
     } else {
@@ -444,6 +473,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   recommendationPoint1() {
+    this.recommendation1SubPoint1Len = this.recommendation1SubPoint1.length;
     this.recommendation1SubPoint1MaxValue = this.lenCount(this.recommendation1SubPoint1, this.recommendation1SubPoint1MaxValue, 574);
     if (this.recommendation1MainParaMaxValue === null && this.recommendation1SubPoint1MaxValue === null && this.recommendation1SubPoint2MaxValue === null&& this.recommendation1SubPoint3MaxValue === null) {
       this.infocusRecommendationSaveParameter = 1;
@@ -456,6 +486,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   recommendationPoint2() {
+    this.recommendation1SubPoint2Len = this.recommendation1SubPoint2.length;
     this.recommendation1SubPoint2MaxValue = this.lenCount(this.recommendation1SubPoint2, this.recommendation1SubPoint2MaxValue, 574);
     if (this.recommendation1MainParaMaxValue === null && this.recommendation1SubPoint1MaxValue === null && this.recommendation1SubPoint2MaxValue === null&& this.recommendation1SubPoint3MaxValue === null) {
       this.infocusRecommendationSaveParameter = 1;
@@ -468,6 +499,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   recommendationPoint3() {
+    this.recommendation1SubPoint3Len = this.recommendation1SubPoint3.length;
     this.recommendation1SubPoint3MaxValue = this.lenCount(this.recommendation1SubPoint3, this.recommendation1SubPoint3MaxValue, 574);
     if (this.recommendation1MainParaMaxValue === null && this.recommendation1SubPoint1MaxValue === null && this.recommendation1SubPoint2MaxValue === null && this.recommendation1SubPoint3MaxValue === null) {
       this.infocusRecommendationSaveParameter = 1;
@@ -480,6 +512,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   recommendationPoint4() {
+    this.recommendation1SubPoint4Len = this.recommendation1SubPoint4.length;
     this.recommendation1SubPoint4MaxValue = this.lenCount(this.recommendation1SubPoint4, this.recommendation1SubPoint4MaxValue, 574);
     if (this.recommendation1SubPoint4MaxValue === null && this.recommendation1SubPoint5MaxValue === null&& this.recommendation1SubPoint6MaxValue === null) {
       this.infocusRecommendationSaveParameter = 1;
@@ -489,6 +522,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   recommendationPoint5() {
+    this.recommendation1SubPoint5Len = this.recommendation1SubPoint5.length;
     this.recommendation1SubPoint5MaxValue = this.lenCount(this.recommendation1SubPoint5, this.recommendation1SubPoint5MaxValue, 574);
     if (this.recommendation1SubPoint4MaxValue === null && this.recommendation1SubPoint5MaxValue === null&& this.recommendation1SubPoint6MaxValue === null) {
       this.infocusRecommendationSaveParameter = 1;
@@ -498,6 +532,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     }
   }
   recommendationPoint6() {
+    this.recommendation1SubPoint6Len = this.recommendation1SubPoint6.length;
     this.recommendation1SubPoint6MaxValue = this.lenCount(this.recommendation1SubPoint6, this.recommendation1SubPoint6MaxValue, 574);
     if (this.recommendation1SubPoint4MaxValue === null && this.recommendation1SubPoint5MaxValue === null&& this.recommendation1SubPoint6MaxValue === null) {
       this.infocusRecommendationSaveParameter = 1;
@@ -539,7 +574,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
       this.infocusModel.recommendation1SubPoint6 = null;
     }
 
-    this.recommendationSaveStatus = "done";
+    this.recommendationSaveStatus = "SUCCESSFULLY SAVED RECOMMENDATION";
   }
 
   postInfocusReport() {
@@ -554,7 +589,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
   }
   viewPDF() {
     console.log("the id is ",this.id)
-    window.open('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/viewinfocuspdf/' +this.id.id+ '.pdf')
+    window.open('http://'+myGlobals.server+':8787/api/viewinfocuspdf/' +this.id.id+ '.pdf')
     this.infocusCoreService.getInfocusPDFbyId(this.id)
       .subscribe(
         (response: Response) => {

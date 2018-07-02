@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as myGlobals from '../app-globals';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,10 @@ export class BusinessSolutionsService {
   constructor(private http: HttpClient) { }
 
   getAllBusinessSolutons() {
-    return this.http.get('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/mastertables/businesssolutions');
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/businesssolutions');
   }
   updateBusinessSolution(businessSolutions) {
-    // return this.http.post('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/mastertables/updatebusinesssolutions', businessSolutions, {
+    // return this.http.post('http://'+myGlobals.server+':8787/mastertables/updatebusinesssolutions', businessSolutions, {
     //   headers: {
     //     'Content-Type': 'application/json; charset=UTF-8',
     //     'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
@@ -20,14 +21,14 @@ export class BusinessSolutionsService {
     //     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
     //   }
     // });
-    return this.http.put('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/mastertables/updatebusinesssolutions', businessSolutions)
+    return this.http.put('http://'+myGlobals.server+':8787/mastertables/updatebusinesssolutions', businessSolutions)
   }
   saveBusinessSolutions(businessSolutions, randomValue){
-    return this.http.post('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/mastertables/savebusinesssolutions',businessSolutions);
+    return this.http.post('http://'+myGlobals.server+':8787/mastertables/savebusinesssolutions',businessSolutions);
   }
   
   deleteBusinessSolutions(id, randomValue){
-    return this.http.delete('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/mastertables/deletebusinesssolutions/'+id);
+    return this.http.delete('http://'+myGlobals.server+':8787/mastertables/deletebusinesssolutions/'+id);
   }
 
 }

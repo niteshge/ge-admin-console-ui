@@ -6,6 +6,7 @@ import { InfocusMeta } from './infocus-report-view.model';
 import { DynamicReportPopupComponent } from '../../shared/dynamic-report-popup/dynamic-report-popup.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DynamicYesNoPopupComponent } from '../../shared/dynamic-yes-no-popup/dynamic-yes-no-popup.component';
+import * as myGlobals from '../../app-globals';
 
 @Component({
   selector: 'app-infocus-report-view',
@@ -66,7 +67,8 @@ export class InfocusReportViewComponent implements OnInit {
   }
 
   viewPDF(id) {
-    window.open('http://ge-staging-vm2.eastus.cloudapp.azure.com:8787/api/viewinfocuspdf/' + id + '.pdf')
+    
+    window.open('http://'+myGlobals.server+':8787/api/viewinfocuspdf/' + id + '.pdf')
     this.infocusCoreService.getInfocusPDFbyId(id)
       .subscribe(
         (response: Response) => {

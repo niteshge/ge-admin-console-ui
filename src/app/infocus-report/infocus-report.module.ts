@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { InfocusReportRoutingModule } from './infocus-report-routing.module';
-import { InfocusReportComponent } from './infocus-report.component';
 import { SharedModule } from '../shared/shared.module';
 import { InfocusReportViewComponent } from './infocus-report-view/infocus-report-view.component';
 import { InfocusReportRootComponent } from './infocus-report-root/infocus-report-root.component';
@@ -18,6 +17,6 @@ import { InfocusTemplateTwoSolutionsTwoCompainesComponent } from './infocus-temp
     SharedModule,
     InfocusReportRoutingModule
   ],
-  declarations: [InfocusReportComponent, InfocusReportViewComponent, InfocusReportRootComponent, InfocusTemplateOneFourFiveFiveTwoComponent, KeysPipe, InfocusTemplateOneSolutionTwoCompaniesComponent, InfocusReportRecommendationComponent, InfocusTemplateOneFourThreeTwoTwoComponent, InfocusTemplateTwoSolutionsTwoCompainesComponent]
+  declarations: [InfocusReportViewComponent, InfocusReportRootComponent, InfocusTemplateOneFourFiveFiveTwoComponent, KeysPipe, InfocusTemplateOneSolutionTwoCompaniesComponent, InfocusReportRecommendationComponent, InfocusTemplateOneFourThreeTwoTwoComponent, InfocusTemplateTwoSolutionsTwoCompainesComponent]
 })
 export class InfocusReportModule { }
