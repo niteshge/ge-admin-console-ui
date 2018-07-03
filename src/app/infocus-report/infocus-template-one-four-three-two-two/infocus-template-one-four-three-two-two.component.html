@@ -70,22 +70,22 @@
           <textarea matInput placeholder="Infocus Introduction Title (till 63 chars) -> {{infocusIntroductionTitleLen}}" [(ngModel)]="infocusIntroductionTitle" (ngModelChange)="introductionTitle()">
           </textarea>
         </mat-form-field>
-        <p *ngIf="infocusIntroductionTitleMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">MAX CHAR LENGHT EXCEEDED</p>
+        <p *ngIf="infocusIntroductionTitleMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusIntroductionTitle">
           <textarea matInput placeholder="Infocus Introduction Para1 (till 1046 chars) -> {{infocusIntroductionPara1Len}}" [(ngModel)]="infocusIntroductionPara1" (ngModelChange)="introductionPara1()">
           </textarea>
         </mat-form-field>
-        <p *ngIf="infocusIntroductionPara1MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">MAX CHAR LENGHT EXCEEDED</p>
+        <p *ngIf="infocusIntroductionPara1MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusIntroductionPara1">
           <textarea matInput placeholder="Infocus Introduction Para2 (till 948 chars) -> {{infocusIntroductionPara2Len}}" [(ngModel)]="infocusIntroductionPara2" (ngModelChange)="introductionPara2()">
           </textarea>
         </mat-form-field>
-        <p *ngIf="infocusIntroductionPara2MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">MAX CHAR LENGHT EXCEEDED</p>
+        <p *ngIf="infocusIntroductionPara2MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusIntroductionPara2">
           <textarea matInput placeholder="Infocus Introduction Para3 (till 910 chars) -> {{infocusIntroductionPara3Len}}" [(ngModel)]="infocusIntroductionPara3" (ngModelChange)="introductionPara3()">
           </textarea>
         </mat-form-field>
-        <p *ngIf="infocusIntroductionPara3MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">MAX CHAR LENGHT EXCEEDED</p>
+        <p *ngIf="infocusIntroductionPara3MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <div class="row" *ngIf="infocusIntroductionSaveParameter">
           <button mat-raised-button color=geprimary (click)="saveIntroduction()">SAVE INTRODUCTION</button>
           <br/>
@@ -115,17 +115,17 @@
           <textarea matInput placeholder="Infocus Context Heading (till 40 chars) -> {{infocusContextHeadingLen}}" [(ngModel)]="infocusContextHeading" (ngModelChange)="contextHeading()">
           </textarea>
         </mat-form-field>
-        <p *ngIf="infocusContextHeadingMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">MAX CHAR LENGHT EXCEEDED</p>
+        <p *ngIf="infocusContextHeadingMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusContextHeading">
           <textarea matInput placeholder="Infocus Context Sub Heading (till 105 chars) -> {{infocusContextSubHeadingLen}}" [(ngModel)]="infocusContextSubHeading" (ngModelChange)="contextSubHeading()">
           </textarea>
         </mat-form-field>
-        <p *ngIf="infocusContextSubHeadingMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">MAX CHAR LENGHT EXCEEDED</p>
+        <p *ngIf="infocusContextSubHeadingMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusContextSubHeading">
           <textarea matInput placeholder="Infocus Context Desc (till 1097 chars) -> {{infocusContextDescLen}}" [(ngModel)]="infocusContextDesc" (ngModelChange)="contextDesc()">
           </textarea>
         </mat-form-field>
-        <p *ngIf="infocusContextDescMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">MAX CHAR LENGHT EXCEEDED</p>
+        <p *ngIf="infocusContextDescMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <div class="row" *ngIf="infocusContextSaveParameter">
           <button mat-raised-button color=geprimary (click)="saveContext()">SAVE CONTEXT</button>
           <br/>
@@ -227,17 +227,17 @@
           <textarea matInput placeholder="How to work with start ups Para1 (till 1046 chars) -> {{infocusHowToStartupPara1Len}}" [(ngModel)]="infocusHowToStartupPara1"
             (ngModelChange)="howToStartPara1()"> </textarea>
         </mat-form-field>
-        <p *ngIf="infocusHowToStartupPara1MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">MAX CHAR LENGHT EXCEEDED</p>
+        <p *ngIf="infocusHowToStartupPara1MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusHowToStartupPara1">
           <textarea matInput placeholder="How to work with start ups Para2 (till 948 chars) -> {{infocusHowToStartupPara2Len}}" [(ngModel)]="infocusHowToStartupPara2"
             (ngModelChange)="howToStartPara2()"> </textarea>
         </mat-form-field>
-        <p *ngIf="infocusHowToStartupPara2MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">MAX CHAR LENGHT EXCEEDED</p>
+        <p *ngIf="infocusHowToStartupPara2MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusHowToStartupPara2">
           <textarea matInput placeholder="How to work with start ups Para3 (till 910 chars) -> {{infocusHowToStartupPara3Len}}" [(ngModel)]="infocusHowToStartupPara3"
             (ngModelChange)="howToStartPara3()"> </textarea>
         </mat-form-field>
-        <p *ngIf="infocusHowToStartupPara3MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">MAX CHAR LENGHT EXCEEDED</p>
+        <p *ngIf="infocusHowToStartupPara3MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <div class="row" *ngIf="infocusHowToStartupSaveParameter">
           <button mat-raised-button color=geprimary (click)="saveHowToWorkStartup()">SAVE HOW TO WORK WITH START UPS</button>
           <br/>

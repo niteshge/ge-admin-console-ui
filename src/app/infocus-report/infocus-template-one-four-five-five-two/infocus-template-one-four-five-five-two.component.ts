@@ -98,6 +98,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
   recommendationSaveStatus;
   infocusRecommendationSaveParameter;
   maxInputIntro;
+  maxLengthExceeded:string = "MAX CHAR LENGTH EXCEEDED";
 
   constructor(private infocusCoreService: InfocusReportService) { }
 
