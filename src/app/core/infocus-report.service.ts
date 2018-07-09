@@ -52,10 +52,20 @@ export class InfocusReportService {
 
   getInfocusBusinessPriority3Solution1(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
     return this.http.get('http://'+myGlobals.server+':8787/api/getsolution1/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue)
-
   }
+
+  getInfocusBusinessPriority2Solution1(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string,randomValue) {
+    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution1bybp2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&ver='+randomValue)
+  }
+
+
   getInfocusBusinessPriority3Solution2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
     return this.http.get('http://'+myGlobals.server+':8787/api/getsolution2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue)
+
+  }
+
+  getInfocusBusinessPriority2Solution2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, randomValue) {
+    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution2bybp2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + '&ver='+randomValue)
 
   }
   getInfocusBusinessPriority3Solution3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {

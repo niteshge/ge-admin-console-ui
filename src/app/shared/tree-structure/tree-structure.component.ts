@@ -1,9 +1,11 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material/tree';
 import { of as ofObservable, Observable, BehaviorSubject } from 'rxjs';
-
+import { MatDialog } from '@angular/material';
+import { DynamicYesNoPopupComponent } from '../dynamic-yes-no-popup/dynamic-yes-no-popup.component';
+import { AlertBoxComponent } from '../alert-box/alert-box.component';
 
 /**
  * Node for to-do item
@@ -24,134 +26,62 @@ export class TodoItemFlatNode {
 /**
  * The Json object for to-do list data.
  */
-const TREE_DATA = [{
-  "children": [{
-    "children": [{
-      "children": [],
-      "item": "3D Printing Manufactures",
-      "id": [1, 0, 1, 2]
-    }, {
-      "children": [],
-      "item": "3D Printing Material",
-      "id": [1, 0, 1, 4]
-    }],
-    "item": "Hardware",
-    "id": [1, 0, 1]
-  },
-  {
-    "children": [{
-      "children": [],
-      "item": "3D Scanner",
-      "id": [1, 0, 7, 6]
-    }],
-    "item": "Hardware + Software",
-    "id": [1, 0, 7]
-  },
-  {
-    "children": [{
-      "children": [],
-      "item": "3D Printing CAD Software",
-      "id": []
-    }],
-    "item": "Software",
-    "id": [1, 0, 8]
+
+
+
+@Component({
+  selector: 'app-tree-structure',
+  templateUrl: './tree-structure.component.html',
+  styleUrls: ['./tree-structure.component.css'],
+  // providers: [ChecklistDatabase]
+})
+export class TreeStructureComponent implements OnInit {
+  @Input() TREEDATA = [];
+  @Output() newnode = new EventEmitter();
+  @Output() action = new EventEmitter();
+  constructor(public dialog: MatDialog) {
+    this.initialize();
+    this.dataChange.subscribe(data => {
+    this.dataSource.data = data;
+    });
   }
-  ],
-  "item": "3D Printing",
-  "id": [1]
-},
-{
-  "children": [{
-    "children": [{
-      "children": [],
-      "item": "Image Recognition",
-      "id": [2, 0, 43, 49]
-    }],
-    "item": "Computer Vision",
-    "id": [2, 0, 43]
-  },
-  {
-    "children": [{
-      "children": [],
-      "item": "Speech Recognition",
-      "id": [2, 0, 54, 60]
-    },
-    {
-      "children": [],
-      "item": "Text Analysis",
-      "id": [2, 0, 54, 62]
-    }
-    ],
-    "item": "Natural Language Processing",
-    "id": [2, 0, 54]
-  },
-  {
-    "children": [{
-      "children": [{
-        "children": [],
-        "item": "Cyber Security",
-        "id": [2, 0, 40, 940, 44]
-      }, {
-        "children": [],
-        "item": "Marketing",
-        "id": [2, 0, 40, 940, 53]
-      }],
-      "item": "Functional Application",
-      "id": [2, 0, 40, 940]
-    }],
-    "item": "Application",
-    "id": [2, 0, 40]
-  }
-  ],
-  "item": "Artificial Intelligence",
-  "id": [2]
-}, {
-  "children": [],
-  "item": "Big Data & Analytics",
-  "id": [3]
-},
-{
-  "children": [],
-  "item": "Other",
-  "id": [99]
-}
-]
-
-
-/**
- * Checklist database, it can build a tree structured Json object.
- * Each node in Json object represents a to-do item or a category.
- * If a node is a category, it has children items and new items can be added under the category.
- */
-@Injectable()
-export class ChecklistDatabase {
-  dataChange: BehaviorSubject<TodoItemNode[]> = new BehaviorSubject<TodoItemNode[]>([]);
-
-  get data(): TodoItemNode[] { return this.dataChange.value; }
-
-  constructor() {
+  ngOnInit() {
+    console.log(this.TREEDATA);
     this.initialize();
   }
-
+  ngOnChanges(): void {
+    this.initialize();
+    this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
+      this.isExpandable, this.getChildren);
+    this.treeControl = new FlatTreeControl<TodoItemFlatNode>(this.getLevel, this.isExpandable);
+    this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+    this.dataChange.subscribe(data => {
+      this.dataSource.data = data;
+      });
+    // this.dataSource.data = this.data;
+  }
+  dataChange: BehaviorSubject<TodoItemNode[]> = new BehaviorSubject<TodoItemNode[]>([]);
+  get data(): TodoItemNode[] { return this.dataChange.value; }
   initialize() {
     // Build the tree nodes from Json object. The result is a list of `TodoItemNode` with nested
-    //     file node as children.
-    // const data = this.buildFileTree(TREE_DATA, 0, [],0,0);
-    const data = this.buildFileTree(TREE_DATA, []);
+    // file node as children.
+    console.log(this.TREEDATA);
+    const data = this.buildFileTree(this.TREEDATA, []);
 
     // Notify the change.
     this.dataChange.next(data);
   }
+  
 
   /**
-   * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
-   * The return value is the list of `TodoItemNode`.
-   */
+  * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
+  * The return value is the list of `TodoItemNode`.
+  */
 
   /**
-* Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
-* The return value is the list of `TodoItemNode`.
-*/
+  * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
+  * The return value is the list of `TodoItemNode`.
+  */
   buildFileTree(arr = [], lvl = []) {
     return arr.map((val, idx) => ({
       item: val.item,
@@ -159,100 +89,6 @@ export class ChecklistDatabase {
       children: this.buildFileTree(val.children, [...lvl, idx]),
       level: [...lvl, idx]
     }));
-  }
-  /** Add an item to to-do list */
-  insertItem(parent: TodoItemNode, name: string) {
-    console.log("the parent got is ", parent);
-    console.log("The parent id is ", parent.id);
-    // let tempId: number[] = parent.id;
-    // console.log("the temp id is ", tempId);
-    // let newNodeId:number[] = Object.assign([], tempId);
-    // console.log("The copy is ", newNodeId)
-    // newNodeId.push(null);
-    // console.log("The new node id is", newNodeId);
-    if (parent.children.length > 1) {
-      let lastAddedChildNode = parent.children[parent.children.length - 1]
-      if (lastAddedChildNode.item === "") {
-        //Do Nothing When the Previous Child is Empty
-      } else {
-        let level: number[] = Object.assign([], parent.level);
-        let lastLevelOfChild = parent.children.length;
-        level.push(lastLevelOfChild);
-        const child = <TodoItemNode>{ item: name, id: parent.id, level: level, children: [] };
-        if (parent.children) {
-          parent.children.push(child);
-          this.dataChange.next(this.data);
-        }
-      }
-    } else {
-      let level: number[] = Object.assign([], parent.level);
-      let lastLevelOfChild = parent.children.length;
-      level.push(lastLevelOfChild);
-      const child = <TodoItemNode>{ item: name, id: parent.id, level: level, children: [] };
-      if (parent.children) {
-        parent.children.push(child);
-        this.dataChange.next(this.data);
-      }
-    }
-
-
-  }
-
-  closeItem(parent: TodoItemNode) {
-    let level: number[] = parent.level;
-    // if(level.length>2){
-    let parentNode = this.data[level[0]];
-    console.log("The top parent node is ", parentNode);
-    console.log("b4 shift ", level);
-    level.shift();
-    console.log("the level is ", level);
-    for (let i = 0; i < level.length - 1; i++) {
-      console.log("The parent node is ", parentNode)
-      parentNode = parentNode.children[level[i]];
-    }
-    parentNode.children.splice(-1, 1);
-    this.dataChange.next(this.data);
-    console.log("After the slice the data is ", this.data);
-    // }else{
-    //   let parentNode = this.data[level[0]];
-    //   console.log("When node is len 2",parentNode)
-    //   parentNode.children.splice(-1,1);
-    // }
-    console.log("this . data ", this.data);
-    this.dataChange.next(this.data);
-
-  }
-  editItem(parent: TodoItemNode, name: string) {
-    const child = <TodoItemNode>{ item: name, id: parent.id };
-    if (parent.children) {
-      parent.children.push(child);
-      this.dataChange.next(this.data);
-    }
-  }
-  updateItem(node: TodoItemNode, name: string) {
-    console.log("In the update method", node);
-    node.item = name;
-    this.dataChange.next(this.data);
-    console.log("The updated node is ", node);
-    console.log("The node item is :", node.item);
-    console.log("the tech Id is ", node.id[0]);
-    if (node.id.length > 1) {
-      console.log("The parent id is ", node.id[node.id.length - 1]);
-    }
-  }
-  deleteItem(parent: TodoItemNode, name: string) {
-
-  }
-}
-
-@Component({
-  selector: 'app-tree-structure',
-  templateUrl: './tree-structure.component.html',
-  styleUrls: ['./tree-structure.component.css'],
-  providers: [ChecklistDatabase]
-})
-export class TreeStructureComponent implements OnInit {
-  ngOnInit(): void {
   }
   /** Map from flat node to nested node. This helps us finding the nested node to be modified */
   flatNodeMap: Map<TodoItemFlatNode, TodoItemNode> = new Map<TodoItemFlatNode, TodoItemNode>();
@@ -275,17 +111,6 @@ export class TreeStructureComponent implements OnInit {
   /** The selection for checklist */
   checklistSelection = new SelectionModel<TodoItemFlatNode>(true /* multiple */);
 
-  constructor(private database: ChecklistDatabase) {
-    this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
-      this.isExpandable, this.getChildren);
-    this.treeControl = new FlatTreeControl<TodoItemFlatNode>(this.getLevel, this.isExpandable);
-    this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-
-    database.dataChange.subscribe(data => {
-      this.dataSource.data = data;
-    });
-  }
-
   getLevel = (node: TodoItemFlatNode) => { return node.level; };
 
   isExpandable = (node: TodoItemFlatNode) => { return node.expandable; };
@@ -299,8 +124,8 @@ export class TreeStructureComponent implements OnInit {
   hasNoContent = (_: number, _nodeData: TodoItemFlatNode) => { return _nodeData.item === ''; };
 
   /**
-   * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
-   */
+  * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
+  */
   transformer = (node: TodoItemNode, level: number) => {
     let flatNode = this.nestedNodeMap.has(node) && this.nestedNodeMap.get(node)!.item === node.item
       ? this.nestedNodeMap.get(node)!
@@ -335,46 +160,161 @@ export class TreeStructureComponent implements OnInit {
       : this.checklistSelection.deselect(...descendants);
   }
 
+  /** Add an item to to-do list */
+  insertItem(parent: TodoItemNode, name: string) {
+    console.log("the parent got is ", parent);
+    console.log("The parent id is ", parent.id);
+    // let tempId: number[] = parent.id;
+    // console.log("the temp id is ", tempId);
+    // let newNodeId:number[] = Object.assign([], tempId);
+    // console.log("The copy is ", newNodeId)
+    // newNodeId.push(null);
+    // console.log("The new node id is", newNodeId);
+    if (parent.children.length > 1) {
+      let lastAddedChildNode = parent.children[parent.children.length - 1] //To add after the last node of the parent(which is the new node/child should be added in the last of row in the children)
+      if (lastAddedChildNode.item === "") {
+        //Do Nothing When the Previous Child is Empty
+      } else {
+        let level: number[] = Object.assign([], parent.level);
+        let lastLevelOfChild = parent.children.length; //Get the lenght of the children which gives you the last index level for the new node
+        level.push(lastLevelOfChild);
+        const child = <TodoItemNode>{ item: name, id: parent.id, level: level, children: [] };
+        console.log("The child new empty field is ", child);
+        if (parent.children) {
+          parent.children.push(child);
+          this.dataChange.next(this.data);
+        }
+      }
+    } else {
+      let level: number[] = Object.assign([], parent.level);
+      let lastLevelOfChild = parent.children.length;
+      level.push(lastLevelOfChild);
+      const child = <TodoItemNode>{ item: name, id: parent.id, level: level, children: [] };
+      console.log("The child new empty field is ", child);
+      if (parent.children) {
+        parent.children.push(child);
+        this.dataChange.next(this.data);
+      }
+    }
+
+
+  }
+
+  closeItem(parent: TodoItemNode) {
+    let level: number[] = parent.level;
+    // if(level.length>2){
+    let parentNode = this.data[level[0]];
+    console.log("The top parent node is ", parentNode);
+    console.log("b4 shift ", level);
+    level.shift();
+    console.log("the level is ", level);
+    for (let i = 0; i < level.length - 1; i++) {
+      console.log("The parent node is ", parentNode)
+      parentNode = parentNode.children[level[i]];
+      console.log("Temp parent node ", parentNode);
+    }
+    console.log("to close the parent's child ", parentNode);
+    parentNode.children.splice(-1, 1);
+    this.dataChange.next(this.data);
+    console.log("After the slice the data is ", this.data);
+    // }else{
+    // let parentNode = this.data[level[0]];
+    // console.log("When node is len 2",parentNode)
+    // parentNode.children.splice(-1,1);
+    // }
+    console.log("this . data ", this.data);
+    this.dataChange.next(this.data);
+
+  }
+  editItem(parent: TodoItemNode, name: string) {
+    const child = <TodoItemNode>{ item: name, id: parent.id};
+    if (parent.children) {
+      parent.children.push(child);
+      this.dataChange.next(this.data);
+    }
+  }
+  updateItem(node: TodoItemNode, name: string) {
+    console.log("In the update method", node);
+    node.item = name;
+    // Emit the new node
+    this.emitNode(node, 1);
+    this.dataChange.next(this.data);
+    // Enable only if you no how to update after the response is succesful message is taken
+    /*
+    console.log("The updated node is ", node);
+    console.log("The node item is :", node.item);
+    console.log("the tech Id is ", node.id[0]);
+     if (node.id.length > 1) {
+       console.log("The parent id is ", node.id[node.id.length - 1]);
+     }*/
+  }
+  deleteItem(parent: TodoItemNode, name: string) {
+      
+    // TODO: slice only that node once the response is successful on deleting
+  }
   /** Select the category so we can insert the new item. */
   addNewItem(node: TodoItemFlatNode) {
     console.log("time of adding", node);
     const parentNode = this.flatNodeMap.get(node);
-    console.log("when add function is called the parent is ", parentNode)
-    this.database.insertItem(parentNode!, '');
+    console.log("when add function is called the parent is ", parentNode);
+    this.insertItem(parentNode!, '');
     this.treeControl.expand(node);
   }
   closeNode(node: TodoItemFlatNode) {
-    console.log("The closing node is ", node)
+    console.log("The closing node is ", node);
     const parentNode = this.flatNodeMap.get(node);
     console.log("The closing parent node is ", parentNode);
-    this.database.closeItem(parentNode);
-
+    this.closeItem(parentNode);
   }
 
   /** Save the node to database */
   saveNode(node: TodoItemFlatNode, itemValue: string) {
     const nestedNode = this.flatNodeMap.get(node);
-    this.database.updateItem(nestedNode!, itemValue);
+    if (itemValue == "" || itemValue === null) {
+      this.dialog.open(AlertBoxComponent, {
+        width: '300px',
+        data: "No Value Entered... Please Enter.",
+      });
+    } else {
+      let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
+        width: '300px',
+        data: itemValue
+      });
+      dialogConfirm.afterClosed().subscribe(result => {
+        console.log("The dialog confirm is closed with a action:", result);
+        if (result == 100) {
+          // let newNode:TodoItemNode = Object.assign({}, nestedNode);
+          // newNode.item = itemValue;
+          // this.subTechnologyService.addSubTechnologyNode(newNode)
+          // .subscribe(
+          // (response:Response) =>{
+          // console.log("The response of adding the node ", response);
+          // }
+          // )
+          this.updateItem(nestedNode!, itemValue);
+        } else {
+          this.closeNode(node);
+        }
+      });
+    }
   }
   deleteNode(node: TodoItemFlatNode) {
     console.log("deletion node is ", node)
     const parentNode = this.flatNodeMap.get(node);
     console.log("when add function is called the parent is ", parentNode)
     console.log("To delete the nodes ", parentNode.id);
+    this.emitNode(parentNode,2);
   }
   editNode(node: TodoItemFlatNode) {
     console.log("time of adding", node);
     const parentNode = this.flatNodeMap.get(node);
     console.log("when add function is called the parent is ", parentNode)
-    this.database.editItem(parentNode!, '');
+    this.editItem(parentNode!, '');
     this.treeControl.expand(node);
   }
-  submit() {
-    console.log(this.database);
+
+  emitNode(node: TodoItemNode, action:number){
+    this.newnode.emit(node);
+    this.action.emit(action);
   }
 }
-
-
-/**  Copyright 2018 Google Inc. All Rights Reserved.
-  Use of this source code is governed by an MIT-style license that
-  can be found in the LICENSE file at http://angular.io/license */

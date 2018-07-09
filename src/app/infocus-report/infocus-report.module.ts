@@ -10,6 +10,10 @@ import { InfocusTemplateOneSolutionTwoCompaniesComponent } from './infocus-templ
 import { InfocusReportRecommendationComponent } from './infocus-report-recommendation/infocus-report-recommendation.component';
 import { InfocusTemplateOneFourThreeTwoTwoComponent } from './infocus-template-one-four-three-two-two/infocus-template-one-four-three-two-two.component';
 import { InfocusTemplateTwoSolutionsTwoCompainesComponent } from './infocus-template-one-four-three-two-two/infocus-template-two-solutions-two-compaines/infocus-template-two-solutions-two-compaines.component';
+import { InfocusTemplateOneThreeTwoThreeComponent } from './infocus-template-one-three-two-three/infocus-template-one-three-two-three.component';
+import { InfocusTemplateOneThreeTwoTwoComponent } from './infocus-template-one-three-two-two/infocus-template-one-three-two-two.component';
+import { InfocusTemplateTwoSolutionThreeCompaniesComponent } from './infocus-template-one-three-two-three/infocus-template-two-solution-three-companies/infocus-template-two-solution-three-companies.component';
+import { InfocusTemplateOneThreeTwoTwoSolutionTwoCompaniesTwoComponent } from './infocus-template-one-three-two-two/infocus-template-one-three-two-two-solution-two-companies-two/infocus-template-one-three-two-two-solution-two-companies-two.component';
 
 @NgModule({
   imports: [
@@ -17,6 +21,6 @@ import { InfocusTemplateTwoSolutionsTwoCompainesComponent } from './infocus-temp
     SharedModule,
     InfocusReportRoutingModule
   ],
-  declarations: [InfocusReportViewComponent, InfocusReportRootComponent, InfocusTemplateOneFourFiveFiveTwoComponent, KeysPipe, InfocusTemplateOneSolutionTwoCompaniesComponent, InfocusReportRecommendationComponent, InfocusTemplateOneFourThreeTwoTwoComponent, InfocusTemplateTwoSolutionsTwoCompainesComponent]
+  declarations: [InfocusReportViewComponent, InfocusReportRootComponent, InfocusTemplateOneFourFiveFiveTwoComponent, KeysPipe, InfocusTemplateOneSolutionTwoCompaniesComponent, InfocusReportRecommendationComponent, InfocusTemplateOneFourThreeTwoTwoComponent, InfocusTemplateTwoSolutionsTwoCompainesComponent, InfocusTemplateOneThreeTwoThreeComponent, InfocusTemplateOneThreeTwoTwoComponent, InfocusTemplateTwoSolutionThreeCompaniesComponent, InfocusTemplateOneThreeTwoTwoSolutionTwoCompaniesTwoComponent]
 })
 export class InfocusReportModule { }

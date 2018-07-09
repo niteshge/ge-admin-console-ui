@@ -34,6 +34,118 @@ export class InfocusReportModel {
     public businessPriority2c: string = null;
     public businessPriority2d: string = null;
 
+    public bp2aSolution1:string;
+    public bp2aSolution2:string;
+
+    public bp2bSolution1:string;
+    public bp2bSolution2:string;
+
+    public bp2cSolution1:string;
+    public bp2cSolution2:string;
+
+    public bp2aSolution1Code:string;
+    public bp2aSolution1CompanyDomainName1:string;
+    public bp2aSolution1CompanyLogo1:string;
+    public bp2aSolution1CompanyMaturityStatus1:string;
+    public bp2aSolution1CompanyName1:string;
+    public bp2aSolution1CompanyLocation1:string;
+    public bp2aSolution1CompanyDomainName2:string;
+    public bp2aSolution1CompanyLogo2:string;
+    public bp2aSolution1CompanyName2:string;
+    public bp2aSolution1CompanyMaturityStatus2:string;
+    public bp2aSolution1CompanyLocation2:string;
+    public bp2aSolution1CompanyDomainName3:string;
+    public bp2aSolution1CompanyLogo3:string;
+    public bp2aSolution1CompanyName3:string;
+    public bp2aSolution1CompanyMaturityStatus3:string;
+    public bp2aSolution1CompanyLocation3:string;
+
+    public bp2aSolution2Code:string;
+    public bp2aSolution2CompanyDomainName1:string;
+    public bp2aSolution2CompanyLogo1:string;
+    public bp2aSolution2CompanyMaturityStatus1:string;
+    public bp2aSolution2CompanyName1:string;
+    public bp2aSolution2CompanyLocation1:string;
+    public bp2aSolution2CompanyDomainName2:string;
+    public bp2aSolution2CompanyLogo2:string;
+    public bp2aSolution2CompanyName2:string;
+    public bp2aSolution2CompanyMaturityStatus2:string;
+    public bp2aSolution2CompanyLocation2:string;
+    public bp2aSolution2CompanyDomainName3:string;
+    public bp2aSolution2CompanyLogo3:string;
+    public bp2aSolution2CompanyName3:string;
+    public bp2aSolution2CompanyMaturityStatus3:string;
+    public bp2aSolution2CompanyLocation3:string;
+
+    public bp2bSolution1Code:string;
+    public bp2bSolution1CompanyDomainName1:string;
+    public bp2bSolution1CompanyLogo1:string;
+    public bp2bSolution1CompanyMaturityStatus1:string;
+    public bp2bSolution1CompanyName1:string;
+    public bp2bSolution1CompanyLocation1:string;
+    public bp2bSolution1CompanyDomainName2:string;
+    public bp2bSolution1CompanyLogo2:string;
+    public bp2bSolution1CompanyName2:string;
+    public bp2bSolution1CompanyMaturityStatus2:string;
+    public bp2bSolution1CompanyLocation2:string;
+    public bp2bSolution1CompanyDomainName3:string;
+    public bp2bSolution1CompanyLogo3:string;
+    public bp2bSolution1CompanyName3:string;
+    public bp2bSolution1CompanyMaturityStatus3:string;
+    public bp2bSolution1CompanyLocation3:string;
+
+    public bp2bSolution2Code:string;
+    public bp2bSolution2CompanyDomainName1:string;
+    public bp2bSolution2CompanyLogo1:string;
+    public bp2bSolution2CompanyMaturityStatus1:string;
+    public bp2bSolution2CompanyName1:string;
+    public bp2bSolution2CompanyLocation1:string;
+    public bp2bSolution2CompanyDomainName2:string;
+    public bp2bSolution2CompanyLogo2:string;
+    public bp2bSolution2CompanyName2:string;
+    public bp2bSolution2CompanyMaturityStatus2:string;
+    public bp2bSolution2CompanyLocation2:string;
+    public bp2bSolution2CompanyDomainName3:string;
+    public bp2bSolution2CompanyLogo3:string;
+    public bp2bSolution2CompanyName3:string;
+    public bp2bSolution2CompanyMaturityStatus3:string;
+    public bp2bSolution2CompanyLocation3:string;
+
+
+    public bp2cSolution1Code:string;
+    public bp2cSolution1CompanyDomainName1:string;
+    public bp2cSolution1CompanyLogo1:string;
+    public bp2cSolution1CompanyMaturityStatus1:string;
+    public bp2cSolution1CompanyName1:string;
+    public bp2cSolution1CompanyLocation1:string;
+    public bp2cSolution1CompanyDomainName2:string;
+    public bp2cSolution1CompanyLogo2:string;
+    public bp2cSolution1CompanyName2:string;
+    public bp2cSolution1CompanyMaturityStatus2:string;
+    public bp2cSolution1CompanyLocation2:string;
+    public bp2cSolution1CompanyDomainName3:string;
+    public bp2cSolution1CompanyLogo3:string;
+    public bp2cSolution1CompanyName3:string;
+    public bp2cSolution1CompanyMaturityStatus3:string;
+    public bp2cSolution1CompanyLocation3:string;
+
+    public bp2cSolution2Code:string;
+    public bp2cSolution2CompanyDomainName1:string;
+    public bp2cSolution2CompanyLogo1:string;
+    public bp2cSolution2CompanyMaturityStatus1:string;
+    public bp2cSolution2CompanyName1:string;
+    public bp2cSolution2CompanyLocation1:string;
+    public bp2cSolution2CompanyDomainName2:string;
+    public bp2cSolution2CompanyLogo2:string;
+    public bp2cSolution2CompanyName2:string;
+    public bp2cSolution2CompanyMaturityStatus2:string;
+    public bp2cSolution2CompanyLocation2:string;
+    public bp2cSolution2CompanyDomainName3:string;
+    public bp2cSolution2CompanyLogo3:string;
+    public bp2cSolution2CompanyName3:string;
+    public bp2cSolution2CompanyMaturityStatus3:string;
+    public bp2cSolution2CompanyLocation3:string;
+
     public bp2abusinessPriority3a: string = null;
     public bp2abusinessPriority3b: string = null;
     public bp2abusinessPriority3c: string = null;

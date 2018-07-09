@@ -4,6 +4,8 @@ import { InfocusReportViewComponent } from './infocus-report-view/infocus-report
 import { InfocusReportRootComponent } from './infocus-report-root/infocus-report-root.component';
 import { InfocusTemplateOneFourFiveFiveTwoComponent } from './infocus-template-one-four-five-five-two/infocus-template-one-four-five-five-two.component';
 import { InfocusTemplateOneFourThreeTwoTwoComponent } from './infocus-template-one-four-three-two-two/infocus-template-one-four-three-two-two.component';
+import { InfocusTemplateOneThreeTwoThreeComponent } from './infocus-template-one-three-two-three/infocus-template-one-three-two-three.component';
+import { InfocusTemplateOneThreeTwoTwoComponent } from './infocus-template-one-three-two-two/infocus-template-one-three-two-two.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,6 +22,14 @@ const routes: Routes = [{
     {
       path: 'template14322',
       component:InfocusTemplateOneFourThreeTwoTwoComponent
+    },
+    {
+      path: 'template1323',
+      component:InfocusTemplateOneThreeTwoThreeComponent
+    },
+    {
+      path: 'template1322',
+      component:InfocusTemplateOneThreeTwoTwoComponent
     }
   ]
 }];

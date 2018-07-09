@@ -37,6 +37,7 @@ import { DynamicBusinessSolutionClonePopupComponent } from './dynamic-business-s
 import { DynamicTableAddComponent } from './dynamic-table-add/dynamic-table-add.component';
 import { DynamicUiTreeComponent } from './dynamic-ui-tree/dynamic-ui-tree.component';
 import { TreeStructureComponent } from './tree-structure/tree-structure.component';
+import { AlertBoxComponent } from './alert-box/alert-box.component';
 
 @NgModule({
   imports: [
@@ -80,7 +81,7 @@ import { TreeStructureComponent } from './tree-structure/tree-structure.componen
     MatToolbarModule,
     MatTooltipModule,
   ],
-  declarations: [DynamicSelectComponent, DynamicTablesComponent, DynamicReportPopupComponent, DynamicYesNoPopupComponent, DynamicTablePopupComponent, DynamicTableEditComponent, KeysPipesModule, DynamicBusinessSolutionClonePopupComponent, DynamicBusinessSolutionClonePopupComponent, DynamicTableAddComponent, DynamicUiTreeComponent, TreeStructureComponent],
+  declarations: [DynamicSelectComponent, DynamicTablesComponent, DynamicReportPopupComponent, DynamicYesNoPopupComponent, DynamicTablePopupComponent, DynamicTableEditComponent, KeysPipesModule, DynamicBusinessSolutionClonePopupComponent, DynamicBusinessSolutionClonePopupComponent, DynamicTableAddComponent, DynamicUiTreeComponent, TreeStructureComponent, AlertBoxComponent],
   exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatMenuModule, MatIconModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, HttpClientModule, FormsModule,
     ReactiveFormsModule,DynamicSelectComponent, MatInputModule,MatExpansionPanel,MatExpansionPanelHeader,MatExpansionPanelTitle, DynamicTablesComponent,
   MatTableModule, CdkTableModule,MatCardModule,MatRadioModule, MatPaginatorModule,MatSortModule,MatSelectModule,
@@ -106,7 +107,8 @@ import { TreeStructureComponent } from './tree-structure/tree-structure.componen
     DynamicTablePopupComponent,
     DynamicTableEditComponent,
     DynamicBusinessSolutionClonePopupComponent,
-    DynamicTableAddComponent
+    DynamicTableAddComponent,
+    AlertBoxComponent
 ]
 })
 export class SharedModule { }

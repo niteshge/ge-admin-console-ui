@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-3">
       <br/>
-      <h6 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'">INFOCUS REPORT TEMPLATE - 14322</h6>
+      <h6 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'">INFOCUS REPORT TEMPLATE - 1323</h6>
     </div>
   </div>
   <br/>
@@ -25,9 +25,6 @@
     <div class="col-2">
       <app-dynamic-select *ngIf="infocusModel.readtime" [placeholder]="'Technology Name'" [options]="technologies | async" (optionSelected)="technology($event)"></app-dynamic-select>
     </div>
-    <!-- <div class="col-2">
-        <app-dynamic-select *ngIf="infocusTechnologySubSegement" [placeholder]="'Technology Sub Segment'" [options]="infocusTechnologySubSegement | async" (optionSelected)="technologySubSegment($event)"></app-dynamic-select>
-      </div> -->
   </div>
   <br/>
   <div class="row" *ngIf="infocusModel.technology">
@@ -57,7 +54,6 @@
       <h5 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'">INTRODUCTION</h5>
     </div>
   </div>
-
   <mat-grid-list cols="12" rowHeight="1:1" *ngIf="infocusIndustry" [style.padding-left]="'64px'" [style.padding-right]="'64px'">
     <mat-accordion>
       <mat-expansion-panel>
@@ -67,22 +63,26 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-form-field class="col-12">
-          <textarea matInput placeholder="Infocus Introduction Title (till 63 chars) -> {{infocusIntroductionTitleLen}}" [(ngModel)]="infocusIntroductionTitle" (ngModelChange)="introductionTitle()">
+          <textarea matInput placeholder="Infocus Introduction Title (till 63 chars) -> {{infocusIntroductionTitleLen}}" [(ngModel)]="infocusIntroductionTitle"
+            (ngModelChange)="introductionTitle()">
           </textarea>
         </mat-form-field>
         <p *ngIf="infocusIntroductionTitleMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusIntroductionTitle">
-          <textarea matInput placeholder="Infocus Introduction Para1 (till 1046 chars) -> {{infocusIntroductionPara1Len}}" [(ngModel)]="infocusIntroductionPara1" (ngModelChange)="introductionPara1()">
+          <textarea matInput placeholder="Infocus Introduction Para1 (till 1046 chars) -> {{infocusIntroductionPara1Len}}" [(ngModel)]="infocusIntroductionPara1"
+            (ngModelChange)="introductionPara1()">
           </textarea>
         </mat-form-field>
         <p *ngIf="infocusIntroductionPara1MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusIntroductionPara1">
-          <textarea matInput placeholder="Infocus Introduction Para2 (till 948 chars) -> {{infocusIntroductionPara2Len}}" [(ngModel)]="infocusIntroductionPara2" (ngModelChange)="introductionPara2()">
+          <textarea matInput placeholder="Infocus Introduction Para2 (till 948 chars) -> {{infocusIntroductionPara2Len}}" [(ngModel)]="infocusIntroductionPara2"
+            (ngModelChange)="introductionPara2()">
           </textarea>
         </mat-form-field>
         <p *ngIf="infocusIntroductionPara2MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusIntroductionPara2">
-          <textarea matInput placeholder="Infocus Introduction Para3 (till 910 chars) -> {{infocusIntroductionPara3Len}}" [(ngModel)]="infocusIntroductionPara3" (ngModelChange)="introductionPara3()">
+          <textarea matInput placeholder="Infocus Introduction Para3 (till 910 chars) -> {{infocusIntroductionPara3Len}}" [(ngModel)]="infocusIntroductionPara3"
+            (ngModelChange)="introductionPara3()">
           </textarea>
         </mat-form-field>
         <p *ngIf="infocusIntroductionPara3MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
@@ -96,7 +96,6 @@
       </mat-expansion-panel>
     </mat-accordion>
   </mat-grid-list>
-
   <hr *ngIf="introductionSaveStatus">
   <div class="row" *ngIf="introductionSaveStatus">
     <div class="col-3">
@@ -112,17 +111,20 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-form-field class="col-12">
-          <textarea matInput placeholder="Infocus Context Heading (till 40 chars) -> {{infocusContextHeadingLen}}" [(ngModel)]="infocusContextHeading" (ngModelChange)="contextHeading()">
+          <textarea matInput placeholder="Infocus Context Heading (till 40 chars) -> {{infocusContextHeadingLen}}" [(ngModel)]="infocusContextHeading"
+            (ngModelChange)="contextHeading()">
           </textarea>
         </mat-form-field>
         <p *ngIf="infocusContextHeadingMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusContextHeading">
-          <textarea matInput placeholder="Infocus Context Sub Heading (till 105 chars) -> {{infocusContextSubHeadingLen}}" [(ngModel)]="infocusContextSubHeading" (ngModelChange)="contextSubHeading()">
+          <textarea matInput placeholder="Infocus Context Sub Heading (till 105 chars) -> {{infocusContextSubHeadingLen}}" [(ngModel)]="infocusContextSubHeading"
+            (ngModelChange)="contextSubHeading()">
           </textarea>
         </mat-form-field>
         <p *ngIf="infocusContextSubHeadingMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
         <mat-form-field class="col-12" *ngIf="infocusContextSubHeading">
-          <textarea matInput placeholder="Infocus Context Desc (till 1097 chars) -> {{infocusContextDescLen}}" [(ngModel)]="infocusContextDesc" (ngModelChange)="contextDesc()">
+          <textarea matInput placeholder="Infocus Context Desc (till 1097 chars) -> {{infocusContextDescLen}}" [(ngModel)]="infocusContextDesc"
+            (ngModelChange)="contextDesc()">
           </textarea>
         </mat-form-field>
         <p *ngIf="infocusContextDescMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">{{maxLengthExceeded}}</p>
@@ -149,73 +151,39 @@
   </div>
   <hr *ngIf="businessPriority1">
   <div class="row" *ngIf="businessPriority1">
-    <div class="col-3">
-      <h5 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'"> BUSINESS PRIORITY - 2</h5>
-    </div>
-  </div>
-  <div class="row" *ngIf="businessPriority1" [style.padding-left]="'64px'" [style.padding-right]="'64px'">
-    <app-dynamic-select [anyObject]="'Business Priority 2A'" [placeholder]="'Business Priority 2A'" [options]="businessPriority2 | async"
-      (optionSelected)="businessPriority2aSelected($event)"></app-dynamic-select>
-
-    <app-dynamic-select [anyObject]="'Business Priority 2B'" [placeholder]="'Business Priority 2B'" [options]="businessPriority2 | async"
-      (optionSelected)="businessPriority2bSelected($event)"></app-dynamic-select>
-
-    <app-dynamic-select [anyObject]="'Business Priority 2C'" [placeholder]="'Business Priority 2C'" [options]="businessPriority2 | async"
-      (optionSelected)="businessPriority2cSelected($event)"></app-dynamic-select>
-
-    <app-dynamic-select [anyObject]="'Business Priority 2D'" [placeholder]="'Business Priority 2D'" [options]="businessPriority2 | async"
-      (optionSelected)="businessPriority2dSelected($event)"></app-dynamic-select>
-  </div>
-
-  <hr *ngIf="bp2aBusinessPriority3">
-  <div class="row" *ngIf="bp2aBusinessPriority3">
     <div class="col-2">
-      <h5 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'"> BUSINESS PRIORITY - 3</h5>
+      <h5 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'"> BUSINESS PRIORITY - 2</h5>
     </div>
   </div>
   <mat-tab-group mat-stretch-tabs class="mat-elevation-z4" [style.padding-left]="'64px'" [style.padding-right]="'64px'" [style.color]="'#E04B2D'"
     [style.background-color]="'#F5F4EB'">
-    <mat-tab *ngIf="bp2aBusinessPriority3" label="BP2A_BP3">
-      <div *ngFor="let bp3Placeholders of listBp2aBp3Placeholders | keys">
-        <div *ngIf="bp2aBusinessPriority3">
-          <app-infocus-template-two-solutions-two-compaines [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3"
-            [businessPriority3]="bp2aBusinessPriority3" [infocusModel]="infocusModel" (infocusData)=businessPriority2aBP3($event)>
-          </app-infocus-template-two-solutions-two-compaines>
-        </div>
+    <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 2A">
+      <div *ngIf="bP2">
+        <app-infocus-template-two-solution-three-companies [businessPriorityPlaceholder]="'Business Priority 2A'" [businessPriority2]="bP2"
+          [infocusModel]="infocusModel" (infocusData)=businessPriority2a($event)>
+        </app-infocus-template-two-solution-three-companies>
       </div>
     </mat-tab>
-    <mat-tab *ngIf="bp2bBusinessPriority3" label="BP2B_BP3">
-      <div *ngFor="let bp3Placeholders of listBp2bBp3Placeholders | keys">
-        <div *ngIf="bp2bBusinessPriority3">
-          <app-infocus-template-two-solutions-two-compaines [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3"
-            [businessPriority3]="bp2bBusinessPriority3" [infocusModel]="infocusModel" (infocusData)=businessPriority2bBP3($event)></app-infocus-template-two-solutions-two-compaines>
-        </div>
+    <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 2B">
+      <div *ngIf="bP2">
+        <app-infocus-template-two-solution-three-companies [businessPriorityPlaceholder]="'Business Priority 2B'" [businessPriority2]="bP2"
+          [infocusModel]="infocusModel" (infocusData)=businessPriority2b($event)></app-infocus-template-two-solution-three-companies>
       </div>
     </mat-tab>
-    <mat-tab *ngIf="bp2cBusinessPriority3" label="BP2C_BP3">
-      <div *ngFor="let bp3Placeholders of listBp2cBp3Placeholders | keys">
-        <div *ngIf="bp2cBusinessPriority3">
-          <app-infocus-template-two-solutions-two-compaines [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3"
-            [businessPriority3]="bp2cBusinessPriority3" [infocusModel]="infocusModel" (infocusData)=businessPriority2cBP3($event)></app-infocus-template-two-solutions-two-compaines>
-        </div>
-      </div>
-    </mat-tab>
-    <mat-tab *ngIf="bp2dBusinessPriority3" label="BP2D_BP3">
-      <div *ngFor="let bp3Placeholders of listBp2dBp3Placeholders | keys">
-        <div *ngIf="bp2dBusinessPriority3">
-          <app-infocus-template-two-solutions-two-compaines [businessPriorityPlaceholder]="bp3Placeholders.value.businessPriority3"
-            [businessPriority3]="bp2dBusinessPriority3" [infocusModel]="infocusModel" (infocusData)=businessPriority2dBP3($event)></app-infocus-template-two-solutions-two-compaines>
-        </div>
+    <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 2B">
+      <div *ngIf="bP2">
+        <app-infocus-template-two-solution-three-companies [businessPriorityPlaceholder]="'Business Priority 2C'" [businessPriority2]="bP2"
+          [infocusModel]="infocusModel" (infocusData)=businessPriority2c($event)></app-infocus-template-two-solution-three-companies>
       </div>
     </mat-tab>
   </mat-tab-group>
-  <hr *ngIf="bp2aBusinessPriority3">
-  <div class="row" *ngIf="bp2aBusinessPriority3">
+  <hr *ngIf="bP2">
+  <div class="row" *ngIf="bP2">
     <div class="col-4">
       <h5 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'"> HOW TO WORK WITH THE START UPS</h5>
     </div>
   </div>
-  <mat-grid-list cols="12" rowHeight="1:1" *ngIf="businessPriority1" [style.padding-left]="'64px'" [style.padding-right]="'64px'">
+  <mat-grid-list cols="12" rowHeight="1:1" *ngIf="bP2" [style.padding-left]="'64px'" [style.padding-right]="'64px'">
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -263,38 +231,45 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-form-field class="col-12">
-          <textarea matInput placeholder="Recommendation Main Paragraph (till 918 chars) -> {{recommendation1MainParaLen}}" [(ngModel)]="recommendation1MainPara" (ngModelChange)="recommendationMain()">
+          <textarea matInput placeholder="Recommendation Main Paragraph (till 918 chars) -> {{recommendation1MainParaLen}}" [(ngModel)]="recommendation1MainPara"
+            (ngModelChange)="recommendationMain()">
           </textarea>
         </mat-form-field>
         <p *ngIf="recommendation1MainParaMaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">Max Lenght of Main Paragraph Exceeded</p>
         <mat-form-field class="col-12">
-          <textarea matInput placeholder="Recommendation Point 1 (till 574 chars) -> {{recommendation1SubPoint1Len}}" [(ngModel)]="recommendation1SubPoint1" (ngModelChange)="recommendationPoint1()">
+          <textarea matInput placeholder="Recommendation Point 1 (till 574 chars) -> {{recommendation1SubPoint1Len}}" [(ngModel)]="recommendation1SubPoint1"
+            (ngModelChange)="recommendationPoint1()">
           </textarea>
         </mat-form-field>
         <p *ngIf="recommendation1SubPoint1MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">Max Lenght of point 1 Exceeded</p>
         <mat-form-field class="col-12">
-          <textarea matInput placeholder="Recommendation Point 2 (till 574 chars) -> {{recommendation1SubPoint2Len}}" [(ngModel)]="recommendation1SubPoint2" (ngModelChange)="recommendationPoint2()">
+          <textarea matInput placeholder="Recommendation Point 2 (till 574 chars) -> {{recommendation1SubPoint2Len}}" [(ngModel)]="recommendation1SubPoint2"
+            (ngModelChange)="recommendationPoint2()">
           </textarea>
         </mat-form-field>
         <p *ngIf="recommendation1SubPoint2MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">Max Lenght of point 2 Exceeded</p>
         <mat-form-field class="col-12">
-          <textarea matInput placeholder="Recommendation Point 3 (till 574 chars) -> {{recommendation1SubPoint3Len}}" [(ngModel)]="recommendation1SubPoint3" (ngModelChange)="recommendationPoint3()">
+          <textarea matInput placeholder="Recommendation Point 3 (till 574 chars) -> {{recommendation1SubPoint3Len}}" [(ngModel)]="recommendation1SubPoint3"
+            (ngModelChange)="recommendationPoint3()">
           </textarea>
         </mat-form-field>
         <p *ngIf="recommendation1SubPoint3MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">Max Lenght of point 3 Exceeded</p>
         <p [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'">SECOND PAGE POINT -> </p>
         <mat-form-field class="col-12">
-          <textarea matInput placeholder="Recommendation Point 4 (till 574 chars) -> {{recommendation1SubPoint4Len}}" [(ngModel)]="recommendation1SubPoint4" (ngModelChange)="recommendationPoint4()">
+          <textarea matInput placeholder="Recommendation Point 4 (till 574 chars) -> {{recommendation1SubPoint4Len}}" [(ngModel)]="recommendation1SubPoint4"
+            (ngModelChange)="recommendationPoint4()">
           </textarea>
         </mat-form-field>
         <p *ngIf="recommendation1SubPoint4MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">Max Lenght of point 4 Exceeded</p>
         <mat-form-field class="col-12">
-          <textarea matInput placeholder="Recommendation Point 5 (till 574 chars) -> {{recommendation1SubPoint5Len}}" [(ngModel)]="recommendation1SubPoint5" (ngModelChange)="recommendationPoint5()">
+          <textarea matInput placeholder="Recommendation Point 5 (till 574 chars) -> {{recommendation1SubPoint5Len}}" [(ngModel)]="recommendation1SubPoint5"
+            (ngModelChange)="recommendationPoint5()">
           </textarea>
         </mat-form-field>
         <p *ngIf="recommendation1SubPoint5MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">Max Lenght of point 5 Exceeded</p>
         <mat-form-field class="col-12">
-          <textarea matInput placeholder="Recommendation Point 6 (till 574 chars) -> {{recommendation1SubPoint6Len}}" [(ngModel)]="recommendation1SubPoint6" (ngModelChange)="recommendationPoint6()">
+          <textarea matInput placeholder="Recommendation Point 6 (till 574 chars) -> {{recommendation1SubPoint6Len}}" [(ngModel)]="recommendation1SubPoint6"
+            (ngModelChange)="recommendationPoint6()">
           </textarea>
         </mat-form-field>
         <p *ngIf="recommendation1SubPoint6MaxValue" [style.color]="'#f6971a'" [style.background-color]="'#F7F7F2'">Max Lenght of point 6 Exceeded</p>
