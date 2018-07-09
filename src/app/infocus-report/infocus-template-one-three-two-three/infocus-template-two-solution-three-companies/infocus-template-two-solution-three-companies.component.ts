@@ -153,9 +153,9 @@ export class InfocusTemplateTwoSolutionThreeCompaniesComponent implements OnInit
   }
   business2CompanyPlaceholder(value) {
     let companyPlaceholder = value;
-    if (value == "Solution 1 Company 1" || value == "Solution 1 Company 2") {
+    if (value == "Solution 1 Company 1" || value == "Solution 1 Company 2" || value == "Solution 1 Company 3") {
       this.solution1companyDetail(companyPlaceholder);
-    } else if (value == "Solution 2 Company 1" || value == "Solution 2 Company 2") {
+    } else if (value == "Solution 2 Company 1" || value == "Solution 2 Company 2" || value == "Solution 2 Company 3") {
       this.solution2companyDetail(companyPlaceholder);
     }
   }
