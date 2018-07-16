@@ -21,7 +21,7 @@ export class BusinessSolutionsService {
     //     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
     //   }
     // });
-    return this.http.put('http://'+myGlobals.server+':8787/mastertables/updatebusinesssolutions', businessSolutions)
+    return this.http.post('http://'+myGlobals.server+':8787/mastertables/updatebusinesssolutions', businessSolutions);
   }
   saveBusinessSolutions(businessSolutions, randomValue){
     return this.http.post('http://'+myGlobals.server+':8787/mastertables/savebusinesssolutions',businessSolutions);
@@ -29,6 +29,19 @@ export class BusinessSolutionsService {
   
   deleteBusinessSolutions(id, randomValue){
     return this.http.delete('http://'+myGlobals.server+':8787/mastertables/deletebusinesssolutions/'+id);
+  }
+  getTechnologies(randomValue){
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/gettechnologies?ver='+randomValue);
+  }
+  getTechnologiesSubSegment(technologyName:string,randomValue){
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/gettechsubsegment?technologyName='+technologyName+'&ver='+randomValue);
+  }
+  getIndustries(randomValue){
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/getindustries?ver='+randomValue);
+  }
+
+  getIndustriesSubSegment(industryName:string,randomValue){
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/getsubindustries?industryName='+industryName+'&ver='+randomValue);
   }
 
 }

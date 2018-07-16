@@ -1,8 +1,7 @@
 <div class="col-3">
-
-<form [formGroup]="form">
+<form [formGroup]="form" >
   <mat-form-field [style.width]="'240px'">
-    <input  type="text" matInput [placeholder]="placeholder" formControlName="value" required [matAutocomplete]="autoGroup" />
+    <input type="text" matInput  [placeholder]="placeholder" formControlName="value" required [matAutocomplete]="autoGroup" />
     <mat-autocomplete  #autoGroup="matAutocomplete" (optionSelected)="onOptionSelected($event)" (optionSelected)="onObjectSelected(anyObject,placeholder)">
       <mat-option *ngFor="let option of displayedOptions" [value]="option">
         {{ option }}

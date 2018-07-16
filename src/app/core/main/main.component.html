@@ -1,0 +1,53 @@
+<mat-toolbar color="geprimarytoolbar">
+  <mat-toolbar-row>
+    <span>
+      <!-- <a href="/" routerLink="/" id="logo-link">
+            <img id="page-logo"
+            src="https://res.cloudinary.com/dmoplpzfv/image/upload/v1487155341/Landing%20page%20Optimized/GE-Logo_White.png">
+        </a> -->
+      <button href="/" routerLink="/" id="brand-header" mat-button>
+        <div class="brand-title">
+          <span class="highlight">Growth</span>
+          <span>Enabler</span>
+        </div>
+      </button>
+      <!-- <button routerLink="/" mat-button>Growth Enabler</button> -->
+    </span>
+    <span>
+      <button [matMenuTriggerFor]="appMenu" mat-button>REPORT</button>
+    </span>
+    <span>
+      <button [matMenuTriggerFor]="masterTables" mat-button>MASTER TABLES</button>
+    </span>
+    <mat-menu #appMenu="matMenu">
+      <ng-template matMenuContent>
+        <button [matMenuTriggerFor]="infocusMenu" mat-menu-item>INFOCUS REPORT</button>
+        <button [matMenuTriggerFor]="techMenu" mat-menu-item>TECH REPORT</button>
+      </ng-template>
+    </mat-menu>
+    <mat-menu #infocusMenu="matMenu">
+      <button [matMenuTriggerFor]="infocusTemplates" mat-menu-item>INFOCUS TEMPLATES</button>
+      <button routerLink="/infocus-report/view" mat-menu-item>VIEW & GENERATE</button>
+    </mat-menu>
+    <mat-menu #infocusTemplates="matMenu">
+      <button routerLink="/infocus-report/template14552" mat-menu-item>INFOCUS TEMPLATE - 1</button>
+      <button routerLink="/infocus-report/template14322" mat-menu-item>INFOCUS TEMPLATE - 2</button>
+      <button routerLink="/infocus-report/template1323" mat-menu-item>INFOCUS TEMPLATE - 3</button>
+      <button routerLink="/infocus-report/template1322" mat-menu-item>INFOCUS TEMPLATE - 4</button>
+    </mat-menu>
+    <mat-menu #techMenu="matMenu">
+      <button routerLink="/" mat-menu-item>SUBMIT REPORT</button>
+      <button routerLink="/" mat-menu-item>VIEW & GENERATE</button>
+    </mat-menu>
+    <mat-menu #masterTables="matMenu">
+      <button routerLink="/master-tables/business-solutions" mat-menu-item>BUSINESS SOLUTION</button>
+      <button [matMenuTriggerFor]="technologies" mat-menu-item>TECHNOLOGY</button>
+
+    </mat-menu>
+    <mat-menu #technologies="matMenu">
+      <button routerLink="/master-tables/horizontal-technology" mat-menu-item>TECHNOLOGIES</button>
+      <button routerLink="/master-tables/sub-technologies" mat-menu-item>SUB - TECHNOLOGIES</button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

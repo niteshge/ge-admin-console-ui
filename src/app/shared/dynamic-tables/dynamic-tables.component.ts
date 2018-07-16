@@ -17,6 +17,7 @@ export class DynamicTablesComponent implements OnInit, OnChanges, AfterViewInit 
 
  
   @Input() jsonData = [];
+  // @Input() columnDefination:string[] = [];
   @Output() rowSelected = new EventEmitter();
 
   constructor() { }

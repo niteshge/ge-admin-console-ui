@@ -85,7 +85,7 @@ export class InfocusReportService {
     return this.http.get('http://'+myGlobals.server+':8787/api/gettechnologies?ver='+randomValue);
   }
   getTechnologiesSubSegment(technologyName:string,randomValue){
-    return this.http.get('http://'+myGlobals.server+':8787/api/gettechsubsegment?technologyName='+technologyName+'ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/gettechsubsegment?technologyName='+technologyName+'&ver='+randomValue);
   }
 
   postInfocusReportDetails(infocus: InfocusReportModel) {

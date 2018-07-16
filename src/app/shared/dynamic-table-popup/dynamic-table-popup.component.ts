@@ -8,12 +8,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 })
 export class DynamicTablePopupComponent implements OnInit{
 
-  isClone;
   constructor(public dialogRef: MatDialogRef<DynamicTablePopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
-
+    
     ngOnInit() {
-      this.isClone = this.data;
     }
   
 

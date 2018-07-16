@@ -1,0 +1,57 @@
+<form class="example-form" [style.overflow-y]="'scroll'" *ngIf=rowData>
+  <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width">
+    <input matInput [disabled]="true" [placeholder]="'ID'" [value]="rowData['ID']">
+  </mat-form-field>
+  <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width">
+    <input matInput [placeholder]="'SOLUTION SCORE'" [value]="rowData['SOLUTION SCORE']" (change)="onchangeEventRowData('SOLUTION SCORE',$event.target.value)">
+  </mat-form-field>
+  <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width col-11">
+    <textarea matInput (change)="onChangeName($event.target.value)" [placeholder]="'NAME'" [value]="rowData['NAME']" (change)="onchangeEventRowData('NAME',$event.target.value)"></textarea>
+  </mat-form-field>
+  <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width col-11">
+    <textarea matInput [placeholder]="'CONDITION5'" [value]="rowData['CONDITION 5']" (change)="onchangeEventRowData('CONDITION 5',$event.target.value)"></textarea>
+  </mat-form-field>
+  <!-- <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width">
+    <input matInput [placeholder]="'SEARCH APPROACH'" [value]="rowData['SEARCH APPROACH']" (change)="onchangeEventRowData('SEARCH APPROACH',$event.target.value)">
+  </mat-form-field> -->
+  <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width col-11">
+    <textarea matInput [placeholder]="'SEARCH TEXT'" [value]="rowData['SEARCH TEXT']" (change)="onchangeEventRowData('SEARCH TEXT',$event.target.value)"></textarea>
+  </mat-form-field>
+  <!-- <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width">
+    <input matInput [placeholder]="'TAGGING APPROACH'" [value]="rowData['TAGGING APPROACH']" (change)="onchangeEventRowData('TAGGING APPROACH',$event.target.value)">
+  </mat-form-field> -->
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [style.margin-right]="'32px'" [style.margin-left]="'32px'" [placeholder]="'TECH OR INDUSTRY'" [options]="rowData['ALL TECH OR INDUSTRY']"
+        [defaultValue]="rowData['TECH OR INDUSTRY']" (optionSelected)="techOrIndustryChange('TECH OR INDUSTRY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [style.margin-right]="'32px'" [style.margin-left]="'32px'" [disabledParam]="techDisableStatus" [placeholder]="'TECHNOLOGY'"
+        [options]="rowData['ALL TECHNOLOGY']" [defaultValue]="rowData['TECHNOLOGY']" (optionSelected)="techChange('TECHNOLOGY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="subTechDisableStatus" [placeholder]="'TECHNOLOGY SEGMENT'" [options]="rowData['ALL SUB TECHNOLOGY']"
+        [defaultValue]="rowData['TECHNOLOGY SEGMENT']" (optionSelected)="onchangeEventRowData('TECHNOLOGY SEGMENT',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [style.margin-right]="'32px'" [style.margin-left]="'32px'" [disabledParam]="industriesDisableStatus"
+        [placeholder]="'INDUSTRY'" [options]="rowData['ALL INDUSTRIES']" [defaultValue]="rowData['INDUSTRY']" (optionSelected)="industryChange('INDUSTRY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [style.margin-right]="'32px'" [style.margin-left]="'32px'" [disabledParam]="subIndustriesDisableStatus"
+        [placeholder]="'INDUSTRY SEGMENT'" [options]="rowData['ALL SUB INDUSTRIES']" [defaultValue]="rowData['INDUSTRY SEGMENT']"
+        (optionSelected)="onchangeEventRowData('INDUSTRY SEGMENT',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-radio-group>
+    <mat-radio-button [style.margin-right]="'32px'" [style.margin-left]="'32px'" (change)="radioChange($event)" value="1">TAGGING APPROACH</mat-radio-button>
+    <mat-radio-button [style.margin-right]="'32px'" [style.margin-left]="'32px'" (change)="radioChange($event)" value="2">SEARCH APPROACH</mat-radio-button>
+  </mat-radio-group>
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <button mat-raised-button color=geprimary [style.margin-right]="'24px'" [style.margin-left]="'24px'" [mat-dialog-close]="rowData"
+        cdkFocusInitial>Done</button>
+      <button mat-raised-button color=gewarn [style.margin-right]="'24px'" [style.margin-left]="'24px'" (click)="onNoClick()">Cancel</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

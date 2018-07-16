@@ -7,6 +7,9 @@ import { MasterTablesRootComponent } from './master-tables-root/master-tables-ro
 import { SharedModule } from '../shared/shared.module';
 import { HorizontalTechnologyComponent } from './horizontal-technology/horizontal-technology.component';
 import { SubTechnologiesComponent } from './sub-technologies/sub-technologies.component';
+import { BusinessSolutionEditComponent } from './business-solution/business-solution-edit/business-solution-edit.component';
+import { BusinessSolutionCloneComponent } from './business-solution/business-solution-clone/business-solution-clone.component';
+import { BusinessSolutionAddComponent } from './business-solution/business-solution-add/business-solution-add.component';
 
 @NgModule({
   imports: [
@@ -14,6 +17,9 @@ import { SubTechnologiesComponent } from './sub-technologies/sub-technologies.co
     SharedModule,
     MasterTablesRoutingModule
   ],
-  declarations: [BusinessSolutionComponent, MasterTablesRootComponent, HorizontalTechnologyComponent, SubTechnologiesComponent]
+  declarations: [BusinessSolutionComponent, MasterTablesRootComponent, HorizontalTechnologyComponent, SubTechnologiesComponent, BusinessSolutionEditComponent, BusinessSolutionCloneComponent, BusinessSolutionAddComponent],
+  entryComponents:[BusinessSolutionEditComponent,
+  BusinessSolutionCloneComponent,
+  BusinessSolutionAddComponent]
 })
 export class MasterTablesModule { }

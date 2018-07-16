@@ -1,0 +1,8 @@
+{
+    "TECNOLOGY":["TECH 1", "TECH 2", "TECH 3"],
+    "TECH SUBSEGMENT":{
+        "TECH 1":["TECH 1 SUB 1", "TECH 1 SUB 2"],
+        "TECH 2":["TECH 2 SUB 1", "TECH 2 SUB 2"],
+        "TECH 3":["TECH 3 SUB 1", "TECH 3 SUB 2"]
+    }
+}

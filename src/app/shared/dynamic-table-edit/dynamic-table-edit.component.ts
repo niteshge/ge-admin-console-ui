@@ -8,6 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class DynamicTableEditComponent implements OnInit {
 rowData;
+tech  = true;
   constructor(public dialogRef: MatDialogRef<DynamicTableEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
