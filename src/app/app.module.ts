@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { LoginModule } from './login/login.module';
+// import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +14,7 @@ import { LoginModule } from './login/login.module';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
-    LoginModule,
+    // LoginModule,
     SharedModule,
     AppRoutingModule
   ],
