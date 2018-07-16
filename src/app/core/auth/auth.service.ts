@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import * as Cookies from 'js-cookie';
+// import * as Cookies from 'js-cookie';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,11 @@ export class AuthService {
   }
 
   isUserLoggedIn() {
-    return Cookies.get('auth-token') !== undefined;
+    // return Cookies.get('auth-token') !== undefined;
+    return true;
   }
 
   login() {
-    Cookies.set('auth-token', 'jhghjgggggghgg');
+    // Cookies.set('auth-token', 'jhghjgggggghgg');
   }
 }
