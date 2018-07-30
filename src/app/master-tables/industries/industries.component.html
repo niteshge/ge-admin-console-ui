@@ -1,0 +1,10 @@
+<div [style.padding-left]="'24px'" [style.padding-right]="'24px'" [style.padding-top]="'24px'" [style.background-color]="'#F7F7F2'"
+  [style.height]="'100%'">
+  <app-dynamic-tables *ngIf="industries" [jsonData]="industries" (rowSelected)="openDialog($event)"></app-dynamic-tables>
+  <br/>
+  <div class="row">
+    <div class="col-4">
+      <button mat-raised-button color=geprimary (click)="addRow()">Add</button>
+    </div>
+  </div>
+</div>

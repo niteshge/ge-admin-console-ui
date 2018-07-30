@@ -1,0 +1,11 @@
+
+<div class=customtable>
+  <h6 class="subheading"><u>Business Priority : </u></h6>
+  <app-dynamic-tables *ngIf="businessPriorities" [jsonData]="businessPriorities" (rowSelected)="openDialog($event)"></app-dynamic-tables>
+  <br/>
+  <div class="row">
+    <div class="col-4">
+      <button mat-raised-button color=geprimary (click)="addRow()">Add</button>
+    </div>
+  </div>
+</div>

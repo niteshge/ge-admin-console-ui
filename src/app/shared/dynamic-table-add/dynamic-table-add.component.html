@@ -1,7 +1,7 @@
 <form class="example-form" *ngIf=rowData>
-  <mat-form-field class="example-full-width" *ngFor="let key of rowData">
-    <input matInput  (change) = onchangeEventRowData(key,$event.target.value) [placeholder]=key>
+  <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width" *ngFor="let entry of (rowData | keys)">
+    <input matInput  (change) = onchangeEventRowData(entry.key,$event.target.value) [placeholder]=entry.key>
   </mat-form-field>
-  <button mat-raised-button color=Primary [mat-dialog-close]="rowData" cdkFocusInitial>Done</button>
-  <button mat-raised-button color=Basic (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color=geprimary [style.margin-right]="'24px'" [style.margin-left]="'24px'" [mat-dialog-close]="rowData" cdkFocusInitial>Done</button>
+  <button mat-raised-button color=gewarn [style.margin-right]="'24px'" [style.margin-left]="'24px'" (click)="onNoClick()">Cancel</button>
 </form>

@@ -1,0 +1,13 @@
+<form class="example-form mat-form" *ngIf=rowData>
+  <mat-form-field class="example-full-width">
+    <input matInput [placeholder]="'BUSINESS PRIORITY'" [value]="rowData['BUSINESS PRIORITY']" (change)="onchangeEventRowData('BUSINESS PRIORITY',$event.target.value)">
+  </mat-form-field>
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <button mat-raised-button color=geprimary [mat-dialog-close]="rowData" cdkFocusInitial>Done</button>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <button mat-raised-button color=gewarn (click)="onNoClick()">Cancel</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

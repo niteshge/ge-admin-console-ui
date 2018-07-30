@@ -24,16 +24,16 @@ export class BusinessSolutionCloneComponent implements OnInit {
       console.log("The change object is ", this.rowData);
     }
 }
-@Pipe({name: 'keys'})
-export class KeysPipesModule implements PipeTransform {
-  transform(value, args:string[]) : any {
-    let keys = [];
-    for (let key in value) {
-      keys.push({key: key, value: value[key]});
-    }
-    return keys;
-  }
-}
+// @Pipe({name: 'keys'})
+// export class KeysPipesModule implements PipeTransform {
+//   transform(value, args:string[]) : any {
+//     let keys = [];
+//     for (let key in value) {
+//       keys.push({key: key, value: value[key]});
+//     }
+//     return keys;
+//   }
+// }
 
 
 

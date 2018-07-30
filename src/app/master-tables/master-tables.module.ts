@@ -10,16 +10,54 @@ import { SubTechnologiesComponent } from './sub-technologies/sub-technologies.co
 import { BusinessSolutionEditComponent } from './business-solution/business-solution-edit/business-solution-edit.component';
 import { BusinessSolutionCloneComponent } from './business-solution/business-solution-clone/business-solution-clone.component';
 import { BusinessSolutionAddComponent } from './business-solution/business-solution-add/business-solution-add.component';
+import { BusinessPriorityComponent } from './business-priority/business-priority.component';
+import { SubBusinessPriorityComponent } from './sub-business-priority/sub-business-priority.component';
+import { BusinessPriorityAddComponent } from './business-priority/business-priority-add/business-priority-add.component';
+import { BusinessPriorityEditComponent } from './business-priority/business-priority-edit/business-priority-edit.component';
+import { SolutionPriorityAssociationComponent } from './solution-priority-association/solution-priority-association.component';
+import { SolutionPriorityAssociationAddComponent } from './solution-priority-association/solution-priority-association-add/solution-priority-association-add.component';
+import { SolutionPriorityAssociationEditComponent } from './solution-priority-association/solution-priority-association-edit/solution-priority-association-edit.component';
+import { SolutionPriorityAssociationDummySelectComponent } from './solution-priority-association/solution-priority-association-dummy-select/solution-priority-association-dummy-select.component';
+import { IndustriesComponent } from './industries/industries.component';
+import { SubIndustryComponent } from './sub-industry/sub-industry.component';
+import { HorizontalTechnologyAddComponent } from './horizontal-technology/horizontal-technology-add/horizontal-technology-add.component';
+import { HorizontalTechnologyEditComponent } from './horizontal-technology/horizontal-technology-edit/horizontal-technology-edit.component';
+import { DynamicYesNoPopupComponent } from '../shared/dynamic-yes-no-popup/dynamic-yes-no-popup.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    MasterTablesRoutingModule
+  imports: [CommonModule, SharedModule, MasterTablesRoutingModule],
+  declarations: [
+    BusinessSolutionComponent,
+    MasterTablesRootComponent,
+    HorizontalTechnologyComponent,
+    SubTechnologiesComponent,
+    BusinessSolutionEditComponent,
+    BusinessSolutionCloneComponent,
+    BusinessSolutionAddComponent,
+    BusinessPriorityComponent,
+    SubBusinessPriorityComponent,
+    BusinessPriorityAddComponent,
+    BusinessPriorityEditComponent,
+    SolutionPriorityAssociationComponent,
+    SolutionPriorityAssociationAddComponent,
+    SolutionPriorityAssociationEditComponent,
+    SolutionPriorityAssociationDummySelectComponent,
+    IndustriesComponent,
+    SubIndustryComponent,
+    HorizontalTechnologyAddComponent,
+    HorizontalTechnologyEditComponent
   ],
-  declarations: [BusinessSolutionComponent, MasterTablesRootComponent, HorizontalTechnologyComponent, SubTechnologiesComponent, BusinessSolutionEditComponent, BusinessSolutionCloneComponent, BusinessSolutionAddComponent],
-  entryComponents:[BusinessSolutionEditComponent,
-  BusinessSolutionCloneComponent,
-  BusinessSolutionAddComponent]
+  entryComponents: [
+    BusinessSolutionEditComponent,
+    BusinessSolutionCloneComponent,
+    BusinessSolutionAddComponent,
+    BusinessPriorityAddComponent,
+    BusinessPriorityEditComponent,
+    SolutionPriorityAssociationEditComponent,
+    SolutionPriorityAssociationAddComponent,
+    HorizontalTechnologyAddComponent,
+    HorizontalTechnologyEditComponent,
+    DynamicYesNoPopupComponent
+  ]
 })
-export class MasterTablesModule { }
+export class MasterTablesModule {}

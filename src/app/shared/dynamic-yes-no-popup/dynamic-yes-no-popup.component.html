@@ -1,9 +1,9 @@
 <!-- <h1 mat-dialog-title>Hi </h1> -->
 <div mat-dialog-content>
-  <p mat-dialog-title>Are sure for -> {{value}}</p>
+  <p mat-dialog-title>Are sure you want to remove</p>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions  align="end">
+    <button mat-button color=gepalewhite [mat-dialog-close]="'101'" cdkFocusInitial>CANCEL</button>
   <button mat-raised-button color=geprimary [mat-dialog-close]="'100'" cdkFocusInitial>Yes</button>
-  <button mat-raised-button color=gewarn [mat-dialog-close]="'101'" cdkFocusInitial>No</button>
 </div>
 

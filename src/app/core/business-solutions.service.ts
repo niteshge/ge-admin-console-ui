@@ -9,8 +9,8 @@ export class BusinessSolutionsService {
 
   constructor(private http: HttpClient) { }
 
-  getAllBusinessSolutons() {
-    return this.http.get('http://'+myGlobals.server+':8787/mastertables/businesssolutions');
+  getAllBusinessSolutons(randomValue:number) {
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/getallbusinesssolutions?randomValue='+randomValue);
   }
   updateBusinessSolution(businessSolutions) {
     // return this.http.post('http://'+myGlobals.server+':8787/mastertables/updatebusinesssolutions', businessSolutions, {

@@ -42,11 +42,22 @@
     <mat-menu #masterTables="matMenu">
       <button routerLink="/master-tables/business-solutions" mat-menu-item>BUSINESS SOLUTION</button>
       <button [matMenuTriggerFor]="technologies" mat-menu-item>TECHNOLOGY</button>
+      <button [matMenuTriggerFor]="industries" mat-menu-item>INDUSTRY</button>
+      <button [matMenuTriggerFor]="businessPriority" mat-menu-item>BUSINESS PRIORITY</button>
+      <button routerLink="/master-tables/solution-priority-association" mat-menu-item>SOLUTION PRIORITY ASSOCIATION</button>
 
     </mat-menu>
     <mat-menu #technologies="matMenu">
       <button routerLink="/master-tables/horizontal-technology" mat-menu-item>TECHNOLOGIES</button>
       <button routerLink="/master-tables/sub-technologies" mat-menu-item>SUB - TECHNOLOGIES</button>
+    </mat-menu>
+    <mat-menu #industries="matMenu">
+      <button routerLink="/master-tables/industries" mat-menu-item>INDUSTRIES</button>
+      <button routerLink="/master-tables/sub-industries" mat-menu-item>SUB - INDUSTRIES</button>
+    </mat-menu>
+    <mat-menu #businessPriority="matMenu">
+      <button routerLink="/master-tables/business-priorities" mat-menu-item>BUSINESS PRIORITIES</button>
+      <button routerLink="/master-tables/sub-business-priorities" mat-menu-item>SUB - BUSINESS PRIORITIES</button>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

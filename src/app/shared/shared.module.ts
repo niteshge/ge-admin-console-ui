@@ -1,38 +1,59 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as _ from 'lodash';
-import {MatButtonModule, 
-  MatCheckboxModule, MatToolbarModule, MatMenuModule, MatIconModule, MatFormFieldModule, MatListModule, MatAutocompleteModule, MatInputModule, MatExpansionModule, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatTableModule, MatCardModule, MatRadioModule,MatPaginatorModule,MatSortModule,
-   MatSelectModule,
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatToolbarModule,
+  MatMenuModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatListModule,
+  MatAutocompleteModule,
+  MatInputModule,
+  MatExpansionModule,
+  MatExpansionPanel,
+  MatExpansionPanelHeader,
+  MatExpansionPanelTitle,
+  MatTableModule,
+  MatCardModule,
+  MatRadioModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatSelectModule,
   MatDialogModule,
-MatButtonToggleModule,
-MatTabsModule,
-MatAccordion,
-MatGridListModule,
-MatTreeModule,
-MatBadgeModule,
-MatBottomSheetModule,
-MatChipsModule,
-MatDatepickerModule,
-MatDividerModule,
-MatNativeDateModule,
-MatProgressBarModule,
-MatProgressSpinnerModule,
-MatRippleModule,
-MatSidenavModule,
-MatSliderModule,
-MatSlideToggleModule,
-MatSnackBarModule,
-MatTooltipModule} from '@angular/material';
+  MatButtonToggleModule,
+  MatTabsModule,
+  MatAccordion,
+  MatGridListModule,
+  MatTreeModule,
+  MatBadgeModule,
+  MatBottomSheetModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDividerModule,
+  MatNativeDateModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRippleModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatTooltipModule
+} from '@angular/material';
 import { DynamicSelectComponent } from './dynamic-select/dynamic-select.component';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CdkTableModule} from '@angular/cdk/table'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CdkTableModule } from '@angular/cdk/table';
 import { DynamicTablesComponent } from './dynamic-tables/dynamic-tables.component';
 import { DynamicReportPopupComponent } from './dynamic-report-popup/dynamic-report-popup.component';
 import { DynamicYesNoPopupComponent } from './dynamic-yes-no-popup/dynamic-yes-no-popup.component';
 import { DynamicTablePopupComponent } from './dynamic-table-popup/dynamic-table-popup.component';
-import { DynamicTableEditComponent, KeysPipesModule } from './dynamic-table-edit/dynamic-table-edit.component';
+import {
+  DynamicTableEditComponent,
+  KeysPipesModule
+} from './dynamic-table-edit/dynamic-table-edit.component';
 import { DynamicBusinessSolutionClonePopupComponent } from './dynamic-business-solution-clone-popup/dynamic-business-solution-clone-popup.component';
 import { DynamicTableAddComponent } from './dynamic-table-add/dynamic-table-add.component';
 import { DynamicUiTreeComponent } from './dynamic-ui-tree/dynamic-ui-tree.component';
@@ -43,10 +64,10 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
   imports: [
     CommonModule,
     MatButtonModule,
-     MatCheckboxModule,
-     MatFormFieldModule,
-     MatAutocompleteModule,
-     FormsModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    FormsModule,
     ReactiveFormsModule,
     MatInputModule,
     MatExpansionModule,
@@ -79,28 +100,72 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatTooltipModule,
+    MatTooltipModule
   ],
-  declarations: [DynamicSelectComponent, DynamicTablesComponent, DynamicReportPopupComponent, DynamicYesNoPopupComponent, DynamicTablePopupComponent, DynamicTableEditComponent, KeysPipesModule, DynamicBusinessSolutionClonePopupComponent, DynamicBusinessSolutionClonePopupComponent, DynamicTableAddComponent, DynamicUiTreeComponent, TreeStructureComponent, AlertBoxComponent],
-  exports: [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatMenuModule, MatIconModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, HttpClientModule, FormsModule,
-    ReactiveFormsModule,DynamicSelectComponent, MatInputModule,MatExpansionPanel,MatExpansionPanelHeader,MatExpansionPanelTitle, DynamicTablesComponent,
-  MatTableModule, CdkTableModule,MatCardModule,MatRadioModule, MatPaginatorModule,MatSortModule,MatSelectModule,
-  MatListModule, MatDialogModule, DynamicReportPopupComponent,MatTabsModule, MatAccordion,MatGridListModule, MatTreeModule,DynamicUiTreeComponent,
-  MatBadgeModule,
-  MatBottomSheetModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDividerModule,
-  MatNativeDateModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRippleModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatTooltipModule,
-  TreeStructureComponent],
+  declarations: [
+    DynamicSelectComponent,
+    DynamicTablesComponent,
+    DynamicReportPopupComponent,
+    DynamicYesNoPopupComponent,
+    DynamicTablePopupComponent,
+    DynamicTableEditComponent,
+    KeysPipesModule,
+    DynamicBusinessSolutionClonePopupComponent,
+    DynamicBusinessSolutionClonePopupComponent,
+    DynamicTableAddComponent,
+    DynamicUiTreeComponent,
+    TreeStructureComponent,
+    AlertBoxComponent
+  ],
+  exports: [
+    MatButtonModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DynamicSelectComponent,
+    MatInputModule,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelTitle,
+    DynamicTablesComponent,
+    MatTableModule,
+    CdkTableModule,
+    MatCardModule,
+    MatRadioModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule,
+    MatListModule,
+    MatDialogModule,
+    DynamicReportPopupComponent,
+    MatTabsModule,
+    MatAccordion,
+    MatGridListModule,
+    MatTreeModule,
+    DynamicUiTreeComponent,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDividerModule,
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRippleModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    TreeStructureComponent
+  ],
   entryComponents: [
     DynamicReportPopupComponent,
     DynamicYesNoPopupComponent,
@@ -109,6 +174,6 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
     DynamicBusinessSolutionClonePopupComponent,
     DynamicTableAddComponent,
     AlertBoxComponent
-]
+  ]
 })
-export class SharedModule { }
+export class SharedModule {}

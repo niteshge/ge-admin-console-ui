@@ -1,0 +1,65 @@
+<form class="example-form mat-form" *ngIf=rowData>
+    <mat-form-field class="example-full-width">
+        <input matInput [disabled]="true"  [placeholder]="'ID'" [value]="rowData['ID']" (change)="onchangeEventRowData('ID',$event.target.value)">
+      </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'NAME'" [value]="rowData['NAME']" (change)="onchangeEventRowData('NAME',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'DISPLAY NAME'" [value]="rowData['DISPLAY NAME']" (change)="onchangeEventRowData('DISPLAY NAME',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'SHORT NAME'" [value]="rowData['SHORT NAME']" (change)="onchangeEventRowData('SHORT NAME',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'CATEGORY'" [value]="rowData['CATEGORY']" (change)="onchangeEventRowData('CATEGORY',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'TECHNOLOGY TYPE'" [value]="rowData['TECHNOLOGY TYPE']" (change)="onchangeEventRowData('TECHNOLOGY TYPE',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'DEFINITION'" [value]="rowData['DEFINITION']" (change)="onchangeEventRowData('DEFINITION',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'MATURITY'" [value]="rowData['MATURITY']" (change)="onchangeEventRowData('MATURITY',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'MATURITY DEFINITION'" [value]="rowData['MATURITY DEFINITION']" (change)="onchangeEventRowData('MATURITY DEFINITION',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput type=number [placeholder]="'ORDER FOR SOLUTION'" [value]="rowData['ORDER FOR SOLUTION']" (change)="onchangeEventRowData('ORDER FOR SOLUTION',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput type=number [placeholder]="'ORDER FOR INFRA'" [value]="rowData['ORDER FOR INFRA']" (change)="onchangeEventRowData('ORDER FOR INFRA',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'USER CATEGORY'" [value]="rowData['USER CATEGORY']" (change)="onchangeEventRowData('USER CATEGORY',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'USER ROLE'" [value]="rowData['USER ROLE']" (change)="onchangeEventRowData('USER ROLE',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'COLOR CODE'" [value]="rowData['COLOR CODE']" (change)="onchangeEventRowData('COLOR CODE',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'SHORT DESC'" [value]="rowData['SHORT DESC']" (change)="onchangeEventRowData('SHORT DESC',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [placeholder]="'TO BE SCORE'" [value]="rowData['TO BE SCORE']" (change)="onchangeEventRowData('TO BE SCORE',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput type=number [placeholder]="'NO OF STARTUPS'" [value]="rowData['NO OF STARTUPS']" (change)="onchangeEventRowData('NO OF STARTUPS',$event.target.value)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput type=number [placeholder]="'SCORING PRIORITY'" [value]="rowData['SCORING PRIORITY']" (change)="onchangeEventRowData('SCORING PRIORITY',$event.target.value)">
+    </mat-form-field>
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile [colspan]=1 [rowspan]=1>
+        <button mat-raised-button color=geprimary [mat-dialog-close]="rowData" cdkFocusInitial>Done</button>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]=1 [rowspan]=1>
+        <button mat-raised-button color=gewarn (click)="onNoClick()">Cancel</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+  

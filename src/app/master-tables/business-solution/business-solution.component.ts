@@ -9,6 +9,7 @@ import { DynamicTableAddComponent } from '../../shared/dynamic-table-add/dynamic
 import { DynamicYesNoPopupComponent } from '../../shared/dynamic-yes-no-popup/dynamic-yes-no-popup.component';
 import { BusinessSolutionEditComponent } from './business-solution-edit/business-solution-edit.component';
 import { BusinessSolutionAddComponent } from './business-solution-add/business-solution-add.component';
+import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
 
 @Component({
   selector: 'app-business-solution',
@@ -30,8 +31,9 @@ export class BusinessSolutionComponent implements OnInit {
   }
 
   getAllBusinessSolutions() {
+    let randomValue = Math.random()
     this.businessSolutionCoreService
-      .getAllBusinessSolutons()
+      .getAllBusinessSolutons(randomValue)
       .subscribe((response: Response) => {
         console.log(response);
         this.businessSolutions = response;
@@ -124,7 +126,24 @@ export class BusinessSolutionComponent implements OnInit {
         this.businessSolutionCoreService
           .saveBusinessSolutions(result, randomValue)
           .subscribe((response: Response) => {
-            console.log(response);
+            if (response['errorMessage']) {
+              let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                width: '300px',
+                data: 'Sorry, Something Went Wrong... Try Again.'
+              });
+              dialogAlert.afterClosed().subscribe(result => {
+                window.location.reload();
+              });
+            } else {
+              this.businessSolutions = response;
+              let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                width: '300px',
+                data: 'Sucessfull'
+              });
+              dialogAlert.afterClosed().subscribe(result => {
+                window.location.reload();
+              });
+            }
           });
       }
     });
@@ -146,7 +165,24 @@ export class BusinessSolutionComponent implements OnInit {
         this.businessSolutionCoreService
           .updateBusinessSolution(result)
           .subscribe((response: Response) => {
-            console.log(response);
+            if (response['errorMessage']) {
+              let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                width: '300px',
+                data: 'Sorry, Something Went Wrong... Try Again.'
+              });
+              dialogAlert.afterClosed().subscribe(result => {
+                window.location.reload();
+              });
+            } else {
+              this.businessSolutions = response;
+              let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                width: '300px',
+                data: 'Sucessfull'
+              });
+              dialogAlert.afterClosed().subscribe(result => {
+                window.location.reload();
+              });
+            }
           });
       }
     });
@@ -177,18 +213,35 @@ export class BusinessSolutionComponent implements OnInit {
         rowDataJson['ALL INDUSTRIES'] = response;
       });
 
-    let dialogClone = this.dialog.open(BusinessSolutionAddComponent, {
+    let dialogAdd = this.dialog.open(BusinessSolutionAddComponent, {
       width: '1000px',
       data: rowDataJson
     });
-    dialogClone.afterClosed().subscribe(result => {
+    dialogAdd.afterClosed().subscribe(result => {
       console.log('The value changed in the add process is ', result);
       if (result != null) {
         let randomValue = Math.random();
         this.businessSolutionCoreService
           .saveBusinessSolutions(result, randomValue)
           .subscribe((response: Response) => {
-            console.log(response);
+            if (response['errorMessage']) {
+              let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                width: '300px',
+                data: 'Sorry, Something Went Wrong... Try Again.'
+              });
+              dialogAlert.afterClosed().subscribe(result => {
+                window.location.reload();
+              });
+            } else {
+              this.businessSolutions = response;
+              let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                width: '300px',
+                data: 'Sucessfull'
+              });
+              dialogAlert.afterClosed().subscribe(result => {
+                window.location.reload();
+              });
+            }
           });
       }
     });
@@ -198,8 +251,25 @@ export class BusinessSolutionComponent implements OnInit {
     let randomValue = Math.random();
     this.businessSolutionCoreService
       .deleteBusinessSolutions(id, randomValue)
-      .subscribe((response: Response) => {
-        console.log(response);
+      .subscribe((response: Response) =>  {
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sorry, Something Went Wrong... Try Again.'
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        } else {
+          this.businessSolutions = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfully Deleted the record ' + id
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        }
       });
   }
 

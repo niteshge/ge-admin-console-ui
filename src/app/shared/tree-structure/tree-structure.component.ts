@@ -6,6 +6,7 @@ import { of as ofObservable, Observable, BehaviorSubject } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { DynamicYesNoPopupComponent } from '../dynamic-yes-no-popup/dynamic-yes-no-popup.component';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
+import { DynamicTableEditComponent } from '../dynamic-table-edit/dynamic-table-edit.component';
 
 /**
  * Node for to-do item
@@ -36,8 +37,10 @@ export class TodoItemFlatNode {
   // providers: [ChecklistDatabase]
 })
 export class TreeStructureComponent implements OnInit {
+
+
   @Input() TREEDATA = [];
-  @Output() newnode = new EventEmitter();
+  // @Output() newnode = new EventEmitter();
   @Output() action = new EventEmitter();
   constructor(public dialog: MatDialog) {
     this.initialize();
@@ -122,6 +125,8 @@ export class TreeStructureComponent implements OnInit {
   hasChild = (_: number, _nodeData: TodoItemFlatNode) => { return _nodeData.expandable; };
 
   hasNoContent = (_: number, _nodeData: TodoItemFlatNode) => { return _nodeData.item === ''; };
+
+  // editContent = (_: number, _nodeData: TodoItemFlatNode) => { return _nodeData.item  === this.editValue };
 
   /**
   * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
@@ -226,13 +231,15 @@ export class TreeStructureComponent implements OnInit {
     this.dataChange.next(this.data);
 
   }
-  editItem(parent: TodoItemNode, name: string) {
-    const child = <TodoItemNode>{ item: name, id: parent.id};
-    if (parent.children) {
-      parent.children.push(child);
-      this.dataChange.next(this.data);
-    }
-  }
+  // editItem(parent: TodoItemNode, name: string) {
+  //   console.log("The parent node is ",parent, "the value to be edited is ", name);
+  //   const child = <TodoItemNode>{ item: name, id: parent.id};
+  //   if (parent.children) {
+  //     parent.children.push(child);
+  //     this.dataChange.next(this.data);
+  //     // this.editInput = true;
+  //   }
+  // }
   updateItem(node: TodoItemNode, name: string) {
     console.log("In the update method", node);
     node.item = name;
@@ -266,7 +273,38 @@ export class TreeStructureComponent implements OnInit {
     console.log("The closing parent node is ", parentNode);
     this.closeItem(parentNode);
   }
-
+// editNodeValue(node: TodoItemFlatNode, itemValue: string){
+//     const nestedNode = this.flatNodeMap.get(node);
+//     if(itemValue == "" || itemValue === null){
+//       this.dialog.open(AlertBoxComponent, {
+//         width: '300px',
+//         data: "No Value Entered... Please Enter.",
+//       });
+//     }else{
+//       let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
+//         width: '300px',
+//         data: itemValue
+//       });
+//       dialogConfirm.afterClosed().subscribe(result => {
+//         console.log("The dialog confirm is closed with a action:", result);
+//         if (result == 100) {
+//           // let newNode:TodoItemNode = Object.assign({}, nestedNode);
+//           // newNode.item = itemValue;
+//           // this.subTechnologyService.addSubTechnologyNode(newNode)
+//           // .subscribe(
+//           // (response:Response) =>{
+//           // console.log("The response of adding the node ", response);
+//           // }
+//           // )
+//           // this.updateItem(nestedNode!, itemValue);
+//           console.log("The value will be edited is ", itemValue, " and the nested node is ", nestedNode!);
+//           // this.editInput = false;
+//         } else {
+//           this.closeNode(node);
+//         }
+//       });
+//     }
+// }
   /** Save the node to database */
   saveNode(node: TodoItemFlatNode, itemValue: string) {
     const nestedNode = this.flatNodeMap.get(node);
@@ -303,18 +341,34 @@ export class TreeStructureComponent implements OnInit {
     const parentNode = this.flatNodeMap.get(node);
     console.log("when add function is called the parent is ", parentNode)
     console.log("To delete the nodes ", parentNode.id);
-    this.emitNode(parentNode,2);
+    this.emitNode(parentNode,3);
   }
   editNode(node: TodoItemFlatNode) {
     console.log("time of adding", node);
     const parentNode = this.flatNodeMap.get(node);
     console.log("when add function is called the parent is ", parentNode)
-    this.editItem(parentNode!, '');
-    this.treeControl.expand(node);
+    let editValue = {}
+    editValue['Edit Item'] = parentNode.item;
+    let dialogEdit = this.dialog.open(DynamicTableEditComponent,{
+      width:'700px',
+      data:editValue
+    });
+    dialogEdit.afterClosed().subscribe(result => {
+      console.log(result['Edit Item']);
+      let editNodeData:TodoItemNode = Object.assign(parentNode);
+      editNodeData.item = result['Edit Item'];
+      console.log("The editNodeData is ", editNodeData);
+      this.emitNode(editNodeData,2);
+    });  
+    //  this.editValue = parentNode.item
+    // this.editItem(parentNode!, this.editValue);
+    // this.treeControl.expand(node);
+
   }
 
   emitNode(node: TodoItemNode, action:number){
-    this.newnode.emit(node);
-    this.action.emit(action);
+    this.action.emit({'nodeData':node,'action':action})
+    // this.newnode.emit(node);
+    // this.action.emit(action);
   }
 }

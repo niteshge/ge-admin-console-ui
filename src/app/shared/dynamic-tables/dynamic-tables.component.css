@@ -25,3 +25,41 @@
 .mat-header-cell.mat-sort-header-sorted {
   color: black;
 } */
+
+.mat-header-cell {
+  text-align: center;
+  background-color: #F5F4EB;
+  font-size: 14px;
+  font-weight: 500;
+  overflow: auto;
+  margin: auto;
+  position: sticky;
+  position: -webkit-sticky;
+  /* display:flex;
+   justify-content:flex-end; */
+}
+
+.mat-table {
+  /* max-height: calc(100vh - 200px); */
+  overflow-y: scroll;
+  overflow-x: scroll;
+  min-height: 100px;
+  min-height: 100px;
+  max-height: 700px;
+  table-layout: auto;
+  }
+
+.mat-cell {
+  background-color: #F7F7F2;
+  overflow: auto;
+  margin: auto;
+  /* text-align: center;  */
+  /* display:flex !important;
+  justify-content:center!important; */
+}
+/* .mat-row, .mat-header-row {
+  background: #F7F7F2;
+  background-color: #F7F7F2;
+  min-width: 1200px;
+} */
+ 

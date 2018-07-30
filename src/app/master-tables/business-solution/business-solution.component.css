@@ -1,0 +1,12 @@
+.customtable {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 24px;
+  background-color: #F7F7F2;
+  height: 100%;
+}
+
+.subheading {
+  color: #32312a;
+  background-color: #F5F4EB;
+}
