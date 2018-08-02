@@ -3,7 +3,7 @@
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
-    <table mat-table #table [dataSource]="dataSource" matSort>
+    <mat-table #table [dataSource]="dataSource" matSort>
 
       <!-- Checkbox Column
     <ng-container matColumnDef="select">
@@ -27,7 +27,7 @@
 
       <tr mat-header-row *matHeaderRowDef="columnsToDisplay" sticky= true [style.background-color]="'#F7F7F2'"></tr>
       <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" (click)="onRowSelected(row)"></tr>
-    </table>
+    </mat-table>>
     <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
     </mat-paginator>
   </div>
