@@ -15,6 +15,8 @@ import { BusinessSolutionsService } from '../../../core/business-solutions.servi
   styleUrls: ['./business-solution-edit.component.css']
 })
 export class BusinessSolutionEditComponent implements OnInit {
+  taggingApporach = false;
+  searchApporach = false;
   rowData;
   industriesDisableStatus: boolean = false;
   subIndustriesDisableStatus: boolean = false;
@@ -39,6 +41,13 @@ export class BusinessSolutionEditComponent implements OnInit {
       this.subIndustriesDisableStatus = true;
       this.rowData['INDUSTRY'] = '';
       this.rowData['INDUSTRY SEGMENT'] = '';
+    }
+    if (this.rowData['TAGGING APPROACH'] == 'T') {
+      this.taggingApporach = true;
+      this.searchApporach = false;
+    } else if (this.rowData['SEARCH APPROACH'] == 'T') {
+      this.searchApporach = true;
+      this.taggingApporach = false;
     }
   }
 
@@ -145,9 +154,13 @@ export class BusinessSolutionEditComponent implements OnInit {
     if (event.value == 1) {
       this.rowData['TAGGING APPROACH'] = 'T';
       this.rowData['SEARCH APPROACH'] = '';
+      this.searchApporach = false;
+      this.taggingApporach = true;
     } else if (event.value == 2) {
       this.rowData['TAGGING APPROACH'] = '';
       this.rowData['SEARCH APPROACH'] = 'T';
+      this.searchApporach = true;
+      this.taggingApporach = false;
     }
     console.log(event.value);
   }

@@ -168,7 +168,7 @@ export class BusinessSolutionComponent implements OnInit {
             if (response['errorMessage']) {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: 'Sorry, Something Went Wrong... Try Again.'
+                data: response['errorMessage']
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();
@@ -227,7 +227,7 @@ export class BusinessSolutionComponent implements OnInit {
             if (response['errorMessage']) {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: 'Sorry, Something Went Wrong... Try Again.'
+                data: response['errorMessage'],
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();

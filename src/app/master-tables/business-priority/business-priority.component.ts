@@ -141,7 +141,7 @@ export class BusinessPriorityComponent implements OnInit {
     console.log('Adding the row data');
     let rowDataJson = {};
     for (let key in this.businessPriorities[0]) {
-      if (key != 'id') {
+      if (key.toUpperCase() != 'ID') {
         console.log('      key:', key);
         rowDataJson[key] = '';
       }

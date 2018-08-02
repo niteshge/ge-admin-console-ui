@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HorizontalTechnologyService } from '../../../core/horizontal-technologies.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '../../../../../node_modules/@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, ErrorStateMatcher } from '../../../../../node_modules/@angular/material';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '../../../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-horizontal-technology-edit',
@@ -8,7 +9,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '../../../../../node_modules/@angu
   styleUrls: ['./horizontal-technology-edit.component.css']
 })
 export class HorizontalTechnologyEditComponent implements OnInit {
-
+  orderForSolutionFillAppearnce:string;
+  numberFormControl = new FormControl('', [
+    Validators.required,
+    Validators.min(0),
+  ]);
   rowData;
 
   constructor(
@@ -30,5 +35,24 @@ export class HorizontalTechnologyEditComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  customErrorStateMatcher: ErrorStateMatcher = {
+    isErrorState: (control: FormControl | null) => {
+      if (control) {
+        const hasInteraction = control.dirty || control.touched;
+        const isInvalid = control.invalid;
 
+        return !!(hasInteraction && isInvalid);
+      }
+
+      return false;
+    }
+  };
+}
+
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
 }

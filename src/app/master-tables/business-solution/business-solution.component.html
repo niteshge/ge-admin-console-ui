@@ -1,12 +1,12 @@
-
 <div class=customtable>
-  <h6 class="subheading"><u>Business Solutions : </u></h6>
-  <app-dynamic-tables *ngIf="businessSolutions" [jsonData]="businessSolutions" (rowSelected)="openDialog($event)"></app-dynamic-tables>
-  <br/>
   <div class="row">
     <div class="col-4">
       <button mat-raised-button color=geprimary (click)="addRowData()">Add</button>
     </div>
   </div>
+  <br/>
+  <h6 class="subheading">
+    <u>Business Solutions : </u>
+  </h6>
+  <app-dynamic-tables *ngIf="businessSolutions" [jsonData]="businessSolutions" (rowSelected)="openDialog($event)"></app-dynamic-tables>
 </div>
-

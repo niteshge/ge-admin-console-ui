@@ -41,16 +41,24 @@ export class SubIndustryComponent implements OnInit {
     console.log('The adding tech sub seg is', value);
     this.industrySubService
       .addIndustrySubSegmentMarketMap(value)
-      .subscribe((response: Response) => {
-        console.log(response);
-        if (response['message'] === 'Status 200') {
-          this.getAllIndustrySubSegment();
-        }else{
-          let dialogAlert = this.dialog.open(AlertBoxComponent,{
+      .subscribe((response: Response) =>{
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: "Sorry, Something Went Wrong... Try Again.",
+            data: response['errorMessage']
           });
-          this.getAllIndustrySubSegment();
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        } else {
+          this.treeDataJson = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfull'
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
         }
       });
   }
@@ -59,16 +67,24 @@ export class SubIndustryComponent implements OnInit {
     console.log('The updating node is ', node);
     this.industrySubService
       .updateIndustrySubSegmentMarketMap(node)
-      .subscribe((response: Response) => {
-        console.log(response);
-        if (response['message'] === 'Status 200') {
-          this.getAllIndustrySubSegment();
-        }else{
-          let dialogAlert = this.dialog.open(AlertBoxComponent,{
+      .subscribe((response: Response) =>{
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: "Sorry, Something Went Wrong... Try Again.",
+            data: response['errorMessage']
           });
-          this.getAllIndustrySubSegment();
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        } else {
+          this.treeDataJson = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfull'
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
         }
       });
   }
@@ -79,15 +95,23 @@ export class SubIndustryComponent implements OnInit {
     this.industrySubService
       .deleteIndustrySubSegmentMarketMap(id)
       .subscribe((response: Response) => {
-        console.log(response);
-        if (response['message'] === 'Status 200') {
-          this.getAllIndustrySubSegment();
-        }else{
-          let dialogAlert = this.dialog.open(AlertBoxComponent,{
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: "Sorry, Something Went Wrong... Try Again.",
+            data: 'Sorry, Something Went Wrong... Try Again.'
           });
-          this.getAllIndustrySubSegment();
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        } else {
+          this.treeDataJson = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfully Deleted the record ' + id
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
         }
       });
   }

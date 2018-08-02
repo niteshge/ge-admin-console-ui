@@ -126,8 +126,6 @@ export class TreeStructureComponent implements OnInit {
 
   hasNoContent = (_: number, _nodeData: TodoItemFlatNode) => { return _nodeData.item === ''; };
 
-  // editContent = (_: number, _nodeData: TodoItemFlatNode) => { return _nodeData.item  === this.editValue };
-
   /**
   * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
   */
@@ -169,12 +167,6 @@ export class TreeStructureComponent implements OnInit {
   insertItem(parent: TodoItemNode, name: string) {
     console.log("the parent got is ", parent);
     console.log("The parent id is ", parent.id);
-    // let tempId: number[] = parent.id;
-    // console.log("the temp id is ", tempId);
-    // let newNodeId:number[] = Object.assign([], tempId);
-    // console.log("The copy is ", newNodeId)
-    // newNodeId.push(null);
-    // console.log("The new node id is", newNodeId);
     if (parent.children.length > 1) {
       let lastAddedChildNode = parent.children[parent.children.length - 1] //To add after the last node of the parent(which is the new node/child should be added in the last of row in the children)
       if (lastAddedChildNode.item === "") {
@@ -207,7 +199,6 @@ export class TreeStructureComponent implements OnInit {
 
   closeItem(parent: TodoItemNode) {
     let level: number[] = parent.level;
-    // if(level.length>2){
     let parentNode = this.data[level[0]];
     console.log("The top parent node is ", parentNode);
     console.log("b4 shift ", level);
@@ -222,24 +213,11 @@ export class TreeStructureComponent implements OnInit {
     parentNode.children.splice(-1, 1);
     this.dataChange.next(this.data);
     console.log("After the slice the data is ", this.data);
-    // }else{
-    // let parentNode = this.data[level[0]];
-    // console.log("When node is len 2",parentNode)
-    // parentNode.children.splice(-1,1);
-    // }
     console.log("this . data ", this.data);
     this.dataChange.next(this.data);
 
   }
-  // editItem(parent: TodoItemNode, name: string) {
-  //   console.log("The parent node is ",parent, "the value to be edited is ", name);
-  //   const child = <TodoItemNode>{ item: name, id: parent.id};
-  //   if (parent.children) {
-  //     parent.children.push(child);
-  //     this.dataChange.next(this.data);
-  //     // this.editInput = true;
-  //   }
-  // }
+
   updateItem(node: TodoItemNode, name: string) {
     console.log("In the update method", node);
     node.item = name;
@@ -247,13 +225,6 @@ export class TreeStructureComponent implements OnInit {
     this.emitNode(node, 1);
     this.dataChange.next(this.data);
     // Enable only if you no how to update after the response is succesful message is taken
-    /*
-    console.log("The updated node is ", node);
-    console.log("The node item is :", node.item);
-    console.log("the tech Id is ", node.id[0]);
-     if (node.id.length > 1) {
-       console.log("The parent id is ", node.id[node.id.length - 1]);
-     }*/
   }
   deleteItem(parent: TodoItemNode, name: string) {
       
@@ -273,38 +244,7 @@ export class TreeStructureComponent implements OnInit {
     console.log("The closing parent node is ", parentNode);
     this.closeItem(parentNode);
   }
-// editNodeValue(node: TodoItemFlatNode, itemValue: string){
-//     const nestedNode = this.flatNodeMap.get(node);
-//     if(itemValue == "" || itemValue === null){
-//       this.dialog.open(AlertBoxComponent, {
-//         width: '300px',
-//         data: "No Value Entered... Please Enter.",
-//       });
-//     }else{
-//       let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
-//         width: '300px',
-//         data: itemValue
-//       });
-//       dialogConfirm.afterClosed().subscribe(result => {
-//         console.log("The dialog confirm is closed with a action:", result);
-//         if (result == 100) {
-//           // let newNode:TodoItemNode = Object.assign({}, nestedNode);
-//           // newNode.item = itemValue;
-//           // this.subTechnologyService.addSubTechnologyNode(newNode)
-//           // .subscribe(
-//           // (response:Response) =>{
-//           // console.log("The response of adding the node ", response);
-//           // }
-//           // )
-//           // this.updateItem(nestedNode!, itemValue);
-//           console.log("The value will be edited is ", itemValue, " and the nested node is ", nestedNode!);
-//           // this.editInput = false;
-//         } else {
-//           this.closeNode(node);
-//         }
-//       });
-//     }
-// }
+
   /** Save the node to database */
   saveNode(node: TodoItemFlatNode, itemValue: string) {
     const nestedNode = this.flatNodeMap.get(node);
@@ -316,19 +256,11 @@ export class TreeStructureComponent implements OnInit {
     } else {
       let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
         width: '300px',
-        data: itemValue
+        data: {'textValue':'Are you sure you want to add'}
       });
       dialogConfirm.afterClosed().subscribe(result => {
         console.log("The dialog confirm is closed with a action:", result);
         if (result == 100) {
-          // let newNode:TodoItemNode = Object.assign({}, nestedNode);
-          // newNode.item = itemValue;
-          // this.subTechnologyService.addSubTechnologyNode(newNode)
-          // .subscribe(
-          // (response:Response) =>{
-          // console.log("The response of adding the node ", response);
-          // }
-          // )
           this.updateItem(nestedNode!, itemValue);
         } else {
           this.closeNode(node);
@@ -341,7 +273,19 @@ export class TreeStructureComponent implements OnInit {
     const parentNode = this.flatNodeMap.get(node);
     console.log("when add function is called the parent is ", parentNode)
     console.log("To delete the nodes ", parentNode.id);
-    this.emitNode(parentNode,3);
+    if(parentNode!=null){
+      let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
+        width: '300px',
+        data: {'textValue':'Are you sure you want to remove'}
+      });
+      dialogConfirm.afterClosed().subscribe(result => {
+        console.log("The dialog confirm is closed with a action:", result);
+        if (result == 100) {
+          this.emitNode(parentNode,3);
+        }
+      });
+    }
+    
   }
   editNode(node: TodoItemFlatNode) {
     console.log("time of adding", node);

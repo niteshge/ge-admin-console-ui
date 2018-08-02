@@ -1,6 +1,6 @@
 <form class="example-form mat-form"  *ngIf=rowData>
     <mat-form-field  class="example-full-width">
-      <input matInput [placeholder]="'SOLUTION SCORE'" [value]="rowData['SOLUTION SCORE']" (change)="onchangeEventRowData('SOLUTION SCORE',$event.target.value)">
+      <input matInput type=number min=0 [placeholder]="'SOLUTION SCORE'" [value]="rowData['SOLUTION SCORE']" (change)="onchangeEventRowData('SOLUTION SCORE',$event.target.value)">
     </mat-form-field>
     <mat-form-field class="example-full-width col-11">
       <textarea matInput (change)="onChangeName($event.target.value)" [placeholder]="'NAME'" [value]="rowData['NAME']" (change)="onchangeEventRowData('NAME',$event.target.value)"></textarea>

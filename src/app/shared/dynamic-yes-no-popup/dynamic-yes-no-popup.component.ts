@@ -7,11 +7,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./dynamic-yes-no-popup.component.css']
 })
 export class DynamicYesNoPopupComponent {
-
-
-  
+value=null;
   constructor(public dialogRef: MatDialogRef<DynamicYesNoPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) { 
+      this.value = data['textValue'];
+    }
     
     ngOnInit() {
     }

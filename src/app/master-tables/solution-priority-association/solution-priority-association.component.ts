@@ -186,7 +186,7 @@ export class SolutionPriorityAssociationComponent implements OnInit {
     console.log('Adding the row data');
     let rowDataJson = {};
     for (let key in this.solutionPriorityAssociation[0]) {
-      if (key != 'id') {
+      if (key.toUpperCase() != 'ID') {
         console.log('      key:', key);
         rowDataJson[key] = null;
       }

@@ -41,15 +41,23 @@ export class SubBusinessPriorityComponent implements OnInit {
     this.subBusinessPriorityService
       .addBusinessPrioritySubSegmentMarketMap(value)
       .subscribe((response: Response) => {
-        console.log(response);
-        if (response['message'] === 'Status 200') {
-          this.getAllBusinessPrioritySubSegment();
-        }else{
-          let dialogAlert = this.dialog.open(AlertBoxComponent,{
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: "Sorry, Something Went Wrong... Try Again.",
+            data: response['errorMessage']
           });
-          this.getAllBusinessPrioritySubSegment();
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        } else {
+          this.treeDataJson = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfull'
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
         }
       });
   }
@@ -59,15 +67,23 @@ export class SubBusinessPriorityComponent implements OnInit {
     this.subBusinessPriorityService
       .updateBusinessPrioriytySubSegmentMarketMap(node)
       .subscribe((response: Response) => {
-        console.log(response);
-        if (response['message'] === 'Status 200') {
-          this.getAllBusinessPrioritySubSegment();
-        }else{
-          let dialogAlert = this.dialog.open(AlertBoxComponent,{
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: "Sorry, Something Went Wrong... Try Again.",
+            data: response['errorMessage']
           });
-          this.getAllBusinessPrioritySubSegment();
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        } else {
+          this.treeDataJson = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfull'
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
         }
       });
   }
@@ -78,16 +94,24 @@ export class SubBusinessPriorityComponent implements OnInit {
     console.log('The id is ', id);
     this.subBusinessPriorityService
       .deleteBusinessPrioritySubSegmentMarketMap(id)
-      .subscribe((response: Response) => {
-        console.log(response);
-        if (response['message'] === 'Status 200') {
-          this.getAllBusinessPrioritySubSegment();
-        }else{
-          let dialogAlert = this.dialog.open(AlertBoxComponent,{
+      .subscribe((response: Response) =>  {
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: "Sorry, Something Went Wrong... Try Again.",
+            data: 'Sorry, Something Went Wrong... Try Again.'
           });
-          this.getAllBusinessPrioritySubSegment();
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        } else {
+          this.treeDataJson = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfully Deleted the record ' + id
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
         }
       });
   }

@@ -121,12 +121,17 @@ export class SubTechnologiesComponent implements OnInit {
   //     id: [99]
   //   }
   // ];
-  constructor(private subTechnologyService: SubTechnologyService, public dialog: MatDialog) {
-    this.getAllTechSubSegment();
+  constructor(
+    private subTechnologyService: SubTechnologyService,
+    public dialog: MatDialog
+  ) {
+    // this.getAllTechSubSegment();
     // this.treeDataJson = this.treeDataJson.slice();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getAllTechSubSegment();
+  }
   getAllTechSubSegment() {
     let randomValue = Math.random();
     this.subTechnologyService
@@ -272,15 +277,23 @@ export class SubTechnologiesComponent implements OnInit {
     this.subTechnologyService
       .addTechSubSegmentMarketMap(value)
       .subscribe((response: Response) => {
-        console.log(response);
-        if (response['message'] === 'Status 200') {
-          this.getAllTechSubSegment();
-        }else{
-          let dialogAlert = this.dialog.open(AlertBoxComponent,{
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: "Sorry, Something Went Wrong... Try Again.",
+            data: response['errorMessage']
           });
-          this.getAllTechSubSegment();
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        } else {
+          this.treeDataJson = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfull'
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
         }
       });
   }
@@ -291,15 +304,23 @@ export class SubTechnologiesComponent implements OnInit {
     this.subTechnologyService
       .deleteTechSubSegmentMarketMap(id)
       .subscribe((response: Response) => {
-        console.log(response);
-        if (response['message'] === 'Status 200') {
-          this.getAllTechSubSegment();
-        }else{
-          let dialogAlert = this.dialog.open(AlertBoxComponent,{
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: "Sorry, Something Went Wrong... Try Again.",
+            data: 'Sorry, Something Went Wrong... Try Again.'
           });
-          this.getAllTechSubSegment();
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        } else {
+          this.treeDataJson = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfully Deleted the record ' + id
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
         }
       });
   }
@@ -308,15 +329,23 @@ export class SubTechnologiesComponent implements OnInit {
     this.subTechnologyService
       .updateTechSubSegmentMarketMap(node)
       .subscribe((response: Response) => {
-        console.log(response);
-        if (response['message'] === 'Status 200') {
-          this.getAllTechSubSegment();
-        }else{
-          let dialogAlert = this.dialog.open(AlertBoxComponent,{
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: "Sorry, Something Went Wrong... Try Again.",
+            data: response['errorMessage']
           });
-          this.getAllTechSubSegment();
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        } else {
+          this.treeDataJson = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfull'
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
         }
       });
   }

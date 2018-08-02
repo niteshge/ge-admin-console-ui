@@ -3,7 +3,7 @@
     <input matInput [disabled]="true" [placeholder]="'ID'" [value]="rowData['ID']">
   </mat-form-field>
   <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width">
-    <input matInput [placeholder]="'SOLUTION SCORE'" [value]="rowData['SOLUTION SCORE']" (change)="onchangeEventRowData('SOLUTION SCORE',$event.target.value)">
+    <input matInput type=number min=0 [placeholder]="'SOLUTION SCORE'" [value]="rowData['SOLUTION SCORE']" (change)="onchangeEventRowData('SOLUTION SCORE',$event.target.value)">
   </mat-form-field>
   <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width col-11">
     <textarea matInput (change)="onChangeName($event.target.value)" [placeholder]="'NAME'" [value]="rowData['NAME']" (change)="onchangeEventRowData('NAME',$event.target.value)"></textarea>
@@ -44,8 +44,8 @@
     </mat-grid-tile>
   </mat-grid-list>
   <mat-radio-group>
-    <mat-radio-button [style.margin-right]="'32px'" [style.margin-left]="'32px'" (change)="radioChange($event)" value="1">TAGGING APPROACH</mat-radio-button>
-    <mat-radio-button [style.margin-right]="'32px'" [style.margin-left]="'32px'" (change)="radioChange($event)" value="2">SEARCH APPROACH</mat-radio-button>
+    <mat-radio-button [style.margin-right]="'32px'" [checked]="taggingApporach" [style.margin-left]="'32px'" (change)="radioChange($event)" value="1">TAGGING APPROACH</mat-radio-button>
+    <mat-radio-button [style.margin-right]="'32px'" [checked]="searchApporach" [style.margin-left]="'32px'" (change)="radioChange($event)" value="2">SEARCH APPROACH</mat-radio-button>
   </mat-radio-group>
   <mat-grid-list cols="3" rowHeight="100px">
     <mat-grid-tile [colspan]=1 [rowspan]=1>

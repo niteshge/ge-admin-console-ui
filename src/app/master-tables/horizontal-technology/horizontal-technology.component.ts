@@ -85,7 +85,7 @@ export class HorizontalTechnologyComponent implements OnInit {
             if (response['errorMessage']) {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: 'Sorry, Something Went Wrong... Try Again.'
+                data: response['errorMessage']
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();
@@ -134,7 +134,7 @@ export class HorizontalTechnologyComponent implements OnInit {
     console.log('Adding the row data');
     let rowDataJson = {};
     for (let key in this.horizontalTechnology[0]) {
-      if (key != 'id') {
+      if (key.toUpperCase() != 'ID') {
         console.log('      key:', key);
         rowDataJson[key] = '';
       }
@@ -152,7 +152,7 @@ export class HorizontalTechnologyComponent implements OnInit {
             if (response['errorMessage']) {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: 'Sorry, Something Went Wrong... Try Again.'
+                data: response['errorMessage']
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();
