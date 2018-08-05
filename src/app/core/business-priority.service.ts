@@ -22,5 +22,21 @@ export class BusinessPriorityService {
 deleteBusinessPriorityMaster(id:number){
   return this.http.delete('http://'+myGlobals.server+':8787/businesspriority/deletebusinesspriority/'+id);
 }
+checkBusinessPriorityExistInSolutionPriorityAssoc(
+  businessPriorityName: string,
+  action: number,
+  randomValue: number
+) {
+  return this.http.get(
+    'http://' +
+      myGlobals.server +
+      ':8787/businesspriority/checkbusinessprirityinsolutionpriorityassocexistence?businessPriorityName=' +
+      businessPriorityName +
+      '&action=' +
+      action +
+      '&randomValue=' +
+      randomValue
+  );
+}
 
 }

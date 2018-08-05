@@ -21,4 +21,24 @@ export class SubBusinessProrityService {
   updateBusinessPrioriytySubSegmentMarketMap(node:any){
     return this.http.post('http://'+myGlobals.server+':8787/businessprioritysubsegment/updatebpsubmarketmap',node);
   }
+
+  checkBusinessPrioritySubSegmentExistInSolutionPriorityAssoc(
+    businessPriorityOldSubSegmentId: number,
+    businessPriorityId: number,
+    action: number,
+    randomValue: number
+  ) {
+    return this.http.get(
+      'http://' +
+        myGlobals.server +
+        ':8787/businessprioritysubsegment/checkbusinessprioritysubsegmentexistence?businessPriorityOldSubSegmentId=' +
+        businessPriorityOldSubSegmentId +
+        '&businessPriorityId=' +
+        businessPriorityId +
+        '&action=' +
+        action +
+        '&randomValue=' +
+        randomValue
+    );
+  }
 }
