@@ -10,6 +10,7 @@ import { DynamicYesNoPopupComponent } from '../../shared/dynamic-yes-no-popup/dy
 import { BusinessSolutionEditComponent } from './business-solution-edit/business-solution-edit.component';
 import { BusinessSolutionAddComponent } from './business-solution-add/business-solution-add.component';
 import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
+import { ConstantTextService } from '../constant-text.service';
 
 @Component({
   selector: 'app-business-solution',
@@ -103,7 +104,7 @@ export class BusinessSolutionComponent implements OnInit {
       dialogConfirm.afterClosed().subscribe(result => {
         console.log('The dialog confirm is closed with a action:', result);
         if (result == 100) {
-          this.removeData(this.rowValue.ID);
+          this.removeData(this.rowValue);
         }
       });
     }
@@ -150,6 +151,10 @@ export class BusinessSolutionComponent implements OnInit {
     });
   }
   openEditDialog(value): void {
+    let randomValue = Math.random();
+    console.log('The json going to the edit popup is ', value);
+    let tempRowObject = Object.assign({}, value);
+    console.log("THE TEM ROW OBJECT IS ",tempRowObject);
     console.log('The json going to the edit popup is ', value);
     let dialogEdit = this.dialog.open(BusinessSolutionEditComponent, {
       width: '1000px',
@@ -158,7 +163,51 @@ export class BusinessSolutionComponent implements OnInit {
     dialogEdit.afterClosed().subscribe(result => {
       console.log('The value changed in the edit process is ', result);
       if (result != null) {
-        this.setBusinessModelData(result);
+        this.businessSolutionCoreService
+          .checkBusinessSolutionExistsInSolutionPriorityAssociation(
+            tempRowObject['SEARCH TEXT'],
+            2,
+            randomValue
+          )
+          .subscribe((response: Response) => {
+            if (
+              response['errorMessage'] ==
+              ConstantTextService.SoltionPriorityNoExistence
+            ) {
+              this.update(value);
+            } else if (
+              response['errorMessage'] ==
+              ConstantTextService.SolutionPriorityAssociationUpdateStatusWithBusinessSolution
+            ) {
+              let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
+                width: '300px',
+                data: { textValue: response['errorMessage'] }
+              });
+              dialogConfirm.afterClosed().subscribe(result => {
+                console.log(
+                  'The dialog confirm is closed with a action:',
+                  result
+                );
+                if (result == 100) {
+                  this.update(value);
+                }
+              });
+            } else {
+              let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                width: '300px',
+                data: response['errorMessage']
+              });
+              dialogAlert.afterClosed().subscribe(result => {
+                window.location.reload();
+              });
+            }
+          });
+      }
+    });
+  }
+
+  update(result){
+    this.setBusinessModelData(result);
         console.log(
           'The updating business model is ',
           this.businessSolutionMasterModel
@@ -185,8 +234,6 @@ export class BusinessSolutionComponent implements OnInit {
               });
             }
           });
-      }
-    });
   }
   onchangeEventRowData(value) {
     console.log('The onchange evnet is in business', value);
@@ -248,7 +295,30 @@ export class BusinessSolutionComponent implements OnInit {
     });
   }
 
-  removeData(id) {
+  removeData(rowValue) {
+    let randomValue = Math.random();
+    this.businessSolutionCoreService
+      .checkBusinessSolutionExistsInSolutionPriorityAssociation(rowValue['SEARCH TEXT'], 3, randomValue)
+      .subscribe((response: Response) => {
+        if (response['errorMessage'] == ConstantTextService.SoltionPriorityNoExistence) {
+          this.delete(rowValue.ID);
+        } else if (
+          response['errorMessage'] ==
+          ConstantTextService.SolutionPriorityAssociationDeleteStatusWithBusinessSolution
+        ) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            height: '400px',
+            data: response['errorMessage']
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        }
+      });
+  }
+
+  delete(id){
     let randomValue = Math.random();
     this.businessSolutionCoreService
       .deleteBusinessSolutions(id, randomValue)

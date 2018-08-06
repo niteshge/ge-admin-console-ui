@@ -44,4 +44,8 @@ export class BusinessSolutionsService {
     return this.http.get('http://'+myGlobals.server+':8787/mastertables/getsubindustries?industryName='+industryName+'&ver='+randomValue);
   }
 
+  checkBusinessSolutionExistsInSolutionPriorityAssociation(businessSolutionName:string, action:number, randomValue:number){
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/checkbusinessssolutioninsolutionpriorityassocexistence?businessSolutionName='+businessSolutionName+'&action='+action+'&ver='+randomValue);
+  }
+
 }

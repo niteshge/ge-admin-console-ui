@@ -30,6 +30,24 @@ export class SolutionPriorityAssociationService {
   saveSolutionPriorityAssociation(solutionPriorityAssociation:any){
     return this.http.post('http://'+myGlobals.server+':8787/analystconsole/spa/savesolutionpriorityassoc',solutionPriorityAssociation)
   }
+
+
+  getIndustrySubSegment1(industryName:string, randomValue){
+    return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/getindustrysubsegment1byindustry?industry='+industryName+'&ver='+randomValue);
+  }
+
+  getIndustrySubSegmentChild(industryName:string, industrySubSegment:string, randomValue:number){
+    return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/getindustrysubsegmentchildbyindustrysubsegmentparentandindustry?industry='+industryName+'&industrySubSegment='+industrySubSegment+'&ver='+randomValue);
+  }
+
+  getBusinessPrioritySubSegment1(businessPriorityName:string, randomValue){
+    return this.http.get('http://'+myGlobals.server+':8787/businessprioritysubsegment/getbusinesssubsegment1bybusinespriority?businessPriority='+businessPriorityName+'&ver='+randomValue);
+  }
+
+  getBusinessPrioritySubSegmentChild(businessPriorityName:string, businessPrioritySubSegment:string, randomValue:number){
+    return this.http.get('http://'+myGlobals.server+':8787/businessprioritysubsegment/getbusinessprioritysubsegmentchildbybusinessprioritysubsegmentparentandbusinesspriority?businessPriority='+businessPriorityName+'&businessPrioritySubSegment='+businessPrioritySubSegment+'&ver='+randomValue);
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

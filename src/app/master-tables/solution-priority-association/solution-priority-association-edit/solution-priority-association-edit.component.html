@@ -11,18 +11,18 @@
         [defaultValue]="rowData['INDUSTRY']" (optionSelected)="changeIndustries('INDUSTRY',$event)"></app-dynamic-select>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>
-      <app-dynamic-select [disabledParam]="industrySubSegmentDisableParam" [style.margin-right]="'32px'" [style.margin-left]="'32px'"
-        [placeholder]="'INDUSTRY SEGMENT 1'" [options]="rowData['ALL SUB INDUSTRIES']" [defaultValue]="rowData['INDUSTRY SEGMENT 1']"
-        (optionSelected)="onchangeEventRowData('INDUSTRY SEGMENT 1',$event)"></app-dynamic-select>
+      <app-dynamic-select [disabledParam]="industrySubSegment1DisableParam" [style.margin-right]="'32px'" [style.margin-left]="'32px'"
+        [placeholder]="'INDUSTRY SEGMENT 1'" [options]="rowData['ALL SUB INDUSTRIES 1']" [defaultValue]="rowData['INDUSTRY SEGMENT 1']"
+        (optionSelected)="changeIndustriesSubSegment1('INDUSTRY SEGMENT 1',$event)"></app-dynamic-select>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>
-      <app-dynamic-select [disabledParam]="industrySubSegmentDisableParam" [style.margin-right]="'32px'" [style.margin-left]="'32px'"
-        [placeholder]="'INDUSTRY SEGMENT 2'" [options]="rowData['ALL SUB INDUSTRIES']" [defaultValue]="rowData['INDUSTRY SEGMENT 2']"
-        (optionSelected)="onchangeEventRowData('INDUSTRY SEGMENT 2',$event)"></app-dynamic-select>
+      <app-dynamic-select [disabledParam]="industrySubSegment2DisableParam" [style.margin-right]="'32px'" [style.margin-left]="'32px'"
+        [placeholder]="'INDUSTRY SEGMENT 2'" [options]="rowData['ALL SUB INDUSTRIES 2']" [defaultValue]="rowData['INDUSTRY SEGMENT 2']"
+        (optionSelected)="changeIndustriesSubSegment2('INDUSTRY SEGMENT 2',$event)"></app-dynamic-select>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>
-      <app-dynamic-select [disabledParam]="industrySubSegmentDisableParam" [style.margin-right]="'32px'" [style.margin-left]="'32px'"
-        [placeholder]="'INDUSTRY SEGMENT 3'" [options]="rowData['ALL SUB INDUSTRIES']" [defaultValue]="rowData['INDUSTRY SEGMENT 3']"
+      <app-dynamic-select [disabledParam]="industrySubSegment3DisableParam" [style.margin-right]="'32px'" [style.margin-left]="'32px'"
+        [placeholder]="'INDUSTRY SEGMENT 3'" [options]="rowData['ALL SUB INDUSTRIES 3']" [defaultValue]="rowData['INDUSTRY SEGMENT 3']"
         (optionSelected)="onchangeEventRowData('INDUSTRY SEGMENT 3',$event)"></app-dynamic-select>
     </mat-grid-tile>
   </mat-grid-list>
@@ -34,7 +34,7 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>
       <app-dynamic-select [style.margin-right]="'32px'" [style.margin-left]="'32px'" [placeholder]="'BUSINESS PRIORITY 1'" [options]="rowData['ALL BUSINESS PRIORITY']"
-        [defaultValue]="rowData['BUSINESS PRIORITY 1']" (optionSelected)="changeBusinessPriority('BUSINESS PRIORITY 1',$event)"></app-dynamic-select>
+        [defaultValue]="rowData['BUSINESS PRIORITY 1']" (optionSelected)="changeBusinessPriority1('BUSINESS PRIORITY 1',$event)"></app-dynamic-select>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>
       <mat-form-field class="custom-field" [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width">
@@ -50,9 +50,9 @@
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>
-      <app-dynamic-select [disabledParam]="businessPrioritySubSegmentDisableParam" [style.margin-right]="'32px'" [style.margin-left]="'32px'"
-        [placeholder]="'BUSINESS PRIORITY 2'" [options]="rowData['ALL SUB BUSINESS PRIORITIES']" [defaultValue]="rowData['BUSINESS PRIORITY 2']"
-        (optionSelected)="onchangeEventRowData('BUSINESS PRIORITY 2',$event)"></app-dynamic-select>
+      <app-dynamic-select [disabledParam]="businessPrioritySubSegment2DisableParam" [style.margin-right]="'32px'" [style.margin-left]="'32px'"
+        [placeholder]="'BUSINESS PRIORITY 2'" [options]="rowData['ALL SUB BUSINESS PRIORITIES 2']" [defaultValue]="rowData['BUSINESS PRIORITY 2']"
+        (optionSelected)="changeBusinessPriority2('BUSINESS PRIORITY 2',$event)"></app-dynamic-select>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>
       <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width">
@@ -68,8 +68,8 @@
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>
-      <app-dynamic-select [disabledParam]="businessPrioritySubSegmentDisableParam" [style.margin-right]="'32px'" [style.margin-left]="'32px'"
-        [placeholder]="'BUSINESS PRIORITY 3'" [options]="rowData['ALL SUB BUSINESS PRIORITIES']" [defaultValue]="rowData['BUSINESS PRIORITY 3']"
+      <app-dynamic-select [disabledParam]="businessPrioritySubSegment3DisableParam" [style.margin-right]="'32px'" [style.margin-left]="'32px'"
+        [placeholder]="'BUSINESS PRIORITY 3'" [options]="rowData['ALL SUB BUSINESS PRIORITIES 3']" [defaultValue]="rowData['BUSINESS PRIORITY 3']"
         (optionSelected)="onchangeEventRowData('BUSINESS PRIORITY 3',$event)"></app-dynamic-select>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>

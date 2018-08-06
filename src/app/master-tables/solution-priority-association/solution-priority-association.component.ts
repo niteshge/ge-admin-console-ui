@@ -62,7 +62,7 @@ export class SolutionPriorityAssociationComponent implements OnInit {
       console.log('delete On ', this.rowValue.ID);
       let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
         width: '300px',
-        data: {'textValue':'Are you sure you want to remove'}
+        data: { textValue: 'Are you sure you want to remove' }
       });
       dialogConfirm.afterClosed().subscribe(result => {
         console.log('The dialog confirm is closed with a action:', result);
@@ -81,24 +81,62 @@ export class SolutionPriorityAssociationComponent implements OnInit {
         console.log('The industries are ', response);
         rowData['ALL INDUSTRIES'] = response;
       });
-    this.masterTableService
-      .getIndustriesSubSegment(rowData['INDUSTRY'], randomValue)
-      .subscribe((response: Response) => {
-        rowData['ALL SUB INDUSTRIES'] = response;
-      });
+    if (rowData['INDUSTRY'] !== null) {
+      this.solutionPriorityAssociationService
+        .getIndustrySubSegment1(rowData['INDUSTRY'], randomValue)
+        .subscribe((response: Response) => {
+          rowData['ALL SUB INDUSTRIES 1'] = response;
+        });
+    }
+    if (rowData['INDUSTRY SEGMENT 1'] !== null) {
+      this.solutionPriorityAssociationService
+        .getIndustrySubSegmentChild(
+          rowData['INDUSTRY'],
+          rowData['INDUSTRY SEGMENT 1'],
+          randomValue
+        )
+        .subscribe((response: Response) => {
+          rowData['ALL SUB INDUSTRIES 2'] = response;
+        });
+    }
+    if (rowData['INDUSTRY SEGMENT 2'] !== null) {
+      this.solutionPriorityAssociationService
+        .getIndustrySubSegmentChild(
+          rowData['INDUSTRY'],
+          rowData['INDUSTRY SEGMENT 2'],
+          randomValue
+        )
+        .subscribe((response: Response) => {
+          rowData['ALL SUB INDUSTRIES 3'] = response;
+        });
+    }
     this.masterTableService
       .getAllBusinessPrioritiesNames(randomValue)
       .subscribe((response: Response) => {
         rowData['ALL BUSINESS PRIORITY'] = response;
       });
-    this.masterTableService
-      .getSubSegmentBusinessPriorityByBusinessPriorityName(
-        rowData['BUSINESS PRIORITY 1'],
-        randomValue
-      )
-      .subscribe((response: Response) => {
-        rowData['ALL SUB BUSINESS PRIORITIES'] = response;
-      });
+      if(rowData['BUSINESS PRIORITY 1']!==null){
+        this.solutionPriorityAssociationService
+        .getBusinessPrioritySubSegment1(
+          rowData['BUSINESS PRIORITY 1'],
+          randomValue
+        )
+        .subscribe((response: Response) => {
+          rowData['ALL SUB BUSINESS PRIORITIES 2'] = response;
+        });
+      }
+
+      if(rowData['BUSINESS PRIORITY 2']!==null){
+        this.solutionPriorityAssociationService
+        .getBusinessPrioritySubSegmentChild(
+          rowData['BUSINESS PRIORITY 1'], rowData['BUSINESS PRIORITY 2'],
+          randomValue
+        )
+        .subscribe((response: Response) => {
+          rowData['ALL SUB BUSINESS PRIORITIES 3'] = response;
+        });
+      }
+ 
     this.masterTableService
       .getAllBusinessSolution(randomValue)
       .subscribe((response: Response) => {
@@ -114,7 +152,7 @@ export class SolutionPriorityAssociationComponent implements OnInit {
       }
     );
     dialogEdit.afterClosed().subscribe(result => {
-      // TODO: Use the change detector or some other method to only append the changed data in the datasource 
+      // TODO: Use the change detector or some other method to only append the changed data in the datasource
       console.log('The value changed in the edit process is ', result);
       if (result != null) {
         let temp = null;
@@ -122,26 +160,26 @@ export class SolutionPriorityAssociationComponent implements OnInit {
         this.solutionPriorityAssociationService
           .updateSolutionPriorityAssociation(result)
           .subscribe((response: Response) => {
-            if(response['errorMessage']){
-              let dialogAlert = this.dialog.open(AlertBoxComponent,{
+            if (response['errorMessage']) {
+              let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: "Sorry, Something Went Wrong... Try Again.",
+                data: 'Sorry, Something Went Wrong... Try Again.'
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();
               });
-            }else{
+            } else {
               //TODO: UNCOMMENT THE COMMENTED LINES AND COMMENT THE OTHER BELOW LINES AND MAKE SURE U ONLY APPEND THE EDITED/UPDATED ROW USING FILTER OR SOMETHING ELSE
-            // this.solutionPriorityAssociation = response;
-            // this.changeDetectorRefs.detectChanges();
-            let dialogAlert = this.dialog.open(AlertBoxComponent,{
-              width: '300px',
-              data: "Sorry, Something Went Wrong... Try Again.",
-            });
-            dialogAlert.afterClosed().subscribe(result => {
+              // this.solutionPriorityAssociation = response;
+              // this.changeDetectorRefs.detectChanges();
+              let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                width: '300px',
+                data: 'Sorry, Something Went Wrong... Try Again.'
+              });
+              dialogAlert.afterClosed().subscribe(result => {
+                window.location.reload();
+              });
               window.location.reload();
-            });
-            window.location.reload();
             }
           });
       }
@@ -149,7 +187,7 @@ export class SolutionPriorityAssociationComponent implements OnInit {
   }
 
   removeData(id: Number) {
-    // TODO: Use the change detector or some other method to only append the changed data in the datasource 
+    // TODO: Use the change detector or some other method to only append the changed data in the datasource
     let randomValue = Math.random();
     this.solutionPriorityAssociationService
       .deleteSolutionPriorityAssociationById(id)
@@ -159,31 +197,31 @@ export class SolutionPriorityAssociationComponent implements OnInit {
         // window.location.reload();
 
         //TODO: COMMENT ALL THE BELOW LINES AND UNCOMMENT ABOVE ONCE
-        if(response['errorMessage']){
-          let dialogAlert = this.dialog.open(AlertBoxComponent,{
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: "Sorry, Something Went Wrong... Try Again.",
+            data: 'Sorry, Something Went Wrong... Try Again.'
           });
           dialogAlert.afterClosed().subscribe(result => {
             window.location.reload();
           });
-        }else{
+        } else {
           //TODO: UNCOMMENT THE COMMENTED LINES AND COMMENT THE OTHER BELOW LINES AND MAKE SURE U ONLY APPEND THE EDITED/UPDATED ROW USING FILTER OR SOMETHING ELSE
-        // this.solutionPriorityAssociation = response;
-        // this.changeDetectorRefs.detectChanges();
-        let dialogAlert = this.dialog.open(AlertBoxComponent,{
-          width: '300px',
-          data: "Sorry, Something Went Wrong... Try Again.",
-        });
-        dialogAlert.afterClosed().subscribe(result => {
+          // this.solutionPriorityAssociation = response;
+          // this.changeDetectorRefs.detectChanges();
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sorry, Something Went Wrong... Try Again.'
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
           window.location.reload();
-        });
-        window.location.reload();
         }
       });
   }
 
-  addRow(){
+  addRow() {
     console.log('Adding the row data');
     let rowDataJson = {};
     for (let key in this.solutionPriorityAssociation[0]) {
@@ -199,56 +237,53 @@ export class SolutionPriorityAssociationComponent implements OnInit {
         console.log('The industries are ', response);
         rowDataJson['ALL INDUSTRIES'] = response;
       });
-      this.masterTableService
+    this.masterTableService
       .getAllBusinessPrioritiesNames(randomValue)
       .subscribe((response: Response) => {
         rowDataJson['ALL BUSINESS PRIORITY'] = response;
       });
-      this.masterTableService
+    this.masterTableService
       .getAllBusinessSolution(randomValue)
       .subscribe((response: Response) => {
         rowDataJson['ALL BUSINESS SOLUTION'] = response;
       });
-      console.log('The json going to the add popup is ', rowDataJson);
-      let dialogAdd = this.dialog.open(
-        SolutionPriorityAssociationAddComponent,
-        {
-          width: '1200px',
-          height: '700px',
-          data: rowDataJson
-        }
-      );
-      dialogAdd.afterClosed().subscribe(result => {
-        console.log('The value changed in the add process is ', result);
-        if (result != null) {
-          console.log('The result is ', result);
-          this.solutionPriorityAssociationService
-            .saveSolutionPriorityAssociation(result)
-            .subscribe((response: Response) => {
-              // this.solutionPriorityAssociation = response;
-              if(response['errorMessage']){
-                let dialogAlert = this.dialog.open(AlertBoxComponent,{
-                  width: '300px',
-                  data: "Sorry, Something Went Wrong... Try Again.",
-                });
-                dialogAlert.afterClosed().subscribe(result => {
-                  window.location.reload();
-                });
-              }else{
-                //TODO: UNCOMMENT THE COMMENTED LINES AND COMMENT THE OTHER BELOW LINES AND MAKE SURE U ONLY APPEND THE EDITED/UPDATED ROW USING FILTER OR SOMETHING ELSE
+    console.log('The json going to the add popup is ', rowDataJson);
+    let dialogAdd = this.dialog.open(SolutionPriorityAssociationAddComponent, {
+      width: '1200px',
+      height: '700px',
+      data: rowDataJson
+    });
+    dialogAdd.afterClosed().subscribe(result => {
+      console.log('The value changed in the add process is ', result);
+      if (result != null) {
+        console.log('The result is ', result);
+        this.solutionPriorityAssociationService
+          .saveSolutionPriorityAssociation(result)
+          .subscribe((response: Response) => {
+            // this.solutionPriorityAssociation = response;
+            if (response['errorMessage']) {
+              let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                width: '300px',
+                data: 'Sorry, Something Went Wrong... Try Again.'
+              });
+              dialogAlert.afterClosed().subscribe(result => {
+                window.location.reload();
+              });
+            } else {
+              //TODO: UNCOMMENT THE COMMENTED LINES AND COMMENT THE OTHER BELOW LINES AND MAKE SURE U ONLY APPEND THE EDITED/UPDATED ROW USING FILTER OR SOMETHING ELSE
               // this.solutionPriorityAssociation = response;
               // this.changeDetectorRefs.detectChanges();
-              let dialogAlert = this.dialog.open(AlertBoxComponent,{
+              let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: "Sorry, Something Went Wrong... Try Again.",
+                data: 'Sorry, Something Went Wrong... Try Again.'
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();
               });
               window.location.reload();
-              }
-            });
-        }
-      });
+            }
+          });
+      }
+    });
   }
 }

@@ -42,4 +42,8 @@ export class ConstantTextService {
   public static  BusinessSolutionDeleteStatusWithSubTechnology:string = "Business Solution Table Table Are Linked With The Technology Sub Segment. Please Clean Up To Delete Industry";
 
   public static  BusinessSolutionUpdateStatusWithSubTechnology:string = "Business Solution Table Table Are Linked With The Technology Sub Segment. It Gets Updated everywhere.";
+
+  public static   SolutionPriorityAssociationDeleteStatusWithBusinessSolution:string = "Solution Priority Association Table Are Linked With The Business Solution. Please Clean Up To Delete Business Solution";
+
+    public static   SolutionPriorityAssociationUpdateStatusWithBusinessSolution:string = "Solution Priority Association Table Are Linked With The Business Solution. It Gets Updated everywhere.";
 }

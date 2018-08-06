@@ -13,8 +13,11 @@ import { MasterService } from '../../../core/master.service';
 })
 export class SolutionPriorityAssociationEditComponent implements OnInit {
   rowData;
-  industrySubSegmentDisableParam = false;
-  businessPrioritySubSegmentDisableParam = false;
+  industrySubSegment1DisableParam = false;
+  industrySubSegment2DisableParam = false;
+  industrySubSegment3DisableParam = false;
+  businessPrioritySubSegment2DisableParam  = false;
+  businessPrioritySubSegment3DisableParam  = false;
   constructor(
     public dialogRef: MatDialogRef<SolutionPriorityAssociationEditComponent>,
     private solutionPriorityAssocService: SolutionPriorityAssociationService,
@@ -31,42 +34,115 @@ export class SolutionPriorityAssociationEditComponent implements OnInit {
       let randomValue = Math.random();
       console.log('The changed Industry is ', value);
       this.rowData[key] = value;
-      let listOfSubIndustries: any = [];
-      this.masterTableService
-        .getIndustriesSubSegment(value, randomValue)
+      let listOfSubIndustries1: any = [];
+      this.solutionPriorityAssocService
+        .getIndustrySubSegment1(value, randomValue)
         .subscribe((response: Response) => {
-          listOfSubIndustries = response;
-          if (listOfSubIndustries.length > 0) {
-            this.industrySubSegmentDisableParam = false;
-            this.rowData['ALL SUB INDUSTRIES'] = listOfSubIndustries;
+          listOfSubIndustries1 = response;
+          if (listOfSubIndustries1.length > 0) {
+            this.industrySubSegment1DisableParam = false;
+            this.industrySubSegment2DisableParam = true;
+            this.industrySubSegment3DisableParam = true;
+            this.rowData['ALL SUB INDUSTRIES 1'] = listOfSubIndustries1;
             this.rowData['INDUSTRY SEGMENT 1'] = '';
             this.rowData['INDUSTRY SEGMENT 2'] = '';
             this.rowData['INDUSTRY SEGMENT 3'] = '';
           } else {
-            this.industrySubSegmentDisableParam = true;
+            this.industrySubSegment1DisableParam = true;
+            this.industrySubSegment2DisableParam = true;
+            this.industrySubSegment3DisableParam = true;
           }
         });
     }
   }
-  changeBusinessPriority(key, value) {
+  changeIndustriesSubSegment1(key, value) {
+    if (this.rowData[key] !== value) {
+      let randomValue = Math.random();
+      console.log('The changed Industry Sub Segment 1 is ', value);
+      this.rowData[key] = value;
+      let listOfSubIndustries2: any = [];
+      this.solutionPriorityAssocService
+        .getIndustrySubSegmentChild(this.rowData['INDUSTRY'], value, randomValue)
+        .subscribe((response: Response) => {
+          listOfSubIndustries2 = response;
+          if (listOfSubIndustries2.length > 0) {
+            this.industrySubSegment2DisableParam = false;
+            this.industrySubSegment3DisableParam = true;
+            this.rowData['ALL SUB INDUSTRIES 2'] = listOfSubIndustries2;
+            this.rowData['INDUSTRY SEGMENT 2'] = '';
+            this.rowData['INDUSTRY SEGMENT 3'] = '';
+          } else {
+            this.industrySubSegment2DisableParam = true;
+            this.industrySubSegment3DisableParam = true;
+          }
+        });
+    }
+  }
+
+  changeIndustriesSubSegment2(key, value) {
+    if (this.rowData[key] !== value) {
+      let randomValue = Math.random();
+      console.log('The changed Industry Sub Segment 2 is ', value);
+      this.rowData[key] = value;
+      let listOfSubIndustries2: any = [];
+      this.solutionPriorityAssocService
+        .getIndustrySubSegmentChild(this.rowData['INDUSTRY'], value, randomValue)
+        .subscribe((response: Response) => {
+          listOfSubIndustries2 = response;
+          if (listOfSubIndustries2.length > 0) {
+            this.industrySubSegment3DisableParam = false;
+            this.rowData['ALL SUB INDUSTRIES 3'] = listOfSubIndustries2;
+            this.rowData['INDUSTRY SEGMENT 3'] = '';
+          } else {
+            this.industrySubSegment3DisableParam = true;
+          }
+        });
+    }
+  }
+
+  changeBusinessPriority1(key, value) {
     if (this.rowData[key] !== value) {
       let randomValue = Math.random();
       console.log('The changed value of business priority is ', value);
       this.rowData[key] = value;
-      let listOfSubBusinessPriorities: any = [];
-      this.masterTableService
-        .getSubSegmentBusinessPriorityByBusinessPriorityName(value, randomValue)
+      let listOfSubBusinessPriorities2: any = [];
+      this.solutionPriorityAssocService
+        .getBusinessPrioritySubSegment1(value, randomValue)
         .subscribe((response: Response) => {
-          listOfSubBusinessPriorities = response;
-          if (listOfSubBusinessPriorities.length > 0) {
-            this.businessPrioritySubSegmentDisableParam = false;
+          listOfSubBusinessPriorities2 = response;
+          if (listOfSubBusinessPriorities2.length > 0) {
+            this.businessPrioritySubSegment2DisableParam  = false;
             this.rowData[
-              'ALL SUB BUSINESS PRIORITIES'
-            ] = listOfSubBusinessPriorities;
+              'ALL SUB BUSINESS PRIORITIES 2'
+            ] = listOfSubBusinessPriorities2;
             this.rowData['BUSINESS PRIORITY 2'] = '';
             this.rowData['BUSINESS PRIORITY 3'] = '';
           } else {
-            this.businessPrioritySubSegmentDisableParam = true;
+            this.businessPrioritySubSegment2DisableParam  = true;
+            this.businessPrioritySubSegment3DisableParam  = true;
+          }
+        });
+    }
+  }
+
+  changeBusinessPriority2(key, value) {
+    if (this.rowData[key] !== value) {
+      let randomValue = Math.random();
+      console.log('The changed value of business priority is ', value);
+      this.rowData[key] = value;
+      let listOfSubBusinessPriorities3: any = [];
+      this.solutionPriorityAssocService
+        .getBusinessPrioritySubSegmentChild(this.rowData['BUSINESS PRIORITY 1'], value, randomValue)
+        .subscribe((response: Response) => {
+          listOfSubBusinessPriorities3 = response;
+          if (listOfSubBusinessPriorities3.length > 0) {
+            this.businessPrioritySubSegment3DisableParam  = false;
+            this.rowData[
+              'ALL SUB BUSINESS PRIORITIES 3'
+            ] = listOfSubBusinessPriorities3;
+            this.rowData['BUSINESS PRIORITY 3'] = '';
+          } else {
+            this.businessPrioritySubSegment3DisableParam  = true;
           }
         });
     }
