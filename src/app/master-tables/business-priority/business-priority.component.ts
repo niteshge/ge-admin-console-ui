@@ -62,10 +62,8 @@ export class BusinessPriorityComponent implements OnInit {
     } else if (value === '3') {
       console.log('delete On ', this.rowValue.ID);
       let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
-        width: '500px',
-        data: {
-          textData: "Are you sure you want to remove"
-        }
+        width: '300px',
+        data: { textValue: 'Are you sure you want to remove' }
       });
       dialogConfirm.afterClosed().subscribe(result => {
         console.log('The dialog confirm is closed with a action:', result);
