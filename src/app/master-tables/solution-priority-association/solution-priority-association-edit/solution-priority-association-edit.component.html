@@ -29,7 +29,7 @@
   <mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile [colspan]=1 [rowspan]=1>
       <mat-form-field class="custom-field" [style.margin-right]="'32px'" [style.margin-left]="'24px'" class="example-full-width">
-        <input matInput [placeholder]="'ORDER OF BUSINESS PRIORITY 1'" [value]="rowData['ORDER OF BUSINESS PRIORITY 1']" (change)="onchangeEventRowData('ORDER OF BUSINESS PRIORITY 1',$event.target.value)">
+        <input matInput type=number min=0 [placeholder]="'ORDER OF BUSINESS PRIORITY 1'" [value]="rowData['ORDER OF BUSINESS PRIORITY 1']" (change)="onchangeEventRowData('ORDER OF BUSINESS PRIORITY 1',$event.target.value)">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>
@@ -46,7 +46,7 @@
   <mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile [colspan]=1 [rowspan]=1>
       <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width">
-        <input matInput [placeholder]="'ORDER OF BUSINESS PRIORITY 2'" [value]="rowData['ORDER OF BUSINESS PRIORITY 2']" (change)="onchangeEventRowData('ORDER OF BUSINESS PRIORITY 2',$event.target.value)">
+        <input matInput type=number min=0 [placeholder]="'ORDER OF BUSINESS PRIORITY 2'" [value]="rowData['ORDER OF BUSINESS PRIORITY 2']" (change)="onchangeEventRowData('ORDER OF BUSINESS PRIORITY 2',$event.target.value)">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>
@@ -64,7 +64,7 @@
   <mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile [colspan]=1 [rowspan]=1>
       <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width">
-        <input matInput [placeholder]="'ORDER OF BUSINESS PRIORITY 3'" [value]="rowData['ORDER OF BUSINESS PRIORITY 3']" (change)="onchangeEventRowData('ORDER OF BUSINESS PRIORITY 3',$event.target.value)">
+        <input matInput type=number min=0 [placeholder]="'ORDER OF BUSINESS PRIORITY 3'" [value]="rowData['ORDER OF BUSINESS PRIORITY 3']" (change)="onchangeEventRowData('ORDER OF BUSINESS PRIORITY 3',$event.target.value)">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1>
@@ -82,7 +82,7 @@
   <mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile [colspan]=1 [rowspan]=1>
       <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width">
-        <input matInput [placeholder]="'ORDER OF SOLUTION'" [value]="rowData['ORDER OF SOLUTION']" (change)="onchangeEventRowData('ORDER OF SOLUTION',$event.target.value)">
+        <input matInput type=number min=0 [placeholder]="'ORDER OF SOLUTION'" [value]="rowData['ORDER OF SOLUTION']" (change)="onchangeEventRowData('ORDER OF SOLUTION',$event.target.value)">
       </mat-form-field>
     </mat-grid-tile>
   </mat-grid-list>

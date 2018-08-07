@@ -115,8 +115,8 @@ export class SolutionPriorityAssociationComponent implements OnInit {
       .subscribe((response: Response) => {
         rowData['ALL BUSINESS PRIORITY'] = response;
       });
-      if(rowData['BUSINESS PRIORITY 1']!==null){
-        this.solutionPriorityAssociationService
+    if (rowData['BUSINESS PRIORITY 1'] !== null) {
+      this.solutionPriorityAssociationService
         .getBusinessPrioritySubSegment1(
           rowData['BUSINESS PRIORITY 1'],
           randomValue
@@ -124,19 +124,20 @@ export class SolutionPriorityAssociationComponent implements OnInit {
         .subscribe((response: Response) => {
           rowData['ALL SUB BUSINESS PRIORITIES 2'] = response;
         });
-      }
+    }
 
-      if(rowData['BUSINESS PRIORITY 2']!==null){
-        this.solutionPriorityAssociationService
+    if (rowData['BUSINESS PRIORITY 2'] !== null) {
+      this.solutionPriorityAssociationService
         .getBusinessPrioritySubSegmentChild(
-          rowData['BUSINESS PRIORITY 1'], rowData['BUSINESS PRIORITY 2'],
+          rowData['BUSINESS PRIORITY 1'],
+          rowData['BUSINESS PRIORITY 2'],
           randomValue
         )
         .subscribe((response: Response) => {
           rowData['ALL SUB BUSINESS PRIORITIES 3'] = response;
         });
-      }
- 
+    }
+
     this.masterTableService
       .getAllBusinessSolution(randomValue)
       .subscribe((response: Response) => {
@@ -163,23 +164,20 @@ export class SolutionPriorityAssociationComponent implements OnInit {
             if (response['errorMessage']) {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: 'Sorry, Something Went Wrong... Try Again.'
+                data: response['errorMessage']
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();
               });
             } else {
-              //TODO: UNCOMMENT THE COMMENTED LINES AND COMMENT THE OTHER BELOW LINES AND MAKE SURE U ONLY APPEND THE EDITED/UPDATED ROW USING FILTER OR SOMETHING ELSE
-              // this.solutionPriorityAssociation = response;
-              // this.changeDetectorRefs.detectChanges();
+              this.solutionPriorityAssociation = response;
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: 'Sorry, Something Went Wrong... Try Again.'
+                data: 'Sucessfull'
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();
               });
-              window.location.reload();
             }
           });
       }
@@ -187,16 +185,10 @@ export class SolutionPriorityAssociationComponent implements OnInit {
   }
 
   removeData(id: Number) {
-    // TODO: Use the change detector or some other method to only append the changed data in the datasource
     let randomValue = Math.random();
     this.solutionPriorityAssociationService
       .deleteSolutionPriorityAssociationById(id)
       .subscribe((response: Response) => {
-        // this.solutionPriorityAssociation = response;
-        // this.changeDetectorRefs.detectChanges();
-        // window.location.reload();
-
-        //TODO: COMMENT ALL THE BELOW LINES AND UNCOMMENT ABOVE ONCE
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
@@ -206,17 +198,14 @@ export class SolutionPriorityAssociationComponent implements OnInit {
             window.location.reload();
           });
         } else {
-          //TODO: UNCOMMENT THE COMMENTED LINES AND COMMENT THE OTHER BELOW LINES AND MAKE SURE U ONLY APPEND THE EDITED/UPDATED ROW USING FILTER OR SOMETHING ELSE
-          // this.solutionPriorityAssociation = response;
-          // this.changeDetectorRefs.detectChanges();
+          this.solutionPriorityAssociation = response;
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: 'Sorry, Something Went Wrong... Try Again.'
+            data: 'Sucessfully Deleted the record ' + id
           });
           dialogAlert.afterClosed().subscribe(result => {
             window.location.reload();
           });
-          window.location.reload();
         }
       });
   }
@@ -260,27 +249,23 @@ export class SolutionPriorityAssociationComponent implements OnInit {
         this.solutionPriorityAssociationService
           .saveSolutionPriorityAssociation(result)
           .subscribe((response: Response) => {
-            // this.solutionPriorityAssociation = response;
             if (response['errorMessage']) {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: 'Sorry, Something Went Wrong... Try Again.'
+                data: response['errorMessage']
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();
               });
             } else {
-              //TODO: UNCOMMENT THE COMMENTED LINES AND COMMENT THE OTHER BELOW LINES AND MAKE SURE U ONLY APPEND THE EDITED/UPDATED ROW USING FILTER OR SOMETHING ELSE
-              // this.solutionPriorityAssociation = response;
-              // this.changeDetectorRefs.detectChanges();
+              this.solutionPriorityAssociation = response;
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: 'Sorry, Something Went Wrong... Try Again.'
+                data: 'Sucessfull'
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();
               });
-              window.location.reload();
             }
           });
       }

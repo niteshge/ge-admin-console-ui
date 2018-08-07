@@ -144,14 +144,6 @@ export class SolutionPriorityAssociationAddComponent implements OnInit {
     }
   }
   onchangeEventRowData(key, value) {
-    if (
-      key === 'ORDER OF BUSINESS PRIORITY 1' ||
-      key === 'ORDER OF BUSINESS PRIORITY 2' ||
-      key === 'ORDER OF BUSINESS PRIORITY 3' ||
-      key === 'ORDER OF SOLUTION'
-    ) {
-      value = Number(value);
-    }
     value = value.trim();
     console.log('The onchange value is ', value);
     this.rowData[key] = value;
