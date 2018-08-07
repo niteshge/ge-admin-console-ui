@@ -32,7 +32,7 @@ export class BusinessSolutionComponent implements OnInit {
   }
 
   getAllBusinessSolutions() {
-    let randomValue = Math.random()
+    let randomValue = Math.random();
     this.businessSolutionCoreService
       .getAllBusinessSolutons(randomValue)
       .subscribe((response: Response) => {
@@ -99,7 +99,7 @@ export class BusinessSolutionComponent implements OnInit {
       console.log('delete On ', this.rowValue.ID);
       let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
         width: '300px',
-        data: {'textValue':'Are you sure you want to remove'}
+        data: { textValue: 'Are you sure you want to remove' }
       });
       dialogConfirm.afterClosed().subscribe(result => {
         console.log('The dialog confirm is closed with a action:', result);
@@ -154,7 +154,7 @@ export class BusinessSolutionComponent implements OnInit {
     let randomValue = Math.random();
     console.log('The json going to the edit popup is ', value);
     let tempRowObject = Object.assign({}, value);
-    console.log("THE TEM ROW OBJECT IS ",tempRowObject);
+    console.log('THE TEM ROW OBJECT IS ', tempRowObject);
     console.log('The json going to the edit popup is ', value);
     let dialogEdit = this.dialog.open(BusinessSolutionEditComponent, {
       width: '1000px',
@@ -206,34 +206,37 @@ export class BusinessSolutionComponent implements OnInit {
     });
   }
 
-  update(result){
+  update(result) {
     this.setBusinessModelData(result);
-        console.log(
-          'The updating business model is ',
-          this.businessSolutionMasterModel
-        );
-        this.businessSolutionCoreService
-          .updateBusinessSolution(result)
-          .subscribe((response: Response) => {
-            if (response['errorMessage']) {
-              let dialogAlert = this.dialog.open(AlertBoxComponent, {
-                width: '300px',
-                data: response['errorMessage']
-              });
-              dialogAlert.afterClosed().subscribe(result => {
-                window.location.reload();
-              });
-            } else {
-              this.businessSolutions = response;
-              let dialogAlert = this.dialog.open(AlertBoxComponent, {
-                width: '300px',
-                data: 'Sucessfull'
-              });
-              dialogAlert.afterClosed().subscribe(result => {
-                window.location.reload();
-              });
-            }
+    console.log(
+      'The updating business model is ',
+      this.businessSolutionMasterModel
+    );
+    if (result['SOLUTION SCORE'] === '' || result['SOLUTION SCORE'] === null) {
+      result['SOLUTION SCORE'] = 0;
+    }
+    this.businessSolutionCoreService
+      .updateBusinessSolution(result)
+      .subscribe((response: Response) => {
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: response['errorMessage']
           });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        } else {
+          this.businessSolutions = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfull'
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            window.location.reload();
+          });
+        }
+      });
   }
   onchangeEventRowData(value) {
     console.log('The onchange evnet is in business', value);
@@ -269,13 +272,19 @@ export class BusinessSolutionComponent implements OnInit {
       console.log('The value changed in the add process is ', result);
       if (result != null) {
         let randomValue = Math.random();
+        if (
+          result['SOLUTION SCORE'] === '' ||
+          result['SOLUTION SCORE'] === null
+        ) {
+          result['SOLUTION SCORE'] = 0;
+        }
         this.businessSolutionCoreService
           .saveBusinessSolutions(result, randomValue)
           .subscribe((response: Response) => {
             if (response['errorMessage']) {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: response['errorMessage'],
+                data: response['errorMessage']
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();
@@ -298,9 +307,16 @@ export class BusinessSolutionComponent implements OnInit {
   removeData(rowValue) {
     let randomValue = Math.random();
     this.businessSolutionCoreService
-      .checkBusinessSolutionExistsInSolutionPriorityAssociation(rowValue['SEARCH TEXT'], 3, randomValue)
+      .checkBusinessSolutionExistsInSolutionPriorityAssociation(
+        rowValue['SEARCH TEXT'],
+        3,
+        randomValue
+      )
       .subscribe((response: Response) => {
-        if (response['errorMessage'] == ConstantTextService.SoltionPriorityNoExistence) {
+        if (
+          response['errorMessage'] ==
+          ConstantTextService.SoltionPriorityNoExistence
+        ) {
           this.delete(rowValue.ID);
         } else if (
           response['errorMessage'] ==
@@ -318,11 +334,11 @@ export class BusinessSolutionComponent implements OnInit {
       });
   }
 
-  delete(id){
+  delete(id) {
     let randomValue = Math.random();
     this.businessSolutionCoreService
       .deleteBusinessSolutions(id, randomValue)
-      .subscribe((response: Response) =>  {
+      .subscribe((response: Response) => {
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
