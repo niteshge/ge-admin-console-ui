@@ -33,19 +33,19 @@ export class SolutionPriorityAssociationService {
 
 
   getIndustrySubSegment1(industryName:string, randomValue){
-    return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/getindustrysubsegment1byindustry?industry='+industryName+'&ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/getindustrysubsegment1byindustry?industry='+encodeURIComponent(industryName)+'&ver='+randomValue);
   }
 
   getIndustrySubSegmentChild(industryName:string, industrySubSegment:string, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/getindustrysubsegmentchildbyindustrysubsegmentparentandindustry?industry='+industryName+'&industrySubSegment='+industrySubSegment+'&ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/getindustrysubsegmentchildbyindustrysubsegmentparentandindustry?industry='+encodeURIComponent(industryName)+'&industrySubSegment='+encodeURIComponent(industrySubSegment)+'&ver='+randomValue);
   }
 
   getBusinessPrioritySubSegment1(businessPriorityName:string, randomValue){
-    return this.http.get('http://'+myGlobals.server+':8787/businessprioritysubsegment/getbusinesssubsegment1bybusinespriority?businessPriority='+businessPriorityName+'&ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/businessprioritysubsegment/getbusinesssubsegment1bybusinespriority?businessPriority='+encodeURIComponent(businessPriorityName)+'&ver='+randomValue);
   }
 
   getBusinessPrioritySubSegmentChild(businessPriorityName:string, businessPrioritySubSegment:string, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/businessprioritysubsegment/getbusinessprioritysubsegmentchildbybusinessprioritysubsegmentparentandbusinesspriority?businessPriority='+businessPriorityName+'&businessPrioritySubSegment='+businessPrioritySubSegment+'&ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/businessprioritysubsegment/getbusinessprioritysubsegmentchildbybusinessprioritysubsegmentparentandbusinesspriority?businessPriority='+encodeURIComponent(businessPriorityName)+'&businessPrioritySubSegment='+encodeURIComponent(businessPrioritySubSegment)+'&ver='+randomValue);
   }
 
   private handleError(error: HttpErrorResponse) {

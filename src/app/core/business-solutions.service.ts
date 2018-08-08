@@ -34,18 +34,18 @@ export class BusinessSolutionsService {
     return this.http.get('http://'+myGlobals.server+':8787/mastertables/gettechnologies?ver='+randomValue);
   }
   getTechnologiesSubSegment(technologyName:string,randomValue){
-    return this.http.get('http://'+myGlobals.server+':8787/mastertables/gettechsubsegment?technologyName='+technologyName+'&ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/gettechsubsegment?technologyName='+encodeURIComponent(technologyName)+'&ver='+randomValue);
   }
   getIndustries(randomValue){
     return this.http.get('http://'+myGlobals.server+':8787/mastertables/getindustries?ver='+randomValue);
   }
 
   getIndustriesSubSegment(industryName:string,randomValue){
-    return this.http.get('http://'+myGlobals.server+':8787/mastertables/getsubindustries?industryName='+industryName+'&ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/getsubindustries?industryName='+encodeURIComponent(industryName)+'&ver='+randomValue);
   }
 
   checkBusinessSolutionExistsInSolutionPriorityAssociation(businessSolutionName:string, action:number, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/mastertables/checkbusinessssolutioninsolutionpriorityassocexistence?businessSolutionName='+businessSolutionName+'&action='+action+'&ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/checkbusinessssolutioninsolutionpriorityassocexistence?businessSolutionName='+encodeURIComponent(businessSolutionName)+'&action='+action+'&ver='+randomValue);
   }
 
 }
