@@ -17,7 +17,7 @@ import { Subject } from 'rxjs';
 export class DynamicSelectComponent implements OnInit, OnChanges {
   stateChanges: Subject<void> = new Subject<void>();
   @Input() widthStyle = '240px';
-  @Input() options;
+  @Input() options = [];
   @Input() placeholder;
   @Input() anyObject;
   @Input() disabledParam: boolean = false;
@@ -30,7 +30,11 @@ export class DynamicSelectComponent implements OnInit, OnChanges {
   formctrl: FormControl;
   displayedOptions;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      value: ''
+    })
+  }
 
   ngOnChanges() {
     // let dummyList = [];
@@ -44,7 +48,7 @@ export class DynamicSelectComponent implements OnInit, OnChanges {
     this.displayedOptions = this.options;
     console.log(this.displayedOptions);
     console.log('the disable status is ', this.disabledParam);
-      if (this.disabledParam == false) {
+      if (this.disabledParam === false) {
           this.form.enable();
         
         // this.form.disabled ? this.form.enable():this.form.disable() ;
@@ -55,12 +59,15 @@ export class DynamicSelectComponent implements OnInit, OnChanges {
         );
         this.displayedOptions = this.options;
         console.log('after adding the display options ', this.displayedOptions);
+        this.form.patchValue({
+          value: this.defaultValue
+        })
       } else {
         this.form.disable();
-        this.form = this.fb.group({
-          value: '<no value>',
-        });
-        this.displayedOptions = null;
+        this.form.patchValue({
+          value: '<no value>'
+        })
+        this.displayedOptions = [];
     }
   }
 
@@ -72,14 +79,14 @@ export class DynamicSelectComponent implements OnInit, OnChanges {
     } else {
       defaultTemp = this.defaultValue;
     }
-    this.form = this.fb.group({
+    this.form.patchValue({
       value: defaultTemp
-    });
+    })
     this.form
       .get('value')!
       .valueChanges.subscribe(
         val =>
-          (this.displayedOptions = this.options.filter(opt =>
+          (this.displayedOptions = (this.options || []).filter(opt =>
             opt.startsWith(val)
           ))
       );

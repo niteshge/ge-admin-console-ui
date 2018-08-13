@@ -4,6 +4,7 @@ import { CdkTable } from '@angular/cdk/table';
 import { MatRadioChange, MatTable, MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Observable } from 'rxjs';
 import { DataSource, SelectionModel } from '@angular/cdk/collections';
+import { filter } from '../../../../node_modules/rxjs/operators';
 
 export type TrackByStrategy = 'position' | 'reference' | 'index';
 
@@ -72,9 +73,7 @@ export class DynamicTablesComponent implements OnInit, OnChanges, AfterViewInit 
   }
   ngOnChanges(changes: SimpleChanges) {
   }
-  ngAfterViewInit() {
-   
-  }
+
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -84,6 +83,9 @@ export class DynamicTablesComponent implements OnInit, OnChanges, AfterViewInit 
 
   onRowSelected(event) {
     this.rowSelected.emit(event);
+  }
+
+  ngAfterViewInit(): void {
   }
 
 }

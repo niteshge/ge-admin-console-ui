@@ -1,0 +1,75 @@
+<form class="example-full-width" [style.overflow-y]="'scroll'" [style.overflow-x]="'scroll'" *ngIf=rowData>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="custom-input-fields" [placeholder]="'TYPE'" [options]="rowData['ALL TYPE']"
+        [defaultValue]="rowData['TYPE']" (optionSelected)="onchangeEventRowData('TYPE',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <mat-form-field  class="example-full-width custom-input-fields">
+        <input matInput disabled=true [placeholder]="'TECHNOLOGY'" [value]="rowData['TECHNOLOGY']" (change)="onchangeEventRowData('TECHNOLOGY',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <mat-form-field  class="example-full-width custom-input-fields">
+        <input matInput [placeholder]="'TECHNOLOGY SEGMENT'" [value]="rowData['TECHNOLOGY SEGMENT']" (change)="onchangeEventRowData('TECHNOLOGY SEGMENT',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="custom-input-fields" [disabledParam]="false" [placeholder]="'START UP TYPE'"
+        [options]="rowData['ALL START UP TYPE']" [defaultValue]="rowData['START UP TYPE']" (optionSelected)="onchangeEventRowData('START UP TYPE',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="custom-input-fields" [placeholder]="'PRODUCT TYPE'" [options]="rowData['ALL PRODUCT TYPE']"
+        [defaultValue]="rowData['PRODUCT TYPE']" (optionSelected)="onchangeEventRowData('PRODUCT TYPE',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+        <app-dynamic-select class="custom-input-fields" [placeholder]="'COMPANY REVENUE MODEL MAPPING'" [options]="rowData['ALL REVENUE MODELS']"
+        [defaultValue]="rowData['COMPANY REVENUE MODEL MAPPING']" (optionSelected)="onchangeEventRowData('COMPANY REVENUE MODEL MAPPING',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="custom-input-fields" [placeholder]="'BUSINESS TYPE'" [options]="rowData['ALL BUSINESS TYPE']"
+        [defaultValue]="rowData['BUSINESS TYPE']" (optionSelected)="onchangeEventRowData('BUSINESS TYPE',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <mat-form-field class="example-full-width custom-input-fields">
+        <input matInput type=number min=0 [placeholder]="'INNOVATION'" [value]="rowData['INNOVATION']" (change)="onchangeEventRowData('INNOVATION',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <mat-form-field class="example-full-width custom-input-fields">
+        <input matInput type=number min=0 [placeholder]="'DISRUPTION'" [value]="rowData['DISRUPTION']" (change)="onchangeEventRowData('DISRUPTION',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="5" rowHeight="100px">
+    <mat-grid-tile [colspan]=3 [rowspan]=1>
+      <app-dynamic-chip  class="custom-input-fields" [widthStyle]="'700px'" [placeholder]="'INDUSTRY'" [items]="rowData['INDUSTRY']" [allItems]="rowData['ALL INDUSTRIES']"
+        (optionSelected)="industryChange('INDUSTRY',$event)"></app-dynamic-chip>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <button mat-raised-button color=geprimary [style.margin-right]="'24px'" [style.margin-left]="'24px'" (click)="onClickGetIndustrySub()">Get Industry Sub</button>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=1>
+      <app-dynamic-chip  class="custom-input-fields" [widthStyle]="'700px'" [placeholder]="'INDUSTRY SEGMENT'" [items]="rowData['INDUSTRY SEGMENT']" [allItems]="rowData['ALL INDUSTRY SUB']"></app-dynamic-chip>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=1>
+      <app-dynamic-chip   class="custom-input-fields" [widthStyle]="'700px'" [placeholder]="'INDUSTRY BEING DISRUPTED'" [items]="rowData['INDUSTRY BEING DISRUPTION']"
+        [allItems]="rowData['ALL INDUSTRIES']" (optionSelected)="industryBeingDisruptionChange('INDUSTRY BEING DISRUPTION',$event)"></app-dynamic-chip>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <button mat-raised-button color=geprimary [style.margin-right]="'24px'" [style.margin-left]="'24px'" (click)="onClickGetIndustrySubBeingDisrupted()">Get Industry Sub Being disrupted</button>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=1>
+      <app-dynamic-chip  class="custom-input-fields" [widthStyle]="'700px'" [placeholder]="'INDUSTRY SEGMENT BEING DISRUPTED'" [items]="rowData['INDUSTRY SEGMENT BEING DISRUPTION']"
+        [allItems]="rowData['ALL INDUSTRY SEGMENT BEING DISRUPTION']"></app-dynamic-chip>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <button mat-raised-button color=geprimary [style.margin-right]="'24px'" [style.margin-left]="'24px'" [mat-dialog-close]="rowData"
+        cdkFocusInitial>Done</button>
+      <button mat-raised-button color=gewarn [style.margin-right]="'24px'" [style.margin-left]="'24px'" (click)="onNoClick()">Cancel</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

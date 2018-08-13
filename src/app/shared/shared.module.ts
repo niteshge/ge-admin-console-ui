@@ -40,7 +40,7 @@ import {
   MatSliderModule,
   MatSlideToggleModule,
   MatSnackBarModule,
-  MatTooltipModule
+  MatTooltipModule,
 } from '@angular/material';
 import { DynamicSelectComponent } from './dynamic-select/dynamic-select.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -59,6 +59,7 @@ import { DynamicTableAddComponent } from './dynamic-table-add/dynamic-table-add.
 import { DynamicUiTreeComponent } from './dynamic-ui-tree/dynamic-ui-tree.component';
 import { TreeStructureComponent } from './tree-structure/tree-structure.component';
 import { AlertBoxComponent } from './alert-box/alert-box.component';
+import { DynamicChipComponent } from './dynamic-chip/dynamic-chip.component';
 
 @NgModule({
   imports: [
@@ -100,7 +101,7 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   declarations: [
     DynamicSelectComponent,
@@ -115,7 +116,8 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
     DynamicTableAddComponent,
     DynamicUiTreeComponent,
     TreeStructureComponent,
-    AlertBoxComponent
+    AlertBoxComponent,
+    DynamicChipComponent
   ],
   exports: [
     MatButtonModule,
@@ -164,7 +166,8 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatTooltipModule,
-    TreeStructureComponent
+    TreeStructureComponent,
+    DynamicChipComponent
   ],
   entryComponents: [
     DynamicReportPopupComponent,

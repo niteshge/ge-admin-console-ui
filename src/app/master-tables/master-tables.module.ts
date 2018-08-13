@@ -23,6 +23,9 @@ import { SubIndustryComponent } from './sub-industry/sub-industry.component';
 import { HorizontalTechnologyAddComponent } from './horizontal-technology/horizontal-technology-add/horizontal-technology-add.component';
 import { HorizontalTechnologyEditComponent } from './horizontal-technology/horizontal-technology-edit/horizontal-technology-edit.component';
 import { DynamicYesNoPopupComponent } from '../shared/dynamic-yes-no-popup/dynamic-yes-no-popup.component';
+import { SubTechnologyTreeComponent } from './sub-technologies/sub-technology-tree/sub-technology-tree.component';
+import { SubTechnologyTableEditComponent } from './sub-technologies/sub-technology-table-edit/sub-technology-table-edit.component';
+import { SubTechnologyTableAddComponent } from './sub-technologies/sub-technology-table-add/sub-technology-table-add.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MasterTablesRoutingModule],
@@ -45,7 +48,10 @@ import { DynamicYesNoPopupComponent } from '../shared/dynamic-yes-no-popup/dynam
     IndustriesComponent,
     SubIndustryComponent,
     HorizontalTechnologyAddComponent,
-    HorizontalTechnologyEditComponent
+    HorizontalTechnologyEditComponent,
+    SubTechnologyTreeComponent,
+    SubTechnologyTableEditComponent,
+    SubTechnologyTableAddComponent
   ],
   entryComponents: [
     BusinessSolutionEditComponent,
@@ -57,7 +63,9 @@ import { DynamicYesNoPopupComponent } from '../shared/dynamic-yes-no-popup/dynam
     SolutionPriorityAssociationAddComponent,
     HorizontalTechnologyAddComponent,
     HorizontalTechnologyEditComponent,
-    DynamicYesNoPopupComponent
+    DynamicYesNoPopupComponent,
+    SubTechnologyTableEditComponent,
+    SubTechnologyTableAddComponent
   ]
 })
 export class MasterTablesModule {}

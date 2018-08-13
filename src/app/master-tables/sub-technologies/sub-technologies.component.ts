@@ -4,6 +4,7 @@ import { MatDialog } from '../../../../node_modules/@angular/material';
 import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
 import { DynamicYesNoPopupComponent } from '../../shared/dynamic-yes-no-popup/dynamic-yes-no-popup.component';
 import { ConstantTextService } from '../constant-text.service';
+import { BusinessTractionAndIndustryDisruptionService } from '../../core/business-traction-and-industry-disruption.service';
 
 @Component({
   selector: 'app-sub-technologies',
@@ -125,6 +126,7 @@ export class SubTechnologiesComponent implements OnInit {
   // ];
   constructor(
     private subTechnologyService: SubTechnologyService,
+    private businessTractionIndustryDisruption: BusinessTractionAndIndustryDisruptionService,
     public dialog: MatDialog
   ) {
     // this.getAllTechSubSegment();
@@ -277,7 +279,7 @@ export class SubTechnologiesComponent implements OnInit {
   addTechSubSegment(value) {
     console.log('The adding tech sub seg is', value);
     this.subTechnologyService
-      .addTechSubSegmentMarketMap(value)
+      .addTechSubSegmentMarketMap(value['node'])
       .subscribe((response: Response) => {
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
@@ -285,17 +287,31 @@ export class SubTechnologiesComponent implements OnInit {
             data: response['errorMessage']
           });
           dialogAlert.afterClosed().subscribe(result => {
-            window.location.reload();
+            this.getAllTechSubSegment();
           });
         } else {
-          this.treeDataJson = response;
-          let dialogAlert = this.dialog.open(AlertBoxComponent, {
-            width: '300px',
-            data: 'Sucessfull'
-          });
-          dialogAlert.afterClosed().subscribe(result => {
-            window.location.reload();
-          });
+          this.businessTractionIndustryDisruption
+            .addBusinessTractionAndIndustrySegDisruption(value)
+            .subscribe((response: Response) => {
+              if (response['errorMessage']) {
+                let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                  width: '300px',
+                  data: response['errorMessage']
+                });
+                dialogAlert.afterClosed().subscribe(result => {
+                  this.getAllTechSubSegment();
+                });
+              } else {
+                this.treeDataJson = response;
+                let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                  width: '300px',
+                  data: 'Sucessfull'
+                });
+                dialogAlert.afterClosed().subscribe(result => {
+                  this.getAllTechSubSegment();
+                });
+              }
+            });
         }
       });
   }
@@ -303,13 +319,40 @@ export class SubTechnologiesComponent implements OnInit {
     let randomValue = Math.random();
     console.log('The deleting node is ', node);
     let id = node.id[node.id.length - 1];
-    let industryId = node.id[0];
+    let technologyId = node.id[0];
     console.log('The delete node is ', node);
     this.subTechnologyService
-      .checkTechnologySubSegmentExistInBusinessSolution(id, industryId, 3, randomValue)
+      .checkTechnologySubSegmentExistInBusinessSolution(
+        id,
+        technologyId,
+        3,
+        randomValue
+      )
       .subscribe((response: Response) => {
-        if (response['errorMessage'] == ConstantTextService.BusinessSolutionNoExistence) {
-          this.delete(node);
+        if (
+          response['errorMessage'] ==
+          ConstantTextService.BusinessSolutionNoExistence
+        ) {
+          this.businessTractionIndustryDisruption
+            .deleteBusinessTractionAndIndustrySegDisruption(
+              technologyId,
+              id,
+              randomValue
+            )
+            .subscribe((response: Response) => {
+              if (!response['errorMessage']) {
+                this.delete(node);
+              } else {
+                let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                  width: '300px',
+                  height: '400px',
+                  data: response['errorMessage']
+                });
+                dialogAlert.afterClosed().subscribe(result => {
+                  this.getAllTechSubSegment();
+                });
+              }
+            });
         } else if (
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionDeleteStatusWithSubTechnology
@@ -320,39 +363,38 @@ export class SubTechnologiesComponent implements OnInit {
             data: response['errorMessage']
           });
           dialogAlert.afterClosed().subscribe(result => {
-            window.location.reload();
+            this.getAllTechSubSegment();
           });
         }
       });
-
   }
-delete(node){
-  let id = node.id[node.id.length - 1];
-  console.log('The id is ', id);
-  this.subTechnologyService
-    .deleteTechSubSegmentMarketMap(id)
-    .subscribe((response: Response) => {
-      if (response['errorMessage']) {
-        let dialogAlert = this.dialog.open(AlertBoxComponent, {
-          width: '300px',
-          data: response['errorMessage']
-        });
-        dialogAlert.afterClosed().subscribe(result => {
-          window.location.reload();
-        });
-      } else {
-        this.treeDataJson = response;
-        let dialogAlert = this.dialog.open(AlertBoxComponent, {
-          width: '300px',
-          data: 'Sucessfully Deleted the record ' + id
-        });
-        dialogAlert.afterClosed().subscribe(result => {
-          window.location.reload();
-        });
-      }
-    });
-}
-  
+  delete(node) {
+    let id = node.id[node.id.length - 1];
+    console.log('The id is ', id);
+    this.subTechnologyService
+      .deleteTechSubSegmentMarketMap(id)
+      .subscribe((response: Response) => {
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: response['errorMessage']
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            this.getAllTechSubSegment();
+          });
+        } else {
+          this.treeDataJson = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfully Deleted the record ' + id
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            this.getAllTechSubSegment();
+          });
+        }
+      });
+  }
+
   updateTechSubSegment(node) {
     let randomValue = Math.random();
     console.log('The updating node is ', node);
@@ -360,9 +402,17 @@ delete(node){
     let horizontalId = node.id[0];
     console.log('The updating node is ', node);
     this.subTechnologyService
-      .checkTechnologySubSegmentExistInBusinessSolution(id, horizontalId, 2, randomValue)
+      .checkTechnologySubSegmentExistInBusinessSolution(
+        id,
+        horizontalId,
+        2,
+        randomValue
+      )
       .subscribe((response: Response) => {
-        if (response['errorMessage'] == ConstantTextService.BusinessSolutionNoExistence) {
+        if (
+          response['errorMessage'] ==
+          ConstantTextService.BusinessSolutionNoExistence
+        ) {
           this.update(node);
         } else if (
           response['errorMessage'] ==
@@ -384,34 +434,36 @@ delete(node){
             data: response['errorMessage']
           });
           dialogAlert.afterClosed().subscribe(result => {
-            window.location.reload();
+            this.getAllTechSubSegment();
           });
         }
       });
   }
 
-  update(node){
-    this.subTechnologyService
-    .updateTechSubSegmentMarketMap(node)
-    .subscribe((response: Response) => {
-      if (response['errorMessage']) {
-        let dialogAlert = this.dialog.open(AlertBoxComponent, {
-          width: '300px',
-          data: response['errorMessage']
-        });
-        dialogAlert.afterClosed().subscribe(result => {
-          window.location.reload();
-        });
-      } else {
-        this.treeDataJson = response;
-        let dialogAlert = this.dialog.open(AlertBoxComponent, {
-          width: '300px',
-          data: 'Sucessfull'
-        });
-        dialogAlert.afterClosed().subscribe(result => {
-          window.location.reload();
-        });
-      }
-    });
+  update(node) {
+    // this.subTechnologyService
+    // .updateTechSubSegmentMarketMap(node)
+    this.businessTractionIndustryDisruption
+      .updateBusinessTractionAndIndustrySegDisruption(node)
+      .subscribe((response: Response) => {
+        if (response['errorMessage']) {
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: response['errorMessage']
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            this.getAllTechSubSegment();
+          });
+        } else {
+          this.treeDataJson = response;
+          let dialogAlert = this.dialog.open(AlertBoxComponent, {
+            width: '300px',
+            data: 'Sucessfull'
+          });
+          dialogAlert.afterClosed().subscribe(result => {
+            this.getAllTechSubSegment();
+          });
+        }
+      });
   }
 }

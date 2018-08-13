@@ -4,9 +4,12 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material/tree';
 import { of as ofObservable, Observable, BehaviorSubject } from 'rxjs';
 import { MatDialog } from '@angular/material';
-import { DynamicYesNoPopupComponent } from '../dynamic-yes-no-popup/dynamic-yes-no-popup.component';
-import { AlertBoxComponent } from '../alert-box/alert-box.component';
-import { DynamicTableEditComponent } from '../dynamic-table-edit/dynamic-table-edit.component';
+import { DynamicYesNoPopupComponent } from '../../../shared/dynamic-yes-no-popup/dynamic-yes-no-popup.component';
+import { AlertBoxComponent } from '../../../shared/alert-box/alert-box.component';
+import { DynamicTableEditComponent } from '../../../shared/dynamic-table-edit/dynamic-table-edit.component';
+import { SubTechnologyTableEditComponent } from '../sub-technology-table-edit/sub-technology-table-edit.component';
+import { BusinessTractionAndIndustryDisruptionService } from '../../../core/business-traction-and-industry-disruption.service';
+import { SubTechnologyTableAddComponent } from '../sub-technology-table-add/sub-technology-table-add.component';
 
 /**
  * Node for to-do item
@@ -28,15 +31,12 @@ export class TodoItemFlatNode {
  * The Json object for to-do list data.
  */
 
-
-
 @Component({
-  selector: 'app-tree-structure',
-  templateUrl: './tree-structure.component.html',
-  styleUrls: ['./tree-structure.component.css'],
-  // providers: [ChecklistDatabase]
+  selector: 'app-sub-technology-tree',
+  templateUrl: './sub-technology-tree.component.html',
+  styleUrls: ['./sub-technology-tree.component.css']
 })
-export class TreeStructureComponent implements OnInit {
+export class SubTechnologyTreeComponent implements OnInit {
 
 
   @Input() TREEDATA = [];
@@ -124,9 +124,7 @@ export class TreeStructureComponent implements OnInit {
 
   hasChild = (_: number, _nodeData: TodoItemFlatNode) => { return _nodeData.expandable; };
 
-  hasNoContent(_: number, _nodeData: TodoItemFlatNode){
-  return _nodeData.item === ''; 
-  }
+  hasNoContent = (_: number, _nodeData: TodoItemFlatNode) => { return _nodeData.item === ''; };
 
   /**
   * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
@@ -237,8 +235,31 @@ export class TreeStructureComponent implements OnInit {
     console.log("time of adding", node);
     const parentNode = this.flatNodeMap.get(node);
     console.log("when add function is called the parent is ", parentNode);
-    this.insertItem(parentNode!, '');
-    this.treeControl.expand(node);
+    // this.insertItem(parentNode!, '');
+    let addItem = {};
+    let techIdList = [];
+    techIdList = parentNode.id;
+    let horizontalId:number = techIdList[0];
+    let technologySegmentId:number = techIdList[techIdList.length-1];
+    addItem['TECH ID'] = horizontalId;
+    addItem['TECH SUB ID'] = technologySegmentId
+    let dialogEdit = this.dialog.open(SubTechnologyTableAddComponent,{
+      width:'1500px',
+      height: '700px',
+      data: addItem
+    });
+    dialogEdit.afterClosed().subscribe(result => {
+      let addNodeData:TodoItemNode = Object.assign(parentNode);
+      addNodeData.item = result['TECHNOLOGY SEGMENT'];
+      result['children'] =addNodeData.children;
+      result['item'] = result['TECHNOLOGY SEGMENT'];
+      result['level'] = addNodeData.level;
+      result['id'] = addNodeData.id;
+      result['node'] = addNodeData;
+      console.log("The addNodeData is ", result);
+      this.emitNode(result,1);
+    });
+    // this.treeControl.expand(node);
   }
   closeNode(node: TodoItemFlatNode) {
     console.log("The closing node is ", node);
@@ -290,21 +311,34 @@ export class TreeStructureComponent implements OnInit {
     
   }
   editNode(node: TodoItemFlatNode) {
+   
     console.log("time of adding", node);
     const parentNode = this.flatNodeMap.get(node);
     console.log("when add function is called the parent is ", parentNode)
     let editValue = {}
     editValue['Edit Item'] = parentNode.item;
-    let dialogEdit = this.dialog.open(DynamicTableEditComponent,{
-      width:'700px',
+    let techIdList = [];
+    techIdList = parentNode.id;
+    let horizontalId:number = techIdList[0];
+    let technologySegmentId:number = techIdList[techIdList.length-1];
+    editValue['TECH ID'] = horizontalId;
+    editValue['TECH SUB ID'] = technologySegmentId
+    
+    let dialogEdit = this.dialog.open(SubTechnologyTableEditComponent,{
+      width:'1500px',
+      height: '700px',
       data:editValue
     });
     dialogEdit.afterClosed().subscribe(result => {
       console.log(result['Edit Item']);
       let editNodeData:TodoItemNode = Object.assign(parentNode);
       editNodeData.item = result['Edit Item'];
-      console.log("The editNodeData is ", editNodeData);
-      this.emitNode(editNodeData,2);
+      result['children'] =editNodeData.children;
+      result['item'] = editNodeData.item;
+      result['level'] = editNodeData.level;
+      result['id'] = editNodeData.id;
+      console.log("The editNodeData is ", result);
+      this.emitNode(result,2);
     });  
     //  this.editValue = parentNode.item
     // this.editItem(parentNode!, this.editValue);
