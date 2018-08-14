@@ -1,5 +1,5 @@
 <form class="example-full-width" [style.overflow-y]="'scroll'" [style.overflow-x]="'scroll'" *ngIf=rowData>
-  <mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-list cols="5" rowHeight="100px">
     <mat-grid-tile [colspan]=1 [rowspan]=1>
       <app-dynamic-select class="custom-input-fields" [placeholder]="'TYPE'" [options]="rowData['ALL TYPE']"
         [defaultValue]="rowData['TYPE']" (optionSelected)="onchangeEventRowData('TYPE',$event)"></app-dynamic-select>
@@ -41,8 +41,8 @@
         <input matInput type=number min=0 [placeholder]="'DISRUPTION'" [value]="rowData['DISRUPTION']" (change)="onchangeEventRowData('DISRUPTION',$event.target.value)">
       </mat-form-field>
     </mat-grid-tile>
-  </mat-grid-list>
-  <mat-grid-list cols="5" rowHeight="100px">
+  <!-- </mat-grid-list> -->
+  <!-- <mat-grid-list cols="5" rowHeight="100px"> -->
     <mat-grid-tile [colspan]=3 [rowspan]=1>
       <app-dynamic-chip  class="custom-input-fields" [widthStyle]="'700px'" [placeholder]="'INDUSTRY'" [items]="rowData['INDUSTRY']" [allItems]="rowData['ALL INDUSTRIES']"
         (optionSelected)="industryChange('INDUSTRY',$event)"></app-dynamic-chip>
