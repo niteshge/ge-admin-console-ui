@@ -325,7 +325,7 @@ export class SubTechnologyTreeComponent implements OnInit {
     editValue['TECH SUB ID'] = technologySegmentId
     
     let dialogEdit = this.dialog.open(SubTechnologyTableEditComponent,{
-      width:'1500px',
+      width:'100%',
       height: '700px',
       data:editValue
     });
