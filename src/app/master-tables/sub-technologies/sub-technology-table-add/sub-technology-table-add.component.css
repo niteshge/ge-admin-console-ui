@@ -1,0 +1,15 @@
+.example-full-width {
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-right: 16px; 
+    margin-left: 16px; 
+  }
+
+  .custom-input-fields{
+      margin-right: 32px; 
+      margin-left: 32px; 
+  }
+
+  
