@@ -26,6 +26,10 @@ import { DynamicYesNoPopupComponent } from '../shared/dynamic-yes-no-popup/dynam
 import { SubTechnologyTreeComponent } from './sub-technologies/sub-technology-tree/sub-technology-tree.component';
 import { SubTechnologyTableEditComponent } from './sub-technologies/sub-technology-table-edit/sub-technology-table-edit.component';
 import { SubTechnologyTableAddComponent } from './sub-technologies/sub-technology-table-add/sub-technology-table-add.component';
+import { Condition1Component } from './condition1/condition1.component';
+import { Condition2Component } from './condition2/condition2.component';
+import { Condition3Component } from './condition3/condition3.component';
+import { Condition4Component } from './condition4/condition4.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MasterTablesRoutingModule],
@@ -51,7 +55,11 @@ import { SubTechnologyTableAddComponent } from './sub-technologies/sub-technolog
     HorizontalTechnologyEditComponent,
     SubTechnologyTreeComponent,
     SubTechnologyTableEditComponent,
-    SubTechnologyTableAddComponent
+    SubTechnologyTableAddComponent,
+    Condition1Component,
+    Condition2Component,
+    Condition3Component,
+    Condition4Component
   ],
   entryComponents: [
     BusinessSolutionEditComponent,
