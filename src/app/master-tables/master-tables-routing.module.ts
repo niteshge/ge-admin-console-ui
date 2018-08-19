@@ -9,10 +9,10 @@ import { SubBusinessPriorityComponent } from './sub-business-priority/sub-busine
 import { SolutionPriorityAssociationComponent } from './solution-priority-association/solution-priority-association.component';
 import { IndustriesComponent } from './industries/industries.component';
 import { SubIndustryComponent } from './sub-industry/sub-industry.component';
-import { Condition1Component } from './condition1/condition1.component';
-import { Condition2Component } from './condition2/condition2.component';
-import { Condition3Component } from './condition3/condition3.component';
-import { Condition4Component } from './condition4/condition4.component';
+import { ConditionOneComponent } from './condition-one/condition-one.component';
+import { ConditionTwoComponent } from './condition-two/condition-two.component';
+import { ConditionThreeComponent } from './condition-three/condition-three.component';
+import { ConditionFourComponent } from './condition-four/condition-four.component';
 
 const routes: Routes = [
   {
@@ -52,20 +52,20 @@ const routes: Routes = [
         component: SubIndustryComponent
       },
       {
-        path: 'condition1',
-        component: Condition1Component
+        path: 'condition-one',
+        component: ConditionOneComponent
       },
       {
-        path: 'condition2',
-        component: Condition2Component
+        path: 'condition-two',
+        component: ConditionTwoComponent
       },
       {
-        path: 'condition3',
-        component: Condition3Component
+        path: 'condition-three',
+        component: ConditionThreeComponent
       },
       {
-        path: 'condition4',
-        component: Condition4Component
+        path: 'condition-four',
+        component: ConditionFourComponent
       }
     ]
   }
