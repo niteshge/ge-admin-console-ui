@@ -30,6 +30,8 @@ import { ConditionOneComponent } from './condition-one/condition-one.component';
 import { ConditionTwoComponent } from './condition-two/condition-two.component';
 import { ConditionThreeComponent } from './condition-three/condition-three.component';
 import { ConditionFourComponent } from './condition-four/condition-four.component';
+import { ConditionOneEditComponent } from './condition-one/condition-one-edit/condition-one-edit.component';
+import { ConditionOneAddComponent } from './condition-one/condition-one-add/condition-one-add.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MasterTablesRoutingModule],
@@ -60,6 +62,8 @@ import { ConditionFourComponent } from './condition-four/condition-four.componen
     ConditionTwoComponent,
     ConditionThreeComponent,
     ConditionFourComponent,
+    ConditionOneEditComponent,
+    ConditionOneAddComponent,
   ],
   entryComponents: [
     BusinessSolutionEditComponent,
@@ -73,7 +77,9 @@ import { ConditionFourComponent } from './condition-four/condition-four.componen
     HorizontalTechnologyEditComponent,
     DynamicYesNoPopupComponent,
     SubTechnologyTableEditComponent,
-    SubTechnologyTableAddComponent
+    SubTechnologyTableAddComponent,
+    ConditionOneEditComponent,
+    ConditionOneAddComponent,
   ]
 })
 export class MasterTablesModule {}

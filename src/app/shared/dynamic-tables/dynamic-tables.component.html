@@ -11,7 +11,7 @@
     <input  matInput (keyup)="applyCustomFilter($event.target.value)" placeholder="Custom Filter">
   </mat-form-field>
   <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Global Filter">
   </mat-form-field>
   <table mat-table #table [dataSource]="dataSource" matSort>
 

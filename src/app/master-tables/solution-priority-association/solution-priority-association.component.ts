@@ -76,7 +76,7 @@ export class SolutionPriorityAssociationComponent implements OnInit {
   editRow(rowData) {
     let randomValue = Math.random();
     this.masterTableService
-      .getIndustries(randomValue)
+      .getAllIndustriesNames(randomValue)
       .subscribe((response: Response) => {
         console.log('The industries are ', response);
         rowData['ALL INDUSTRIES'] = response;
@@ -221,7 +221,7 @@ export class SolutionPriorityAssociationComponent implements OnInit {
     }
     let randomValue = Math.random();
     this.masterTableService
-      .getIndustries(randomValue)
+      .getAllIndustriesNames(randomValue)
       .subscribe((response: Response) => {
         console.log('The industries are ', response);
         rowDataJson['ALL INDUSTRIES'] = response;

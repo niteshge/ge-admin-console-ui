@@ -1,0 +1,69 @@
+<form class="example-form" [style.overflow-y]="'scroll'" *ngIf=rowData>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <mat-form-field class="form-fields custom-field">
+        <input matInput [disabled]="true" [placeholder]="'ID'" [value]="rowData['ID']">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'INDUSTRY OR TECHNOLOGY'" [options]="rowData['INDUSTRY_TECH']" [defaultValue]="rowData['INDUSTRY OR TECHNOLOGY']"
+        (optionSelected)="onChangeOfTechOrIndustry('INDUSTRY OR TECHNOLOGY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'CB CATEGORY NAME'" [options]="rowData['ALL CRUNCHBASE KEYWORDS']"
+        [defaultValue]="rowData['CB CATEGORY NAME']" (optionSelected)="onchangeEventRowData('CB CATEGORY NAME',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'GE DEFINATION CATEGORY'" [options]="rowData['ALL GE DEFINATION CATEGORY']"
+        [defaultValue]="rowData['GE DEFINATION CATEGORY']" (optionSelected)="onChangeOfGEDefinationCategory('GE DEFINATION CATEGORY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentOneDisableParam" class="form-fields" [placeholder]="'SEGMENT ONE'" [options]="rowData['ALL SEGMENT ONE']"
+        [defaultValue]="rowData['SEGMENT ONE']" (optionSelected)="onchangeOfSegmentOne('SEGMENT ONE',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentTwoDisableParam" class="form-fields" [placeholder]="'SEGMENT TWO'" [options]="rowData['ALL SEGMENT TWO']"
+        [defaultValue]="rowData['SEGMENT TWO']" (optionSelected)="onchangeOfSegmentTwo('SEGMENT TWO',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentThreeDisableParam" class="form-fields" [placeholder]="'SEGMENT THREE'" [options]="rowData['ALL SEGMENT THREE']"
+        [defaultValue]="rowData['SEGMENT THREE']" (optionSelected)="onchangeOfSegmentThree('SEGMENT THREE',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentFourDisableParam" class="form-fields" [placeholder]="'SEGMENT FOUR'" [options]="rowData['ALL SEGMENT FOUR']"
+        [defaultValue]="rowData['SEGMENT FOUR']" (optionSelected)="onchangeEventRowData('SEGMENT FOUR',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <mat-form-field class="form-fields custom-field">
+        <input matInput type=number min=0 [placeholder]="'FOUNDED YEAR FILTER'" [value]="rowData['FOUNDED YEAR FILTER']" (change)="onchangeEventRowData('FOUNDED YEAR FILTER',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'EXCLUSION TECHNOLOGY'" [options]="rowData['ALL EXCLUSION TECHNOLOGY']"
+        [defaultValue]="rowData['EXCLUSION TECHNOLOGY']" (optionSelected)="onchangeEventRowData('EXCLUSION TECHNOLOGY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <mat-form-field class="form-fields big-field">
+        <input matInput [placeholder]="'INCLUDE KEYWORDS FROM ABOUT US'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <mat-form-field class="form-fields big-field">
+        <input matInput [placeholder]="'EXCLUDE KEYWORDS FROM ABOUT US'" [value]="rowData['EXCLUDE KEYWORDS FROM ABOUT US']" (change)="onchangeEventRowData('EXCLUDE KEYWORDS FROM ABOUT US',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <button mat-raised-button color=geprimary [style.margin-right]="'24px'" [style.margin-left]="'24px'" [mat-dialog-close]="rowData"
+        cdkFocusInitial>Done</button>
+      <button mat-raised-button color=gewarn [style.margin-right]="'24px'" [style.margin-left]="'24px'" (click)="onNoClick()">Cancel</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

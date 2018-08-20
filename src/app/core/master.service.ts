@@ -9,7 +9,7 @@ export class MasterService {
 
   constructor(private http: HttpClient) { }
 
-  getIndustries(randomValue:Number){
+  getAllIndustriesNames(randomValue:Number){
     return this.http.get('http://'+myGlobals.server+':8787/mastertables/getindustries?ver='+randomValue);
   }
   getIndustriesSubSegment(industryName:string,randomValue){

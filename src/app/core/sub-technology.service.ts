@@ -64,4 +64,35 @@ export class SubTechnologyService {
         randomValue
     );
   }
+
+  getTechnologySubSegment1ByHorizontalName(
+    horizontalName: string,
+    randomValue
+  ) {
+    return this.http.get(
+      'http://' +
+        myGlobals.server +
+        ':8787/techsubsegment/gettechnologysubsegment1byhorizontal?horizontalName=' +
+        encodeURIComponent(horizontalName) +
+        '&ver=' +
+        randomValue
+    );
+  }
+
+  getTechnologySubSegmentChildByHorizontalNameAndTechnologySegmentName(
+    horizontalName: string,
+    technologySubSegment: string,
+    randomValue: number
+  ) {
+    return this.http.get(
+      'http://' +
+        myGlobals.server +
+        ':8787/techsubsegment/gettechnologysubsegmentchildbytechnologysubsegmentparentandhorizontal?horizontalName=' +
+        encodeURIComponent(horizontalName) +
+        '&technologySubSegment=' +
+        encodeURIComponent(technologySubSegment) +
+        '&ver=' +
+        randomValue
+    );
+  }
 }

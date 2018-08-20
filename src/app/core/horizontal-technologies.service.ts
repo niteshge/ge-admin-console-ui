@@ -60,6 +60,8 @@ export class HorizontalTechnologyService {
         randomValue
     );
   }
-
+  getTechnologiesNames(randomValue:number){
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/gettechnologies?ver='+randomValue);
+  }
   
 }
