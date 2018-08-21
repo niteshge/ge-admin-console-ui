@@ -168,7 +168,7 @@ export class TreeStructureComponent implements OnInit {
    * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
    */
   transformer = (node: TodoItemNode, level: number) => {
-    const flatNode =
+    let flatNode =
       this.nestedNodeMap.has(node) &&
       this.nestedNodeMap.get(node)!.item === node.item
         ? this.nestedNodeMap.get(node)!
@@ -213,13 +213,13 @@ export class TreeStructureComponent implements OnInit {
     console.log('The parent id is ', parent.id);
     if (parent.children.length > 1) {
       // To add after the last node of the parent(which is the new node/child should be added in the last of row in the children)
-      const lastAddedChildNode = parent.children[parent.children.length - 1];
+      let lastAddedChildNode = parent.children[parent.children.length - 1];
       if (lastAddedChildNode.item === '') {
         //Do Nothing When the Previous Child is Empty
       } else {
-        const level: number[] = Object.assign([], parent.level);
+        let level: number[] = Object.assign([], parent.level);
         // Get the lenght of the children which gives you the last index level for the new node
-        const lastLevelOfChild = parent.children.length;
+        let lastLevelOfChild = parent.children.length;
         level.push(lastLevelOfChild);
         const child = <TodoItemNode>{
           item: name,
@@ -234,8 +234,8 @@ export class TreeStructureComponent implements OnInit {
         }
       }
     } else {
-      const level: number[] = Object.assign([], parent.level);
-      const lastLevelOfChild = parent.children.length;
+      let level: number[] = Object.assign([], parent.level);
+      let lastLevelOfChild = parent.children.length;
       level.push(lastLevelOfChild);
       const child = <TodoItemNode>{
         item: name,
@@ -252,7 +252,7 @@ export class TreeStructureComponent implements OnInit {
   }
 
   closeItem(parent: TodoItemNode) {
-    const level: number[] = parent.level;
+    let level: number[] = parent.level;
     let parentNode = this.data[level[0]];
     console.log('The top parent node is ', parentNode);
     console.log('b4 shift ', level);
@@ -306,7 +306,7 @@ export class TreeStructureComponent implements OnInit {
         data: 'No Value Entered... Please Enter.'
       });
     } else {
-      const dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
+      let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
         width: '300px',
         data: { textValue: 'Are you sure you want to add' }
       });
@@ -326,7 +326,7 @@ export class TreeStructureComponent implements OnInit {
     console.log('when add function is called the parent is ', parentNode);
     console.log('To delete the nodes ', parentNode.id);
     if (parentNode != null) {
-      const dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
+      let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
         width: '300px',
         data: { textValue: 'Are you sure you want to remove' }
       });
@@ -342,15 +342,15 @@ export class TreeStructureComponent implements OnInit {
     console.log('time of adding', node);
     const parentNode = this.flatNodeMap.get(node);
     console.log('when add function is called the parent is ', parentNode);
-    const editValue = {};
+    let editValue = {};
     editValue['Edit Item'] = parentNode.item;
-    const dialogEdit = this.dialog.open(DynamicTableEditComponent, {
+    let dialogEdit = this.dialog.open(DynamicTableEditComponent, {
       width: '700px',
       data: editValue
     });
     dialogEdit.afterClosed().subscribe(result => {
       console.log(result['Edit Item']);
-      const editNodeData: TodoItemNode = Object.assign(parentNode);
+      let editNodeData: TodoItemNode = Object.assign(parentNode);
       editNodeData.item = result['Edit Item'];
       console.log('The editNodeData is ', editNodeData);
       this.emitNode(editNodeData, 2);
