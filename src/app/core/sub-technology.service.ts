@@ -95,4 +95,8 @@ export class SubTechnologyService {
         randomValue
     );
   }
+  getTechnologyNameByTechnologyId(id:number, randomValue:number){
+    return this.http.get('http://'+myGlobals.server+':8787/techsubsegment/getsubtechnologynamebyid?id='+id+'&ver='+randomValue);
+  }
+  
 }

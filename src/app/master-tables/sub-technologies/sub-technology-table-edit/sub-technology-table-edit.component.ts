@@ -6,6 +6,8 @@ import {
 import { BusinessTractionAndIndustryDisruptionService } from '../../../core/business-traction-and-industry-disruption.service';
 import { IndustryService } from '../../../core/industry.service';
 import { MasterService } from '../../../core/master.service';
+import { HorizontalTechnologyService } from '../../../core/horizontal-technologies.service';
+import { SubTechnologyService } from '../../../core/sub-technology.service';
 
 @Component({
   selector: 'app-sub-technology-table-edit',
@@ -15,9 +17,11 @@ import { MasterService } from '../../../core/master.service';
 export class SubTechnologyTableEditComponent implements OnInit {
   rowData = null;
   constructor(
-    private masterTableService:MasterService,
+    private masterTableService: MasterService,
     private businessTractionAndIndustryDisruption: BusinessTractionAndIndustryDisruptionService,
     private industryService: IndustryService,
+    private horizontalTechnologyService: HorizontalTechnologyService,
+    private subTechnologyService: SubTechnologyService,
     public dialogRef: MatDialogRef<SubTechnologyTableEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
@@ -54,10 +58,38 @@ export class SubTechnologyTableEditComponent implements OnInit {
             'the business traction and industry disruption model is ',
             businessTractionIndustryDisruptionModel
           );
+
           this.rowData['TYPE'] =
             businessTractionIndustryDisruptionModel['TYPE'];
           this.rowData['TECHNOLOGY'] =
             businessTractionIndustryDisruptionModel['TECHNOLOGY'];
+          this.rowData['TECHNOLOGY SEGMENT'] =
+            businessTractionIndustryDisruptionModel['TECHNOLOGY SEGMENT'];
+          if (businessTractionIndustryDisruptionModel['TECHNOLOGY'] === null) {
+            this.horizontalTechnologyService
+              .getHorizontalNameByHorizontalId(horizontalId, randomValue)
+              .subscribe((techResponse: Response) => {
+                if (techResponse['errorMessage']) {
+                  //DO NOTHING
+                } else {
+                  this.rowData['TECHNOLOGY'] = techResponse['NAME'];
+                }
+              });
+          }
+          if (
+            businessTractionIndustryDisruptionModel['TECHNOLOGY SEGMENT'] ===
+            null
+          ) {
+            this.subTechnologyService
+              .getTechnologyNameByTechnologyId(technologySegmentId, randomValue)
+              .subscribe((techSubResponse: Response) => {
+                if (techSubResponse['errorMessage']) {
+                  //DO NOTHING...
+                } else {
+                  this.rowData['TECHNOLOGY SEGMENT'] = techSubResponse['item'];
+                }
+              });
+          }
           if (businessTractionIndustryDisruptionModel['INDUSTRY'] === null) {
             this.rowData['INDUSTRY'] = [];
           } else {
@@ -72,8 +104,7 @@ export class SubTechnologyTableEditComponent implements OnInit {
             this.rowData['INDUSTRY SEGMENT'] =
               businessTractionIndustryDisruptionModel['INDUSTRY SEGMENT'];
           }
-          this.rowData['TECHNOLOGY SEGMENT'] =
-            businessTractionIndustryDisruptionModel['TECHNOLOGY SEGMENT'];
+
           this.rowData['START UP TYPE'] =
             businessTractionIndustryDisruptionModel['START UP TYPE'];
           this.rowData['PRODUCT TYPE'] =
@@ -159,16 +190,15 @@ export class SubTechnologyTableEditComponent implements OnInit {
             });
         }
       });
-    this.masterTableService.getAllRevenueModel(randomValue)
-    .subscribe(
-      (response:Response) => {
-        if(!response['errorMessage']){
+    this.masterTableService
+      .getAllRevenueModel(randomValue)
+      .subscribe((response: Response) => {
+        if (!response['errorMessage']) {
           this.rowData['ALL REVENUE MODELS'] = response;
-        }else{
+        } else {
           this.rowData['ALL REVENUE MODELS'] = ['None'];
         }
-      }
-    );
+      });
     this.rowData['ALL BUSINESS TYPE'] = ['B2C', 'B2B', 'Both'];
     this.rowData['ALL START UP TYPE'] = ['Product', 'Service', 'Both'];
     this.rowData['ALL PRODUCT TYPE'] = ['Software', 'Hardware', 'Both'];
