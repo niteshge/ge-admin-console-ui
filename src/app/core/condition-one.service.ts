@@ -12,7 +12,7 @@ export class ConditionOneService {
   constructor(private http: HttpClient) { }
 
   getAllConditionOne(randomValue:Number){
-    return this.http.get('http://'+myGlobals.server+':8787/conditiononetofive/getallcrunchbasetechnologyroundone?ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/conditiononetofour/getallcrunchbasetechnologyroundone?ver='+randomValue);
   }
 
   getAllConditionKeywordNames(randomValue:Number){
@@ -20,15 +20,15 @@ export class ConditionOneService {
   }
 
   updateConditionOne(conditionOne:any){
-    return this.http.post('http://'+myGlobals.server+':8787/conditiononetofive/updatecrunchbasetechnologyroundone',conditionOne);
+    return this.http.post('http://'+myGlobals.server+':8787/conditiononetofour/updatecrunchbasetechnologyroundone',conditionOne);
   }
 
   deleteConditionOne(id:Number){
-    return this.http.delete('http://'+myGlobals.server+':8787/conditiononetofive/deletecrunchbasetechnologyroundone/'+id);
+    return this.http.delete('http://'+myGlobals.server+':8787/conditiononetofour/deletecrunchbasetechnologyroundone/'+id);
   }
 
   saveConditionOne(conditionOne){
-    return this.http.post('http://'+myGlobals.server+':8787/conditiononetofive/savecrunchbasetechnologyroundone',conditionOne);
+    return this.http.post('http://'+myGlobals.server+':8787/conditiononetofour/savecrunchbasetechnologyroundone',conditionOne);
   }
 
 }

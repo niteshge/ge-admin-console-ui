@@ -1,0 +1,75 @@
+<form class="example-form" [style.overflow-y]="'scroll'" *ngIf=rowData>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <mat-form-field class="form-fields custom-field">
+        <input matInput [disabled]="true" [placeholder]="'ID'" [value]="rowData['ID']">
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'INDUSTRY OR TECHNOLOGY'" [options]="rowData['INDUSTRY_TECH']" [defaultValue]="rowData['INDUSTRY OR TECHNOLOGY']"
+        (optionSelected)="onChangeOfTechOrIndustry('INDUSTRY OR TECHNOLOGY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'CB CATEGORY NAME'" [options]="rowData['ALL CRUNCHBASE KEYWORDS']"
+        [defaultValue]="rowData['CB CATEGORY NAME']" (optionSelected)="onchangeEventRowData('CB CATEGORY NAME',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'ROUND ONE DEPENDENT TECHNOLOGY'" [options]="rowData['ALL INDUSTRY OR TECHNOLOGY DEFINATION']"
+        [defaultValue]="rowData['ROUND ONE DEPENDENT TECHNOLOGY']" (optionSelected)="onchangeEventRowData('ROUND ONE DEPENDENT TECHNOLOGY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'ROUND TWO FINAL TECHNOLOGY'" [options]="rowData['ALL INDUSTRY OR TECHNOLOGY DEFINATION']"
+        [defaultValue]="rowData['ROUND TWO FINAL TECHNOLOGY']" (optionSelected)="onChangeOfRoundTwoFinalTechnology('ROUND TWO FINAL TECHNOLOGY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentOneDisableParam" class="form-fields" [placeholder]="'ROUND TWO SEGMENT ONE'"
+        [options]="rowData['ALL ROUND TWO SEGMENT ONE']" [defaultValue]="rowData['ROUND TWO SEGMENT ONE']" (optionSelected)="onchangeOfSegmentOne('ROUND TWO SEGMENT ONE',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentTwoDisableParam" class="form-fields" [placeholder]="'ROUND TWO SEGMENT TWO'"
+        [options]="rowData['ALL ROUND TWO SEGMENT TWO']" [defaultValue]="rowData['ROUND TWO SEGMENT TWO']" (optionSelected)="onchangeOfSegmentTwo('ROUND TWO SEGMENT TWO',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentThreeDisableParam" class="form-fields" [placeholder]="'ROUND TWO SEGMENT THREE'"
+        [options]="rowData['ALL ROUND TWO SEGMENT THREE']" [defaultValue]="rowData['ROUND TWO SEGMENT THREE']" (optionSelected)="onchangeOfSegmentThree('ROUND TWO SEGMENT THREE',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentFourDisableParam" class="form-fields" [placeholder]="'ROUND TWO SEGMENT FOUR'"
+        [options]="rowData['ALL ROUND TWO SEGMENT FOUR']" [defaultValue]="rowData['ROUND TWO SEGMENT FOUR']" (optionSelected)="onchangeEventRowData('ROUND TWO SEGMENT FOUR',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <mat-form-field class="form-fields custom-field">
+        <input matInput type=number min=0 [placeholder]="'FOUNDED YEAR FILTER'" [value]="rowData['FOUNDED YEAR FILTER']" (change)="onchangeEventRowData('FOUNDED YEAR FILTER',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'EXCLUSION TECHNOLOGY'" [options]="rowData['ALL EXCLUSION TECHNOLOGY']"
+        [defaultValue]="rowData['EXCLUSION TECHNOLOGY']" (optionSelected)="onchangeEventRowData('EXCLUSION TECHNOLOGY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <mat-form-field class="form-fields big-field">
+        <input matInput [placeholder]="'INCLUDE KEYWORDS FROM ABOUT US'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <mat-form-field class="form-fields big-field">
+        <input matInput [placeholder]="'EXCLUDE KEYWORDS FROM ABOUT US'" [value]="rowData['EXCLUDE KEYWORDS FROM ABOUT US']" (change)="onchangeEventRowData('EXCLUDE KEYWORDS FROM ABOUT US',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <button mat-raised-button color=geprimary [style.margin-right]="'24px'" [style.margin-left]="'24px'" [mat-dialog-close]="rowData"
+        cdkFocusInitial>Done</button>
+      <button mat-raised-button color=gewarn [style.margin-right]="'24px'" [style.margin-left]="'24px'" (click)="onNoClick()">Cancel</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

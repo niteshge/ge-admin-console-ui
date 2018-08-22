@@ -11,6 +11,10 @@ export class ConditionKeywordService {
 
   constructor(private http: HttpClient) { }
 
+
+  getAllConditionKeywordNames(randomValue:Number){
+    return this.http.get('http://'+myGlobals.server+':8787/conditionkeywords/getallconditionkeywordNames?ver='+randomValue);
+  }
   getAllConditionKeywords(randomValue:number){
     return this.http.get('http://'+myGlobals.server+':8787/conditionkeywords/getallconditionkeywords?ver='+randomValue);
   }

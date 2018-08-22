@@ -33,6 +33,10 @@ import { ConditionFourComponent } from './condition-four/condition-four.componen
 import { ConditionOneEditComponent } from './condition-one/condition-one-edit/condition-one-edit.component';
 import { ConditionOneAddComponent } from './condition-one/condition-one-add/condition-one-add.component';
 import { ConditionKeywordsComponent } from './condition-keywords/condition-keywords.component';
+import { ConditionTwoEditComponent } from './condition-two/condition-two-edit/condition-two-edit.component';
+import { ConditionTwoAddComponent } from './condition-two/condition-two-add/condition-two-add.component';
+import { ConditionThreeAddComponent } from './condition-three/condition-three-add/condition-three-add.component';
+import { ConditionThreeEditComponent } from './condition-three/condition-three-edit/condition-three-edit.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MasterTablesRoutingModule],
@@ -66,6 +70,10 @@ import { ConditionKeywordsComponent } from './condition-keywords/condition-keywo
     ConditionOneEditComponent,
     ConditionOneAddComponent,
     ConditionKeywordsComponent,
+    ConditionTwoEditComponent,
+    ConditionTwoAddComponent,
+    ConditionThreeAddComponent,
+    ConditionThreeEditComponent,
   ],
   entryComponents: [
     BusinessSolutionEditComponent,
@@ -82,6 +90,8 @@ import { ConditionKeywordsComponent } from './condition-keywords/condition-keywo
     SubTechnologyTableAddComponent,
     ConditionOneEditComponent,
     ConditionOneAddComponent,
+    ConditionTwoEditComponent,
+    ConditionTwoAddComponent
   ]
 })
 export class MasterTablesModule {}
