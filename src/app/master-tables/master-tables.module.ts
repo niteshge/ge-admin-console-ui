@@ -91,7 +91,9 @@ import { ConditionThreeEditComponent } from './condition-three/condition-three-e
     ConditionOneEditComponent,
     ConditionOneAddComponent,
     ConditionTwoEditComponent,
-    ConditionTwoAddComponent
+    ConditionTwoAddComponent,
+    ConditionThreeEditComponent,
+    ConditionThreeAddComponent
   ]
 })
 export class MasterTablesModule {}

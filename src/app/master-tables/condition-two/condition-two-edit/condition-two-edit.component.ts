@@ -20,7 +20,7 @@ export class ConditionTwoEditComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ConditionTwoEditComponent>,
-    private conditionOneService: ConditionTwoService,
+    private conditionTwoService: ConditionTwoService,
     private masterTableService: MasterService,
     private industrySubSegmentService: IndustrySubSegmentService,
     private subTechnologyService: SubTechnologyService,

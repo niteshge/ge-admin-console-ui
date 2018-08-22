@@ -1,3 +1,13 @@
-<p>
-  condition-three works!
-</p>
+<div class=customtable>
+    <div class="row">
+      <div class="col-4">
+        <button mat-raised-button color=geprimary (click)="addRow()">Add</button>
+      </div>
+    </div>
+    <br/>
+    <h6 class="subheading">
+      <u>Condition - 3 : </u>
+    </h6>
+    <app-dynamic-tables *ngIf="conditionThreeMaster" [jsonData]="conditionThreeMaster" (rowSelected)="openDialog($event)"></app-dynamic-tables>
+  </div>
+  
