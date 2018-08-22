@@ -217,7 +217,7 @@ export class ConditionOneComponent implements OnInit {
       }
     }
     this.conditionOneService
-      .getAllCrunchbaseKeywords(randomValue)
+      .getAllConditionKeywordNames(randomValue)
       .subscribe((response: Response) => {
         rowData['ALL CRUNCHBASE KEYWORDS'] = response;
       });
@@ -261,7 +261,7 @@ export class ConditionOneComponent implements OnInit {
   removeData(id: Number) {
     let randomValue = Math.random();
     this.conditionOneService
-      .deleteBusinessSolutions(id)
+      .deleteConditionOne(id)
       .subscribe((response: Response) => {
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
@@ -295,7 +295,7 @@ export class ConditionOneComponent implements OnInit {
     }
     let randomValue = Math.random();
     this.conditionOneService
-      .getAllCrunchbaseKeywords(randomValue)
+      .getAllConditionKeywordNames(randomValue)
       .subscribe((response: Response) => {
         rowDataJson['ALL CRUNCHBASE KEYWORDS'] = response;
       });
@@ -311,7 +311,7 @@ export class ConditionOneComponent implements OnInit {
       if (result != null) {
         console.log('The result is ', result);
         this.conditionOneService
-          .saveBusinessSolutions(result)
+          .saveConditionOne(result)
           .subscribe((response: Response) => {
             if (response['errorMessage']) {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {

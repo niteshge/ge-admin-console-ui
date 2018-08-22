@@ -15,19 +15,19 @@ export class ConditionOneService {
     return this.http.get('http://'+myGlobals.server+':8787/conditiononetofive/getallcrunchbasetechnologyroundone?ver='+randomValue);
   }
 
-  getAllCrunchbaseKeywords(randomValue:Number){
-    return this.http.get('http://'+myGlobals.server+':8787/crunchbase/getallcrunchbasekeywords?ver='+randomValue);
+  getAllConditionKeywordNames(randomValue:Number){
+    return this.http.get('http://'+myGlobals.server+':8787/conditionkeywords/getallconditionkeywordNames?ver='+randomValue);
   }
 
   updateConditionOne(conditionOne:any){
     return this.http.post('http://'+myGlobals.server+':8787/conditiononetofive/updatecrunchbasetechnologyroundone',conditionOne);
   }
 
-  deleteBusinessSolutions(id:Number){
+  deleteConditionOne(id:Number){
     return this.http.delete('http://'+myGlobals.server+':8787/conditiononetofive/deletecrunchbasetechnologyroundone/'+id);
   }
 
-  saveBusinessSolutions(conditionOne){
+  saveConditionOne(conditionOne){
     return this.http.post('http://'+myGlobals.server+':8787/conditiononetofive/savecrunchbasetechnologyroundone',conditionOne);
   }
 

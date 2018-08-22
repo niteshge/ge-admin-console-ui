@@ -11,7 +11,7 @@
       </mat-form-field>
     </mat-grid-tile>
   </mat-grid-list>
-  <div mat-dialog-actions align="end">
+  <div mat-dialog-actions [style.align]="'end'">
     <button mat-button color=gepalewhite (click)="onNoClick()">Cancel</button>
     <button mat-raised-button color=geprimary [mat-dialog-close]="rowData" cdkFocusInitial>Done</button>
   </div>

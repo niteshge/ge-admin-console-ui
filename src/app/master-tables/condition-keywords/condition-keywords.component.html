@@ -1,0 +1,12 @@
+<div class=customtable>
+  <div class="row">
+    <div class="col-4">
+      <button mat-raised-button color=geprimary (click)="addRow()">Add</button>
+    </div>
+  </div>
+  <br/>
+  <h6 class="subheading">
+    <u>Condition Keywords : </u>
+  </h6>
+  <app-dynamic-tables *ngIf="conditionKeywords" [jsonData]="conditionKeywords" (rowSelected)="openDialog($event)"></app-dynamic-tables>
+</div>

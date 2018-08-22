@@ -32,6 +32,7 @@ import { ConditionThreeComponent } from './condition-three/condition-three.compo
 import { ConditionFourComponent } from './condition-four/condition-four.component';
 import { ConditionOneEditComponent } from './condition-one/condition-one-edit/condition-one-edit.component';
 import { ConditionOneAddComponent } from './condition-one/condition-one-add/condition-one-add.component';
+import { ConditionKeywordsComponent } from './condition-keywords/condition-keywords.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MasterTablesRoutingModule],
@@ -64,6 +65,7 @@ import { ConditionOneAddComponent } from './condition-one/condition-one-add/cond
     ConditionFourComponent,
     ConditionOneEditComponent,
     ConditionOneAddComponent,
+    ConditionKeywordsComponent,
   ],
   entryComponents: [
     BusinessSolutionEditComponent,

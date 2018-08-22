@@ -13,6 +13,7 @@ import { ConditionOneComponent } from './condition-one/condition-one.component';
 import { ConditionTwoComponent } from './condition-two/condition-two.component';
 import { ConditionThreeComponent } from './condition-three/condition-three.component';
 import { ConditionFourComponent } from './condition-four/condition-four.component';
+import { ConditionKeywordsComponent } from './condition-keywords/condition-keywords.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
       {
         path: 'condition-four',
         component: ConditionFourComponent
+      },
+      {
+        path: 'condition-keywords',
+        component: ConditionKeywordsComponent
       }
     ]
   }

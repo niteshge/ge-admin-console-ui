@@ -2,7 +2,7 @@
 <div mat-dialog-content>
   <p>Please Take An Action On The Record You Selected => {{data.textData}}</p>
 </div>
-<div mat-dialog-actions  align="end"> 
+<div mat-dialog-actions  [style.align]="'end'"> 
   <button mat-button color=gepalewhite (click)="onNoClick()">CANCEL</button>
   <button mat-raised-button color=geprimary [mat-dialog-close]="'1'" cdkFocusInitial>EDIT</button>
   <button mat-raised-button *ngIf="data.clonePopup" color=geprimary [mat-dialog-close]="'2'" cdkFocusInitial>CLONE</button>
