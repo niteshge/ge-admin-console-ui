@@ -10,6 +10,7 @@ export class ConditionTwoService {
 
   constructor(private http: HttpClient) { }
 
+  
   getAllConditionTwo(randomValue:Number){
     return this.http.get('http://'+myGlobals.server+':8787/conditiononetofour/getallcrunchbasetechnologyroundtwo?ver='+randomValue);
   }

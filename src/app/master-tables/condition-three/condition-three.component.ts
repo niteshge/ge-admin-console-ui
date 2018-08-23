@@ -28,7 +28,7 @@ export class ConditionThreeComponent implements OnInit {
     private subTechnologyService: SubTechnologyService,
     private horizontalTechnologyService: HorizontalTechnologyService,
     private condtionKeywordService: ConditionKeywordService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {}
 
   ngOnInit() {
