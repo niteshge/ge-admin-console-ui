@@ -250,7 +250,6 @@ export class SubTechnologyTreeComponent implements OnInit {
     });
     dialogEdit.afterClosed().subscribe(result => {
       let addNodeData:TodoItemNode = Object.assign(parentNode);
-      addNodeData.item = result['TECHNOLOGY SEGMENT'];
       result['children'] =addNodeData.children;
       result['item'] = result['TECHNOLOGY SEGMENT'];
       result['level'] = addNodeData.level;
@@ -334,7 +333,7 @@ export class SubTechnologyTreeComponent implements OnInit {
       let editNodeData:TodoItemNode = Object.assign(parentNode);
       editNodeData.item = result['Edit Item'];
       result['children'] =editNodeData.children;
-      result['item'] = editNodeData.item;
+      result['item'] = result['TECHNOLOGY SEGMENT'];
       result['level'] = editNodeData.level;
       result['id'] = editNodeData.id;
       console.log("The editNodeData is ", result);

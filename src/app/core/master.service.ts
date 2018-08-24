@@ -28,6 +28,6 @@ export class MasterService {
     return this.http.get('http://'+myGlobals.server+':8787/mastertables/getrevenuemodel?ver='+randomValue);
   }
   getTechnologyNameById(id:number, randomValue:Number){
-    return this.http.get('http://'+myGlobals.server+':8787/mastertables/gettechnologynamebyid?id='+id+'&ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/gethorizontalbyid?id='+id+'&ver='+randomValue);
   }
 }
