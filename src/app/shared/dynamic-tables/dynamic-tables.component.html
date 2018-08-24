@@ -38,6 +38,6 @@
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay" sticky=t rue [style.background-color]="'#F7F7F2'"></tr>
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" (click)="onRowSelected(row)"></tr>
   </table>
-  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20, 50, 100]" [showFirstLastButtons]="true">
   </mat-paginator>
 </div>

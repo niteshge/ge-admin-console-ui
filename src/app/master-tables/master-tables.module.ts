@@ -37,6 +37,8 @@ import { ConditionTwoEditComponent } from './condition-two/condition-two-edit/co
 import { ConditionTwoAddComponent } from './condition-two/condition-two-add/condition-two-add.component';
 import { ConditionThreeAddComponent } from './condition-three/condition-three-add/condition-three-add.component';
 import { ConditionThreeEditComponent } from './condition-three/condition-three-edit/condition-three-edit.component';
+import { ConditionFourEditComponent } from './condition-four/condition-four-edit/condition-four-edit.component';
+import { ConditionFourAddComponent } from './condition-four/condition-four-add/condition-four-add.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MasterTablesRoutingModule],
@@ -74,6 +76,8 @@ import { ConditionThreeEditComponent } from './condition-three/condition-three-e
     ConditionTwoAddComponent,
     ConditionThreeAddComponent,
     ConditionThreeEditComponent,
+    ConditionFourEditComponent,
+    ConditionFourAddComponent,
   ],
   entryComponents: [
     BusinessSolutionEditComponent,
@@ -93,7 +97,9 @@ import { ConditionThreeEditComponent } from './condition-three/condition-three-e
     ConditionTwoEditComponent,
     ConditionTwoAddComponent,
     ConditionThreeEditComponent,
-    ConditionThreeAddComponent
+    ConditionThreeAddComponent,
+    ConditionFourEditComponent,
+    ConditionFourAddComponent
   ]
 })
 export class MasterTablesModule {}

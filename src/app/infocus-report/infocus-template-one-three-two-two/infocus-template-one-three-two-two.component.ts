@@ -14,6 +14,7 @@ export class InfocusTemplateOneThreeTwoTwoComponent implements OnInit {
   technologies;
   infocusReportTitle:string = null;
   infocusRoles;
+  displayRole;
   infocusIntroductionTitle;
   infocusIntroductionTitleLen:number = 0;
   infocusIntroductionTitleMaxValue;
@@ -101,6 +102,12 @@ export class InfocusTemplateOneThreeTwoTwoComponent implements OnInit {
   analystName(value) {
     this.infocusModel.analystName = value;
     console.log(this.infocusModel.analystName);
+  }
+
+
+  displayName(value:string) {
+    this.infocusModel.displayRole = value.toUpperCase();
+    console.log(this.infocusModel.displayRole);
   }
 
   regionName(value) {

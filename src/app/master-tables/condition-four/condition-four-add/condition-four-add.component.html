@@ -1,0 +1,72 @@
+<form class="example-form" [style.overflow-y]="'scroll'" *ngIf=rowData>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'INDUSTRY OR TECHNOLOGY'" [options]="rowData['INDUSTRY_TECH']" [defaultValue]="rowData['INDUSTRY OR TECHNOLOGY']"
+        (optionSelected)="onChangeOfTechOrIndustry('INDUSTRY OR TECHNOLOGY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'ROUND FOUR FINAL TECHNOLOGY'" [options]="rowData['ALL INDUSTRY OR TECHNOLOGY DEFINATION']"
+        [defaultValue]="rowData['ROUND FOUR FINAL TECHNOLOGY']" (optionSelected)="onChangeOfRoundThreeFinalTechnology('ROUND FOUR FINAL TECHNOLOGY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentOneDisableParam" class="form-fields" [placeholder]="'ROUND FOUR SEGMENT ONE'"
+        [options]="rowData['ALL ROUND FOUR SEGMENT ONE']" [defaultValue]="rowData['ROUND FOUR SEGMENT ONE']" (optionSelected)="onchangeOfSegmentOne('ROUND FOUR SEGMENT ONE',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentTwoDisableParam" class="form-fields" [placeholder]="'ROUND FOUR SEGMENT TWO'"
+        [options]="rowData['ALL ROUND FOUR SEGMENT TWO']" [defaultValue]="rowData['ROUND FOUR SEGMENT TWO']" (optionSelected)="onchangeOfSegmentTwo('ROUND FOUR SEGMENT TWO',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentThreeDisableParam" class="form-fields" [placeholder]="'ROUND FOUR SEGMENT THREE'"
+        [options]="rowData['ALL ROUND FOUR SEGMENT THREE']" [defaultValue]="rowData['ROUND FOUR SEGMENT THREE']" (optionSelected)="onchangeOfSegmentThree('ROUND FOUR SEGMENT THREE',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select [disabledParam]="segmentFourDisableParam" class="form-fields" [placeholder]="'ROUND FOUR SEGMENT FOUR'"
+        [options]="rowData['ALL ROUND FOUR SEGMENT FOUR']" [defaultValue]="rowData['ROUND FOUR SEGMENT FOUR']" (optionSelected)="onchangeEventRowData('ROUND FOUR SEGMENT FOUR',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <mat-form-field class="form-fields custom-field">
+        <input matInput type=number min=0 [placeholder]="'FOUNDED YEAR FILTER'" [value]="rowData['FOUNDED YEAR FILTER']" (change)="onchangeEventRowData('FOUNDED YEAR FILTER',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <app-dynamic-select class="form-fields" [placeholder]="'EXCLUSION TECHNOLOGY'" [options]="rowData['ALL EXCLUSION TECHNOLOGY']"
+        [defaultValue]="rowData['EXCLUSION TECHNOLOGY']" (optionSelected)="onchangeEventRowData('EXCLUSION TECHNOLOGY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <mat-form-field class="form-fields big-field">
+        <input matInput [placeholder]="'INCLUDE KEYWORDS FROM ABOUT US FOR SEG1'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG1']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG1',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <mat-form-field class="form-fields big-field">
+        <input matInput [placeholder]="'INCLUDE KEYWORDS FROM ABOUT US FOR SEG2'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG2']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG2',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <mat-form-field class="form-fields big-field">
+        <input matInput [placeholder]="'INCLUDE KEYWORDS FROM ABOUT US FOR SEG3'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG3']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG3',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <mat-form-field class="form-fields big-field">
+        <input matInput [placeholder]="'INCLUDE KEYWORDS FROM ABOUT US FOR SEG4'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG4']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG4',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <button mat-raised-button color=geprimary [style.margin-right]="'24px'" [style.margin-left]="'24px'" [mat-dialog-close]="rowData"
+        cdkFocusInitial>Done</button>
+      <button mat-raised-button color=gewarn [style.margin-right]="'24px'" [style.margin-left]="'24px'" (click)="onNoClick()">Cancel</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

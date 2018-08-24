@@ -8,6 +8,8 @@ export class InfocusReportModel {
     public technologySubSegemt:string = null;
     public readtime: string = null;
 
+    public displayRole:String = null;
+
     public infocusReportTitle: string = null;
     public introductionTitle: string = null;
     public introductionPara1: string = null;

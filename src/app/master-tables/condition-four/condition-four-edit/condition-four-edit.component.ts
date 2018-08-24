@@ -1,17 +1,17 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ConditionThreeService } from '../../../core/condition-three.service';
-import { MasterService } from '../../../core/master.service';
+import { ConditionFourService } from '../../../core/condition-four.service';
 import { IndustrySubSegmentService } from '../../../core/industry-sub-segment.service';
+import { MasterService } from '../../../core/master.service';
 import { SubTechnologyService } from '../../../core/sub-technology.service';
 import { HorizontalTechnologyService } from '../../../core/horizontal-technologies.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-  selector: 'app-condition-three-edit',
-  templateUrl: './condition-three-edit.component.html',
-  styleUrls: ['./condition-three-edit.component.css']
+  selector: 'app-condition-four-edit',
+  templateUrl: './condition-four-edit.component.html',
+  styleUrls: ['./condition-four-edit.component.css']
 })
-export class ConditionThreeEditComponent implements OnInit {
+export class ConditionFourEditComponent implements OnInit {
   rowData;
   segmentOneDisableParam: boolean = false;
   segmentTwoDisableParam: boolean = false;
@@ -19,13 +19,13 @@ export class ConditionThreeEditComponent implements OnInit {
   segmentFourDisableParam: boolean = false;
 
   constructor(
-    public dialogRef: MatDialogRef<ConditionThreeEditComponent>,
-    private conditionTwoService: ConditionThreeService,
+    public dialogRef: MatDialogRef<ConditionFourEditComponent>,
+    private conditionTwoService: ConditionFourService,
     private masterTableService: MasterService,
     private industrySubSegmentService: IndustrySubSegmentService,
     private subTechnologyService: SubTechnologyService,
     private horizontalTechnologyService: HorizontalTechnologyService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
   ngOnInit() {
@@ -47,12 +47,11 @@ export class ConditionThreeEditComponent implements OnInit {
       this.segmentTwoDisableParam = true;
       this.segmentThreeDisableParam = true;
       this.segmentFourDisableParam = true;
-      this.rowData['ROUND TWO DEPENDENT TECHNOLOGY'] = '';
-      this.rowData['ROUND THREE FINAL TECHNOLOGY'] = '';
-      this.rowData['ROUND THREE SEGMENT ONE'] = '';
-      this.rowData['ROUND THREE SEGMENT TWO'] = '';
-      this.rowData['ROUND THREE SEGMENT THREE'] = '';
-      this.rowData['ROUND THREE SEGMENT FOUR'] = '';
+      this.rowData['ROUND FOUR FINAL TECHNOLOGY'] = '';
+      this.rowData['ROUND FOUR SEGMENT ONE'] = '';
+      this.rowData['ROUND FOUR SEGMENT TWO'] = '';
+      this.rowData['ROUND FOUR SEGMENT THREE'] = '';
+      this.rowData['ROUND FOUR SEGMENT FOUR'] = '';
       if (this.rowData[key] === 'Industry/Sector') {
         this.masterTableService
           .getAllIndustriesNames(randomValue)
@@ -78,24 +77,24 @@ export class ConditionThreeEditComponent implements OnInit {
       this.segmentTwoDisableParam = true;
       this.segmentThreeDisableParam = true;
       this.segmentFourDisableParam = true;
-      this.rowData['ROUND THREE SEGMENT ONE'] = '';
-      this.rowData['ROUND THREE SEGMENT TWO'] = '';
-      this.rowData['ROUND THREE SEGMENT THREE'] = '';
-      this.rowData['ROUND THREE SEGMENT FOUR'] = '';
+      this.rowData['ROUND FOUR SEGMENT ONE'] = '';
+      this.rowData['ROUND FOUR SEGMENT TWO'] = '';
+      this.rowData['ROUND FOUR SEGMENT THREE'] = '';
+      this.rowData['ROUND FOUR SEGMENT FOUR'] = '';
       if (this.rowData['INDUSTRY OR TECHNOLOGY'] === 'Industry/Sector') {
         if (
-          this.rowData['ROUND THREE FINAL TECHNOLOGY'] !== null &&
-          this.rowData['ROUND THREE FINAL TECHNOLOGY'] !== ''
+          this.rowData['ROUND FOUR FINAL TECHNOLOGY'] !== null &&
+          this.rowData['ROUND FOUR FINAL TECHNOLOGY'] !== ''
         ) {
           this.industrySubSegmentService
             .getIndustrySubSegment1(
-              this.rowData['ROUND THREE FINAL TECHNOLOGY'],
+              this.rowData['ROUND FOUR FINAL TECHNOLOGY'],
               randomValue
             )
             .subscribe((response: Response) => {
               console.log(`The all round two segment one ${response}`);
-              this.rowData['ALL ROUND THREE SEGMENT ONE'] = response;
-              if (this.rowData['ALL ROUND THREE SEGMENT ONE'] === []) {
+              this.rowData['ALL ROUND FOUR SEGMENT ONE'] = response;
+              if (this.rowData['ALL ROUND FOUR SEGMENT ONE'] === []) {
                 this.segmentOneDisableParam = true;
               }
             });
@@ -104,18 +103,18 @@ export class ConditionThreeEditComponent implements OnInit {
         }
       } else if (this.rowData['INDUSTRY OR TECHNOLOGY'] === 'Technology') {
         if (
-          this.rowData['ROUND THREE FINAL TECHNOLOGY'] !== null &&
-          this.rowData['ROUND THREE FINAL TECHNOLOGY'] !== ''
+          this.rowData['ROUND FOUR FINAL TECHNOLOGY'] !== null &&
+          this.rowData['ROUND FOUR FINAL TECHNOLOGY'] !== ''
         ) {
           this.subTechnologyService
             .getTechnologySubSegment1ByHorizontalName(
-              this.rowData['ROUND THREE FINAL TECHNOLOGY'],
+              this.rowData['ROUND FOUR FINAL TECHNOLOGY'],
               randomValue
             )
             .subscribe((response: Response) => {
               console.log(`The all segment one ${response}`);
-              this.rowData['ALL ROUND THREE SEGMENT ONE'] = response;
-              if (this.rowData['ALL ROUND THREE SEGMENT ONE'] === []) {
+              this.rowData['ALL ROUND FOUR SEGMENT ONE'] = response;
+              if (this.rowData['ALL ROUND FOUR SEGMENT ONE'] === []) {
                 this.segmentOneDisableParam = true;
               }
             });
@@ -136,24 +135,24 @@ export class ConditionThreeEditComponent implements OnInit {
       this.segmentTwoDisableParam = false;
       this.segmentThreeDisableParam = true;
       this.segmentFourDisableParam = true;
-      this.rowData['ROUND THREE SEGMENT TWO'] = '';
-      this.rowData['ROUND THREE SEGMENT THREE'] = '';
-      this.rowData['ROUND THREE SEGMENT FOUR'] = '';
+      this.rowData['ROUND FOUR SEGMENT TWO'] = '';
+      this.rowData['ROUND FOUR SEGMENT THREE'] = '';
+      this.rowData['ROUND FOUR SEGMENT FOUR'] = '';
       if (this.rowData['INDUSTRY OR TECHNOLOGY'] === 'Industry/Sector') {
         if (
-          this.rowData['ROUND THREE SEGMENT ONE'] !== null &&
-          this.rowData['ROUND THREE SEGMENT ONE'] !== ''
+          this.rowData['ROUND FOUR SEGMENT ONE'] !== null &&
+          this.rowData['ROUND FOUR SEGMENT ONE'] !== ''
         ) {
           this.industrySubSegmentService
             .getIndustrySubSegmentChild(
-              this.rowData['ROUND THREE FINAL TECHNOLOGY'],
-              this.rowData['ROUND THREE SEGMENT ONE'],
+              this.rowData['ROUND FOUR FINAL TECHNOLOGY'],
+              this.rowData['ROUND FOUR SEGMENT ONE'],
               randomValue
             )
             .subscribe((response: Response) => {
               console.log(`The all segment two ${response}`);
-              this.rowData['ALL ROUND THREE SEGMENT TWO'] = response;
-              if (this.rowData['ALL ROUND THREE SEGMENT TWO'] === []) {
+              this.rowData['ALL ROUND FOUR SEGMENT TWO'] = response;
+              if (this.rowData['ALL ROUND FOUR SEGMENT TWO'] === []) {
                 this.segmentTwoDisableParam = true;
               }
             });
@@ -162,19 +161,19 @@ export class ConditionThreeEditComponent implements OnInit {
         }
       } else if (this.rowData['INDUSTRY OR TECHNOLOGY'] === 'Technology') {
         if (
-          this.rowData['ROUND THREE SEGMENT ONE'] !== null &&
-          this.rowData['ROUND THREE SEGMENT ONE'] !== ''
+          this.rowData['ROUND FOUR SEGMENT ONE'] !== null &&
+          this.rowData['ROUND FOUR SEGMENT ONE'] !== ''
         ) {
           this.subTechnologyService
             .getTechnologySubSegmentChildByHorizontalNameAndTechnologySegmentName(
-              this.rowData['ROUND THREE FINAL TECHNOLOGY'],
-              this.rowData['ROUND THREE SEGMENT ONE'],
+              this.rowData['ROUND FOUR FINAL TECHNOLOGY'],
+              this.rowData['ROUND FOUR SEGMENT ONE'],
               randomValue
             )
             .subscribe((response: Response) => {
               console.log(`The all segment two ${response}`);
-              this.rowData['ALL ROUND THREE SEGMENT TWO'] = response;
-              if (this.rowData['ALL ROUND THREE SEGMENT TWO'] === []) {
+              this.rowData['ALL ROUND FOUR SEGMENT TWO'] = response;
+              if (this.rowData['ALL ROUND FOUR SEGMENT TWO'] === []) {
                 this.segmentTwoDisableParam = true;
               }
             });
@@ -194,23 +193,23 @@ export class ConditionThreeEditComponent implements OnInit {
       this.segmentTwoDisableParam = false;
       this.segmentThreeDisableParam = false;
       this.segmentFourDisableParam = true;
-      this.rowData['ROUND THREE SEGMENT THREE'] = '';
-      this.rowData['ROUND THREE SEGMENT FOUR'] = '';
+      this.rowData['ROUND FOUR SEGMENT THREE'] = '';
+      this.rowData['ROUND FOUR SEGMENT FOUR'] = '';
       if (this.rowData['INDUSTRY OR TECHNOLOGY'] === 'Industry/Sector') {
         if (
-          this.rowData['ROUND THREE SEGMENT TWO'] !== null &&
-          this.rowData['ROUND THREE SEGMENT TWO'] !== ''
+          this.rowData['ROUND FOUR SEGMENT TWO'] !== null &&
+          this.rowData['ROUND FOUR SEGMENT TWO'] !== ''
         ) {
           this.industrySubSegmentService
             .getIndustrySubSegmentChild(
-              this.rowData['ROUND THREE FINAL TECHNOLOGY'],
-              this.rowData['ROUND THREE SEGMENT TWO'],
+              this.rowData['ROUND FOUR FINAL TECHNOLOGY'],
+              this.rowData['ROUND FOUR SEGMENT TWO'],
               randomValue
             )
             .subscribe((response: Response) => {
               console.log(`The all segment three ${response}`);
-              this.rowData['ALL ROUND THREE SEGMENT THREE'] = response;
-              if (this.rowData['ALL ROUND THREE SEGMENT THREE'] === []) {
+              this.rowData['ALL ROUND FOUR SEGMENT THREE'] = response;
+              if (this.rowData['ALL ROUND FOUR SEGMENT THREE'] === []) {
                 this.segmentThreeDisableParam = true;
               }
             });
@@ -219,19 +218,19 @@ export class ConditionThreeEditComponent implements OnInit {
         }
       } else if (this.rowData['INDUSTRY OR TECHNOLOGY'] === 'Technology') {
         if (
-          this.rowData['ROUND THREE SEGMENT TWO'] !== null &&
-          this.rowData['ROUND THREE SEGMENT TWO'] !== ''
+          this.rowData['ROUND FOUR SEGMENT TWO'] !== null &&
+          this.rowData['ROUND FOUR SEGMENT TWO'] !== ''
         ) {
           this.subTechnologyService
             .getTechnologySubSegmentChildByHorizontalNameAndTechnologySegmentName(
-              this.rowData['ROUND THREE FINAL TECHNOLOGY'],
-              this.rowData['ROUND THREE SEGMENT TWO'],
+              this.rowData['ROUND FOUR FINAL TECHNOLOGY'],
+              this.rowData['ROUND FOUR SEGMENT TWO'],
               randomValue
             )
             .subscribe((response: Response) => {
               console.log(`The all segment three ${response}`);
-              this.rowData['ALL ROUND THREE SEGMENT THREE'] = response;
-              if (this.rowData['ALL ROUND THREE SEGMENT THREE'] === []) {
+              this.rowData['ALL ROUND FOUR SEGMENT THREE'] = response;
+              if (this.rowData['ALL ROUND FOUR SEGMENT THREE'] === []) {
                 this.segmentThreeDisableParam = true;
               }
             });
@@ -250,22 +249,22 @@ export class ConditionThreeEditComponent implements OnInit {
       this.segmentTwoDisableParam = false;
       this.segmentThreeDisableParam = false;
       this.segmentFourDisableParam = false;
-      this.rowData['ROUND THREE SEGMENT FOUR'] = '';
+      this.rowData['ROUND FOUR SEGMENT FOUR'] = '';
       if (this.rowData['INDUSTRY OR TECHNOLOGY'] === 'Industry/Sector') {
         if (
-          this.rowData['ROUND THREE SEGMENT THREE'] !== null &&
-          this.rowData['ROUND THREE SEGMENT THREE'] !== ''
+          this.rowData['ROUND FOUR SEGMENT THREE'] !== null &&
+          this.rowData['ROUND FOUR SEGMENT THREE'] !== ''
         ) {
           this.industrySubSegmentService
             .getIndustrySubSegmentChild(
-              this.rowData['ROUND THREE FINAL TECHNOLOGY'],
-              this.rowData['ROUND THREE SEGMENT THREE'],
+              this.rowData['ROUND FOUR FINAL TECHNOLOGY'],
+              this.rowData['ROUND FOUR SEGMENT THREE'],
               randomValue
             )
             .subscribe((response: Response) => {
               console.log(`The all segment four ${response}`);
-              this.rowData['ALL ROUND THREE SEGMENT FOUR'] = response;
-              if (this.rowData['ALL ROUND THREE SEGMENT FOUR'] === []) {
+              this.rowData['ALL ROUND FOUR SEGMENT FOUR'] = response;
+              if (this.rowData['ALL ROUND FOUR SEGMENT FOUR'] === []) {
                 this.segmentFourDisableParam = true;
               }
             });
@@ -274,19 +273,19 @@ export class ConditionThreeEditComponent implements OnInit {
         }
       } else if (this.rowData['INDUSTRY OR TECHNOLOGY'] === 'Technology') {
         if (
-          this.rowData['ROUND THREE SEGMENT THREE'] !== null &&
-          this.rowData['ROUND THREE SEGMENT THREE'] !== ''
+          this.rowData['ROUND FOUR SEGMENT THREE'] !== null &&
+          this.rowData['ROUND FOUR SEGMENT THREE'] !== ''
         ) {
           this.subTechnologyService
             .getTechnologySubSegmentChildByHorizontalNameAndTechnologySegmentName(
-              this.rowData['ROUND THREE FINAL TECHNOLOGY'],
-              this.rowData['ROUND THREE SEGMENT THREE'],
+              this.rowData['ROUND FOUR FINAL TECHNOLOGY'],
+              this.rowData['ROUND FOUR SEGMENT THREE'],
               randomValue
             )
             .subscribe((response: Response) => {
               console.log(`The all segment four ${response}`);
-              this.rowData['ALL ROUND THREE SEGMENT FOUR'] = response;
-              if (this.rowData['ALL ROUND THREE SEGMENT FOUR'] === []) {
+              this.rowData['ALL ROUND FOUR SEGMENT FOUR'] = response;
+              if (this.rowData['ALL ROUND FOUR SEGMENT FOUR'] === []) {
                 this.segmentFourDisableParam = true;
               }
             });

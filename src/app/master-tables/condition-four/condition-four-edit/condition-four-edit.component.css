@@ -1,0 +1,12 @@
+.form-fields {
+    margin-right: 32px;
+    margin-left: 32px;
+  }
+  
+  .custom-field {
+    width: 250px;
+  }
+  
+  .big-field{
+      width: 500px;
+  }

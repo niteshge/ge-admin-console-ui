@@ -111,7 +111,10 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
     this.infocusModel.analystName = value;
     console.log(this.infocusModel.analystName);
   }
-
+  displayName(value:string) {
+    this.infocusModel.displayRole = value.toUpperCase();
+    console.log(this.infocusModel.displayRole);
+  }
   regionName(value) {
     this.infocusModel.region = value;
     console.log(this.infocusModel.region);
