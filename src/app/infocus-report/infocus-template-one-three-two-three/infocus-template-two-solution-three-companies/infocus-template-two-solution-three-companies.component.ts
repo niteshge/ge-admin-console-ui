@@ -59,7 +59,7 @@ export class InfocusTemplateTwoSolutionThreeCompaniesComponent implements OnInit
 
   getSolutions2(businessPriority2) {
     let randomValue = Math.random();
-    this.infocusCoreService.getInfocusBusinessPriority2Solution2(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, businessPriority2, randomValue)
+    this.infocusCoreService.getInfocusBusinessPriority2Solution1(this.infocusModel.role, this.infocusModel.industry, this.infocusModel.industrySegment1, this.infocusModel.industrySegment2, this.infocusModel.businessPriority1, businessPriority2, randomValue)
       .subscribe(
         (response: Response) => {
           this.solution2 = response;
