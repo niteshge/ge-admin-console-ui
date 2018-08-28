@@ -8,6 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class DynamicTableEditComponent implements OnInit {
 rowData;
+listOfElementsToDisable:string[] = ['ID','ADDED USERNAME','CREATED TIMESTAMP','DELETED USERNAME','DELETED TIMESTAMP','UPDATED USERNAME','UPDATED TIMESTAMP'];
 tech  = true;
   constructor(public dialogRef: MatDialogRef<DynamicTableEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }

@@ -1,0 +1,20 @@
+input:disabled {
+  background: #dddddd;
+  opacity: 0.5;
+}
+
+input:disabled::-webkit-input-placeholder {
+  color: #F5F4EB !important;
+}
+
+input:disabled:-moz-placeholder {
+  color: #F5F4EB !important;
+}
+
+input:disabled:-moz-placeholder {
+  color: #F5F4EB !important;
+}
+
+input:disabled:-ms-input-placeholder {
+  color: #F5F4EB !important;
+}

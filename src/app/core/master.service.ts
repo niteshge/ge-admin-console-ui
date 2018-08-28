@@ -30,4 +30,7 @@ export class MasterService {
   getTechnologyNameById(id:number, randomValue:Number){
     return this.http.get('http://'+myGlobals.server+':8787/mastertables/gethorizontalbyid?id='+id+'&ver='+randomValue);
   }
+  getAllUsernames(randomValue:Number){
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/getusernames?ver='+randomValue);
+  }
 }

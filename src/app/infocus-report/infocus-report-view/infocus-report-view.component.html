@@ -1,4 +1,6 @@
-<div>
-    <app-dynamic-tables *ngIf="modelData" [jsonData]="modelData" (rowSelected)="openDialog($event)"></app-dynamic-tables>
-  </div>
-  
+<div class=customtable>
+  <h6 class="subheading">
+    <u>Infocus View And Generate : </u>
+  </h6>
+  <app-dynamic-tables *ngIf="modelData" [jsonData]="modelData" (rowSelected)="openDialog($event)"></app-dynamic-tables>
+</div>

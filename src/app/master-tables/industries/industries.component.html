@@ -1,6 +1,8 @@
 <div class=customtable>
   <div class="row">
     <div class="col-4">
+        <app-dynamic-select class="form-fields" [placeholder]="'ANALYST NAME'" [options]="allUsernames"
+         (optionSelected)="usernameEntry($event)"></app-dynamic-select>
       <button mat-raised-button color=geprimary (click)="addRow()">Add</button>
     </div>
   </div>

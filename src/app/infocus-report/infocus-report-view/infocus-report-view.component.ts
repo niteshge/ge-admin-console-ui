@@ -47,20 +47,20 @@ export class InfocusReportViewComponent implements OnInit {
   }
   takeAction(value) {
     if (value === '1') {
-      console.log("View On ", this.rowValue.id);
-      this.viewPDF(this.rowValue.id);
+      console.log("View On ", this.rowValue.ID);
+      this.viewPDF(this.rowValue.ID);
     } else if (value === '2') {
-      console.log("delete On ", this.rowValue.id);
-      this.deleteReport(this.rowValue.id);
+      console.log("delete On ", this.rowValue.ID);
+      this.deleteReport(this.rowValue.ID);
     }else if (value === '3'){
-      console.log("Publish Report ",this.rowValue.id);
+      console.log("Publish Report ",this.rowValue.ID);
       let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent,{
         width:'300px',
       });
       dialogConfirm.afterClosed().subscribe(result => {
         console.log("The dialog confirm is closed with a action:",result);
         if(result==100){
-          this.publishInfocusReport(this.rowValue.id);
+          this.publishInfocusReport(this.rowValue.ID);
         }
       });
     }

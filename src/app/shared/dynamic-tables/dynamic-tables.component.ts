@@ -89,10 +89,11 @@ export class DynamicTablesComponent
     console.log('THE FILTERING COLUMN IS ', filterColumn);
     
     this.dataSource.filterPredicate = (data: Element, filter: string) =>
-      JSON.stringify(data[filterColumn].trim().toLowerCase()).indexOf(filter) != -1;
+    JSON.stringify(data[filterColumn].trim().toLowerCase()).indexOf(filter) != -1;
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+    console.log("THE COLUMN VALUE IS :",this.data[filterColumn] );
   }
 
   onRowSelected(event) {

@@ -7,6 +7,7 @@ import { DynamicTableEditComponent } from '../../shared/dynamic-table-edit/dynam
 import { DynamicYesNoPopupComponent } from '../../shared/dynamic-yes-no-popup/dynamic-yes-no-popup.component';
 import { DynamicTableAddComponent } from '../../shared/dynamic-table-add/dynamic-table-add.component';
 import { ConstantTextService } from '../constant-text.service';
+import { MasterService } from '../../core/master.service';
 
 @Component({
   selector: 'app-industries',
@@ -15,14 +16,18 @@ import { ConstantTextService } from '../constant-text.service';
 })
 export class IndustriesComponent implements OnInit {
   rowValue: any = {};
+  allUsernames;
+  selectedUser:string = null;
   industries;
   action;
   constructor(
     private industryServiceCore: IndustryService,
+    private masterService:MasterService,
     public dialog: MatDialog
   ) {}
 
   ngOnInit() {
+    this.getAllUsernames();
     this.getAllIndustries();
   }
   getAllIndustries() {
@@ -41,6 +46,7 @@ export class IndustriesComponent implements OnInit {
         } else {
           //TODO: UNCOMMENT THE COMMENTED LINES AND COMMENT THE OTHER BELOW LINES AND MAKE SURE U ONLY APPEND THE EDITED/UPDATED ROW USING FILTER OR SOMETHING ELSE
           this.industries = response;
+          
           // this.changeDetectorRefs.detectChanges();
           // let dialogAlert = this.dialog.open(AlertBoxComponent,{
           // width: '300px',
@@ -53,6 +59,20 @@ export class IndustriesComponent implements OnInit {
         }
       });
   }
+  getAllUsernames(){
+    let randomValue = Math.random();
+    this.masterService
+    .getAllUsernames(randomValue)
+    .subscribe((response:Response)=>{
+      this.allUsernames = response;
+    }
+  )
+  }
+  usernameEntry(value){
+    console.log("The username is :",value);
+    this.selectedUser = value;
+  }
+
   openDialog(value) {
     console.log(value);
     this.rowValue = value;
@@ -124,6 +144,7 @@ export class IndustriesComponent implements OnInit {
                       result
                     );
                     if (result == 100) {
+                      this.rowValue['UPDATED USERNAME'] = this.selectedUser;
                       this.update(this.rowValue);
                     }
                   });
@@ -143,6 +164,7 @@ export class IndustriesComponent implements OnInit {
                   result
                 );
                 if (result == 100) {
+                  this.rowValue['UPDATED USERNAME'] = this.selectedUser;
                   this.update(this.rowValue);
                 }
               });
@@ -161,6 +183,8 @@ export class IndustriesComponent implements OnInit {
   }
 
   update(result) {
+    result['UPDATED USERNAME'] =this.selectedUser;
+    console.log("THE UPDATING OF THE INDUSTRY :", result);
     this.industryServiceCore
       .updateIndustry(result)
       .subscribe((response: Response) => {
