@@ -14,57 +14,57 @@
       <!-- <button routerLink="/" mat-button>Growth Enabler</button> -->
     </span>
     <span>
-      <button [matMenuTriggerFor]="appMenu" mat-button>REPORT</button>
+      <button [matMenuTriggerFor]="appMenu" mat-button>Report</button>
     </span>
     <span>
-      <button [matMenuTriggerFor]="masterTables" mat-button>MASTER TABLES</button>
+      <button [matMenuTriggerFor]="masterTables" mat-button>Master Tables</button>
     </span>
     <mat-menu #appMenu="matMenu">
       <ng-template matMenuContent>
-        <button [matMenuTriggerFor]="infocusMenu" mat-menu-item>INFOCUS REPORT</button>
-        <button [matMenuTriggerFor]="techMenu" mat-menu-item>TECH REPORT</button>
+        <button [matMenuTriggerFor]="infocusMenu" mat-menu-item>Infocus Report</button>
+        <button [matMenuTriggerFor]="techMenu" mat-menu-item>Tech Report</button>
       </ng-template>
     </mat-menu>
     <mat-menu #infocusMenu="matMenu">
-      <button [matMenuTriggerFor]="infocusTemplates" mat-menu-item>INFOCUS TEMPLATES</button>
-      <button routerLink="/infocus-report/view" mat-menu-item>VIEW & GENERATE</button>
+      <button [matMenuTriggerFor]="infocusTemplates" mat-menu-item>Infocus Templates</button>
+      <button routerLink="/infocus-report/view" mat-menu-item>View & Generate</button>
     </mat-menu>
     <mat-menu #infocusTemplates="matMenu">
-      <button routerLink="/infocus-report/template14552" mat-menu-item>INFOCUS TEMPLATE - 1</button>
-      <button routerLink="/infocus-report/template14322" mat-menu-item>INFOCUS TEMPLATE - 2</button>
-      <button routerLink="/infocus-report/template1323" mat-menu-item>INFOCUS TEMPLATE - 3</button>
-      <button routerLink="/infocus-report/template1322" mat-menu-item>INFOCUS TEMPLATE - 4</button>
+      <button routerLink="/infocus-report/template14552" mat-menu-item>Infocus Template - 1</button>
+      <button routerLink="/infocus-report/template14322" mat-menu-item>Infocus Template - 2</button>
+      <button routerLink="/infocus-report/template1323" mat-menu-item>Infocus Template - 3</button>
+      <button routerLink="/infocus-report/template1322" mat-menu-item>Infocus Template - 4</button>
     </mat-menu>
     <mat-menu #techMenu="matMenu">
-      <button routerLink="/" mat-menu-item>SUBMIT REPORT</button>
-      <button routerLink="/" mat-menu-item>VIEW & GENERATE</button>
+      <button routerLink="/" mat-menu-item>Submit Report</button>
+      <button routerLink="/" mat-menu-item>View & Generate</button>
     </mat-menu>
     <mat-menu #masterTables="matMenu">
-      <button routerLink="/master-tables/business-solutions" mat-menu-item>BUSINESS SOLUTION</button>
-      <button [matMenuTriggerFor]="technologies" mat-menu-item>TECHNOLOGY</button>
-      <button [matMenuTriggerFor]="industries" mat-menu-item>INDUSTRY</button>
-      <button [matMenuTriggerFor]="businessPriority" mat-menu-item>BUSINESS PRIORITY</button>
-      <button routerLink="/master-tables/solution-priority-association" mat-menu-item>SOLUTION PRIORITY ASSOCIATION</button>
-      <button routerLink="/master-tables/condition-keywords" mat-menu-item>CONDITION KEYWORDS</button>
-      <button [matMenuTriggerFor]="conditions" mat-menu-item>CONDITIONS MASTER</button>
+      <button routerLink="/master-tables/business-solutions" mat-menu-item>Business Solution</button>
+      <button [matMenuTriggerFor]="technologies" mat-menu-item>Technology</button>
+      <button [matMenuTriggerFor]="industries" mat-menu-item>Industry</button>
+      <button [matMenuTriggerFor]="businessPriority" mat-menu-item>Business Priority</button>
+      <button routerLink="/master-tables/solution-priority-association" mat-menu-item>Solution Priority Association</button>
+      <button routerLink="/master-tables/condition-keywords" mat-menu-item>Condition Keywords</button>
+      <button [matMenuTriggerFor]="conditions" mat-menu-item>Condition Master</button>
     </mat-menu>
     <mat-menu #conditions="matMenu">
-      <button routerLink="/master-tables/condition-one" mat-menu-item>CONDITION 1</button>
-      <button routerLink="/master-tables/condition-two" mat-menu-item>CONDITION 2</button>
-      <button routerLink="/master-tables/condition-three" mat-menu-item>CONDITION 3</button>
-      <button routerLink="/master-tables/condition-four" mat-menu-item>CONDITION 4</button>
+      <button routerLink="/master-tables/condition-one" mat-menu-item>Condition 1</button>
+      <button routerLink="/master-tables/condition-two" mat-menu-item>Condition 2</button>
+      <button routerLink="/master-tables/condition-three" mat-menu-item>Condition 3</button>
+      <button routerLink="/master-tables/condition-four" mat-menu-item>Condition 4</button>
     </mat-menu>
     <mat-menu #technologies="matMenu">
-      <button routerLink="/master-tables/horizontal-technology" mat-menu-item>TECHNOLOGIES</button>
-      <button routerLink="/master-tables/sub-technologies" mat-menu-item>SUB - TECHNOLOGIES</button>
+      <button routerLink="/master-tables/horizontal-technology" mat-menu-item>Technologies</button>
+      <button routerLink="/master-tables/sub-technologies" mat-menu-item>Sub - Technologies</button>
     </mat-menu>
     <mat-menu #industries="matMenu">
-      <button routerLink="/master-tables/industries" mat-menu-item>INDUSTRIES</button>
-      <button routerLink="/master-tables/sub-industries" mat-menu-item>SUB - INDUSTRIES</button>
+      <button routerLink="/master-tables/industries" mat-menu-item>Industries</button>
+      <button routerLink="/master-tables/sub-industries" mat-menu-item>Sub - Industries</button>
     </mat-menu>
     <mat-menu #businessPriority="matMenu">
-      <button routerLink="/master-tables/business-priorities" mat-menu-item>BUSINESS PRIORITIES</button>
-      <button routerLink="/master-tables/sub-business-priorities" mat-menu-item>SUB - BUSINESS PRIORITIES</button>
+      <button routerLink="/master-tables/business-priorities" mat-menu-item>Business Priorities</button>
+      <button routerLink="/master-tables/sub-business-priorities" mat-menu-item>Sub - Business Priorities</button>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
