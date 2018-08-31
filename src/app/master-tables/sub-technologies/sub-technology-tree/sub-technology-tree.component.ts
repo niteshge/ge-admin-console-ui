@@ -222,8 +222,9 @@ export class SubTechnologyTreeComponent implements OnInit {
     console.log("In the update method", node);
     node.item = name;
     // Emit the new node
-    this.emitNode(node, 1);
+    // this.emitNode(node, 1);
     this.dataChange.next(this.data);
+    return node;
     // Enable only if you no how to update after the response is succesful message is taken
   }
   deleteItem(parent: TodoItemNode, name: string) {
@@ -250,11 +251,12 @@ export class SubTechnologyTreeComponent implements OnInit {
     });
     dialogEdit.afterClosed().subscribe(result => {
       let addNodeData:TodoItemNode = Object.assign(parentNode);
+      let updatedNodeData:TodoItemNode = this.updateItem(addNodeData, result['TECHNOLOGY SEGMENT'])
       result['children'] =addNodeData.children;
       result['item'] = result['TECHNOLOGY SEGMENT'];
       result['level'] = addNodeData.level;
       result['id'] = addNodeData.id;
-      result['node'] = addNodeData;
+      result['node'] = updatedNodeData;
       console.log("The addNodeData is ", result);
       this.emitNode(result,1);
     });
