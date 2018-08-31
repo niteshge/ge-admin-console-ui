@@ -2,6 +2,9 @@
 
   <mat-form-field>
     <mat-select placeholder="Column To Filter">
+        <mat-option [value]="''" (click)="onSelectColumnFilterName(null)">
+            
+          </mat-option>
       <mat-option *ngFor="let column of customToFilter" [value]="column" (click)="onSelectColumnFilterName(column)">
         {{column}}
       </mat-option>
