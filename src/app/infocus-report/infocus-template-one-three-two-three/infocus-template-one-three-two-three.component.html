@@ -13,6 +13,11 @@
       </mat-form-field>
     </div>
     <div class="col-2">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Display Role" (change)=displayName($event.target.value)>
+      </mat-form-field>
+    </div>
+    <div class="col-2">
       <mat-form-field class="example-full-width" *ngIf="infocusModel.analystName">
         <input matInput placeholder="Region Name" (change)=regionName($event.target.value)>
       </mat-form-field>
