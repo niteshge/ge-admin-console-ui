@@ -2,12 +2,12 @@
   <mat-grid-list cols="6" rowHeight="100px">
     <mat-grid-tile [colspan]=2 [rowspan]=1>
       <mat-form-field class="example-full-width custom-input-fields">
-        <input matInput type=number min=0 [placeholder]="'INNOVATION'" [value]="rowData['INNOVATION']" (change)="onchangeEventRowData('INNOVATION',$event.target.value)">
+        <input matInput type=number min=0 [placeholder]="'INNOVATION SCORE'" [value]="rowData['INNOVATION']" (change)="onchangeEventRowData('INNOVATION',$event.target.value)">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=2 [rowspan]=1>
       <mat-form-field class="example-full-width custom-input-fields">
-        <input matInput type=number min=0 [placeholder]="'DISRUPTION'" [value]="rowData['DISRUPTION']" (change)="onchangeEventRowData('DISRUPTION',$event.target.value)">
+        <input matInput type=number min=0 [placeholder]="'DISRUPTION SCORE'" [value]="rowData['DISRUPTION']" (change)="onchangeEventRowData('DISRUPTION',$event.target.value)">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=2 [rowspan]=1>
