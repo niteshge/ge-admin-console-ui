@@ -5,6 +5,7 @@ import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
 import { DynamicYesNoPopupComponent } from '../../shared/dynamic-yes-no-popup/dynamic-yes-no-popup.component';
 import { ConstantTextService } from '../constant-text.service';
 import { BusinessTractionAndIndustryDisruptionService } from '../../core/business-traction-and-industry-disruption.service';
+import { ConditionOneService } from '../../core/condition-one.service';
 
 @Component({
   selector: 'app-sub-technologies',
@@ -13,125 +14,12 @@ import { BusinessTractionAndIndustryDisruptionService } from '../../core/busines
 })
 export class SubTechnologiesComponent implements OnInit {
   treeDataJson;
-  // treeDataJson: any[] = [
-  //   {
-  //     children: [
-  //       {
-  //         children: [
-  //           {
-  //             children: [],
-  //             item: '3D Printing Manufactures',
-  //             id: [1, 0, 1, 2] //[tech id, from its id to the parent in sub_tech]... in other words, [tech_id,parents.parentid,parentid,its id]
-  //           },
-  //           {
-  //             children: [],
-  //             item: '3D Printing Material',
-  //             id: [1, 0, 1, 4]
-  //           }
-  //         ],
-  //         item: 'Hardware',
-  //         id: [1, 0, 1]
-  //       },
-  //       {
-  //         children: [
-  //           {
-  //             children: [],
-  //             item: '3D Scanner',
-  //             id: [1, 0, 7, 6]
-  //           }
-  //         ],
-  //         item: 'Hardware + Software',
-  //         id: [1, 0, 7]
-  //       },
-  //       {
-  //         children: [
-  //           {
-  //             children: [],
-  //             item: '3D Printing CAD Software',
-  //             id: []
-  //           }
-  //         ],
-  //         item: 'Software',
-  //         id: [1, 0, 8]
-  //       }
-  //     ],
-  //     item: '3D Printing',
-  //     id: [1]
-  //   },
-  //   {
-  //     children: [
-  //       {
-  //         children: [
-  //           {
-  //             children: [],
-  //             item: 'Image Recognition',
-  //             id: [2, 0, 43, 49]
-  //           }
-  //         ],
-  //         item: 'Computer Vision',
-  //         id: [2, 0, 43]
-  //       },
-  //       {
-  //         children: [
-  //           {
-  //             children: [],
-  //             item: 'Speech Recognition',
-  //             id: [2, 0, 54, 60]
-  //           },
-  //           {
-  //             children: [],
-  //             item: 'Text Analysis',
-  //             id: [2, 0, 54, 62]
-  //           }
-  //         ],
-  //         item: 'Natural Language Processing',
-  //         id: [2, 0, 54]
-  //       },
-  //       {
-  //         children: [
-  //           {
-  //             children: [
-  //               {
-  //                 children: [],
-  //                 item: 'Cyber Security',
-  //                 id: [2, 0, 40, 940, 44]
-  //               },
-  //               {
-  //                 children: [],
-  //                 item: 'Marketing',
-  //                 id: [2, 0, 40, 940, 53]
-  //               }
-  //             ],
-  //             item: 'Functional Application',
-  //             id: [2, 0, 40, 940]
-  //           }
-  //         ],
-  //         item: 'Application',
-  //         id: [2, 0, 40]
-  //       }
-  //     ],
-  //     item: 'Artificial Intelligence',
-  //     id: [2]
-  //   },
-  //   {
-  //     children: [],
-  //     item: 'Big Data & Analytics',
-  //     id: [3]
-  //   },
-  //   {
-  //     children: [],
-  //     item: 'Other',
-  //     id: [99]
-  //   }
-  // ];
   constructor(
     private subTechnologyService: SubTechnologyService,
     private businessTractionIndustryDisruption: BusinessTractionAndIndustryDisruptionService,
+    private conditionOneService: ConditionOneService,
     public dialog: MatDialog
-  ) {
-    // this.getAllTechSubSegment();
-    // this.treeDataJson = this.treeDataJson.slice();
-  }
+  ) {}
 
   ngOnInit() {
     this.getAllTechSubSegment();
@@ -144,10 +32,7 @@ export class SubTechnologiesComponent implements OnInit {
         this.treeDataJson = response;
       });
   }
-  // node(node) {
-  //   console.log('the parent component ', node);
-  //   this.nodeData = node;
-  // }
+
   action(value) {
     console.log('the parent action', value);
     if (value.action === 1) {
@@ -157,123 +42,6 @@ export class SubTechnologiesComponent implements OnInit {
     } else if (value.action === 3) {
       this.deleteTechSubSegment(value.nodeData);
     }
-
-    // this.treeDataJson = [
-    //   {
-    //     children: [
-    //       {
-    //         children: [
-    //           {
-    //             children: [],
-    //             item: '3D Printing Manufactures',
-    //             id: [1, 0, 1, 2] //[tech id, from its id to the parent in sub_tech]... in other words, [tech_id,parents.parentid,parentid,its id]
-    //           },
-    //           {
-    //             children: [],
-    //             item: '3D Printing Material',
-    //             id: [1, 0, 1, 4]
-    //           },
-    //           {
-    //             children: [],
-    //             item: 'Dummy',
-    //             id: [1, 0, 1, 100]
-    //           }
-    //         ],
-    //         item: 'Hardware',
-    //         id: [1, 0, 1]
-    //       },
-    //       {
-    //         children: [
-    //           {
-    //             children: [],
-    //             item: '3D Scanner',
-    //             id: [1, 0, 7, 6]
-    //           }
-    //         ],
-    //         item: 'Hardware + Software',
-    //         id: [1, 0, 7]
-    //       },
-    //       {
-    //         children: [
-    //           {
-    //             children: [],
-    //             item: '3D Printing CAD Software',
-    //             id: []
-    //           }
-    //         ],
-    //         item: 'Software',
-    //         id: [1, 0, 8]
-    //       }
-    //     ],
-    //     item: '3D Printing',
-    //     id: [1]
-    //   },
-    //   {
-    //     children: [
-    //       {
-    //         children: [
-    //           {
-    //             children: [],
-    //             item: 'Image Recognition',
-    //             id: [2, 0, 43, 49]
-    //           }
-    //         ],
-    //         item: 'Computer Vision',
-    //         id: [2, 0, 43]
-    //       },
-    //       {
-    //         children: [
-    //           {
-    //             children: [],
-    //             item: 'Speech Recognition',
-    //             id: [2, 0, 54, 60]
-    //           },
-    //           {
-    //             children: [],
-    //             item: 'Text Analysis',
-    //             id: [2, 0, 54, 62]
-    //           }
-    //         ],
-    //         item: 'Natural Language Processing',
-    //         id: [2, 0, 54]
-    //       },
-    //       {
-    //         children: [
-    //           {
-    //             children: [
-    //               {
-    //                 children: [],
-    //                 item: 'Cyber Security',
-    //                 id: [2, 0, 40, 940, 44]
-    //               },
-    //               {
-    //                 children: [],
-    //                 item: 'Marketing',
-    //                 id: [2, 0, 40, 940, 53]
-    //               }
-    //             ],
-    //             item: 'Functional Application',
-    //             id: [2, 0, 40, 940]
-    //           }
-    //         ],
-    //         item: 'Application',
-    //         id: [2, 0, 40]
-    //       }
-    //     ],
-    //     item: 'Artificial Intelligence',
-    //     id: [2]
-    //   },
-    //   {
-    //     children: [],
-    //     item: 'Big Data & Analytics',
-    //     id: [3]
-    //   },
-    //   {
-    //     children: [],
-    //     item: 'Other',
-    //     id: [99]
-    //   }
-    // ];
   }
 
   addTechSubSegment(value) {
@@ -333,14 +101,15 @@ export class SubTechnologiesComponent implements OnInit {
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionNoExistence
         ) {
-          this.businessTractionIndustryDisruption
-            .deleteBusinessTractionAndIndustrySegDisruption(
-              technologyId,
+          this.conditionOneService
+            .checkTechnologySubSegmentExistInConditionOneToFour(
               id,
+              technologyId,
+              3,
               randomValue
             )
             .subscribe((response: Response) => {
-              if (!response['errorMessage']) {
+              if (response['errorMessage'] == ConstantTextService.NoExistence) {
                 this.delete(node);
               } else {
                 let dialogAlert = this.dialog.open(AlertBoxComponent, {
@@ -349,7 +118,7 @@ export class SubTechnologiesComponent implements OnInit {
                   data: response['errorMessage']
                 });
                 dialogAlert.afterClosed().subscribe(result => {
-                  this.getAllTechSubSegment();
+                  window.location.reload();
                 });
               }
             });
@@ -413,7 +182,52 @@ export class SubTechnologiesComponent implements OnInit {
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionNoExistence
         ) {
-          this.update(node);
+          this.conditionOneService
+            .checkTechnologySubSegmentExistInConditionOneToFour(
+              id,
+              horizontalId,
+              2,
+              randomValue
+            )
+            .subscribe((response: Response) => {
+              if (response['errorMessage'] == ConstantTextService.NoExistence) {
+                this.update(node);
+              } else if (
+                response['errorMessage'] ==
+                  ConstantTextService.ConditionOneUpdateStatusWithSubTechnology ||
+                response['errorMessage'] ==
+                  ConstantTextService.ConditionTwoUpdateStatusWithSubTechnology ||
+                response['errorMessage'] ==
+                  ConstantTextService.ConditionThreeUpdateStatusWithSubTechnology ||
+                response['errorMessage'] ==
+                  ConstantTextService.ConditionFourUpdateStatusWithSubTechnology
+              ) {
+                let dialogConfirm = this.dialog.open(
+                  DynamicYesNoPopupComponent,
+                  {
+                    width: '300px',
+                    data: { textValue: response['errorMessage'] }
+                  }
+                );
+                dialogConfirm.afterClosed().subscribe(result => {
+                  console.log(
+                    'The dialog confirm is closed with a action:',
+                    result
+                  );
+                  if (result == 100) {
+                    this.update(node);
+                  }
+                });
+              } else {
+                let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                  width: '300px',
+                  data: response['errorMessage']
+                });
+                dialogAlert.afterClosed().subscribe(result => {
+                  this.getAllTechSubSegment();
+                });
+              }
+            });
         } else if (
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionUpdateStatusWithSubTechnology

@@ -85,12 +85,63 @@ export class HorizontalTechnologyComponent implements OnInit {
       console.log('The value changed in the edit process is ', result);
       if (result != null) {
         this.horizontalTechnologyCoreService
-          .checkTechnologyExistInBusinessSolution(tempRowObject.NAME, 2, randomValue)
+          .checkTechnologyExistInBusinessSolution(
+            tempRowObject.NAME,
+            2,
+            randomValue
+          )
           .subscribe((response: Response) => {
             if (
-              response['errorMessage'] == ConstantTextService.BusinessSolutionNoExistence
+              response['errorMessage'] ==
+              ConstantTextService.BusinessSolutionNoExistence
             ) {
-              this.update(value);
+              this.horizontalTechnologyCoreService
+                .checkTechnologyExistInConditionOneToFour(
+                  tempRowObject.NAME,
+                  2,
+                  randomValue
+                )
+                .subscribe((response: Response) => {
+                  if (
+                    response['errorMessage'] == ConstantTextService.NoExistence
+                  ) {
+                    this.update(value);
+                  } else if (
+                    response['errorMessage'] ==
+                      ConstantTextService.ConditionOneUpdateStatusWithHorizontal ||
+                    response['errorMessage'] ==
+                      ConstantTextService.ConditionTwoUpdateStatusWithHorizontal ||
+                    response['errorMessage'] ==
+                      ConstantTextService.ConditionThreeUpdateStatusWithHorizontal ||
+                    response['errorMessage'] ==
+                      ConstantTextService.ConditionFourUpdateStatusWithHorizontal
+                  ) {
+                    let dialogConfirm = this.dialog.open(
+                      DynamicYesNoPopupComponent,
+                      {
+                        width: '300px',
+                        data: { textValue: response['errorMessage'] }
+                      }
+                    );
+                    dialogConfirm.afterClosed().subscribe(result => {
+                      console.log(
+                        'The dialog confirm is closed with a action:',
+                        result
+                      );
+                      if (result == 100) {
+                        this.update(value);
+                      }
+                    });
+                  } else {
+                    let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                      width: '300px',
+                      data: response['errorMessage']
+                    });
+                    dialogAlert.afterClosed().subscribe(result => {
+                      this.getAllHorizontal();
+                    });
+                  }
+                });
             } else if (
               response['errorMessage'] ==
               ConstantTextService.BusinessSolutionUpdateStatusWithHorizontal
@@ -153,8 +204,30 @@ export class HorizontalTechnologyComponent implements OnInit {
     this.horizontalTechnologyCoreService
       .checkTechnologyExistInBusinessSolution(rowValue.NAME, 3, randomValue)
       .subscribe((response: Response) => {
-        if (response['errorMessage'] == ConstantTextService.BusinessSolutionNoExistence) {
-          this.delete(rowValue.ID);
+        if (
+          response['errorMessage'] ==
+          ConstantTextService.BusinessSolutionNoExistence
+        ) {
+          this.horizontalTechnologyCoreService
+            .checkTechnologyExistInConditionOneToFour(
+              rowValue.NAME,
+              3,
+              rowValue
+            )
+            .subscribe((response: Response) => {
+              if (response['errorMessage'] == ConstantTextService.NoExistence) {
+                this.delete(rowValue.ID);
+              } else {
+                let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                  width: '300px',
+                  height: '400px',
+                  data: response['errorMessage']
+                });
+                dialogAlert.afterClosed().subscribe(result => {
+                  window.location.reload();
+                });
+              }
+            });
         } else if (
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionDeleteStatusWithHorizontal

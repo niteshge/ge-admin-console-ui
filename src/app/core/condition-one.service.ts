@@ -30,5 +30,8 @@ export class ConditionOneService {
   saveConditionOne(conditionOne){
     return this.http.post('http://'+myGlobals.server+':8787/conditiononetofour/savecrunchbasetechnologyroundone',conditionOne);
   }
+  checkTechnologySubSegmentExistInConditionOneToFour(technologyOldSubSegmentId:number,technologyId:number, action:number, randomValue:Number){
+    return this.http.get('http://'+myGlobals.server+':8787/techsubsegment/checktechnologysubsegmentexistenceforconditions?technologyOldSubSegmentId='+technologyOldSubSegmentId+'&technologyId='+technologyId+'&action='+action+'&randomValue='+randomValue);
+  }
 
 }

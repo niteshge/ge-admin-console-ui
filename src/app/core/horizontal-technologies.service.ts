@@ -67,6 +67,20 @@ export class HorizontalTechnologyService {
   getHorizontalNameByHorizontalId(id:number, randomValue:number){
     return this.http.get('http://'+myGlobals.server+':8787/mastertables/gethorizontalbyid?id='+id+'&ver='+randomValue);
   }
-  
-  
+  checkTechnologyExistInConditionOneToFour(
+    technologyName: string,
+    action: number,
+    randomValue: number
+  ) {
+    return this.http.get(
+      'http://' +
+        myGlobals.server +
+        ':8787/mastertables/checktechnologyexistenceinconditions?technologyName=' +
+        technologyName +
+        '&action=' +
+        action +
+        '&randomValue=' +
+        randomValue
+    );
+  }
 }
