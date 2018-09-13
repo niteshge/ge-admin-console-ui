@@ -24,6 +24,10 @@ export class MasterService {
   getAllBusinessSolution(randomValue:Number){
     return this.http.get('http://'+myGlobals.server+':8787/mastertables/getallbusinesssolutionsearchtext?ver='+randomValue);
   }
+
+  getAllBusinessSolutionWithTech(randomValue:Number){
+    return this.http.get('http://'+myGlobals.server+':8787/mastertables/getallbusinesssolutionsearchtextwithtechnology?ver='+randomValue);
+  }
   getAllRevenueModel(randomValue:Number){
     return this.http.get('http://'+myGlobals.server+':8787/mastertables/getrevenuemodel?ver='+randomValue);
   }

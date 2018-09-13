@@ -139,7 +139,7 @@ export class SolutionPriorityAssociationComponent implements OnInit {
     }
 
     this.masterTableService
-      .getAllBusinessSolution(randomValue)
+      .getAllBusinessSolutionWithTech(randomValue)
       .subscribe((response: Response) => {
         rowData['ALL BUSINESS SOLUTION'] = response;
       });
@@ -232,7 +232,7 @@ export class SolutionPriorityAssociationComponent implements OnInit {
         rowDataJson['ALL BUSINESS PRIORITY'] = response;
       });
     this.masterTableService
-      .getAllBusinessSolution(randomValue)
+      .getAllBusinessSolutionWithTech(randomValue)
       .subscribe((response: Response) => {
         rowDataJson['ALL BUSINESS SOLUTION'] = response;
       });

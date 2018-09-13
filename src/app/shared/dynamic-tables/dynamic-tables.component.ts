@@ -79,17 +79,20 @@ export class DynamicTablesComponent
   ngOnChanges(changes: SimpleChanges) {}
 
   applyFilter(filterValue: string) {
-    this.dataSource.filterPredicate = (data, filter) => JSON.stringify(data).includes(filter);
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+    // this.dataSource.filterPredicate = (data, filter) => {
+    //   return JSON.stringify(data).includes(filter);
+    // }
+    // filterValue = filterValue.trim(); // Remove whitespace
+    // filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    // this.dataSource.filter = filterValue;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   applyCustomFilter(filterValue: string) {
     let filterColumn = this.columnFilterName;
     console.log('THE FILTERING COLUMN IS ', filterColumn);
     
     this.dataSource.filterPredicate = (data: Element, filter: string) =>
-    JSON.stringify(data[filterColumn].trim().toLowerCase()).indexOf(filter) != -1;
+    JSON.stringify((data[filterColumn] || '').trim().toLowerCase()).indexOf(filter) != -1;
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;

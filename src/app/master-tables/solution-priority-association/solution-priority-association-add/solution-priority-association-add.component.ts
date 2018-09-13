@@ -143,6 +143,7 @@ export class SolutionPriorityAssociationAddComponent implements OnInit {
         });
     }
   }
+
   onchangeEventRowData(key, value) {
     value = value.trim();
     console.log('The onchange value is ', value);

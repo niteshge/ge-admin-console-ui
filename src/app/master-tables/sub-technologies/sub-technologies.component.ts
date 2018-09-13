@@ -110,7 +110,27 @@ export class SubTechnologiesComponent implements OnInit {
             )
             .subscribe((response: Response) => {
               if (response['errorMessage'] == ConstantTextService.NoExistence) {
-                this.delete(node);
+                //this.delete(node);
+                this.businessTractionIndustryDisruption
+                  .deleteBusinessTractionAndIndustrySegDisruption(
+                    technologyId,
+                    id,
+                    randomValue
+                  )
+                  .subscribe((response: Response) => {
+                    if (!response['errorMessage']) {
+                      this.delete(node);
+                    } else {
+                      let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                        width: '300px',
+                        height: '400px',
+                        data: response['errorMessage']
+                      });
+                      dialogAlert.afterClosed().subscribe(result => {
+                        window.location.reload();
+                      });
+                    }
+                  });
               } else {
                 let dialogAlert = this.dialog.open(AlertBoxComponent, {
                   width: '300px',
