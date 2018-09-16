@@ -4,6 +4,9 @@
       <input type="text" matInput [placeholder]="placeholder" formControlName="value" required [matAutocomplete]="autoGroup" [disabled]="disabledParam"
       />
       <mat-autocomplete #autoGroup="matAutocomplete" (optionSelected)="onOptionSelected($event)" (optionSelected)="onObjectSelected(anyObject,placeholder)" >
+          <mat-option [value]="''" [disabled]="disabledParam">
+              None
+            </mat-option>
         <mat-option *ngFor="let option of displayedOptions" [value]="option" [disabled]="disabledParam">
           {{ option }}
         </mat-option>

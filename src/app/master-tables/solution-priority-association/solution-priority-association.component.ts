@@ -8,6 +8,7 @@ import { MasterService } from '../../core/master.service';
 import { BusinessPriorityService } from '../../core/business-priority.service';
 import { SolutionPriorityAssociationAddComponent } from './solution-priority-association-add/solution-priority-association-add.component';
 import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
+import { HorizontalTechnologyService } from '../../core/horizontal-technologies.service';
 
 @Component({
   selector: 'app-solution-priority-association',
@@ -20,6 +21,7 @@ export class SolutionPriorityAssociationComponent implements OnInit {
   action;
   constructor(
     private solutionPriorityAssociationService: SolutionPriorityAssociationService,
+    private horizontalService: HorizontalTechnologyService,
     private masterTableService: MasterService,
     private changeDetectorRefs: ChangeDetectorRef,
     public dialog: MatDialog
@@ -137,12 +139,16 @@ export class SolutionPriorityAssociationComponent implements OnInit {
           rowData['ALL SUB BUSINESS PRIORITIES 3'] = response;
         });
     }
-
-    this.masterTableService
-      .getAllBusinessSolutionWithTech(randomValue)
-      .subscribe((response: Response) => {
-        rowData['ALL BUSINESS SOLUTION'] = response;
-      });
+    this.horizontalService
+    .getTechnologiesNames(randomValue)
+    .subscribe((response:Response) => {
+      rowData['ALL TECHNOLOGIES'] = response;
+    });
+    // this.masterTableService
+    //   .getAllBusinessSolutionWithTech(randomValue)
+    //   .subscribe((response: Response) => {
+    //     rowData['ALL BUSINESS SOLUTION'] = response;
+    //   });
     console.log('The json going to the edit popup is ', rowData);
     let dialogEdit = this.dialog.open(
       SolutionPriorityAssociationEditComponent,
@@ -231,11 +237,16 @@ export class SolutionPriorityAssociationComponent implements OnInit {
       .subscribe((response: Response) => {
         rowDataJson['ALL BUSINESS PRIORITY'] = response;
       });
-    this.masterTableService
-      .getAllBusinessSolutionWithTech(randomValue)
-      .subscribe((response: Response) => {
-        rowDataJson['ALL BUSINESS SOLUTION'] = response;
-      });
+    this.horizontalService
+    .getTechnologiesNames(randomValue)
+    .subscribe((response:Response) => {
+      rowDataJson['ALL TECHNOLOGIES'] = response;
+    });
+    // this.masterTableService
+    //   .getAllBusinessSolutionWithTech(randomValue)
+    //   .subscribe((response: Response) => {
+    //     rowDataJson['ALL BUSINESS SOLUTION'] = response;
+    //   });
     console.log('The json going to the add popup is ', rowDataJson);
     let dialogAdd = this.dialog.open(SolutionPriorityAssociationAddComponent, {
       width: '1200px',

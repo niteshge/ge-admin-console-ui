@@ -85,23 +85,44 @@
         <input matInput type=number min=0 [placeholder]="'ORDER OF SOLUTION'" [value]="rowData['ORDER OF SOLUTION']" (change)="onchangeEventRowData('ORDER OF SOLUTION',$event.target.value)">
       </mat-form-field>
     </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+            <app-dynamic-select [style.margin-right]="'32px'" [style.margin-left]="'32px'" [placeholder]="'TECHNOLOGY FOR SOLUTION 1'" [options]="rowData['ALL TECHNOLOGIES']"
+               (optionSelected)="onChangeOfTechnology('TECHNOLOGY 1',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+        <app-dynamic-select [style.margin-right]="'32px'" [style.margin-left]="'32px'" [placeholder]="'TECHNOLOGY FOR SOLUTION 2'" [options]="rowData['ALL TECHNOLOGIES']"
+        (optionSelected)="onChangeOfTechnology('TECHNOLOGY 2',$event)"></app-dynamic-select>
+      <!-- <mat-form-field [style.margin-right]="'32px'" [style.margin-left]="'32px'" class="example-full-width">
+        <input matInput type=number min=0 [placeholder]="'TECHNOLOGY FOR SOLUTION 2'" [value]="rowData['ALL TECHNOLOGIES']" (change)="onChangeOfTechnology('TECHNOLOGY 2',$event.target.value)">
+      </mat-form-field> -->
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+      <mat-grid-tile [colspan]=1 [rowspan]=1>
+          <app-dynamic-select [style.margin-right]="'32px'" [style.margin-left]="'32px'" [placeholder]="'TECHNOLOGY FOR SOLUTION 3'" [options]="rowData['ALL TECHNOLOGIES']"
+          (optionSelected)="onChangeOfTechnology('TECHNOLOGY 3',$event)"></app-dynamic-select>
+      </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+        <app-dynamic-select [style.margin-right]="'32px'" [style.margin-left]="'32px'" [placeholder]="'TECHNOLOGY FOR SOLUTION 4'" [options]="rowData['ALL TECHNOLOGIES']"
+        (optionSelected)="onChangeOfTechnology('TECHNOLOGY 4',$event)"></app-dynamic-select>
+    </mat-grid-tile>
   </mat-grid-list>
   <mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile [colspan]=4 [rowspan]=1>
       <app-dynamic-select [widthStyle]="'900px'" [style.margin-right]="'32px'" [style.margin-left]="'32px'" [placeholder]="'SOLUTION 1'"
-        [options]="rowData['ALL BUSINESS SOLUTION']" [defaultValue]="rowData['SOLUTION 1']" (optionSelected)="onchangeEventRowData('SOLUTION 1',$event)"></app-dynamic-select>
+        [options]="rowData['ALL BUSINESS SOLUTION 1']" [defaultValue]="rowData['SOLUTION 1']" (optionSelected)="onChangeOfSolutions('SOLUTION 1',$event)"></app-dynamic-select>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=4 [rowspan]=1>
       <app-dynamic-select [widthStyle]="'900px'" [style.margin-right]="'32px'" [style.margin-left]="'32px'" [placeholder]="'SOLUTION 2'"
-        [options]="rowData['ALL BUSINESS SOLUTION']" [defaultValue]="rowData['SOLUTION 2']" (optionSelected)="onchangeEventRowData('SOLUTION 2',$event)"></app-dynamic-select>
+        [options]="rowData['ALL BUSINESS SOLUTION 2']" [defaultValue]="rowData['SOLUTION 2']" (optionSelected)="onChangeOfSolutions('SOLUTION 2',$event)"></app-dynamic-select>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=4 [rowspan]=1>
       <app-dynamic-select [widthStyle]="'900px'" [style.margin-right]="'32px'" [style.margin-left]="'32px'" [placeholder]="'SOLUTION 3'"
-        [options]="rowData['ALL BUSINESS SOLUTION']" [defaultValue]="rowData['SOLUTION 3']" (optionSelected)="onchangeEventRowData('SOLUTION 3',$event)"></app-dynamic-select>
+        [options]="rowData['ALL BUSINESS SOLUTION 3']" [defaultValue]="rowData['SOLUTION 3']" (optionSelected)="onChangeOfSolutions('SOLUTION 3',$event)"></app-dynamic-select>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=4 [rowspan]=1>
       <app-dynamic-select [widthStyle]="'900px'" [style.margin-right]="'32px'" [style.margin-left]="'32px'" [placeholder]="'SOLUTION 4'"
-        [options]="rowData['ALL BUSINESS SOLUTION']" [defaultValue]="rowData['SOLUTION 4']" (optionSelected)="onchangeEventRowData('SOLUTION 4',$event)"></app-dynamic-select>
+        [options]="rowData['ALL BUSINESS SOLUTION 4']" [defaultValue]="rowData['SOLUTION 4']" (optionSelected)="onChangeOfSolutions('SOLUTION 4',$event)"></app-dynamic-select>
     </mat-grid-tile>
   </mat-grid-list>
   <mat-grid-list cols="3" rowHeight="100px">

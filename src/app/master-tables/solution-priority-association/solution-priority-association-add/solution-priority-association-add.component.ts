@@ -10,6 +10,10 @@ import { SolutionPriorityAssociationService } from '../../../core/solution-prior
 })
 export class SolutionPriorityAssociationAddComponent implements OnInit {
   rowData;
+  technology1 = null;
+  technology2 = null;
+  technology3 = null;
+  technology4 = null;
   industrySubSegment1DisableParam = false;
   industrySubSegment2DisableParam = false;
   industrySubSegment3DisableParam = false;
@@ -25,6 +29,10 @@ export class SolutionPriorityAssociationAddComponent implements OnInit {
   ngOnInit() {
     console.log('The data in the edit popup is : ', this.data);
     this.rowData = this.data;
+    this.rowData['ALL BUSINESS SOLUTION 1'] = '';
+    this.rowData['ALL BUSINESS SOLUTION 2'] = '';
+    this.rowData['ALL BUSINESS SOLUTION 3'] = '';
+    this.rowData['ALL BUSINESS SOLUTION 4'] = '';
   }
   changeIndustries(key, value) {
     if (this.rowData[key] !== value) {
@@ -143,6 +151,73 @@ export class SolutionPriorityAssociationAddComponent implements OnInit {
         });
     }
   }
+
+  onChangeOfTechnology(key, value) {
+    let randomValue = Math.random();
+    if (key === 'TECHNOLOGY 1') {
+      this.technology1 = value;
+      this.masterTableService
+        .getAllBusinessSolutionByTech(randomValue, value)
+        .subscribe((response: Response) => {
+          this.rowData['ALL BUSINESS SOLUTION 1'] = response;
+        });
+    } else if (key === 'TECHNOLOGY 2') {
+      this.technology2 = value;
+      this.masterTableService
+        .getAllBusinessSolutionByTech(randomValue, value)
+        .subscribe((response: Response) => {
+          this.rowData['ALL BUSINESS SOLUTION 2'] = response;
+        });
+    } else if (key === 'TECHNOLOGY 3') {
+      this.technology3 = value;
+      this.masterTableService
+        .getAllBusinessSolutionByTech(randomValue, value)
+        .subscribe((response: Response) => {
+          this.rowData['ALL BUSINESS SOLUTION 3'] = response;
+        });
+    } else if (key === 'TECHNOLOGY 4') {
+      this.technology4 = value;
+      this.masterTableService
+        .getAllBusinessSolutionByTech(randomValue, value)
+        .subscribe((response: Response) => {
+          this.rowData['ALL BUSINESS SOLUTION 4'] = response;
+        });
+    }
+  }
+
+  onChangeOfSolutions(key,value){
+    if(key==='SOLUTION 1'){
+      if(value!==null && value!==''){
+        let solution1WithTech = value.trim()+'^'+this.technology1;
+        this.rowData[key] = solution1WithTech;
+      }else{
+        this.rowData[key] = null;
+      }
+     
+    }else if(key==='SOLUTION 2'){
+      if(value!==null && value!==''){
+      let solution2WithTech = value.trim()+'^'+this.technology2;
+      this.rowData[key] = solution2WithTech;
+      }else{
+        this.rowData[key] = null;
+      }
+    } else if(key==='SOLUTION 3'){
+      if(value!==null && value!==''){
+      let solution3WithTech = value.trim()+'^'+this.technology3;
+      this.rowData[key] = solution3WithTech;
+      }else{
+        this.rowData[key] = null;
+      }
+    }else if(key==='SOLUTION 4'){
+      if(value!==null && value!==''){
+      let solution4WithTech = value.trim()+'^'+this.technology4;
+      this.rowData[key] = solution4WithTech;
+      }else{
+        this.rowData[key] = null;
+      }
+    }
+  }
+
 
   onchangeEventRowData(key, value) {
     value = value.trim();
