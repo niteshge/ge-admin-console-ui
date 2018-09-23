@@ -34,10 +34,21 @@ export class SubIndustryComponent implements OnInit {
     if (value.action === 1) {
       this.addIndustrySubSegment(value.nodeData);
     } else if (value.action === 2) {
-      this.updateIndustrySubSegment(value.nodeData);
+      this.furtureAlert();
+      // this.updateIndustrySubSegment(value.nodeData);
     } else if (value.action === 3) {
-      this.deleteTechSubSegment(value.nodeData);
+      this.furtureAlert();
+      // this.deleteTechSubSegment(value.nodeData);
     }
+  }
+  furtureAlert(){
+    let dialogAlert = this.dialog.open(AlertBoxComponent, {
+      width: '300px',
+      data: 'This feature is under testing and will be coming soon on the next patch release'
+    });
+    dialogAlert.afterClosed().subscribe(result => {
+      window.location.reload();
+    });
   }
 
   addIndustrySubSegment(value) {

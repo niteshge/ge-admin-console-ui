@@ -40,9 +40,21 @@ export class SubTechnologiesComponent implements OnInit {
     } else if (value.action === 2) {
       this.updateTechSubSegment(value.nodeData);
     } else if (value.action === 3) {
-      this.deleteTechSubSegment(value.nodeData);
+      // this.deleteTechSubSegment(value.nodeData);
+      this.furtureAlert();
     }
   }
+
+  furtureAlert(){
+    let dialogAlert = this.dialog.open(AlertBoxComponent, {
+      width: '300px',
+      data: 'This feature is under testing and will be coming soon on the next patch release'
+    });
+    dialogAlert.afterClosed().subscribe(result => {
+      window.location.reload();
+    });
+  }
+
 
   addTechSubSegment(value) {
     console.log('The adding tech sub seg is', value);
