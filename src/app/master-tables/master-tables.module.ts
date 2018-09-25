@@ -39,6 +39,10 @@ import { ConditionThreeAddComponent } from './condition-three/condition-three-ad
 import { ConditionThreeEditComponent } from './condition-three/condition-three-edit/condition-three-edit.component';
 import { ConditionFourEditComponent } from './condition-four/condition-four-edit/condition-four-edit.component';
 import { ConditionFourAddComponent } from './condition-four/condition-four-add/condition-four-add.component';
+import { SubIndustryTableAddComponent } from './sub-industry/sub-industry-table-add/sub-industry-table-add.component';
+import { SubIndustryTableEditComponent } from './sub-industry/sub-industry-table-edit/sub-industry-table-edit.component';
+import { BusinessTractionComponent } from './business-traction/business-traction.component';
+import { IndustryServingDisruptionComponent } from './industry-serving-disruption/industry-serving-disruption.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MasterTablesRoutingModule],
@@ -78,6 +82,10 @@ import { ConditionFourAddComponent } from './condition-four/condition-four-add/c
     ConditionThreeEditComponent,
     ConditionFourEditComponent,
     ConditionFourAddComponent,
+    SubIndustryTableAddComponent,
+    SubIndustryTableEditComponent,
+    BusinessTractionComponent,
+    IndustryServingDisruptionComponent,
   ],
   entryComponents: [
     BusinessSolutionEditComponent,

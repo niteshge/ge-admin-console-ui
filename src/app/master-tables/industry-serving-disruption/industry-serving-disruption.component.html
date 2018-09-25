@@ -1,0 +1,6 @@
+<div class=customtable>
+  <h6 class="subheading">
+    <u>Industry Serving - Disruption : </u>
+  </h6>
+  <app-dynamic-tables *ngIf="industryServingDisruption" [jsonData]="industryServingDisruption" (rowSelected)="openDialog($event)"></app-dynamic-tables>
+</div>

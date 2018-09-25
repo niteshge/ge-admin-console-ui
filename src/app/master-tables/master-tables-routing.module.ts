@@ -14,6 +14,8 @@ import { ConditionTwoComponent } from './condition-two/condition-two.component';
 import { ConditionThreeComponent } from './condition-three/condition-three.component';
 import { ConditionFourComponent } from './condition-four/condition-four.component';
 import { ConditionKeywordsComponent } from './condition-keywords/condition-keywords.component';
+import { BusinessTractionComponent } from './business-traction/business-traction.component';
+import { IndustryServingDisruptionComponent } from './industry-serving-disruption/industry-serving-disruption.component';
 
 const routes: Routes = [
   {
@@ -71,6 +73,14 @@ const routes: Routes = [
       {
         path: 'condition-keywords',
         component: ConditionKeywordsComponent
+      },
+      {
+        path:'business-traction',
+        component: BusinessTractionComponent
+      },
+      {
+        path:'industry-serving-disruption',
+        component: IndustryServingDisruptionComponent
       }
     ]
   }

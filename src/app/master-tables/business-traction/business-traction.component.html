@@ -1,0 +1,6 @@
+<div class=customtable>
+  <h6 class="subheading">
+    <u>Business Traction : </u>
+  </h6>
+  <app-dynamic-tables *ngIf="businessTraction" [jsonData]="businessTraction" (rowSelected)="openDialog($event)"></app-dynamic-tables>
+</div>
