@@ -6,6 +6,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA
 } from '../../../../../node_modules/@angular/material';
+import { HorizontalTechnologyService } from '../../../core/horizontal-technologies.service';
 
 @Component({
   selector: 'app-sub-technology-table-add',
@@ -18,6 +19,7 @@ export class SubTechnologyTableAddComponent implements OnInit {
     private masterTableService: MasterService,
     private businessTractionAndIndustryDisruption: BusinessTractionAndIndustryDisruptionService,
     private industryService: IndustryService,
+    private horizontalService:HorizontalTechnologyService,
     public dialogRef: MatDialogRef<SubTechnologyTableAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
@@ -44,12 +46,26 @@ export class SubTechnologyTableAddComponent implements OnInit {
     this.rowData['TECHNOLOGY SEGMENT'] = null;
     this.rowData['START UP TYPE'] = null;
     this.rowData['PRODUCT TYPE'] = null;
-    this.rowData['COMPANY REVENUE MODEL MAPPING'] = [];
+    this.rowData['COMPANY REVENUE MODEL MAPPING'] = null;
     this.rowData['INDUSTRY BEING DISRUPTION'] = [];
     this.rowData['INDUSTRY SEGMENT BEING DISRUPTION'] = [];
-
+    this.rowData['INCLUDE KEYWORD FOR ABOUT US SEG 1'] = null;
+    this.rowData['INCLUDE KEYWORD FOR ABOUT US SEG 2'] = null;
+    this.rowData['INCLUDE KEYWORD FOR ABOUT US SEG 3'] = null;
+    this.rowData['INCLUDE KEYWORD FOR ABOUT US SEG 4'] = null;
+    this.rowData['FOUNDER YEAR FILTER'] = 0;
+    this.rowData['EXCLUSION TECHNOLOGY'] = null;
     this.rowData['INNOVATION'] = null;
     this.rowData['DISRUPTION'] = null;
+
+    this.horizontalService
+    .getTechnologiesNames(randomValue)
+    .subscribe((response:Response) => {
+      if(!response['errorMessage']){
+        this.rowData['ALL TECHNOLOGIES'] = response;
+        console.log('ALL THE TECHNOLOGIES ',this.rowData['ALL TECHNOLOGIES']);
+      }
+    });
 
     this.industryService
       .getIndustriesNames(randomValue)

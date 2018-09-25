@@ -58,13 +58,32 @@ export class SubTechnologyTableEditComponent implements OnInit {
             'the business traction and industry disruption model is ',
             businessTractionIndustryDisruptionModel
           );
-
+          this.horizontalTechnologyService
+          .getTechnologiesNames(randomValue)
+          .subscribe((response:Response) => {
+            if(!response['errorMessage']){
+              this.rowData['ALL TECHNOLOGIES'] = response;
+              console.log('ALL THE TECHNOLOGIES ',this.rowData['ALL TECHNOLOGIES']);
+            }
+          });
           this.rowData['TYPE'] =
             businessTractionIndustryDisruptionModel['TYPE'];
           this.rowData['TECHNOLOGY'] =
             businessTractionIndustryDisruptionModel['TECHNOLOGY'];
           this.rowData['TECHNOLOGY SEGMENT'] =
             businessTractionIndustryDisruptionModel['TECHNOLOGY SEGMENT'];
+          this.rowData['INCLUDE KEYWORD FOR ABOUT US SEG 1'] = 
+            businessTractionIndustryDisruptionModel['INCLUDE KEYWORD FOR ABOUT US SEG 1'];
+            this.rowData['INCLUDE KEYWORD FOR ABOUT US SEG 2'] = 
+            businessTractionIndustryDisruptionModel['INCLUDE KEYWORD FOR ABOUT US SEG 2'];
+            this.rowData['INCLUDE KEYWORD FOR ABOUT US SEG 3'] = 
+            businessTractionIndustryDisruptionModel['INCLUDE KEYWORD FOR ABOUT US SEG 3'];
+            this.rowData['INCLUDE KEYWORD FOR ABOUT US SEG 4'] = 
+            businessTractionIndustryDisruptionModel['INCLUDE KEYWORD FOR ABOUT US SEG 4'];
+            this.rowData['FOUNDER YEAR FILTER'] = 
+            businessTractionIndustryDisruptionModel['FOUNDER YEAR FILTER'];
+            this.rowData['EXCLUSION TECHNOLOGY'] = 
+            businessTractionIndustryDisruptionModel['EXCLUSION TECHNOLOGY'];
           if (businessTractionIndustryDisruptionModel['TECHNOLOGY'] === null) {
             this.horizontalTechnologyService
               .getHorizontalNameByHorizontalId(horizontalId, randomValue)
