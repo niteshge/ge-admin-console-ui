@@ -19,6 +19,10 @@ export class IndustrySubSegmentService {
     return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/getindustrysubsegmentchildbyindustrysubsegmentparentandindustry?industry='+encodeURIComponent(industryName)+'&industrySubSegment='+encodeURIComponent(industrySubSegment)+'&ver='+randomValue);
   }
 
+  // getIndustrySubSegmentById(id:Number, randomValue:Number){
+  //   return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/getsubtechnologynamebyid?id='+id+'&ver='+randomValue);
+  // }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

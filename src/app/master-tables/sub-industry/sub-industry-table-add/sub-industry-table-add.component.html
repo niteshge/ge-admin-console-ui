@@ -1,3 +1,57 @@
-<p>
-  sub-industry-table-add works!
-</p>
+<form class="example-full-width" [style.overflow-y]="'scroll'" [style.overflow-x]="'scroll'" *ngIf=rowData>
+  <mat-grid-list cols="6" rowHeight="100px">
+    <mat-grid-tile [colspan]=3 [rowspan]=1>
+      <mat-form-field class="example-full-width custom-input-fields">
+        <input matInput disabled=true [placeholder]="'INDUSTRY'" [value]="rowData['INDUSTRY']" (change)="onchangeEventRowData('TECHNOLOGY',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=1>
+      <mat-form-field class="example-full-width custom-input-fields">
+        <input matInput  [disabled]="rowData['INDUSTRY SUB SEGMENT']!=='' ? true : null" [placeholder]="'INDUSTRY SUB SEGMENT'" [value]="rowData['INDUSTRY SUB SEGMENT']" (change)="onchangeEventRowData('INDUSTRY SUB SEGMENT',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    </mat-grid-list>
+
+  <mat-grid-list cols="6" rowHeight="100px">
+    <mat-grid-tile [colspan]=3 [rowspan]=1>
+        <mat-form-field class="example-full-width" [style.width]="'470px'">
+          <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 1'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG1']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG1',$event.target.value)">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]=3 [rowspan]=1>
+          <mat-form-field class="example-full-width" [style.width]="'470px'">
+            <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 2'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG2']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG2',$event.target.value)">
+          </mat-form-field>
+        </mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list cols="6" rowHeight="100px">
+    <mat-grid-tile [colspan]=3 [rowspan]=1>
+        <mat-form-field class="example-full-width" [style.width]="'470px'">
+          <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 3'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG3']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG3',$event.target.value)">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]=3 [rowspan]=1>
+          <mat-form-field class="example-full-width" [style.width]="'470px'">
+            <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 4'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG4']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG4',$event.target.value)">
+          </mat-form-field>
+        </mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list cols="6" rowHeight="100px">
+    <mat-grid-tile [colspan]=3 [rowspan]=1>
+      <mat-form-field class="example-full-width custom-input-fields" [style.width]="'470px'">
+        <input matInput type=number  min=0 [placeholder]="'FOUNDED YEAR FILTER'" [value]="rowData['FOUNDED YEAR FILTER']" (change)="onchangeEventRowData('FOUNDED YEAR FILTER',$event.target.value)">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=1>
+        <app-dynamic-select [style.width]="'500px'" [placeholder]="'EXCLUSION INDUSTRY'" [options]="rowData['ALL INDUSTRIES']"
+          [defaultValue]="rowData['EXCLUSION TECHNOLOGY']" (optionSelected)="onchangeEventRowData('EXCLUSION TECHNOLOGY',$event)"></app-dynamic-select>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <button mat-raised-button color=geprimary [style.margin-right]="'24px'" [style.margin-left]="'24px'" [mat-dialog-close]="rowData"
+        cdkFocusInitial>Done</button>
+      <button mat-raised-button color=gewarn [style.margin-right]="'24px'" [style.margin-left]="'24px'" (click)="onNoClick()">Cancel</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

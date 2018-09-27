@@ -19,9 +19,15 @@ export class IndustryService {
     return this.http.get('http://'+myGlobals.server+':8787/industry/getindustrynames?ver='+randomValue);
   }
 
+  getIndustryById(id:Number, randomValue:Number){
+    return this.http.get('http://'+myGlobals.server+':8787/industry/getindustrybyid?id='+id+'&ver='+randomValue);
+  }
+
   getIndustriesSubNamesByListOfIndutriesNames(industryNames:string[], randomValue:Number){
     return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/getlistofindustrysubbylistofindustrynames?industryNames='+industryNames+'&ver='+randomValue);
   }
+
+
   updateIndustry(industry:any){
     return this.http.post('http://'+myGlobals.server+':8787/industry/updateindustry',industry)
     .pipe(

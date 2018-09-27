@@ -45,25 +45,25 @@ export class ConditionFourComponent implements OnInit {
       });
   }
 
-  openDialog(value): void {
-    console.log(value);
-    this.rowValue = value;
-    console.log('this is the row value ', this.rowValue);
-    let dialogRef = this.dialog.open(DynamicTablePopupComponent, {
-      width: '500px',
-      data: {
-        clonePopup: false,
-        textData: value.ID
-      }
-    });
+  // openDialog(value): void {
+  //   console.log(value);
+  //   this.rowValue = value;
+  //   console.log('this is the row value ', this.rowValue);
+  //   let dialogRef = this.dialog.open(DynamicTablePopupComponent, {
+  //     width: '500px',
+  //     data: {
+  //       clonePopup: false,
+  //       textData: value.ID
+  //     }
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.action = result;
-      console.log('The action to take is ', this.action);
-      this.takeAction(this.action);
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //     this.action = result;
+  //     console.log('The action to take is ', this.action);
+  //     this.takeAction(this.action);
+  //   });
+  // }
 
   takeAction(value) {
     if (value === '1') {
@@ -81,6 +81,14 @@ export class ConditionFourComponent implements OnInit {
         }
       });
     }
+  }
+
+  openDialog(value) {
+    console.log(value);
+    let dialogAlert = this.dialog.open(AlertBoxComponent, {
+      width: '300px',
+      data: 'Add/Edit/Delete Operation Are Taken Up Only In Technology Sub-Segment and Industry Sub-Segment. Please Try There.....'
+    });
   }
 
   editRow(rowData) {

@@ -15,8 +15,17 @@ export class ConditionFourService {
     return this.http.get('http://'+myGlobals.server+':8787/conditiononetofour/getallcrunchbasetechnologyroundfour?ver='+randomValue);
   }
 
-  updateConditionFour(conditionThree:any){
-    return this.http.post('http://'+myGlobals.server+':8787/conditiononetofour/updatecrunchbasetechnologyroundfour',conditionThree);
+  updateConditionFour(conditionFour:any){
+    return this.http.post('http://'+myGlobals.server+':8787/conditiononetofour/updatecrunchbasetechnologyroundfour',conditionFour);
+  }
+
+  updateConditionFourForIndustryType(conditionFour:any){
+    return this.http.post('http://'+myGlobals.server+':8787/conditiononetofour/updatecrunchbasetechnologyroundfourforindustrytype',conditionFour);
+  }
+
+
+  saveConditionFourForIndustryType(conditionFour:any){
+    return this.http.post('http://'+myGlobals.server+':8787/conditiononetofour/addcrunchbasetechnologyroundfourforindustrytype',conditionFour);
   }
 
   deleteConditionFour(id:Number){
@@ -25,5 +34,9 @@ export class ConditionFourService {
 
   saveConditionFour(conditionThree){
     return this.http.post('http://'+myGlobals.server+':8787/conditiononetofour/savecrunchbasetechnologyroundfour',conditionThree);
+  }
+
+  getConditionFourForIndustryType(marketMap:any, randomValue:Number){
+    return this.http.post('http://'+myGlobals.server+':8787/conditiononetofour/getCondition4ForIndustryType',marketMap);
   }
 }
