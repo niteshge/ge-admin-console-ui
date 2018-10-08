@@ -128,7 +128,6 @@ import { DynamicChipComponent } from './dynamic-chip/dynamic-chip.component';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     DynamicSelectComponent,

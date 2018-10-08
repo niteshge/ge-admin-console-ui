@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import * as myGlobals from '../app-globals';
+import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HorizontalTechnologyService {
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient, private auth: AuthService) {}
+  httpParams = new HttpParams().set('authorization_token', `Token ${this.auth.getToken()}`);
   getAllHorizontalTechnology(randomValue: number) {
     return this.http.get(
       'http://' +
         myGlobals.server +
-        ':8787/mastertables/getallhorizontaltechnologies?ver=' +
-        randomValue
+        ':8787/api/mastertables/getallhorizontaltechnologies?ver=' +
+        randomValue,{'params':this.httpParams}
     );
   }
 
@@ -21,8 +22,8 @@ export class HorizontalTechnologyService {
     return this.http.post(
       'http://' +
         myGlobals.server +
-        ':8787/mastertables/updatehorizontaltechnology',
-      horizontalTechnology
+        ':8787/api/mastertables/updatehorizontaltechnology',
+      horizontalTechnology,{'params':this.httpParams}
     );
   }
 
@@ -30,8 +31,8 @@ export class HorizontalTechnologyService {
     return this.http.delete(
       'http://' +
         myGlobals.server +
-        ':8787/mastertables/deletehorizontaltechnology/' +
-        id
+        ':8787/api/mastertables/deletehorizontaltechnology/' +
+        id,{'params':this.httpParams}
     );
   }
 
@@ -39,8 +40,8 @@ export class HorizontalTechnologyService {
     return this.http.post(
       'http://' +
         myGlobals.server +
-        ':8787/mastertables/savehorizontaltechnology',
-      horizontalTechnology
+        ':8787/api/mastertables/savehorizontaltechnology',
+      horizontalTechnology,{'params':this.httpParams}
     );
   }
 
@@ -52,20 +53,20 @@ export class HorizontalTechnologyService {
     return this.http.get(
       'http://' +
         myGlobals.server +
-        ':8787/mastertables/checktechnologyexistence?technologyName=' +
+        ':8787/mastertables/api/checktechnologyexistence?technologyName=' +
         technologyName +
         '&action=' +
         action +
         '&randomValue=' +
-        randomValue
+        randomValue,{'params':this.httpParams}
     );
   }
   getTechnologiesNames(randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/mastertables/gettechnologies?ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/mastertables/gettechnologies?ver='+randomValue,{'params':this.httpParams});
   }
 
   getHorizontalNameByHorizontalId(id:number, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/mastertables/gethorizontalbyid?id='+id+'&ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/mastertables/gethorizontalbyid?id='+id+'&ver='+randomValue,{'params':this.httpParams});
   }
   checkTechnologyExistInConditionOneToFour(
     technologyName: string,
@@ -75,12 +76,12 @@ export class HorizontalTechnologyService {
     return this.http.get(
       'http://' +
         myGlobals.server +
-        ':8787/mastertables/checktechnologyexistenceinconditions?technologyName=' +
+        ':8787/api/mastertables/checktechnologyexistenceinconditions?technologyName=' +
         technologyName +
         '&action=' +
         action +
         '&randomValue=' +
-        randomValue
+        randomValue,{'params':this.httpParams}
     );
   }
 }

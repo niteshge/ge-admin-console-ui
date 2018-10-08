@@ -27,7 +27,6 @@ export class IndustriesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getAllUsernames();
     this.getAllIndustries();
   }
   getAllIndustries() {
@@ -58,19 +57,6 @@ export class IndustriesComponent implements OnInit {
           // window.location.reload();
         }
       });
-  }
-  getAllUsernames(){
-    let randomValue = Math.random();
-    this.masterService
-    .getAllUsernames(randomValue)
-    .subscribe((response:Response)=>{
-      this.allUsernames = response;
-    }
-  )
-  }
-  usernameEntry(value){
-    console.log("The username is :",value);
-    this.selectedUser = value;
   }
 
   openDialog(value) {

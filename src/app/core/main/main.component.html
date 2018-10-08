@@ -16,8 +16,12 @@
     <span>
       <button [matMenuTriggerFor]="appMenu" mat-button>Report</button>
     </span>
+   
     <span>
       <button [matMenuTriggerFor]="masterTables" mat-button>Master Tables</button>
+    </span>
+    <span>
+      <button class="topnav-right" routerLink="/login" mat-button>Logout</button>
     </span>
     <mat-menu #appMenu="matMenu">
       <ng-template matMenuContent>

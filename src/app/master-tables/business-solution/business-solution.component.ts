@@ -11,6 +11,7 @@ import { BusinessSolutionEditComponent } from './business-solution-edit/business
 import { BusinessSolutionAddComponent } from './business-solution-add/business-solution-add.component';
 import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
 import { ConstantTextService } from '../constant-text.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-business-solution',
@@ -31,14 +32,23 @@ export class BusinessSolutionComponent implements OnInit {
     this.getAllBusinessSolutions();
   }
 
+  // getAllBusinessSolutions() {
+  //   let randomValue = Math.random();
+  //   this.businessSolutionCoreService
+  //     .getAllBusinessSolutons(randomValue)
+  //     .pipe(tap(response => {
+  //       console.log(response);
+  //       this.businessSolutions = response;
+  //     })
+  //     );
+  // }
   getAllBusinessSolutions() {
     let randomValue = Math.random();
     this.businessSolutionCoreService
       .getAllBusinessSolutons(randomValue)
-      .subscribe((response: Response) => {
-        console.log(response);
-        this.businessSolutions = response;
-      });
+      .subscribe((response:Response)=>{
+              this.businessSolutions = response;
+      })
   }
 
   openDialog(value): void {

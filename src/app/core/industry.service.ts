@@ -1,35 +1,36 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import * as myGlobals from '../app-globals';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IndustryService {
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient, private auth: AuthService) { }
+  httpParams = new HttpParams().set('authorization_token', `Token ${this.auth.getToken()}`);
   getIndustries(randomValue:Number){
-    return this.http.get('http://'+myGlobals.server+':8787/industry/getallindustries?ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/industry/getallindustries?ver='+randomValue,{'params':this.httpParams});
   }
 
   getIndustriesNames(randomValue:Number){
-    return this.http.get('http://'+myGlobals.server+':8787/industry/getindustrynames?ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/industry/getindustrynames?ver='+randomValue,{'params':this.httpParams});
   }
 
   getIndustryById(id:Number, randomValue:Number){
-    return this.http.get('http://'+myGlobals.server+':8787/industry/getindustrybyid?id='+id+'&ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/industry/getindustrybyid?id='+id+'&ver='+randomValue,{'params':this.httpParams});
   }
 
   getIndustriesSubNamesByListOfIndutriesNames(industryNames:string[], randomValue:Number){
-    return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/getlistofindustrysubbylistofindustrynames?industryNames='+industryNames+'&ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/industrysubsegment/getlistofindustrysubbylistofindustrynames?industryNames='+industryNames+'&ver='+randomValue,{'params':this.httpParams});
   }
 
 
   updateIndustry(industry:any){
-    return this.http.post('http://'+myGlobals.server+':8787/industry/updateindustry',industry)
+    return this.http.post('http://'+myGlobals.server+':8787/api/industry/updateindustry',industry,{'params':this.httpParams})
     .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -37,40 +38,40 @@ export class IndustryService {
   }
 
   deleteIndustryById(id:Number){
-    return this.http.delete('http://'+myGlobals.server+':8787/industry/deleteindustry/'+id);
+    return this.http.delete('http://'+myGlobals.server+':8787/api/industry/deleteindustry/'+id,{'params':this.httpParams});
   }
 
   saveIndustry(industry:any){
-    return this.http.post('http://'+myGlobals.server+':8787/industry/saveindustry',industry)
+    return this.http.post('http://'+myGlobals.server+':8787/api/industry/saveindustry',industry,{'params':this.httpParams})
   }
 
 
   getIndustrySubSegmentMarketMap(randomValue:number) {
-    return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/fetchsubindustrymarketmap?ver='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/industrysubsegment/fetchsubindustrymarketmap?ver='+randomValue,{'params':this.httpParams});
   }
   addIndustrySubSegmentMarketMap(node:any){
-    return this.http.post('http://'+myGlobals.server+':8787/industrysubsegment/addindustrysubmarketmap',node);
+    return this.http.post('http://'+myGlobals.server+':8787/api/industrysubsegment/addindustrysubmarketmap',node,{'params':this.httpParams});
   }
   deleteIndustrySubSegmentMarketMap(id:number){
-    return this.http.delete('http://'+myGlobals.server+':8787/industrysubsegment/deleteindustrysubmarketmap/'+id);
+    return this.http.delete('http://'+myGlobals.server+':8787/api/industrysubsegment/deleteindustrysubmarketmap/'+id,{'params':this.httpParams});
   }
   updateIndustrySubSegmentMarketMap(node:any){
-    return this.http.post('http://'+myGlobals.server+':8787/industrysubsegment/updateindustrysubmarketmap',node);
+    return this.http.post('http://'+myGlobals.server+':8787/api/industrysubsegment/updateindustrysubmarketmap',node,{'params':this.httpParams});
   }
   checkIndustryExistInBusinessSolution(industryName:string,action:number, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/industry/checkindustryinbusinesssolutionexistence?industryName='+industryName+'&action='+action+'&randomValue='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/industry/checkindustryinbusinesssolutionexistence?industryName='+industryName+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }
 
   checkIndustryExistInSolutionPriorityAssociation(industryName:string,action:number, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/industry/checkindustryinsolutionpriorityassocexistence?industryName='+industryName+'&action='+action+'&randomValue='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/industry/checkindustryinsolutionpriorityassocexistence?industryName='+industryName+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }
 
   checkIndustrySubSegmentExistInBusinessSolution(industryOldSubSegmentId:number,industryId:number, action:number, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/checkindustrysubsegmentexistenceinbusinesssolution?industryOldSubSegmentId='+industryOldSubSegmentId+'&industryId='+industryId+'&action='+action+'&randomValue='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/industrysubsegment/checkindustrysubsegmentexistenceinbusinesssolution?industryOldSubSegmentId='+industryOldSubSegmentId+'&industryId='+industryId+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }
 
   checkIndustrySubSegmentExistInSolutionPriorityAssociation(industryOldSubSegmentId:number,industryId:number, action:number, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/industrysubsegment/checkindustrysubsegmentexistenceinsolutionpriorityassoc?industryOldSubSegmentId='+industryOldSubSegmentId+'&industryId='+industryId+'&action='+action+'&randomValue='+randomValue);
+    return this.http.get('http://'+myGlobals.server+':8787/api/industrysubsegment/checkindustrysubsegmentexistenceinsolutionpriorityassoc?industryOldSubSegmentId='+industryOldSubSegmentId+'&industryId='+industryId+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }
 
   private handleError(error: HttpErrorResponse) {
