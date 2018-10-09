@@ -593,7 +593,7 @@ export class InfocusTemplateOneFourFiveFiveTwoComponent implements OnInit {
   }
   viewPDF() {
     console.log("the id is ",this.id)
-    window.open('http://'+myGlobals.server+':8787/api/viewinfocuspdf/' +this.id.id+ '.pdf')
+    window.open('http://'+myGlobals.server+':8787/infocus/viewinfocuspdf/' +this.id.id+ '.pdf')
     this.infocusCoreService.getInfocusPDFbyId(this.id)
       .subscribe(
         (response: Response) => {

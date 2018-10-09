@@ -7,6 +7,8 @@ import { DynamicReportPopupComponent } from '../../shared/dynamic-report-popup/d
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DynamicYesNoPopupComponent } from '../../shared/dynamic-yes-no-popup/dynamic-yes-no-popup.component';
 import * as myGlobals from '../../app-globals';
+import { HttpParams } from '@angular/common/http';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
   selector: 'app-infocus-report-view',
@@ -68,7 +70,7 @@ export class InfocusReportViewComponent implements OnInit {
 
   viewPDF(id) {
     
-    window.open('http://'+myGlobals.server+':8787/api/viewinfocuspdf/' + id + '.pdf')
+    window.open('http://'+myGlobals.server+':8787/infocus/viewinfocuspdf/' + id + '.pdf' )
     this.infocusCoreService.getInfocusPDFbyId(id)
       .subscribe(
         (response: Response) => {

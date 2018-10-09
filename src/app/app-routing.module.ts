@@ -4,6 +4,7 @@ import { MainComponent } from './core/main/main.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './core/auth/auth-guard.service';
 import { LoginAuthGuardService } from './core/auth/login-auth-guard.service';
+import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
     path:'login',
     component: LoginComponent
     // canActivate: [LoginAuthGuardService],
+  },
+  {
+    path:'reset',
+    component: ResetPasswordComponent
   },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
