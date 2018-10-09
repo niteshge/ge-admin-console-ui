@@ -20,6 +20,7 @@ export class IndustriesComponent implements OnInit {
   selectedUser:string = null;
   industries;
   action;
+  loading:boolean = false;
   constructor(
     private industryServiceCore: IndustryService,
     private masterService:MasterService,
@@ -30,6 +31,7 @@ export class IndustriesComponent implements OnInit {
     this.getAllIndustries();
   }
   getAllIndustries() {
+    this.loading = true;
     let randomValue = Math.random();
     this.industryServiceCore
       .getIndustries(randomValue)
@@ -45,6 +47,7 @@ export class IndustriesComponent implements OnInit {
         } else {
           //TODO: UNCOMMENT THE COMMENTED LINES AND COMMENT THE OTHER BELOW LINES AND MAKE SURE U ONLY APPEND THE EDITED/UPDATED ROW USING FILTER OR SOMETHING ELSE
           this.industries = response;
+          this.loading = false;
           
           // this.changeDetectorRefs.detectChanges();
           // let dialogAlert = this.dialog.open(AlertBoxComponent,{

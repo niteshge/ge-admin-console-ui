@@ -16,6 +16,7 @@ export class ConditionKeywordsComponent implements OnInit {
   rowValue: any = {};
   conditionKeywords;
   action;
+  loading:boolean = false;
   constructor(
     private conditionKeywordService: ConditionKeywordService,
     public dialog: MatDialog
@@ -26,6 +27,7 @@ export class ConditionKeywordsComponent implements OnInit {
   }
 
   getAllConditionKeywords() {
+    this.loading = true;
     let randomValue = Math.random();
     this.conditionKeywordService
       .getAllConditionKeywords(randomValue)
@@ -40,6 +42,7 @@ export class ConditionKeywordsComponent implements OnInit {
           });
         } else {
           this.conditionKeywords = response;
+          this.loading = false;
         }
       });
   }

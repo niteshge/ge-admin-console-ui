@@ -21,6 +21,7 @@ export class ConditionThreeComponent implements OnInit {
   rowValue: any = {};
   conditionThreeMaster;
   action;
+  loading:boolean = false;
   constructor(
     private conditionThreeService: ConditionThreeService,
     private masterTableService: MasterService,
@@ -36,12 +37,14 @@ export class ConditionThreeComponent implements OnInit {
   }
 
   getAllConditionThreeMaster() {
+    this.loading = true;
     let randomValue = Math.random();
     this.conditionThreeService
       .getAllConditionThree(randomValue)
       .subscribe((response: Response) => {
         console.log(response);
         this.conditionThreeMaster = response;
+        this.loading = false;
       });
   }
 

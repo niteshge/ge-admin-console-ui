@@ -21,6 +21,7 @@ export class ConditionFourComponent implements OnInit {
   rowValue: any = {};
   conditionFourMaster;
   action;
+  loading:boolean = false;
   constructor(
     private conditionFourService: ConditionFourService,
     private masterTableService: MasterService,
@@ -36,12 +37,14 @@ export class ConditionFourComponent implements OnInit {
   }
 
   getAllConditionThreeMaster() {
+    this.loading = true;
     let randomValue = Math.random();
     this.conditionFourService
       .getAllConditionFour(randomValue)
       .subscribe((response: Response) => {
         console.log(response);
         this.conditionFourMaster = response;
+        this.loading = false;
       });
   }
 

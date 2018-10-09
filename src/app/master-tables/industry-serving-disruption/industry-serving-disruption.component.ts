@@ -10,6 +10,7 @@ import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
 })
 export class IndustryServingDisruptionComponent implements OnInit {
 industryServingDisruption;
+loading:boolean = false;
   constructor(
     private industryServingDisruptionService: IndustryServingDisruptionService,
     public dialog: MatDialog
@@ -20,12 +21,14 @@ industryServingDisruption;
   }
 
   getAllIndustryServingDisruptionMaster() {
+    this.loading = true;
     let randomValue = Math.random();
     this.industryServingDisruptionService
       .getAllIndustryServingDisruptionMaster(randomValue)
       .subscribe((response: Response) => {
         console.log(response);
         this.industryServingDisruption = response;
+        this.loading = false;
       });
   }
 

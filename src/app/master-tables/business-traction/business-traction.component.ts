@@ -10,6 +10,7 @@ import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
 })
 export class BusinessTractionComponent implements OnInit {
   businessTraction;
+  loading=false;
   constructor(
     private businessTractionCoreService: BusinessTractionService,
     public dialog: MatDialog
@@ -20,12 +21,14 @@ export class BusinessTractionComponent implements OnInit {
   }
 
   getAllBusinessTractionMaster() {
+    this.loading =true;
     let randomValue = Math.random();
     this.businessTractionCoreService
       .getAllBusinessTractionMaster(randomValue)
       .subscribe((response: Response) => {
         console.log(response);
         this.businessTraction = response;
+        this.loading=false;
       });
   }
 

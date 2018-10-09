@@ -18,6 +18,7 @@ export class HorizontalTechnologyComponent implements OnInit {
   rowValue: any = {};
   horizontalTechnology;
   action;
+  loading:boolean = false;
   constructor(
     private horizontalTechnologyCoreService: HorizontalTechnologyService,
     public dialog: MatDialog
@@ -27,12 +28,14 @@ export class HorizontalTechnologyComponent implements OnInit {
     this.getAllHorizontal();
   }
   getAllHorizontal() {
+    this.loading = true;
     let randomValue = Math.random();
     this.horizontalTechnologyCoreService
       .getAllHorizontalTechnology(randomValue)
       .subscribe((response: Response) => {
         console.log(response);
         this.horizontalTechnology = response;
+        this.loading = false;
       });
   }
 

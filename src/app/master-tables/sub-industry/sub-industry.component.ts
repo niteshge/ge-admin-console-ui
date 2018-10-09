@@ -13,6 +13,8 @@ import { ConditionFourService } from '../../core/condition-four.service';
 })
 export class SubIndustryComponent implements OnInit {
   treeDataJson;
+  loading:boolean = false;
+  
   constructor(
     private industrySubService: IndustryService,
     private conditionFourService:ConditionFourService,
@@ -23,11 +25,13 @@ export class SubIndustryComponent implements OnInit {
 
   ngOnInit() {}
   getAllIndustrySubSegment() {
+    this.loading = true;
     let randomValue = Math.random();
     this.industrySubService
       .getIndustrySubSegmentMarketMap(randomValue)
       .subscribe((response: Response) => {
         this.treeDataJson = response;
+        this.loading = false;
       });
   }
 

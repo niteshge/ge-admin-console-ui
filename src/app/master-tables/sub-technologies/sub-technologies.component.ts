@@ -14,6 +14,7 @@ import { ConditionOneService } from '../../core/condition-one.service';
 })
 export class SubTechnologiesComponent implements OnInit {
   treeDataJson;
+  loading:boolean = false;
   constructor(
     private subTechnologyService: SubTechnologyService,
     private businessTractionIndustryDisruption: BusinessTractionAndIndustryDisruptionService,
@@ -25,11 +26,13 @@ export class SubTechnologiesComponent implements OnInit {
     this.getAllTechSubSegment();
   }
   getAllTechSubSegment() {
+    this.loading = true;
     let randomValue = Math.random();
     this.subTechnologyService
       .getTechSubSegmentMarketMap(randomValue)
       .subscribe((response: Response) => {
         this.treeDataJson = response;
+        this.loading = false;
       });
   }
 

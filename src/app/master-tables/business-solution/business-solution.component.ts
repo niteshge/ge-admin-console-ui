@@ -23,6 +23,7 @@ export class BusinessSolutionComponent implements OnInit {
   rowValue: any = {};
   businessSolutions;
   action;
+  loading = false;
   constructor(
     private businessSolutionCoreService: BusinessSolutionsService,
     public dialog: MatDialog
@@ -43,11 +44,13 @@ export class BusinessSolutionComponent implements OnInit {
   //     );
   // }
   getAllBusinessSolutions() {
+    this.loading = true;
     let randomValue = Math.random();
     this.businessSolutionCoreService
       .getAllBusinessSolutons(randomValue)
       .subscribe((response:Response)=>{
               this.businessSolutions = response;
+              this.loading = false;
       })
   }
 

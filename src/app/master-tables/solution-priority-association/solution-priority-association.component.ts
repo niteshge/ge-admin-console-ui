@@ -19,6 +19,7 @@ export class SolutionPriorityAssociationComponent implements OnInit {
   rowValue;
   solutionPriorityAssociation;
   action;
+  loading:boolean = false;
   constructor(
     private solutionPriorityAssociationService: SolutionPriorityAssociationService,
     private horizontalService: HorizontalTechnologyService,
@@ -31,11 +32,13 @@ export class SolutionPriorityAssociationComponent implements OnInit {
     this.getAllSolutionPriorityAssociation();
   }
   getAllSolutionPriorityAssociation() {
+    this.loading =true;
     let randomValue = Math.random();
     this.solutionPriorityAssociationService
       .getAllSolutionPriorityAssociation(randomValue)
       .subscribe((response: Response) => {
         this.solutionPriorityAssociation = response;
+        this.loading =false;
       });
   }
   openDialog(value) {

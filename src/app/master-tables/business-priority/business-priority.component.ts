@@ -17,6 +17,7 @@ export class BusinessPriorityComponent implements OnInit {
   rowValue;
   businessPriorities;
   action;
+  loading = false;
   constructor(
     private businessPriorityCoreService: BusinessPriorityService,
     public dialog: MatDialog
@@ -28,11 +29,13 @@ export class BusinessPriorityComponent implements OnInit {
 
   getAllBusinessPriorityMaster() {
     let randomValue = Math.random();
+    this.loading = true;
     this.businessPriorityCoreService
       .getAllBusinessPriorityMaster(randomValue)
       .subscribe((response: Response) => {
         console.log(response);
         this.businessPriorities = response;
+        this.loading =false;
       });
   }
 

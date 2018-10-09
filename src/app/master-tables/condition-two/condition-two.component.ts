@@ -22,6 +22,7 @@ export class ConditionTwoComponent implements OnInit {
   rowValue: any = {};
   conditionTwoMaster;
   action;
+  loading:boolean = false;
   constructor(
     private conditionTwoService: ConditionTwoService,
     private masterTableService: MasterService,
@@ -37,12 +38,14 @@ export class ConditionTwoComponent implements OnInit {
   }
 
   getAllConditionTwoMaster() {
+    this.loading = true;
     let randomValue = Math.random();
     this.conditionTwoService
       .getAllConditionTwo(randomValue)
       .subscribe((response: Response) => {
         console.log(response);
         this.conditionTwoMaster = response;
+        this.loading = false;
       });
   }
 

@@ -20,6 +20,7 @@ export class ConditionOneComponent implements OnInit {
   rowValue: any = {};
   conditionOneMaster;
   action;
+  loading:boolean = false;
 
   constructor(
     private conditionOneService: ConditionOneService,
@@ -35,12 +36,14 @@ export class ConditionOneComponent implements OnInit {
   }
 
   getAllConditionOneMaster() {
+    this.loading = true;
     let randomValue = Math.random();
     this.conditionOneService
       .getAllConditionOne(randomValue)
       .subscribe((response: Response) => {
         console.log(response);
         this.conditionOneMaster = response;
+        this.loading = false;
       });
   }
 

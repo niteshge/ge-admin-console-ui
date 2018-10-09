@@ -12,6 +12,7 @@ import { ConstantTextService } from '../constant-text.service';
 })
 export class SubBusinessPriorityComponent implements OnInit {
   treeDataJson;
+  loading:boolean = false;
   constructor(
     private subBusinessPriorityService: SubBusinessProrityService,
     public dialog: MatDialog
@@ -21,11 +22,13 @@ export class SubBusinessPriorityComponent implements OnInit {
 
   ngOnInit() {}
   getAllBusinessPrioritySubSegment() {
+    this.loading = true;
     let randomValue = Math.random();
     this.subBusinessPriorityService
       .getBusinessPrioritySubSegmentMarketMap(randomValue)
       .subscribe((response: Response) => {
         this.treeDataJson = response;
+        this.loading = false;
       });
   }
 
