@@ -54,7 +54,7 @@ export class HorizontalTechnologyService {
       'http://' +
         myGlobals.server +
         ':8787/mastertables/api/checktechnologyexistence?technologyName=' +
-        technologyName +
+        encodeURIComponent(technologyName) +
         '&action=' +
         action +
         '&randomValue=' +
@@ -77,7 +77,7 @@ export class HorizontalTechnologyService {
       'http://' +
         myGlobals.server +
         ':8787/api/mastertables/checktechnologyexistenceinconditions?technologyName=' +
-        technologyName +
+        encodeURIComponent(technologyName) +
         '&action=' +
         action +
         '&randomValue=' +

@@ -59,11 +59,11 @@ export class IndustryService {
     return this.http.post('http://'+myGlobals.server+':8787/api/industrysubsegment/updateindustrysubmarketmap',node,{'params':this.httpParams});
   }
   checkIndustryExistInBusinessSolution(industryName:string,action:number, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/api/industry/checkindustryinbusinesssolutionexistence?industryName='+industryName+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
+    return this.http.get('http://'+myGlobals.server+':8787/api/industry/checkindustryinbusinesssolutionexistence?industryName='+encodeURIComponent(industryName)+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }
 
   checkIndustryExistInSolutionPriorityAssociation(industryName:string,action:number, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/api/industry/checkindustryinsolutionpriorityassocexistence?industryName='+industryName+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
+    return this.http.get('http://'+myGlobals.server+':8787/api/industry/checkindustryinsolutionpriorityassocexistence?industryName='+encodeURIComponent(industryName)+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }
 
   checkIndustrySubSegmentExistInBusinessSolution(industryOldSubSegmentId:number,industryId:number, action:number, randomValue:number){

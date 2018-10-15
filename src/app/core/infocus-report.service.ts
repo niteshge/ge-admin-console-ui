@@ -25,58 +25,58 @@ export class InfocusReportService {
 
   getInfocusIndustriesByRole(role: string,randomValue) {
     console.log(randomValue);
-    return this.http.get('http://'+myGlobals.server+':8787/api/getindustriesbyrole/?role=' + role+'&ver='+randomValue,{'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getindustriesbyrole/?role=' + encodeURIComponent(role)+'&ver='+randomValue,{'params':this.httpParams})
   }
 
   getInfocusIndustrySegment1ByRolendIndustry(role: string, industry: string, randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getindustryseg1byindustryndrole/?role=' + role + '&industry=' + industry+'&ver='+randomValue,{'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getindustryseg1byindustryndrole/?role=' + encodeURIComponent(role) + '&industry=' +encodeURIComponent(industry)+'&ver='+randomValue,{'params':this.httpParams})
   }
 
   getInfocusIndustrySegment2ByIndustryndIndustrySegment1(industry: string, industrySegment1: string,randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getindustryseg2byindustryndindseg1/?industry=' + industry + '&industryseg1=' + industrySegment1+'&ver='+randomValue,{'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getindustryseg2byindustryndindseg1/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1)+'&ver='+randomValue,{'params':this.httpParams})
   }
 
   getInfocusBusinessPriority1(role: string, industry: string, industrySegment1: string, industrySegment2: string,randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getbp1/?industry=' + industry +
-      '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2+'&ver='+randomValue,{'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getbp1/?industry=' + encodeURIComponent(industry) +
+      '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' +encodeURIComponent(industrySegment2)+'&ver='+randomValue,{'params':this.httpParams})
 
   }
 
   getInfocusBusinessPriority2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string,randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getbp2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1)+'&ver='+randomValue,{'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getbp2/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1)+'&ver='+randomValue,{'params':this.httpParams})
   }
 
 
   getInfocusBusinessPriority3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string,randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getbp3/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) +'&ver='+randomValue, {'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getbp3/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) +'&ver='+randomValue, {'params':this.httpParams})
   }
 
   getInfocusBusinessPriority3Solution1(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution1/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue, {'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution1/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue, {'params':this.httpParams})
   }
 
   getInfocusBusinessPriority2Solution1(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string,randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution1bybp2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&ver='+randomValue, {'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution1bybp2/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&ver='+randomValue, {'params':this.httpParams})
   }
 
 
   getInfocusBusinessPriority3Solution2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue,{'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution2/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue,{'params':this.httpParams})
 
   }
 
   getInfocusBusinessPriority2Solution2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution2bybp2/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + '&ver='+randomValue,{'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution2bybp2/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + '&ver='+randomValue,{'params':this.httpParams})
 
   }
   getInfocusBusinessPriority3Solution3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution3/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue,{'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution3/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue,{'params':this.httpParams})
   }
   getInfocusBusinessPriority3Solution4(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution4/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue,{'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution4/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue,{'params':this.httpParams})
   }
   getInfocusBusinessPriority3Solution5(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
-    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution5/?industry=' + industry + '&industryseg1=' + industrySegment1 + '&role=' + role + '&industryseg2=' + industrySegment2 + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue,{'params':this.httpParams})
+    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution5/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue,{'params':this.httpParams})
   }
   getInfocusCompanyDetails(solutionCode: string,randomValue) {
     return this.http.get('http://'+myGlobals.server+':8787/api/getcompanydetialsbycode/?solutioncode=' + solutionCode+'&ver='+randomValue,{'params':this.httpParams})
@@ -86,7 +86,7 @@ export class InfocusReportService {
     return this.http.get('http://'+myGlobals.server+':8787/api/gettechnologies?ver='+randomValue,{'params':this.httpParams});
   }
   getTechnologiesSubSegment(technologyName:string,randomValue){
-    return this.http.get('http://'+myGlobals.server+':8787/api/gettechsubsegment?technologyName='+technologyName+'&ver='+randomValue,{'params':this.httpParams});
+    return this.http.get('http://'+myGlobals.server+':8787/api/gettechsubsegment?technologyName='+encodeURIComponent(technologyName)+'&ver='+randomValue,{'params':this.httpParams});
   }
 
   postInfocusReportDetails(infocus: InfocusReportModel) {

@@ -33,7 +33,7 @@ checkBusinessPriorityExistInSolutionPriorityAssoc(
     'http://' +
       myGlobals.server +
       ':8787/api/businesspriority/checkbusinessprirityinsolutionpriorityassocexistence?businessPriorityName=' +
-      businessPriorityName +
+      encodeURIComponent(businessPriorityName) +
       '&action=' +
       action +
       '&randomValue=' +

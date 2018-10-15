@@ -14,10 +14,10 @@ export class MasterService {
     return this.http.get('http://'+myGlobals.server+':8787/api/mastertables/getindustries?ver='+randomValue,{'params':this.httpParams});
   }
   getIndustriesSubSegment(industryName:string,randomValue){
-    return this.http.get('http://'+myGlobals.server+':8787/api/mastertables/getsubindustries?industryName='+industryName+'&ver='+randomValue,{'params':this.httpParams});
+    return this.http.get('http://'+myGlobals.server+':8787/api/mastertables/getsubindustries?industryName='+encodeURIComponent(industryName)+'&ver='+randomValue,{'params':this.httpParams});
   }
   getSubSegmentBusinessPriorityByBusinessPriorityName(businessPriorityName:string,randomValue){
-    return this.http.get('http://'+myGlobals.server+':8787/api/mastertables/getsubbusinesspriority?businesspriorityname='+businessPriorityName+'&ver='+randomValue,{'params':this.httpParams});
+    return this.http.get('http://'+myGlobals.server+':8787/api/mastertables/getsubbusinesspriority?businesspriorityname='+encodeURIComponent(businessPriorityName)+'&ver='+randomValue,{'params':this.httpParams});
   }
   getAllBusinessPrioritiesNames(randomValue:Number){
     return this.http.get('http://'+myGlobals.server+':8787/api/mastertables/getbusinesspriorities?ver='+randomValue,{'params':this.httpParams});
@@ -27,7 +27,7 @@ export class MasterService {
   }
 
   getAllBusinessSolutionByTech(randomValue:Number,technology:string){
-    return this.http.get('http://'+myGlobals.server+':8787/api/mastertables/getallbusinesssolutionsearchtextbytechnology?ver='+randomValue+'&technology='+technology,{'params':this.httpParams});
+    return this.http.get('http://'+myGlobals.server+':8787/api/mastertables/getallbusinesssolutionsearchtextbytechnology?ver='+randomValue+'&technology='+encodeURIComponent(technology),{'params':this.httpParams});
   }
   getAllRevenueModel(randomValue:Number){
     return this.http.get('http://'+myGlobals.server+':8787/api/mastertables/getrevenuemodel?ver='+randomValue,{'params':this.httpParams});
