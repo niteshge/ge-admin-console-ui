@@ -47,9 +47,9 @@ export class SubIndustryComponent implements OnInit {
       let marketMap = nodeData['MARKET MAP'];
       this.updateIndustrySubSegment(marketMap, nodeData);
     } else if (value.action === 3) {
-      this.furtureAlert();
-      // let nodeData = value['MARKET MAP'];
-      // this.deleteTechSubSegment(nodeData,value);
+      // this.furtureAlert();
+      let nodeData = value['MARKET MAP'];
+      this.deleteTechSubSegment(value.nodeData);
     }
   }
 
@@ -221,7 +221,7 @@ export class SubIndustryComponent implements OnInit {
       });
   }
 
-  deleteTechSubSegment(node, conditionFour) {
+  deleteTechSubSegment(node) {
     let randomValue = Math.random();
     let id = node.id[node.id.length - 1];
     let industryId = node.id[0];

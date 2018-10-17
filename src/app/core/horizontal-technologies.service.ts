@@ -53,7 +53,7 @@ export class HorizontalTechnologyService {
     return this.http.get(
       'http://' +
         myGlobals.server +
-        ':8787/mastertables/api/checktechnologyexistence?technologyName=' +
+        ':8787/api/mastertables/checktechnologyexistence?technologyName=' +
         encodeURIComponent(technologyName) +
         '&action=' +
         action +

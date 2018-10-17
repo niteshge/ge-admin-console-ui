@@ -1,0 +1,1 @@
+Check the style.css and paste the custom-ge.css in the location listed in it.

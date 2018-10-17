@@ -43,8 +43,8 @@ export class SubTechnologiesComponent implements OnInit {
     } else if (value.action === 2) {
       this.updateTechSubSegment(value.nodeData);
     } else if (value.action === 3) {
-      // this.deleteTechSubSegment(value.nodeData);
-      this.furtureAlert();
+      this.deleteTechSubSegment(value.nodeData);
+      // this.furtureAlert();
     }
   }
 

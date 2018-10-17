@@ -19,7 +19,8 @@
     <mat-grid-list cols="6" rowHeight="100px">
     <mat-grid-tile [colspan]=2 [rowspan]=1>
       <mat-form-field class="example-full-width custom-input-fields">
-        <input matInput  [disabled]="rowData['TECHNOLOGY SEGMENT']!=='' ? true : null" [placeholder]="'TECHNOLOGY SEGMENT'" [value]="rowData['TECHNOLOGY SEGMENT']" (change)="onchangeEventRowData('TECHNOLOGY SEGMENT',$event.target.value)">
+        <!-- <input matInput  [disabled]="rowData['TECHNOLOGY SEGMENT']!=='' ? true : null" [placeholder]="'TECHNOLOGY SEGMENT'" [value]="rowData['TECHNOLOGY SEGMENT']" (change)="onchangeEventRowData('TECHNOLOGY SEGMENT',$event.target.value)"> -->
+        <input matInput [placeholder]="'TECHNOLOGY SEGMENT'" [value]="rowData['TECHNOLOGY SEGMENT']" (change)="onchangeEventRowData('TECHNOLOGY SEGMENT',$event.target.value)">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=2 [rowspan]=1>
