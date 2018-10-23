@@ -7,7 +7,9 @@ import {
   EventEmitter,
   AfterViewInit,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  Pipe,
+  PipeTransform
 } from '@angular/core';
 import { Element, ELEMENT_DATA } from '../element-data';
 import { CdkTable } from '@angular/cdk/table';
@@ -21,6 +23,7 @@ import {
 import { Observable } from 'rxjs';
 import { DataSource, SelectionModel } from '@angular/cdk/collections';
 import { filter } from '../../../../node_modules/rxjs/operators';
+import { DatePipe, getLocaleDateTimeFormat } from '@angular/common';
 
 export type TrackByStrategy = 'position' | 'reference' | 'index';
 
@@ -37,7 +40,7 @@ export class DynamicTablesComponent
   @Output()
   rowSelected = new EventEmitter();
 
-  constructor() {}
+  constructor(public datepipe: DatePipe) {}
 
   // columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
   columnsToDisplay = [];
@@ -59,15 +62,19 @@ export class DynamicTablesComponent
   sort: MatSort;
 
   ngOnInit() {
-    this.data = this.jsonData.slice();
-    this.dataSource = new MatTableDataSource<Element>(this.data);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-
+    for(let i = 0; i<this.jsonData.length ; i++){
+        //  this.jsonData[i]['CREATED TIMESTAMP'] = new Date(this.jsonData[i]['CREATED TIMESTAMP']);
+        //  this.jsonData[i]['CREATED TIMESTAMP'] = new Date(this.jsonData[i]['CREATED TIMESTAMP']).toLocaleDateString();
+        //  this.jsonData[i]['CREATED TIMESTAMP'] = new Date(this.jsonData[i]['CREATED TIMESTAMP'])..toLocaleTimeString();
+         this.jsonData[i]['CREATED TIMESTAMP'] = this.datepipe.transform(this.jsonData[i]['CREATED TIMESTAMP'], 'yyyy-MM-dd HH:mm:ss');
+        //  this.jsonData[i]['MODIFIED TIMESTAMP'] = new Date(this.jsonData[i]['MODIFIED TIMESTAMP']);
+         this.jsonData[i]['MODIFIED TIMESTAMP'] = this.datepipe.transform(this.jsonData[i]['MODIFIED TIMESTAMP'], 'yyyy-MM-dd HH:mm:ss');
+    }
     for (let i = 0; i < 1; i++) {
       console.log('object:', this.jsonData[i]);
       for (let key in this.jsonData[i]) {
-        console.log('      key:', key, 'value:', this.jsonData[key]);
+        console.log('      key:', key, 'value:', this.jsonData[i][key]);
+        
         this.columnsToDisplay.push(key);
         if(key!=='ID'){
           this.customToFilter.push(key);
@@ -75,6 +82,10 @@ export class DynamicTablesComponent
 
       }
     }
+    this.data = this.jsonData.slice();
+    this.dataSource = new MatTableDataSource<Element>(this.data);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   ngOnChanges(changes: SimpleChanges) {}
 
