@@ -11,6 +11,7 @@ import { LoginModule } from './login/login.module';
 import { KeysPipe } from './infocus-report/infocus-template-one-three-two-three/infocus-template-one-three-two-three.component';
 import { TokenInterceptor } from './core/auth/token-interceptor';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent,KeysPipe],
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    DatePipe,
   ],
   bootstrap: [AppComponent],
   entryComponents: [],
