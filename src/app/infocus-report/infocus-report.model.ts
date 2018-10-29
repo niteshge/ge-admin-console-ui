@@ -8,7 +8,7 @@ export class InfocusReportModel {
     public technologySubSegemt:string = null;
     public readtime: string = null;
 
-    public displayRole:String = null;
+    public displayRole:string = null;
 
     public infocusReportTitle: string = null;
     public introductionTitle: string = null;
@@ -44,6 +44,9 @@ export class InfocusReportModel {
 
     public bp2cSolution1:string;
     public bp2cSolution2:string;
+
+    public bp2dSolution1:string;
+    public bp2dSolution2:string;
 
     public bp2aSolution1Code:string;
     public bp2aSolution1CompanyDomainName1:string;
@@ -147,6 +150,40 @@ export class InfocusReportModel {
     public bp2cSolution2CompanyName3:string;
     public bp2cSolution2CompanyMaturityStatus3:string;
     public bp2cSolution2CompanyLocation3:string;
+
+    public bp2dSolution1Code:string;
+    public bp2dSolution1CompanyDomainName1:string;
+    public bp2dSolution1CompanyLogo1:string;
+    public bp2dSolution1CompanyMaturityStatus1:string;
+    public bp2dSolution1CompanyName1:string;
+    public bp2dSolution1CompanyLocation1:string;
+    public bp2dSolution1CompanyDomainName2:string;
+    public  bp2dSolution1CompanyLogo2:string;
+    public  bp2dSolution1CompanyName2:string;
+    public  bp2dSolution1CompanyMaturityStatus2:string;
+    public  bp2dSolution1CompanyLocation2:string;
+    public  bp2dSolution1CompanyDomainName3:string;
+    public  bp2dSolution1CompanyLogo3:string;
+    public  bp2dSolution1CompanyName3:string;
+    public  bp2dSolution1CompanyMaturityStatus3:string;
+    public  bp2dSolution1CompanyLocation3:string;
+
+    public  bp2dSolution2Code:string;
+    public  bp2dSolution2CompanyDomainName1:string;
+    public  bp2dSolution2CompanyLogo1:string;
+    public  bp2dSolution2CompanyMaturityStatus1:string;
+    public  bp2dSolution2CompanyName1:string;
+    public  bp2dSolution2CompanyLocation1:string;
+    public  bp2dSolution2CompanyDomainName2:string;
+    public  bp2dSolution2CompanyLogo2:string;
+    public  bp2dSolution2CompanyName2:string;
+    public  bp2dSolution2CompanyMaturityStatus2:string;
+    public  bp2dSolution2CompanyLocation2:string;
+    public  bp2dSolution2CompanyDomainName3:string;
+    public  bp2dSolution2CompanyLogo3:string;
+    public  bp2dSolution2CompanyName3:string;
+    public  bp2dSolution2CompanyMaturityStatus3:string;
+    public  bp2dSolution2CompanyLocation3:string;
 
     public bp2abusinessPriority3a: string = null;
     public bp2abusinessPriority3b: string = null;

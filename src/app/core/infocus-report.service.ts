@@ -46,10 +46,19 @@ export class InfocusReportService {
     return this.http.get('http://'+myGlobals.server+':8787/api/getbp2/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1)+'&ver='+randomValue,{'params':this.httpParams})
   }
 
+  getInfocusBusinessPriority2ByIndustry(role: string, industry: string, industrySegment1: string, industrySegment2: string, randomValue) {
+    return this.http.get('http://'+myGlobals.server+':8787/api/getbp2byindustry/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) +'&ver='+randomValue,{'params':this.httpParams})
+  }
+
 
   getInfocusBusinessPriority3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string,randomValue) {
     return this.http.get('http://'+myGlobals.server+':8787/api/getbp3/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) +'&ver='+randomValue, {'params':this.httpParams})
   }
+
+  getInfocusBusinessPriority3ByBp2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority2: string,randomValue) {
+    return this.http.get('http://'+myGlobals.server+':8787/api/getbp3bybp2/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp2=' + encodeURIComponent(businessPriority2) +'&ver='+randomValue, {'params':this.httpParams})
+  }
+
 
   getInfocusBusinessPriority3Solution1(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
     return this.http.get('http://'+myGlobals.server+':8787/api/getsolution1/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue, {'params':this.httpParams})
@@ -59,6 +68,9 @@ export class InfocusReportService {
     return this.http.get('http://'+myGlobals.server+':8787/api/getsolution1bybp2/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&ver='+randomValue, {'params':this.httpParams})
   }
 
+  getInfocusBusinessPriority3Solution1ByBp2NdBp3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string,randomValue) {
+    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution1bybp2ndbp3/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp2=' + encodeURIComponent(businessPriority1) + '&bp3=' + encodeURIComponent(businessPriority2) + '&ver='+randomValue, {'params':this.httpParams})
+  }
 
   getInfocusBusinessPriority3Solution2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
     return this.http.get('http://'+myGlobals.server+':8787/api/getsolution2/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue,{'params':this.httpParams})
@@ -67,8 +79,12 @@ export class InfocusReportService {
 
   getInfocusBusinessPriority2Solution2(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, randomValue) {
     return this.http.get('http://'+myGlobals.server+':8787/api/getsolution2bybp2/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + '&ver='+randomValue,{'params':this.httpParams})
-
   }
+
+  getInfocusBusinessPriority2Solution2ByBp2NdBp3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, randomValue) {
+    return this.http.get('http://'+myGlobals.server+':8787/api/getsolution2bybp2ndbp3/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp2=' + encodeURIComponent(businessPriority1) + '&bp3=' + encodeURIComponent(businessPriority2) + '&bp3=' + '&ver='+randomValue,{'params':this.httpParams})
+  }
+
   getInfocusBusinessPriority3Solution3(role: string, industry: string, industrySegment1: string, industrySegment2: string, businessPriority1: string, businessPriority2: string, businessPriority3: string,randomValue) {
     return this.http.get('http://'+myGlobals.server+':8787/api/getsolution3/?industry=' + encodeURIComponent(industry) + '&industryseg1=' + encodeURIComponent(industrySegment1) + '&role=' + encodeURIComponent(role) + '&industryseg2=' + encodeURIComponent(industrySegment2) + '&bp1=' + encodeURIComponent(businessPriority1) + '&bp2=' + encodeURIComponent(businessPriority2) + '&bp3=' + encodeURIComponent(businessPriority3)+'&ver='+randomValue,{'params':this.httpParams})
   }

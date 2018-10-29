@@ -6,6 +6,8 @@ import { InfocusTemplateOneFourFiveFiveTwoComponent } from './infocus-template-o
 import { InfocusTemplateOneFourThreeTwoTwoComponent } from './infocus-template-one-four-three-two-two/infocus-template-one-four-three-two-two.component';
 import { InfocusTemplateOneThreeTwoThreeComponent } from './infocus-template-one-three-two-three/infocus-template-one-three-two-three.component';
 import { InfocusTemplateOneThreeTwoTwoComponent } from './infocus-template-one-three-two-two/infocus-template-one-three-two-two.component';
+import { InfocusTemplateOneThreeTwoThreeBp2Component } from './infocus-template-one-three-two-three-bp2/infocus-template-one-three-two-three-bp2.component';
+import { InfocusTemplateOneFourTwoTwoComponent } from './infocus-template-one-four-two-two/infocus-template-one-four-two-two.component';
 
 const routes: Routes = [{
   path: '',
@@ -30,6 +32,14 @@ const routes: Routes = [{
     {
       path: 'template1322',
       component:InfocusTemplateOneThreeTwoTwoComponent
+    },
+    {
+      path: 'template1323bp2',
+      component:InfocusTemplateOneThreeTwoThreeBp2Component
+    },
+    {
+      path: 'template1422',
+      component:InfocusTemplateOneFourTwoTwoComponent
     }
   ]
 }];

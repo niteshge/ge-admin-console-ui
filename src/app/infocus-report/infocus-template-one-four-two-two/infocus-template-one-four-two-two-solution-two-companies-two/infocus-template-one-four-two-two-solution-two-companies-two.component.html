@@ -1,0 +1,28 @@
+<mat-grid-list cols="3" rowHeight="100px">
+  <mat-grid-tile [colspan]=1 [rowspan]=4>
+    <app-dynamic-select [anyObject]=businessPriorityPlaceholder [placeholder]=businessPriorityPlaceholder [options]="businessPriority2"
+      (optionSelected)="business2ValueSeleted($event)" (objectSelected)="businessPriority2PlaceholderValue($event)"></app-dynamic-select>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf=solution1 [colspan]=1 [rowspan]=2>
+    <app-dynamic-select [placeholder]="'Solution 1'" [options]='solution1' (optionSelected)="businessPriority2Solutions1Selected($event)"></app-dynamic-select>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf=companyDetails1 [colspan]=1 [rowspan]=1>
+    <app-dynamic-select [anyObject]="'Solution 1 Company 1'" [placeholder]="'Solution 1 Company 1'" [options]='listOfSolution1AllCompanies'
+      (optionSelected)="business2CompanySelected($event)" (objectSelected)="business2CompanyPlaceholder($event)"></app-dynamic-select>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf=companyDetails1 [colspan]=1 [rowspan]=1>
+    <app-dynamic-select [anyObject]="'Solution 1 Company 2'" [placeholder]="'Solution 1 Company 2'" [options]='listOfSolution1AllCompanies'
+      (optionSelected)="business2CompanySelected($event)" (objectSelected)="business2CompanyPlaceholder($event)"></app-dynamic-select>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf=solution2 [colspan]=1 [rowspan]=2>
+    <app-dynamic-select [placeholder]="'Solutions 2'" [options]='solution2' (optionSelected)="businessPriority2Solutions2Selected($event)"></app-dynamic-select>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf=companyDetails2 [colspan]=1 [rowspan]=1>
+    <app-dynamic-select [anyObject]="'Solution 2 Company 1'" [placeholder]="'Solution 2 Company 1'" [options]='listOfSolution2AllCompanies'
+      (optionSelected)="business2CompanySelected($event)" (objectSelected)="business2CompanyPlaceholder($event)"></app-dynamic-select>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf=companyDetails2 [colspan]=1 [rowspan]=1>
+    <app-dynamic-select [anyObject]="'Solution 2 Company 2'" [placeholder]="'Solution 2 Company 2'" [options]='listOfSolution2AllCompanies'
+      (optionSelected)="business2CompanySelected($event)" (objectSelected)="business2CompanyPlaceholder($event)"></app-dynamic-select>
+  </mat-grid-tile>
+</mat-grid-list>

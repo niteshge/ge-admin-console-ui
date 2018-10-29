@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-3">
       <br/>
-      <h6 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'"><u>Infocus Report Template - 1323</u></h6>
+      <h6 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'"><u>Infocus Report Template - 1323 - BP2</u></h6>
     </div>
   </div>
   <br/>
@@ -146,12 +146,12 @@
   <hr *ngIf="contextSaved">
   <div class="row" *ngIf="contextSaved">
     <div class="col-3">
-      <h5 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'"> Business Priority - 1</h5>
+      <h5 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'"> Business Priority - 2</h5>
     </div>
   </div>
   <div class="row" *ngIf="contextSaved">
     <div class="col-12" [style.padding-left]="'64px'" [style.padding-right]="'64px'">
-      <app-dynamic-select [placeholder]="'Business Priority 1'" [options]="infocusBusinessPriority1 | async" (optionSelected)="businessPriority1Selected($event)"></app-dynamic-select>
+      <app-dynamic-select [placeholder]="'Business Priority 2'" [options]="infocusBusinessPriority1 | async" (optionSelected)="businessPriority1Selected($event)"></app-dynamic-select>
     </div>
   </div>
   <hr *ngIf="businessPriority1">
@@ -162,23 +162,23 @@
   </div>
   <mat-tab-group mat-stretch-tabs class="mat-elevation-z4" [style.padding-left]="'64px'" [style.padding-right]="'64px'" [style.color]="'#E04B2D'"
     [style.background-color]="'#F5F4EB'">
-    <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 2A">
+    <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 3A">
       <div *ngIf="bP2">
-        <app-infocus-template-two-solution-three-companies [businessPriorityPlaceholder]="'Business Priority 2A'" [businessPriority2]="bP2"
+        <app-infocus-template-two-solution-three-companies-bp2 [businessPriorityPlaceholder]="'Business Priority 3A'" [businessPriority2]="bP2"
           [infocusModel]="infocusModel" (infocusData)=businessPriority2a($event)>
-        </app-infocus-template-two-solution-three-companies>
+        </app-infocus-template-two-solution-three-companies-bp2>
       </div>
     </mat-tab>
-    <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 2B">
+    <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 3B">
       <div *ngIf="bP2">
-        <app-infocus-template-two-solution-three-companies [businessPriorityPlaceholder]="'Business Priority 2B'" [businessPriority2]="bP2"
-          [infocusModel]="infocusModel" (infocusData)=businessPriority2b($event)></app-infocus-template-two-solution-three-companies>
+        <app-infocus-template-two-solution-three-companies-bp2 [businessPriorityPlaceholder]="'Business Priority 3B'" [businessPriority2]="bP2"
+          [infocusModel]="infocusModel" (infocusData)=businessPriority2b($event)></app-infocus-template-two-solution-three-companies-bp2>
       </div>
     </mat-tab>
-    <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 2C">
+    <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 3C">
       <div *ngIf="bP2">
-        <app-infocus-template-two-solution-three-companies [businessPriorityPlaceholder]="'Business Priority 2C'" [businessPriority2]="bP2"
-          [infocusModel]="infocusModel" (infocusData)=businessPriority2c($event)></app-infocus-template-two-solution-three-companies>
+        <app-infocus-template-two-solution-three-companies-bp2 [businessPriorityPlaceholder]="'Business Priority 3C'" [businessPriority2]="bP2"
+          [infocusModel]="infocusModel" (infocusData)=businessPriority2c($event)></app-infocus-template-two-solution-three-companies-bp2>
       </div>
     </mat-tab>
   </mat-tab-group>

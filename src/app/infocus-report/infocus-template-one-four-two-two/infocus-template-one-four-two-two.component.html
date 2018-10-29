@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-3">
       <br/>
-      <h6 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'"><u>Infocus Report Template - 1323</u></h6>
+      <h6 [style.color]="'#32312a'" [style.background-color]="'#F5F4EB'"><u>Infocus Report Template - 1422</u></h6>
     </div>
   </div>
   <br/>
@@ -64,7 +64,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title [style.color]="'#32312a'" [style.background-color]="'#F7F7F2'">
-              Introduction :
+            Introduction :
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-form-field class="col-12">
@@ -112,7 +112,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title [style.color]="'#32312a'" [style.background-color]="'#F7F7F2'">
-              Context :
+            Context :
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-form-field class="col-12">
@@ -164,21 +164,27 @@
     [style.background-color]="'#F5F4EB'">
     <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 2A">
       <div *ngIf="bP2">
-        <app-infocus-template-two-solution-three-companies [businessPriorityPlaceholder]="'Business Priority 2A'" [businessPriority2]="bP2"
+        <app-infocus-template-one-four-two-two-solution-two-companies-two  [businessPriorityPlaceholder]="'Business Priority 2A'" [businessPriority2]="bP2"
           [infocusModel]="infocusModel" (infocusData)=businessPriority2a($event)>
-        </app-infocus-template-two-solution-three-companies>
+          </app-infocus-template-one-four-two-two-solution-two-companies-two>
       </div>
     </mat-tab>
     <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 2B">
       <div *ngIf="bP2">
-        <app-infocus-template-two-solution-three-companies [businessPriorityPlaceholder]="'Business Priority 2B'" [businessPriority2]="bP2"
-          [infocusModel]="infocusModel" (infocusData)=businessPriority2b($event)></app-infocus-template-two-solution-three-companies>
+        <app-infocus-template-one-four-two-two-solution-two-companies-two [businessPriorityPlaceholder]="'Business Priority 2B'" [businessPriority2]="bP2"
+          [infocusModel]="infocusModel" (infocusData)=businessPriority2b($event)></app-infocus-template-one-four-two-two-solution-two-companies-two> 
       </div>
     </mat-tab>
     <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 2C">
       <div *ngIf="bP2">
-        <app-infocus-template-two-solution-three-companies [businessPriorityPlaceholder]="'Business Priority 2C'" [businessPriority2]="bP2"
-          [infocusModel]="infocusModel" (infocusData)=businessPriority2c($event)></app-infocus-template-two-solution-three-companies>
+        <app-infocus-template-one-four-two-two-solution-two-companies-two [businessPriorityPlaceholder]="'Business Priority 2C'" [businessPriority2]="bP2"
+          [infocusModel]="infocusModel" (infocusData)=businessPriority2c($event)></app-infocus-template-one-four-two-two-solution-two-companies-two>
+      </div>
+    </mat-tab>
+    <mat-tab *ngIf="bP2" label="BUSINESS PRIORITY 2D">
+      <div *ngIf="bP2">
+        <app-infocus-template-one-four-two-two-solution-two-companies-two [businessPriorityPlaceholder]="'Business Priority 2D'" [businessPriority2]="bP2"
+          [infocusModel]="infocusModel" (infocusData)=businessPriority2c($event)></app-infocus-template-one-four-two-two-solution-two-companies-two>
       </div>
     </mat-tab>
   </mat-tab-group>
