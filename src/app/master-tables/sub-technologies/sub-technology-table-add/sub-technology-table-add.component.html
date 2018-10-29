@@ -49,32 +49,48 @@
     <mat-grid-list cols="6" rowHeight="100px">
     <!-- </mat-grid-list> -->
     <!-- <mat-grid-list cols="5" rowHeight="100px"> -->
+        <mat-grid-tile [colspan]=2 [rowspan]=1>
+          <p>Industry Segments:</p>
+          </mat-grid-tile>
     <mat-grid-tile [colspan]=4 [rowspan]=1>
       <app-dynamic-chip class="custom-chip-fields" [widthStyle]="'700px'" [placeholder]="'INDUSTRY'"
         [items]="rowData['INDUSTRY']" [allItems]="rowData['ALL INDUSTRIES']" (optionSelected)="industryChange('INDUSTRY',$event)"></app-dynamic-chip>
     </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="6" rowHeight="100px">
     <mat-grid-tile [colspan]=2 [rowspan]=1>
       <button mat-raised-button color=geprimary [style.margin-right]="'24px'" [style.margin-left]="'24px'" (click)="onClickGetIndustrySub()">Get
         Industry Sub</button>
     </mat-grid-tile>
     </mat-grid-list>
     <mat-grid-list cols="6" rowHeight="100px">
+        <mat-grid-tile [colspan]=2 [rowspan]=1>
+          <p>Industry Sub-Segments : </p>
+          </mat-grid-tile>
     <mat-grid-tile [colspan]=4 [rowspan]=1>
       <app-dynamic-chip class="custom-chip-fields" [widthStyle]="'700px'" [placeholder]="'INDUSTRY SEGMENT'" [items]="rowData['INDUSTRY SEGMENT']"
         [allItems]="rowData['ALL INDUSTRY SUB']"></app-dynamic-chip>
     </mat-grid-tile>
     </mat-grid-list>
     <mat-grid-list cols="6" rowHeight="100px">
+        <mat-grid-tile [colspan]=2 [rowspan]=1>
+          <p>Industry Being Disrupted Segments : </p>
+          </mat-grid-tile>
     <mat-grid-tile [colspan]=4 [rowspan]=1>
       <app-dynamic-chip class="custom-chip-fields" [widthStyle]="'700px'" [placeholder]="'INDUSTRY BEING DISRUPTED'"
         [items]="rowData['INDUSTRY BEING DISRUPTION']" [allItems]="rowData['ALL INDUSTRIES']" (optionSelected)="industryBeingDisruptionChange('INDUSTRY BEING DISRUPTION',$event)"></app-dynamic-chip>
     </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="6" rowHeight="100px">
     <mat-grid-tile [colspan]=2 [rowspan]=1>
       <button mat-raised-button color=geprimary [style.margin-right]="'24px'" [style.margin-left]="'24px'" (click)="onClickGetIndustrySubBeingDisrupted()">Get
         Industry Sub Being disrupted</button>
     </mat-grid-tile>
     </mat-grid-list>
     <mat-grid-list cols="6" rowHeight="100px">
+        <mat-grid-tile [colspan]=2 [rowspan]=1>
+            <p>Industry Being Disrupted Sub-Segments : </p>
+            </mat-grid-tile>
     <mat-grid-tile [colspan]=4 [rowspan]=1>
       <app-dynamic-chip class="custom-chip-fields" [widthStyle]="'700px'" [placeholder]="'INDUSTRY SEGMENT BEING DISRUPTED'"
         [items]="rowData['INDUSTRY SEGMENT BEING DISRUPTION']" [allItems]="rowData['ALL INDUSTRY SEGMENT BEING DISRUPTION']"></app-dynamic-chip>
@@ -86,25 +102,25 @@
         [defaultValue]="rowData['EXCLUSION TECHNOLOGY']" (optionSelected)="onchangeEventRowData('EXCLUSION TECHNOLOGY',$event)"></app-dynamic-select>
   </mat-grid-tile>
 </mat-grid-list> -->
-  <mat-grid-list cols="6" rowHeight="100px">
-      <mat-grid-tile [colspan]=3 [rowspan]=1>
+  <mat-grid-list *ngIf=(conditionAboutUsSegment1||conditionAboutUsSegment2) cols="6" rowHeight="100px">
+      <mat-grid-tile *ngIf=conditionAboutUsSegment1 [colspan]=3 [rowspan]=1>
           <mat-form-field class="example-full-width" [style.width]="'470px'">
             <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 1'" [value]="rowData['INCLUDE KEYWORD FOR ABOUT US SEG 1']" (change)="onchangeEventRowData('INCLUDE KEYWORD FOR ABOUT US SEG 1',$event.target.value)">
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]=3 [rowspan]=1>
+        <mat-grid-tile *ngIf=conditionAboutUsSegment2 [colspan]=3 [rowspan]=1>
             <mat-form-field class="example-full-width" [style.width]="'470px'">
               <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 2'" [value]="rowData['INCLUDE KEYWORD FOR ABOUT US SEG 2']" (change)="onchangeEventRowData('INCLUDE KEYWORD FOR ABOUT US SEG 2',$event.target.value)">
             </mat-form-field>
           </mat-grid-tile>
   </mat-grid-list>
-  <mat-grid-list cols="6" rowHeight="100px">
-      <mat-grid-tile [colspan]=3 [rowspan]=1>
+  <mat-grid-list *ngIf=(conditionAboutUsSegment3||conditionAboutUsSegment4) cols="6" rowHeight="100px">
+      <mat-grid-tile *ngIf=conditionAboutUsSegment3 [colspan]=3 [rowspan]=1>
           <mat-form-field class="example-full-width" [style.width]="'470px'">
             <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 3'" [value]="rowData['INCLUDE KEYWORD FOR ABOUT US SEG 3']" (change)="onchangeEventRowData('INCLUDE KEYWORD FOR ABOUT US SEG 3',$event.target.value)">
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]=3 [rowspan]=1>
+        <mat-grid-tile *ngIf=conditionAboutUsSegment4 [colspan]=3 [rowspan]=1>
             <mat-form-field class="example-full-width" [style.width]="'470px'">
               <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 4'" [value]="rowData['INCLUDE KEYWORD FOR ABOUT US SEG 4']" (change)="onchangeEventRowData('INCLUDE KEYWORD FOR ABOUT US SEG 4',$event.target.value)">
             </mat-form-field>

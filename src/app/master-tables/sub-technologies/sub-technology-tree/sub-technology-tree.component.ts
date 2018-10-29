@@ -296,6 +296,7 @@ export class SubTechnologyTreeComponent implements OnInit {
     let technologySegmentId: number = techIdList[techIdList.length - 1];
     addItem['TECH ID'] = horizontalId;
     addItem['TECH SUB ID'] = technologySegmentId;
+    addItem['LEVEL'] = node.level;
     let dialogEdit = this.dialog.open(SubTechnologyTableAddComponent, {
       width: '1500px',
       height: '700px',
@@ -387,6 +388,7 @@ export class SubTechnologyTreeComponent implements OnInit {
     let technologySegmentId: number = techIdList[techIdList.length - 1];
     editValue['TECH ID'] = horizontalId;
     editValue['TECH SUB ID'] = technologySegmentId;
+    editValue['LEVEL'] = node.level;
 
     let dialogEdit = this.dialog.open(SubTechnologyTableEditComponent, {
       width: '1700px',

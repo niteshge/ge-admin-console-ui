@@ -15,6 +15,11 @@ import { SubTechnologyService } from '../../../core/sub-technology.service';
   styleUrls: ['./sub-technology-table-edit.component.css']
 })
 export class SubTechnologyTableEditComponent implements OnInit {
+  conditionAboutUsSegment1 = null;
+  conditionAboutUsSegment2 = null;
+  conditionAboutUsSegment3 = null;
+  conditionAboutUsSegment4 = null;
+  
   rowData = null;
   constructor(
     private masterTableService: MasterService,
@@ -36,6 +41,15 @@ export class SubTechnologyTableEditComponent implements OnInit {
     console.log('The data in the edit popup is : ', this.data);
     this.rowData = this.data;
 
+    if(this.rowData['LEVEL']===1){
+      this.conditionAboutUsSegment1 = 1;
+    }else if(this.rowData['LEVEL'] === 2){
+      this.conditionAboutUsSegment2 = 2;
+    }else if(this.rowData['LEVEL'] === 3){
+      this.conditionAboutUsSegment3 = 3;
+    }else if(this.rowData['LEVEL'] === 4){
+      this.conditionAboutUsSegment4 = 4;
+    }
     let horizontalId = this.rowData['TECH ID'];
     let technologySegmentId = this.rowData['TECH SUB ID'];
 

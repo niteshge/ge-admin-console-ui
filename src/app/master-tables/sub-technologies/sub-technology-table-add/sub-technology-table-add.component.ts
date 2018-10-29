@@ -15,6 +15,10 @@ import { HorizontalTechnologyService } from '../../../core/horizontal-technologi
 })
 export class SubTechnologyTableAddComponent implements OnInit {
   rowData = null;
+  conditionAboutUsSegment1 = null;
+  conditionAboutUsSegment2 = null;
+  conditionAboutUsSegment3 = null;
+  conditionAboutUsSegment4 = null;
   constructor(
     private masterTableService: MasterService,
     private businessTractionAndIndustryDisruption: BusinessTractionAndIndustryDisruptionService,
@@ -30,6 +34,15 @@ export class SubTechnologyTableAddComponent implements OnInit {
 
   initialization() {
     this.rowData = this.data;
+    if(this.rowData['LEVEL']===0){
+      this.conditionAboutUsSegment1 = 1;
+    }else if(this.rowData['LEVEL'] === 1){
+      this.conditionAboutUsSegment2 = 2;
+    }else if(this.rowData['LEVEL'] === 2){
+      this.conditionAboutUsSegment3 = 3;
+    }else if(this.rowData['LEVEL'] === 3){
+      this.conditionAboutUsSegment4 = 4;
+    }
     let randomValue = Math.random();
     let horizontalId = this.rowData['TECH ID'];
     let technologySegmentId = this.rowData['TECH SUB ID'];
