@@ -376,7 +376,8 @@
 }
 
 .mat-form-field-appearance-legacy .mat-form-field-wrapper {
-    padding-bottom: 1.25em
+    padding-bottom: 1.25em;
+    padding-left: 1.0em;
 }
 
 .mat-form-field-appearance-legacy .mat-form-field-infix {

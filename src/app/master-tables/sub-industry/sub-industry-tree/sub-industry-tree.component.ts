@@ -290,6 +290,7 @@ initialize() {
     // addItem['INDUSTRY SUB ID'] = industrySegmentId;
     let marketMap = Object.assign(parentNode);
     addItem['MARKET MAP'] = marketMap;
+    addItem['LEVEL'] = node.level;
     let dialogEdit = this.dialog.open(SubIndustryTableAddComponent, {
       width: '1500px',
       height: '700px',
@@ -386,6 +387,7 @@ initialize() {
     editValue['INDUSTRY SUB ID'] = industrySegmentId;
     let marketMap = Object.assign(parentNode);
     editValue['MARKET MAP'] = marketMap;
+    editValue['LEVEL'] = node.level;
 
     let dialogEdit = this.dialog.open(SubIndustryTableEditComponent, {
       width: '1700px',

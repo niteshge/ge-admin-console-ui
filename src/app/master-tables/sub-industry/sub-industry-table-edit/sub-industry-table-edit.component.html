@@ -13,25 +13,25 @@
       </mat-grid-tile>
       </mat-grid-list>
 
-    <mat-grid-list cols="6" rowHeight="100px">
-      <mat-grid-tile [colspan]=3 [rowspan]=1>
+    <mat-grid-list *ngIf=(conditionAboutUsSegment1||conditionAboutUsSegment2) cols="6" rowHeight="100px">
+      <mat-grid-tile *ngIf=conditionAboutUsSegment1  [colspan]=3 [rowspan]=1>
           <mat-form-field class="example-full-width" [style.width]="'470px'">
             <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 1'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG1']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG1',$event.target.value)">
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]=3 [rowspan]=1>
+        <mat-grid-tile *ngIf=conditionAboutUsSegment2 [colspan]=3 [rowspan]=1>
             <mat-form-field class="example-full-width" [style.width]="'470px'">
               <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 2'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG2']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG2',$event.target.value)">
             </mat-form-field>
           </mat-grid-tile>
   </mat-grid-list>
-  <mat-grid-list cols="6" rowHeight="100px">
-      <mat-grid-tile [colspan]=3 [rowspan]=1>
+  <mat-grid-list *ngIf=(conditionAboutUsSegment3||conditionAboutUsSegment4) cols="6" rowHeight="100px">
+      <mat-grid-tile *ngIf=conditionAboutUsSegment3 [colspan]=3 [rowspan]=1>
           <mat-form-field class="example-full-width" [style.width]="'470px'">
             <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 3'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG3']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG3',$event.target.value)">
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]=3 [rowspan]=1>
+        <mat-grid-tile *ngIf=conditionAboutUsSegment4 [colspan]=3 [rowspan]=1>
             <mat-form-field class="example-full-width" [style.width]="'470px'">
               <input matInput  [placeholder]="'INCLUDE KEYWORD FOR ABOUT US SEG 4'" [value]="rowData['INCLUDE KEYWORDS FROM ABOUT US FOR SEG4']" (change)="onchangeEventRowData('INCLUDE KEYWORDS FROM ABOUT US FOR SEG4',$event.target.value)">
             </mat-form-field>

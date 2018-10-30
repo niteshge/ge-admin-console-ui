@@ -17,6 +17,10 @@ export class TodoItemNode {
 })
 export class SubIndustryTableEditComponent implements OnInit {
   rowData = null;
+  conditionAboutUsSegment1 = null;
+  conditionAboutUsSegment2 = null;
+  conditionAboutUsSegment3 = null;
+  conditionAboutUsSegment4 = null;
   
   constructor(
     private industryService: IndustryService,
@@ -42,6 +46,15 @@ export class SubIndustryTableEditComponent implements OnInit {
     let randomValue = Math.random();
     console.log('The data in the edit popup is : ', this.data);
     this.rowData = this.data;
+    if(this.rowData['LEVEL']===1){
+      this.conditionAboutUsSegment1 = 1;
+    }else if(this.rowData['LEVEL'] === 2){
+      this.conditionAboutUsSegment2 = 2;
+    }else if(this.rowData['LEVEL'] === 3){
+      this.conditionAboutUsSegment3 = 3;
+    }else if(this.rowData['LEVEL'] === 4){
+      this.conditionAboutUsSegment4 = 4;
+    }
     let industryId = this.rowData['INDUSTRY ID'];
     let industrySegmentId = this.rowData['INDUSTRY SUB ID'];
     this.industryService
