@@ -3,7 +3,7 @@
 
 <div class="col-3">
   <form [formGroup]="form">
-    <mat-form-field [style.width]="widthStyle">
+    <mat-form-field class="chip-padding" [style.width]="widthStyle">
       <mat-chip-list #chipList>
         <mat-chip *ngFor="let item of items" [selectable]="selectable" [removable]="removable" (removed)="remove(item)"
           (selectionChange)="onOptionSelected()">
