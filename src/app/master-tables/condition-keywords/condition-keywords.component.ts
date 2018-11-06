@@ -158,7 +158,7 @@ export class ConditionKeywordsComponent implements OnInit {
     }
     console.log('The json going to the add popup is ', rowDataJson);
     let dialogAdd = this.dialog.open(DynamicTableAddComponent, {
-      width: '400px',
+      width: '600px',
       height: '200px',
       data: rowDataJson
     });
