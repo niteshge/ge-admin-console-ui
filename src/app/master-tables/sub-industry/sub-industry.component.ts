@@ -5,6 +5,8 @@ import { AlertBoxComponent } from '../../shared/alert-box/alert-box.component';
 import { DynamicYesNoPopupComponent } from '../../shared/dynamic-yes-no-popup/dynamic-yes-no-popup.component';
 import { ConstantTextService } from '../constant-text.service';
 import { ConditionFourService } from '../../core/condition-four.service';
+import { ConditionOneService } from 'src/app/core/condition-one.service';
+import { IndustrySubSegmentService } from 'src/app/core/industry-sub-segment.service';
 
 @Component({
   selector: 'app-sub-industry',
@@ -16,8 +18,10 @@ export class SubIndustryComponent implements OnInit {
   loading:boolean = false;
   
   constructor(
-    private industrySubService: IndustryService,
+    private industryService: IndustryService,
+    private industrySubService: IndustrySubSegmentService,
     private conditionFourService:ConditionFourService,
+    private conditionOneService: ConditionOneService,
     public dialog: MatDialog
   ) {
     this.getAllIndustrySubSegment();
@@ -27,7 +31,7 @@ export class SubIndustryComponent implements OnInit {
   getAllIndustrySubSegment() {
     this.loading = true;
     let randomValue = Math.random();
-    this.industrySubService
+    this.industryService
       .getIndustrySubSegmentMarketMap(randomValue)
       .subscribe((response: Response) => {
         this.treeDataJson = response;
@@ -65,7 +69,7 @@ export class SubIndustryComponent implements OnInit {
 
   addIndustrySubSegment(value,conditionFour) {
     console.log('The adding tech sub seg is', value);
-    this.industrySubService
+    this.industryService
       .addIndustrySubSegmentMarketMap(value)
       .subscribe((response: Response) => {
         if (response['errorMessage']) {
@@ -110,7 +114,7 @@ export class SubIndustryComponent implements OnInit {
     let id = node.id[node.id.length - 1];
     let industryId = node.id[0];
     console.log('The updating node is ', node);
-    this.industrySubService
+    this.industryService
       .checkIndustrySubSegmentExistInBusinessSolution(
         id,
         industryId,
@@ -122,7 +126,7 @@ export class SubIndustryComponent implements OnInit {
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionNoExistence
         ) {
-          this.industrySubService
+          this.industryService
             .checkIndustrySubSegmentExistInSolutionPriorityAssociation(
               id,
               industryId,
@@ -196,7 +200,7 @@ export class SubIndustryComponent implements OnInit {
       this.conditionFourService.updateConditionFourForIndustryType(conditionFour)
       .subscribe((response:Response)=>{
         if(!response['errorMessage'])
-        this.industrySubService
+        this.industryService
           .updateIndustrySubSegmentMarketMap(node)
           .subscribe((response: Response) => {
             if (response['errorMessage']) {
@@ -226,7 +230,7 @@ export class SubIndustryComponent implements OnInit {
     let id = node.id[node.id.length - 1];
     let industryId = node.id[0];
     console.log('The delete node is ', node);
-    this.industrySubService
+    this.industryService
       .checkIndustrySubSegmentExistInBusinessSolution(
         id,
         industryId,
@@ -238,13 +242,52 @@ export class SubIndustryComponent implements OnInit {
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionNoExistence
         ) {
-          this.industrySubService.checkIndustrySubSegmentExistInSolutionPriorityAssociation(id,industryId,3,randomValue)
+          this.industryService.checkIndustrySubSegmentExistInSolutionPriorityAssociation(id,industryId,3,randomValue)
           .subscribe((response:Response)=>{
             if (
               response['errorMessage'] ==
               ConstantTextService.SoltionPriorityNoExistence
             ) {
-              this.delete(node);
+              this.conditionOneService
+              .checkIndustrySubSegmentExistInConditionOneToFour(
+                id,
+                industryId,
+                3,
+                randomValue
+              )
+              .subscribe((response:Response)=>{
+                if (response['errorMessage'] == ConstantTextService.NoExistence) {
+                  this.industrySubService.deleteConditionFourFromIndustrySubSegment(
+                    industryId,
+                    id,
+                    randomValue
+                  )
+                  .subscribe((response:Response)=>{
+                      if(!response['errorMessage']){
+                        this.delete(node)
+                      }else{
+                        let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                          width: '300px',
+                          height: '400px',
+                          data: response['errorMessage']
+                        });
+                        dialogAlert.afterClosed().subscribe(result => {
+                          window.location.reload();
+                        });
+                      }
+                  });
+                }else{
+                  let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                    width: '300px',
+                    height: '400px',
+                    data: response['errorMessage']
+                  });
+                  dialogAlert.afterClosed().subscribe(result => {
+                    window.location.reload();
+                  });
+                }
+              });
+              
             } else {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
@@ -272,7 +315,7 @@ export class SubIndustryComponent implements OnInit {
   delete(node) {
     let id = node.id[node.id.length - 1];
     console.log('The id is ', id);
-    this.industrySubService
+    this.industryService
       .deleteIndustrySubSegmentMarketMap(id)
       .subscribe((response: Response) => {
         if (response['errorMessage']) {

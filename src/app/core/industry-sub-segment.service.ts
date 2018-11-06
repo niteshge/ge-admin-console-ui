@@ -26,6 +26,11 @@ export class IndustrySubSegmentService {
   // }
 
 
+  deleteConditionFourFromIndustrySubSegment(industryId:number, industrySegmentId:number, randomValue:number) {
+    return this.http.delete('http://'+myGlobals.server+':8787/api/industrysubsegment/deleteconditionfour?industryId='+industryId+'&industrySegmentId='+industrySegmentId+'&ver='+randomValue,{'params':this.httpParams});
+  }
+
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

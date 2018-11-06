@@ -18,3 +18,8 @@ input:disabled:-moz-placeholder {
 input:disabled:-ms-input-placeholder {
   color: #F5F4EB !important;
 }
+
+.button-custom{
+  margin-left: 10px;
+  margin-right: 10px;
+}

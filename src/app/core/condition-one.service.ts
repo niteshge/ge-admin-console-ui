@@ -36,4 +36,8 @@ export class ConditionOneService {
     return this.http.get('http://'+myGlobals.server+':8787/api/techsubsegment/checktechnologysubsegmentexistenceforconditions?technologyOldSubSegmentId='+technologyOldSubSegmentId+'&technologyId='+technologyId+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }
 
+  checkIndustrySubSegmentExistInConditionOneToFour(industryOldSubSegmentId:number,industryId:number, action:number, randomValue:Number){
+    return this.http.get('http://'+myGlobals.server+':8787/api/industrysubsegment/checkindustrysubsegmentexistenceforconditions?industryOldSubSegmentId='+industryOldSubSegmentId+'&industryId='+industryId+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
+  }
+
 }

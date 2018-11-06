@@ -287,7 +287,7 @@ export class IndustriesComponent implements OnInit {
     let randomValue = Math.random();
     console.log('The json going to the add popup is ', rowDataJson);
     let dialogAdd = this.dialog.open(DynamicTableAddComponent, {
-      width: '1100px',
+      width: '600px',
       data: rowDataJson
     });
     dialogAdd.afterClosed().subscribe(result => {
