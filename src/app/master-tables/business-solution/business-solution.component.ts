@@ -415,4 +415,5 @@ export class BusinessSolutionMasterModel {
   public taggingApproach: string = null;
   public techOrIndustry: string = null;
   public solutionScore: number = null;
+  
 }

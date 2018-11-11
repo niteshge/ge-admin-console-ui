@@ -16,9 +16,13 @@ export class BusinessPriorityService {
     return this.http.get('http://'+myGlobals.server+':8787/api/businesspriority/getallbusinesspriorityfrommaster?ver='+randomValue,{'params':this.httpParams});
   }
   updateBusinessPriorityMaster(businessPriorityMaster:BusinessPriorityMaster){
+    businessPriorityMaster['CREATED TIMESTAMP'] = null;
+    businessPriorityMaster['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/businesspriority/updatebusinessprioritymaster',businessPriorityMaster, {'params':this.httpParams});
   }
   saveBusinessPriorityMaster(businessPriorityMaster:BusinessPriorityMaster){
+    businessPriorityMaster['CREATED TIMESTAMP'] = null;
+    businessPriorityMaster['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/businesspriority/savebusinespriority',businessPriorityMaster, {'params':this.httpParams})
   }
 deleteBusinessPriorityMaster(id:number){

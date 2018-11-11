@@ -4,6 +4,7 @@ import {Http, Headers} from '@angular/http';
 import * as myGlobals from '../app-globals';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth/auth.service';
+import { BusinessSolutionMasterModel } from '../master-tables/business-solution/business-solution.component';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class BusinessSolutionsService{
     // let url = 'http://'+myGlobals.server+':8787/rest/hello?randomValue='+randomValue;
     return this.http.get(url,{'params':this.httpParams});
   }
-  updateBusinessSolution(businessSolutions) {
+  updateBusinessSolution(businessSolutions:BusinessSolutionMasterModel) {
     // return this.http.post('http://'+myGlobals.server+':8787/mastertables/updatebusinesssolutions', businessSolutions, {
     //   headers: {
     //     'Content-Type': 'application/json; charset=UTF-8',
@@ -39,9 +40,13 @@ export class BusinessSolutionsService{
     //     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
     //   }
     // });
+    businessSolutions['CREATED TIMESTAMP'] = null;
+    businessSolutions['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/mastertables/updatebusinesssolutions', businessSolutions, {'params':this.httpParams});
   }
-  saveBusinessSolutions(businessSolutions, randomValue){
+  saveBusinessSolutions(businessSolutions:BusinessSolutionMasterModel, randomValue){
+    businessSolutions['CREATED TIMESTAMP'] = null;
+    businessSolutions['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/mastertables/savebusinesssolutions',businessSolutions,{'params':this.httpParams});
   }
   

@@ -30,6 +30,8 @@ export class IndustryService {
 
 
   updateIndustry(industry:any){
+    industry['CREATED TIMESTAMP'] = null;
+    industry['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/industry/updateindustry',industry,{'params':this.httpParams})
     .pipe(
         retry(3), // retry a failed request up to 3 times
@@ -42,6 +44,8 @@ export class IndustryService {
   }
 
   saveIndustry(industry:any){
+    industry['CREATED TIMESTAMP'] = null;
+    industry['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/industry/saveindustry',industry,{'params':this.httpParams})
   }
 

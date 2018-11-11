@@ -17,6 +17,8 @@ export class SolutionPriorityAssociationService {
   }
 
   updateSolutionPriorityAssociation(solutionPriorityAssociation:any){
+    solutionPriorityAssociation['CREATED TIMESTAMP'] = null;
+    solutionPriorityAssociation['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/analystconsole/spa/updatesolutionpriorityassoc',solutionPriorityAssociation,{'params':this.httpParams})
     .pipe(
         retry(3), // retry a failed request up to 3 times
@@ -29,6 +31,8 @@ export class SolutionPriorityAssociationService {
   }
 
   saveSolutionPriorityAssociation(solutionPriorityAssociation:any){
+    solutionPriorityAssociation['CREATED TIMESTAMP'] = null;
+    solutionPriorityAssociation['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/analystconsole/spa/savesolutionpriorityassoc',solutionPriorityAssociation,{'params':this.httpParams})
   }
 

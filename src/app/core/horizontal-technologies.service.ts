@@ -19,6 +19,8 @@ export class HorizontalTechnologyService {
   }
 
   updateHorizontalTechnology(horizontalTechnology) {
+    horizontalTechnology['CREATED TIMESTAMP'] = null;
+    horizontalTechnology['MODIFIED TIMESTAMP'] = null;
     return this.http.post(
       'http://' +
         myGlobals.server +
@@ -37,6 +39,8 @@ export class HorizontalTechnologyService {
   }
 
   saveHorizontalTechnology(horizontalTechnology: any) {
+    horizontalTechnology['CREATED TIMESTAMP'] = null;
+    horizontalTechnology['MODIFIED TIMESTAMP'] = null;
     return this.http.post(
       'http://' +
         myGlobals.server +
