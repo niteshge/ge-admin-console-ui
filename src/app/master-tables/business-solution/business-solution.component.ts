@@ -81,11 +81,13 @@ export class BusinessSolutionComponent implements OnInit {
   takeAction(value) {
     if (value === '1') {
       let randomValue = Math.random() * 10;
+      this.loading = true;
       this.businessSolutionCoreService
         .getTechnologiesSubSegment(this.rowValue['TECHNOLOGY'], randomValue)
         .subscribe((response: Response) => {
           this.rowValue['ALL SUB TECHNOLOGY'] = response;
         });
+        
       this.businessSolutionCoreService
         .getTechnologies(randomValue)
         .subscribe((response: Response) => {
@@ -104,6 +106,7 @@ export class BusinessSolutionComponent implements OnInit {
       this.rowValue['ALL TECH OR INDUSTRY'] = ['Technology', 'Industry'];
       console.log('Edit On ', this.rowValue.ID);
       console.log('the selected row is ', this.rowValue);
+      this.loading = false;
       this.openEditDialog(this.rowValue);
     } else if (value === '2') {
       console.log('clone On ', this.rowValue.ID);
@@ -176,6 +179,7 @@ export class BusinessSolutionComponent implements OnInit {
     dialogEdit.afterClosed().subscribe(result => {
       console.log('The value changed in the edit process is ', result);
       if (result != null) {
+        this.loading = true;
         this.businessSolutionCoreService
           .checkBusinessSolutionExistsInSolutionPriorityAssociation(
             tempRowObject['SEARCH TEXT'],
@@ -183,6 +187,7 @@ export class BusinessSolutionComponent implements OnInit {
             randomValue
           )
           .subscribe((response: Response) => {
+            this.loading = false;
             if (
               response['errorMessage'] ==
               ConstantTextService.SoltionPriorityNoExistence
@@ -192,6 +197,7 @@ export class BusinessSolutionComponent implements OnInit {
               response['errorMessage'] ==
               ConstantTextService.SolutionPriorityAssociationUpdateStatusWithBusinessSolution
             ) {
+              this.loading = false;
               let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
                 width: '300px',
                 data: { textValue: response['errorMessage'] }
@@ -228,10 +234,12 @@ export class BusinessSolutionComponent implements OnInit {
     if (result['SOLUTION SCORE'] === '' || result['SOLUTION SCORE'] === null) {
       result['SOLUTION SCORE'] = 0;
     }
+    this.loading = true;
     this.businessSolutionCoreService
       .updateBusinessSolution(result)
       .subscribe((response: Response) => {
         if (response['errorMessage']) {
+          this.loading = false;
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
             data: response['errorMessage']
@@ -240,6 +248,7 @@ export class BusinessSolutionComponent implements OnInit {
             window.location.reload();
           });
         } else {
+          this.loading = false;
           this.businessSolutions = response;
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
@@ -266,22 +275,26 @@ export class BusinessSolutionComponent implements OnInit {
       }
     }
     rowDataJson['ALL TECH OR INDUSTRY'] = ['Technology', 'Industry'];
+    this.loading = true;
     this.businessSolutionCoreService
       .getTechnologies(randomValue)
       .subscribe((response: Response) => {
         rowDataJson['ALL TECHNOLOGY'] = response;
+        
       });
     this.businessSolutionCoreService
       .getIndustries(randomValue)
       .subscribe((response: Response) => {
         rowDataJson['ALL INDUSTRIES'] = response;
       });
+      this.loading = false;
 
     let dialogAdd = this.dialog.open(BusinessSolutionAddComponent, {
       width: '1000px',
       data: rowDataJson
     });
     dialogAdd.afterClosed().subscribe(result => {
+      this.loading = true;
       console.log('The value changed in the add process is ', result);
       if (result != null) {
         let randomValue = Math.random();
@@ -294,6 +307,7 @@ export class BusinessSolutionComponent implements OnInit {
         this.businessSolutionCoreService
           .saveBusinessSolutions(result, randomValue)
           .subscribe((response: Response) => {
+            this.loading = false;
             if (response['errorMessage']) {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
@@ -319,6 +333,7 @@ export class BusinessSolutionComponent implements OnInit {
 
   removeData(rowValue) {
     let randomValue = Math.random();
+    this.loading = true;
     this.businessSolutionCoreService
       .checkBusinessSolutionExistsInSolutionPriorityAssociation(
         rowValue['SEARCH TEXT'],
@@ -326,6 +341,7 @@ export class BusinessSolutionComponent implements OnInit {
         randomValue
       )
       .subscribe((response: Response) => {
+        this.loading = false;
         if (
           response['errorMessage'] ==
           ConstantTextService.SoltionPriorityNoExistence
@@ -349,9 +365,11 @@ export class BusinessSolutionComponent implements OnInit {
 
   delete(id) {
     let randomValue = Math.random();
+    this.loading = true;
     this.businessSolutionCoreService
       .deleteBusinessSolutions(id, randomValue)
       .subscribe((response: Response) => {
+        this.loading = false;
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',

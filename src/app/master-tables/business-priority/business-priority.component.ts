@@ -101,10 +101,12 @@ export class BusinessPriorityComponent implements OnInit {
   }
 
   delete(id){
+    this.loading = true;
     let randomValue = Math.random();
     this.businessPriorityCoreService
       .deleteBusinessPriorityMaster(id)
       .subscribe((response: Response) => {
+        this.loading = false;
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
@@ -114,6 +116,7 @@ export class BusinessPriorityComponent implements OnInit {
             window.location.reload();
           });
         } else {
+          this.loading = false;
           this.businessPriorities = response;
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
@@ -140,6 +143,7 @@ export class BusinessPriorityComponent implements OnInit {
     dialogEdit.afterClosed().subscribe(result => {
       console.log('The value changed in the edit process is ', result);
       if (result != null) {
+        this.loading = true;
         this.businessPriorityCoreService
           .checkBusinessPriorityExistInSolutionPriorityAssoc(
             tempRowObject['BUSINESS PRIORITY'],
@@ -151,11 +155,13 @@ export class BusinessPriorityComponent implements OnInit {
               response['errorMessage'] ==
               ConstantTextService.SoltionPriorityNoExistence
             ) {
+              this.loading = false;
               this.update(value);
             } else if (
               response['errorMessage'] ==
               ConstantTextService.SolutionPriorityAssociationUpdateStatusWithBusinessPriority
             ) {
+              this.loading = false;
               let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
                 width: '300px',
                 data: { textValue: response['errorMessage'] }
@@ -184,10 +190,12 @@ export class BusinessPriorityComponent implements OnInit {
   }
 
   update(rowData) {
+    this.loading = true;
     this.businessPriorityCoreService
       .updateBusinessPriorityMaster(rowData)
       .subscribe((response: Response) => {
         if (response['errorMessage']) {
+          this.loading = false;
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
             data: response['errorMessage']
@@ -196,6 +204,7 @@ export class BusinessPriorityComponent implements OnInit {
             window.location.reload();
           });
         } else {
+          this.loading = false;
           this.businessPriorities = response;
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
@@ -223,12 +232,14 @@ export class BusinessPriorityComponent implements OnInit {
       data: rowDataJson
     });
     dialogAdd.afterClosed().subscribe(result => {
+      this.loading = true;
       console.log('The value changed in the add process is ', result);
       if (result != null) {
         this.businessPriorityCoreService
           .saveBusinessPriorityMaster(result)
           .subscribe((response: Response) => {
             if (response['errorMessage']) {
+              this.loading = false;
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
                 data: response['errorMessage']
@@ -237,6 +248,7 @@ export class BusinessPriorityComponent implements OnInit {
                 window.location.reload();
               });
             } else {
+              this.loading = false;
               this.businessPriorities = response;
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',

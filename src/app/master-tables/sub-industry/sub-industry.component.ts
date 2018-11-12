@@ -68,10 +68,12 @@ export class SubIndustryComponent implements OnInit {
   }
 
   addIndustrySubSegment(value,conditionFour) {
+    this.loading = true;
     console.log('The adding tech sub seg is', value);
     this.industryService
       .addIndustrySubSegmentMarketMap(value)
       .subscribe((response: Response) => {
+        this.loading = false;
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
@@ -81,10 +83,12 @@ export class SubIndustryComponent implements OnInit {
             window.location.reload();
           });
         } else {
+          this.loading = true;
           conditionFour = this.setSegmentValueForConditionFour(conditionFour)
           this.conditionFourService
           .saveConditionFourForIndustryType(conditionFour)
           .subscribe((response:Response)=>{
+            this.loading = false;
             if(!response['errorMessage']){
               this.treeDataJson = response;
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
@@ -110,6 +114,7 @@ export class SubIndustryComponent implements OnInit {
   }
 
   updateIndustrySubSegment(node, conditionFour) {
+    this.loading = true;
     let randomValue = Math.random();
     let id = node.id[node.id.length - 1];
     let industryId = node.id[0];
@@ -122,10 +127,12 @@ export class SubIndustryComponent implements OnInit {
         randomValue
       )
       .subscribe((response: Response) => {
+        this.loading = false;
         if (
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionNoExistence
         ) {
+          this.loading = true;
           this.industryService
             .checkIndustrySubSegmentExistInSolutionPriorityAssociation(
               id,
@@ -134,6 +141,7 @@ export class SubIndustryComponent implements OnInit {
               randomValue
             )
             .subscribe((response: Response) => {
+              this.loading = false;
               if (
                 response['errorMessage'] ==
                 ConstantTextService.SoltionPriorityNoExistence
@@ -197,8 +205,10 @@ export class SubIndustryComponent implements OnInit {
   }
 
   update(node, conditionFour) {
+    this.loading = true;
       this.conditionFourService.updateConditionFourForIndustryType(conditionFour)
       .subscribe((response:Response)=>{
+        this.loading = false;
         if(!response['errorMessage'])
         this.industryService
           .updateIndustrySubSegmentMarketMap(node)
@@ -226,6 +236,7 @@ export class SubIndustryComponent implements OnInit {
   }
 
   deleteTechSubSegment(node) {
+    this.loading = true;
     let randomValue = Math.random();
     let id = node.id[node.id.length - 1];
     let industryId = node.id[0];
@@ -238,16 +249,20 @@ export class SubIndustryComponent implements OnInit {
         randomValue
       )
       .subscribe((response: Response) => {
+        this.loading = false;
         if (
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionNoExistence
         ) {
+          this.loading = true;
           this.industryService.checkIndustrySubSegmentExistInSolutionPriorityAssociation(id,industryId,3,randomValue)
           .subscribe((response:Response)=>{
+            this.loading = false;
             if (
               response['errorMessage'] ==
               ConstantTextService.SoltionPriorityNoExistence
             ) {
+              this.loading = true;
               this.conditionOneService
               .checkIndustrySubSegmentExistInConditionOneToFour(
                 id,
@@ -256,13 +271,16 @@ export class SubIndustryComponent implements OnInit {
                 randomValue
               )
               .subscribe((response:Response)=>{
+                this.loading = false;
                 if (response['errorMessage'] == ConstantTextService.NoExistence) {
+                  this.loading = true;
                   this.industrySubService.deleteConditionFourFromIndustrySubSegment(
                     industryId,
                     id,
                     randomValue
                   )
                   .subscribe((response:Response)=>{
+                    this.loading = false;
                       if(!response['errorMessage']){
                         this.delete(node)
                       }else{
@@ -313,11 +331,13 @@ export class SubIndustryComponent implements OnInit {
   }
 
   delete(node) {
+    this.loading = true;
     let id = node.id[node.id.length - 1];
     console.log('The id is ', id);
     this.industryService
       .deleteIndustrySubSegmentMarketMap(id)
       .subscribe((response: Response) => {
+        this.loading = false;
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',

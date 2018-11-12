@@ -99,6 +99,7 @@ export class HorizontalTechnologyComponent implements OnInit {
     dialogEdit.afterClosed().subscribe(result => {
       console.log('The value changed in the edit process is ', result);
       if (result != null) {
+        this.loading = true;
         this.horizontalTechnologyCoreService
           .checkTechnologyExistInBusinessSolution(
             tempRowObject.NAME,
@@ -106,10 +107,12 @@ export class HorizontalTechnologyComponent implements OnInit {
             randomValue
           )
           .subscribe((response: Response) => {
+            this.loading = false;
             if (
               response['errorMessage'] ==
               ConstantTextService.BusinessSolutionNoExistence
             ) {
+              this.loading = true;
               this.horizontalTechnologyCoreService
                 .checkTechnologyExistInConditionOneToFour(
                   tempRowObject.NAME,
@@ -117,6 +120,7 @@ export class HorizontalTechnologyComponent implements OnInit {
                   randomValue
                 )
                 .subscribe((response: Response) => {
+                  this.loading = false;
                   if (
                     response['errorMessage'] == ConstantTextService.NoExistence
                   ) {
@@ -190,9 +194,11 @@ export class HorizontalTechnologyComponent implements OnInit {
 
   update(value) {
     console.log('The value changed in the edit inner process is ', value);
+    this.loading = true;
     this.horizontalTechnologyCoreService
       .updateHorizontalTechnology(value)
       .subscribe((response: Response) => {
+        this.loading = false;
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
@@ -216,9 +222,11 @@ export class HorizontalTechnologyComponent implements OnInit {
 
   removeData(rowValue) {
     let randomValue = Math.random();
+    this.loading = true;
     this.horizontalTechnologyCoreService
       .checkTechnologyExistInBusinessSolution(rowValue.NAME, 3, randomValue)
       .subscribe((response: Response) => {
+        this.loading = false;
         if (
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionNoExistence
@@ -260,9 +268,11 @@ export class HorizontalTechnologyComponent implements OnInit {
   }
   delete(id) {
     let randomValue = Math.random();
+    this.loading = true;
     this.horizontalTechnologyCoreService
       .deleteHorizontalTechnology(id, randomValue)
       .subscribe((response: Response) => {
+        this.loading = false;
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
@@ -301,9 +311,11 @@ export class HorizontalTechnologyComponent implements OnInit {
     dialogAdd.afterClosed().subscribe(result => {
       console.log('The value changed in the add process is ', result);
       if (result != null) {
+        this.loading = true;
         this.horizontalTechnologyCoreService
           .saveHorizontalTechnology(result)
           .subscribe((response: Response) => {
+            this.loading = false;
             if (response['errorMessage']) {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',

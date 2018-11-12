@@ -61,9 +61,11 @@ export class SubTechnologiesComponent implements OnInit {
 
   addTechSubSegment(value) {
     console.log('The adding tech sub seg is', value);
+    this.loading = true;
     this.subTechnologyService
       .addTechSubSegmentMarketMap(value['node'])
       .subscribe((response: Response) => {
+        this.loading = false;
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
@@ -73,9 +75,11 @@ export class SubTechnologiesComponent implements OnInit {
             this.getAllTechSubSegment();
           });
         } else {
+          this.loading = true;
           this.businessTractionIndustryDisruption
             .addBusinessTractionAndIndustrySegDisruption(value)
             .subscribe((response: Response) => {
+              this.loading = false;
               if (response['errorMessage']) {
                 let dialogAlert = this.dialog.open(AlertBoxComponent, {
                   width: '300px',
@@ -99,6 +103,7 @@ export class SubTechnologiesComponent implements OnInit {
       });
   }
   deleteTechSubSegment(node) {
+    this.loading = true;
     let randomValue = Math.random();
     console.log('The deleting node is ', node);
     let id = node.id[node.id.length - 1];
@@ -112,10 +117,12 @@ export class SubTechnologiesComponent implements OnInit {
         randomValue
       )
       .subscribe((response: Response) => {
+        this.loading = false;
         if (
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionNoExistence
         ) {
+          this.loading = true;
           this.conditionOneService
             .checkTechnologySubSegmentExistInConditionOneToFour(
               id,
@@ -124,8 +131,10 @@ export class SubTechnologiesComponent implements OnInit {
               randomValue
             )
             .subscribe((response: Response) => {
+              this.loading = false;
               if (response['errorMessage'] == ConstantTextService.NoExistence) {
                 //this.delete(node);
+                this.loading = true;
                 this.businessTractionIndustryDisruption
                   .deleteBusinessTractionAndIndustrySegDisruption(
                     technologyId,
@@ -133,6 +142,7 @@ export class SubTechnologiesComponent implements OnInit {
                     randomValue
                   )
                   .subscribe((response: Response) => {
+                    this.loading = false;
                     if (!response['errorMessage']) {
                       this.delete(node);
                     } else {
@@ -173,11 +183,13 @@ export class SubTechnologiesComponent implements OnInit {
       });
   }
   delete(node) {
+    this.loading = true;
     let id = node.id[node.id.length - 1];
     console.log('The id is ', id);
     this.subTechnologyService
       .deleteTechSubSegmentMarketMap(id)
       .subscribe((response: Response) => {
+        this.loading = false;
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
@@ -200,6 +212,7 @@ export class SubTechnologiesComponent implements OnInit {
   }
 
   updateTechSubSegment(node) {
+    this.loading = true;
     let randomValue = Math.random();
     console.log('The updating node is ', node);
     let id = node.id[node.id.length - 1];
@@ -213,10 +226,12 @@ export class SubTechnologiesComponent implements OnInit {
         randomValue
       )
       .subscribe((response: Response) => {
+        this.loading = false;
         if (
           response['errorMessage'] ==
           ConstantTextService.BusinessSolutionNoExistence
         ) {
+          this.loading = true;
           this.conditionOneService
             .checkTechnologySubSegmentExistInConditionOneToFour(
               id,
@@ -225,6 +240,7 @@ export class SubTechnologiesComponent implements OnInit {
               randomValue
             )
             .subscribe((response: Response) => {
+              this.loading = false;
               if (response['errorMessage'] == ConstantTextService.NoExistence) {
                 this.update(node);
               } else if (
@@ -292,9 +308,11 @@ export class SubTechnologiesComponent implements OnInit {
   update(node) {
     // this.subTechnologyService
     // .updateTechSubSegmentMarketMap(node)
+    this.loading = true;
     this.businessTractionIndustryDisruption
       .updateBusinessTractionAndIndustrySegDisruption(node)
       .subscribe((response: Response) => {
+        this.loading = false;
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
