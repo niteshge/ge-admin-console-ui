@@ -211,7 +211,7 @@ export class SubIndustryComponent implements OnInit {
         this.loading = false;
         if(!response['errorMessage'])
         this.industryService
-          .updateIndustrySubSegmentMarketMap(node)
+          .updateIndustrySubSegmentMarketMapInTemp(node)
           .subscribe((response: Response) => {
             if (response['errorMessage']) {
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
@@ -225,7 +225,7 @@ export class SubIndustryComponent implements OnInit {
               this.treeDataJson = response;
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
-                data: 'Sucessfull'
+                data: 'Sucessfull... This will be updated in industry sub segment table and other associated table at the time of job run.'
               });
               dialogAlert.afterClosed().subscribe(result => {
                 window.location.reload();

@@ -196,7 +196,7 @@ export class HorizontalTechnologyComponent implements OnInit {
     console.log('The value changed in the edit inner process is ', value);
     this.loading = true;
     this.horizontalTechnologyCoreService
-      .updateHorizontalTechnology(value)
+      .updateHorizontalTechnologyInTemp(value)
       .subscribe((response: Response) => {
         this.loading = false;
         if (response['errorMessage']) {
@@ -211,7 +211,7 @@ export class HorizontalTechnologyComponent implements OnInit {
           this.horizontalTechnology = response;
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: 'Sucessfull'
+            data: 'Sucessfull... This will be updated in Horizontal table and other associated table at the time of job run.'
           });
           dialogAlert.afterClosed().subscribe(result => {
             window.location.reload();

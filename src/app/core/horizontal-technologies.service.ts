@@ -29,6 +29,18 @@ export class HorizontalTechnologyService {
     );
   }
 
+
+  updateHorizontalTechnologyInTemp(horizontalTechnology) {
+    horizontalTechnology['CREATED TIMESTAMP'] = null;
+    horizontalTechnology['MODIFIED TIMESTAMP'] = null;
+    return this.http.post(
+      'http://' +
+        myGlobals.server +
+        ':8787/api/mastertables/updatehorizontaltechnologyintemp',
+      horizontalTechnology,{'params':this.httpParams}
+    );
+  }
+
   deleteHorizontalTechnology(id, randomValue) {
     return this.http.delete(
       'http://' +

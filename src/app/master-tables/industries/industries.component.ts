@@ -187,13 +187,13 @@ export class IndustriesComponent implements OnInit {
     result['UPDATED USERNAME'] =this.selectedUser;
     console.log("THE UPDATING OF THE INDUSTRY :", result);
     this.industryServiceCore
-      .updateIndustry(result)
+      .updateIndustryInTemp(result)
       .subscribe((response: Response) => {
         if (response['errorMessage']) {
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
             height: '400px',
-            data: 'Sorry, Something Went Wrong... Try Again.'
+            data: response['errorMessage']
           });
           dialogAlert.afterClosed().subscribe(result => {
             window.location.reload();
@@ -203,7 +203,7 @@ export class IndustriesComponent implements OnInit {
           this.industries = response;
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: 'Sucessfull'
+            data: 'Sucessfull... This will be updated in industry table and other associated table at the time of job run.'
           });
           dialogAlert.afterClosed().subscribe(result => {
             window.location.reload();

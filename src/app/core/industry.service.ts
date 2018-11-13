@@ -39,6 +39,16 @@ export class IndustryService {
       );
   }
 
+  updateIndustryInTemp(industry:any){
+    industry['CREATED TIMESTAMP'] = null;
+    industry['MODIFIED TIMESTAMP'] = null;
+    return this.http.post('http://'+myGlobals.server+':8787/api/industry/tempsaveindustry',industry,{'params':this.httpParams})
+    .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
+  }
+
   deleteIndustryById(id:Number){
     return this.http.delete('http://'+myGlobals.server+':8787/api/industry/deleteindustry/'+id,{'params':this.httpParams});
   }
@@ -62,6 +72,10 @@ export class IndustryService {
   updateIndustrySubSegmentMarketMap(node:any){
     return this.http.post('http://'+myGlobals.server+':8787/api/industrysubsegment/updateindustrysubmarketmap',node,{'params':this.httpParams});
   }
+  updateIndustrySubSegmentMarketMapInTemp(node:any){
+    return this.http.post('http://'+myGlobals.server+':8787/api/industrysubsegment/updateindustrysubmarketmapintemp',node,{'params':this.httpParams});
+  }
+
   checkIndustryExistInBusinessSolution(industryName:string,action:number, randomValue:number){
     return this.http.get('http://'+myGlobals.server+':8787/api/industry/checkindustryinbusinesssolutionexistence?industryName='+encodeURIComponent(industryName)+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }

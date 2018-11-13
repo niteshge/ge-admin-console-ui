@@ -325,7 +325,7 @@ export class SubTechnologiesComponent implements OnInit {
           this.treeDataJson = response;
           let dialogAlert = this.dialog.open(AlertBoxComponent, {
             width: '300px',
-            data: 'Sucessfull'
+            data: 'Sucessfull... This will be updated in technology sub segment table and other associated table at the time of job run.'
           });
           dialogAlert.afterClosed().subscribe(result => {
             this.getAllTechSubSegment();
