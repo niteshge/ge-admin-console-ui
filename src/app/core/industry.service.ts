@@ -84,12 +84,16 @@ export class IndustryService {
     return this.http.get('http://'+myGlobals.server+':8787/api/industry/checkindustryinsolutionpriorityassocexistence?industryName='+encodeURIComponent(industryName)+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }
 
-  checkIndustrySubSegmentExistInBusinessSolution(industryOldSubSegmentId:number,industryId:number, action:number, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/api/industrysubsegment/checkindustrysubsegmentexistenceinbusinesssolution?industryOldSubSegmentId='+industryOldSubSegmentId+'&industryId='+industryId+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
+  checkIndustryExistInConditionOneToFour(industryName:string, action:number, randomValue:number){
+    return this.http.get('http://'+myGlobals.server+':8787/api/industry/checkindustryexistenceinconditions?industryName='+industryName+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }
 
   checkIndustrySubSegmentExistInSolutionPriorityAssociation(industryOldSubSegmentId:number,industryId:number, action:number, randomValue:number){
     return this.http.get('http://'+myGlobals.server+':8787/api/industrysubsegment/checkindustrysubsegmentexistenceinsolutionpriorityassoc?industryOldSubSegmentId='+industryOldSubSegmentId+'&industryId='+industryId+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
+  }
+
+  checkIndustrySubSegmentExistInBusinessSolution(industryOldSubSegmentId:number,industryId:number, action:number, randomValue:number){
+    return this.http.get('http://'+myGlobals.server+':8787/api/industrysubsegment/checkindustrysubsegmentexistenceinbusinesssolution?industryOldSubSegmentId='+industryOldSubSegmentId+'&industryId='+industryId+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }
 
   private handleError(error: HttpErrorResponse) {

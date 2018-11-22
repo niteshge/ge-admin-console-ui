@@ -224,7 +224,22 @@ export class IndustriesComponent implements OnInit {
             if (
               response['errorMessage'] == ConstantTextService.SoltionPriorityNoExistence
             ){
-              this.delete(rowValue);
+              this.industryServiceCore.checkIndustryExistInConditionOneToFour(rowValue.NAME, 3, randomValue)
+              .subscribe((response:Response)=>{
+                if(response['errorMessage'] == ConstantTextService.NoExistence){
+                  this.delete(rowValue);
+                }else{
+                  let dialogAlert = this.dialog.open(AlertBoxComponent, {
+                    width: '300px',
+                    height: '400px',
+                    data: 'This Industry Might Be Linked With Condition One to Four Tables... Please Clean Up To Delete Industry'
+                  });
+                  dialogAlert.afterClosed().subscribe(result => {
+                    window.location.reload();
+                  });
+                }
+              });
+              
             }else{
               let dialogAlert = this.dialog.open(AlertBoxComponent, {
                 width: '300px',
