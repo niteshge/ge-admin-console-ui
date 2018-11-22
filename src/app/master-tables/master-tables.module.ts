@@ -44,6 +44,7 @@ import { SubIndustryTableEditComponent } from './sub-industry/sub-industry-table
 import { BusinessTractionComponent } from './business-traction/business-traction.component';
 import { IndustryServingDisruptionComponent } from './industry-serving-disruption/industry-serving-disruption.component';
 import { SubIndustryTreeComponent } from './sub-industry/sub-industry-tree/sub-industry-tree.component';
+import { IndustriesEditComponent, KeysPipesModule } from './industries/industries-edit/industries-edit.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MasterTablesRoutingModule],
@@ -88,6 +89,9 @@ import { SubIndustryTreeComponent } from './sub-industry/sub-industry-tree/sub-i
     BusinessTractionComponent,
     IndustryServingDisruptionComponent,
     SubIndustryTreeComponent,
+    IndustriesEditComponent,
+    KeysPipesModule,
+    
   ],
   entryComponents: [
     BusinessSolutionEditComponent,
@@ -111,7 +115,9 @@ import { SubIndustryTreeComponent } from './sub-industry/sub-industry-tree/sub-i
     ConditionFourEditComponent,
     ConditionFourAddComponent,
     SubIndustryTableEditComponent,
-    SubIndustryTableAddComponent
+    SubIndustryTableAddComponent,
+    IndustriesEditComponent
+    
   ]
 })
 export class MasterTablesModule {}

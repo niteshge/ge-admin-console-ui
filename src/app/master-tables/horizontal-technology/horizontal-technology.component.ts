@@ -62,18 +62,18 @@ export class HorizontalTechnologyComponent implements OnInit {
       this.openEditDialog(this.rowValue);
       // this.furtureAlert();
     } else if (value === '3') {
-      console.log('delete On ', this.rowValue.ID);
-      let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
-        width: '300px',
-        data: { textValue: 'Are you sure you want to remove' }
-      });
-      dialogConfirm.afterClosed().subscribe(result => {
-        console.log('The dialog confirm is closed with a action:', result);
-        if (result == 100) {
-          this.removeData(this.rowValue);
-        }
-      });
-      // this.furtureAlert();
+      // console.log('delete On ', this.rowValue.ID);
+      // let dialogConfirm = this.dialog.open(DynamicYesNoPopupComponent, {
+      //   width: '300px',
+      //   data: { textValue: 'Are you sure you want to remove' }
+      // });
+      // dialogConfirm.afterClosed().subscribe(result => {
+      //   console.log('The dialog confirm is closed with a action:', result);
+      //   if (result == 100) {
+      //     this.removeData(this.rowValue);
+      //   }
+      // });
+      this.furtureAlert();
     }
   }
 

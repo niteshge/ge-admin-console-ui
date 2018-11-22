@@ -8,6 +8,7 @@ import { DynamicYesNoPopupComponent } from '../../shared/dynamic-yes-no-popup/dy
 import { DynamicTableAddComponent } from '../../shared/dynamic-table-add/dynamic-table-add.component';
 import { ConstantTextService } from '../constant-text.service';
 import { MasterService } from '../../core/master.service';
+import { IndustriesEditComponent } from './industries-edit/industries-edit.component';
 
 @Component({
   selector: 'app-industries',
@@ -115,7 +116,7 @@ export class IndustriesComponent implements OnInit {
     let randomValue = Math.random();
     let tempRowObject = Object.assign({}, value);
     console.log('The json going to the edit popup is ', value);
-    let dialogEdit = this.dialog.open(DynamicTableEditComponent, {
+    let dialogEdit = this.dialog.open(IndustriesEditComponent, {
       width: '1100px',
       data: value
     });

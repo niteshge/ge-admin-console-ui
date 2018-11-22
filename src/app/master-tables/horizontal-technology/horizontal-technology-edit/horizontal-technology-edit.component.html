@@ -3,7 +3,7 @@
     <input matInput [disabled]="true" [placeholder]="'ID'" [value]="rowData['ID']" (change)="onchangeEventRowData('ID',$event.target.value)">
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <input matInput [placeholder]="'NAME'" [value]="rowData['NAME']" (change)="onchangeEventRowData('NAME',$event.target.value)">
+    <input matInput [disabled]=true [placeholder]="'NAME'" [value]="rowData['NAME']" (change)="onchangeEventRowData('NAME',$event.target.value)">
   </mat-form-field>
   <mat-form-field class="example-full-width">
     <input matInput [placeholder]="'DISPLAY NAME'" [value]="rowData['DISPLAY NAME']" (change)="onchangeEventRowData('DISPLAY NAME',$event.target.value)">
