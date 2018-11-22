@@ -85,7 +85,7 @@ export class IndustryService {
   }
 
   checkIndustryExistInConditionOneToFour(industryName:string, action:number, randomValue:number){
-    return this.http.get('http://'+myGlobals.server+':8787/api/industry/checkindustryexistenceinconditions?industryName='+industryName+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
+    return this.http.get('http://'+myGlobals.server+':8787/api/industry/checkindustryexistenceinconditions?industryName='+encodeURIComponent(industryName)+'&action='+action+'&randomValue='+randomValue,{'params':this.httpParams});
   }
 
   checkIndustrySubSegmentExistInSolutionPriorityAssociation(industryOldSubSegmentId:number,industryId:number, action:number, randomValue:number){
