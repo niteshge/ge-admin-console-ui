@@ -18,6 +18,8 @@ export class ConditionTwoService {
   }
 
   updateConditionTwo(conditionTwo:any){
+    conditionTwo['CREATED TIMESTAMP'] = null;
+    conditionTwo['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/conditiononetofour/updatecrunchbasetechnologyroundtwo',conditionTwo,{'params':this.httpParams});
   }
 
@@ -26,6 +28,8 @@ export class ConditionTwoService {
   }
 
   saveConditionTwo(conditionTwo){
+    conditionTwo['CREATED TIMESTAMP'] = null;
+    conditionTwo['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/conditiononetofour/savecrunchbasetechnologyroundtwo',conditionTwo,{'params':this.httpParams});
   }
 }

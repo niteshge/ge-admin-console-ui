@@ -22,6 +22,8 @@ export class ConditionOneService {
   }
 
   updateConditionOne(conditionOne:any){
+    conditionOne['CREATED TIMESTAMP'] = null;
+    conditionOne['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/conditiononetofour/updatecrunchbasetechnologyroundone',conditionOne,{'params':this.httpParams});
   }
 
@@ -30,6 +32,8 @@ export class ConditionOneService {
   }
 
   saveConditionOne(conditionOne){
+    conditionOne['CREATED TIMESTAMP'] = null;
+    conditionOne['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/conditiononetofour/savecrunchbasetechnologyroundone',conditionOne,{'params':this.httpParams});
   }
   checkTechnologySubSegmentExistInConditionOneToFour(technologyOldSubSegmentId:number,technologyId:number, action:number, randomValue:Number){
