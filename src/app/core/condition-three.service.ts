@@ -19,6 +19,8 @@ export class ConditionThreeService {
   }
 
   updateConditionThree(conditionThree:any){
+    conditionThree['CREATED TIMESTAMP'] = null;
+    conditionThree['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/conditiononetofour/updatecrunchbasetechnologyroundthree',conditionThree,{'params':this.httpParams});
   }
 
@@ -26,7 +28,9 @@ export class ConditionThreeService {
     return this.http.delete('http://'+myGlobals.server+':8787/api/conditiononetofour/deletecrunchbasetechnologyroundthree/'+id,{'params':this.httpParams});
   }
 
-  saveConditionThree(conditionThree){
+  saveConditionThree(conditionThree:any){
+    conditionThree['CREATED TIMESTAMP'] = null;
+    conditionThree['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/conditiononetofour/savecrunchbasetechnologyroundthree',conditionThree,{'params':this.httpParams});
   }
 }

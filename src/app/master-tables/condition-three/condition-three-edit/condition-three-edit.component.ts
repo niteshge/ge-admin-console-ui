@@ -47,7 +47,7 @@ export class ConditionThreeEditComponent implements OnInit {
       this.segmentTwoDisableParam = true;
       this.segmentThreeDisableParam = true;
       this.segmentFourDisableParam = true;
-      this.rowData['ROUND TWO DEPENDENT TECHNOLOGY'] = '';
+      // this.rowData['ROUND TWO DEPENDENT KEYWORDS'] = '';
       this.rowData['ROUND THREE FINAL TECHNOLOGY'] = '';
       this.rowData['ROUND THREE SEGMENT ONE'] = '';
       this.rowData['ROUND THREE SEGMENT TWO'] = '';

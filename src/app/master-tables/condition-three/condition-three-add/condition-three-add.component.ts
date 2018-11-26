@@ -47,12 +47,12 @@ export class ConditionThreeAddComponent implements OnInit {
       this.segmentTwoDisableParam = true;
       this.segmentThreeDisableParam = true;
       this.segmentFourDisableParam = true;
-      this.rowData['ROUND TWO DEPENDENT TECHNOLOGY'] = '';
+      // this.rowData['ROUND TWO DEPENDENT KEYWORDS'] = '';
       this.rowData['ROUND THREE FINAL TECHNOLOGY'] = '';
       this.rowData['ROUND THREE SEGMENT ONE'] = '';
       this.rowData['ROUND THREE SEGMENT TWO'] = '';
       this.rowData['ROUND THREE SEGMENT THREE'] = '';
-      this.rowData['ROUND TWTHREEO SEGMENT FOUR'] = '';
+      this.rowData['ROUND THREE SEGMENT FOUR'] = '';
       if (this.rowData[key] === 'Industry/Sector') {
         this.masterTableService
           .getAllIndustriesNames(randomValue)
