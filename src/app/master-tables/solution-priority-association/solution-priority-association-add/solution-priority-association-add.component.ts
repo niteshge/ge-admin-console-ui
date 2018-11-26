@@ -29,10 +29,10 @@ export class SolutionPriorityAssociationAddComponent implements OnInit {
   ngOnInit() {
     console.log('The data in the edit popup is : ', this.data);
     this.rowData = this.data;
-    this.rowData['ALL BUSINESS SOLUTION 1'] = '';
-    this.rowData['ALL BUSINESS SOLUTION 2'] = '';
-    this.rowData['ALL BUSINESS SOLUTION 3'] = '';
-    this.rowData['ALL BUSINESS SOLUTION 4'] = '';
+    this.rowData['ALL BUSINESS SOLUTION 1'] = null;
+    this.rowData['ALL BUSINESS SOLUTION 2'] = null;
+    this.rowData['ALL BUSINESS SOLUTION 3'] = null;
+    this.rowData['ALL BUSINESS SOLUTION 4'] = null;
   }
   changeIndustries(key, value) {
     if (this.rowData[key] !== value) {
@@ -49,9 +49,9 @@ export class SolutionPriorityAssociationAddComponent implements OnInit {
             this.industrySubSegment2DisableParam = true;
             this.industrySubSegment3DisableParam = true;
             this.rowData['ALL SUB INDUSTRIES 1'] = listOfSubIndustries1;
-            this.rowData['INDUSTRY SEGMENT 1'] = '';
-            this.rowData['INDUSTRY SEGMENT 2'] = '';
-            this.rowData['INDUSTRY SEGMENT 3'] = '';
+            this.rowData['INDUSTRY SEGMENT 1'] = null;
+            this.rowData['INDUSTRY SEGMENT 2'] = null;
+            this.rowData['INDUSTRY SEGMENT 3'] = null;
           } else {
             this.industrySubSegment1DisableParam = true;
             this.industrySubSegment2DisableParam = true;
@@ -74,8 +74,8 @@ export class SolutionPriorityAssociationAddComponent implements OnInit {
             this.industrySubSegment2DisableParam = false;
             this.industrySubSegment3DisableParam = true;
             this.rowData['ALL SUB INDUSTRIES 2'] = listOfSubIndustries2;
-            this.rowData['INDUSTRY SEGMENT 2'] = '';
-            this.rowData['INDUSTRY SEGMENT 3'] = '';
+            this.rowData['INDUSTRY SEGMENT 2'] = null;
+            this.rowData['INDUSTRY SEGMENT 3'] = null;
           } else {
             this.industrySubSegment2DisableParam = true;
             this.industrySubSegment3DisableParam = true;
@@ -97,7 +97,7 @@ export class SolutionPriorityAssociationAddComponent implements OnInit {
           if (listOfSubIndustries2.length > 0) {
             this.industrySubSegment3DisableParam = false;
             this.rowData['ALL SUB INDUSTRIES 3'] = listOfSubIndustries2;
-            this.rowData['INDUSTRY SEGMENT 3'] = '';
+            this.rowData['INDUSTRY SEGMENT 3'] = null;
           } else {
             this.industrySubSegment3DisableParam = true;
           }
@@ -119,8 +119,8 @@ export class SolutionPriorityAssociationAddComponent implements OnInit {
             this.rowData[
               'ALL SUB BUSINESS PRIORITIES 2'
             ] = listOfSubBusinessPriorities2;
-            this.rowData['BUSINESS PRIORITY 2'] = '';
-            this.rowData['BUSINESS PRIORITY 3'] = '';
+            this.rowData['BUSINESS PRIORITY 2'] = null;
+            this.rowData['BUSINESS PRIORITY 3'] = null;
           } else {
             this.businessPrioritySubSegment2DisableParam  = true;
             this.businessPrioritySubSegment3DisableParam  = true;
@@ -144,7 +144,7 @@ export class SolutionPriorityAssociationAddComponent implements OnInit {
             this.rowData[
               'ALL SUB BUSINESS PRIORITIES 3'
             ] = listOfSubBusinessPriorities3;
-            this.rowData['BUSINESS PRIORITY 3'] = '';
+            this.rowData['BUSINESS PRIORITY 3'] = null;
           } else {
             this.businessPrioritySubSegment3DisableParam  = true;
           }

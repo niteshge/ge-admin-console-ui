@@ -322,6 +322,7 @@ export class SubTechnologyTreeComponent implements OnInit {
         result['level'] = addNodeData.level;
         result['id'] = addNodeData.id;
         result['node'] = updatedNodeData;
+        result['Condition Four Status'] = 'add';
         console.log('The addNodeData is ', result);
         this.emitNode(result, 1);
       }
@@ -412,6 +413,7 @@ export class SubTechnologyTreeComponent implements OnInit {
       } else {
         result['level'] = editNodeData.level;
         result['id'] = editNodeData.id;
+        result['Condition Four Status'] = 'edit';
         console.log('The editNodeData is ', result);
         this.emitNode(result, 2);
       }
