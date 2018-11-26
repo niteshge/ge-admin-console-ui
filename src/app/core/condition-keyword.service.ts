@@ -21,6 +21,8 @@ export class ConditionKeywordService {
     return this.http.get('http://'+myGlobals.server+':8787/api/conditionkeywords/getallconditionkeywords?ver='+randomValue,{'params':this.httpParams});
   }
   updateConditionKeywords(conditionKeyword:any){
+    conditionKeyword['CREATED TIMESTAMP'] = null;
+    conditionKeyword['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/conditionkeywords/updateconditionkeyword',conditionKeyword,{'params':this.httpParams});
   }
 
@@ -29,6 +31,8 @@ export class ConditionKeywordService {
   }
 
   saveConditionKeywords(conditionKeyword){
+    conditionKeyword['CREATED TIMESTAMP'] = null;
+    conditionKeyword['MODIFIED TIMESTAMP'] = null;
     return this.http.post('http://'+myGlobals.server+':8787/api/conditionkeywords/saveconditionkeyword',conditionKeyword,{'params':this.httpParams});
   }
 }
