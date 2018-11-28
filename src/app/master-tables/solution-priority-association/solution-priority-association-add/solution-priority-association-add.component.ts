@@ -159,28 +159,44 @@ export class SolutionPriorityAssociationAddComponent implements OnInit {
       this.masterTableService
         .getAllBusinessSolutionByTech(randomValue, value)
         .subscribe((response: Response) => {
-          this.rowData['ALL BUSINESS SOLUTION 1'] = response;
+          if(!response['errorMessage']){
+            this.rowData['ALL BUSINESS SOLUTION 1'] = response;
+            }else{
+              this.rowData['ALL BUSINESS SOLUTION 1'] = '';
+            }
         });
     } else if (key === 'TECHNOLOGY 2') {
       this.technology2 = value;
       this.masterTableService
         .getAllBusinessSolutionByTech(randomValue, value)
         .subscribe((response: Response) => {
-          this.rowData['ALL BUSINESS SOLUTION 2'] = response;
+          if(!response['errorMessage']){
+            this.rowData['ALL BUSINESS SOLUTION 2'] = response;
+            }else{
+              this.rowData['ALL BUSINESS SOLUTION 2'] = '';
+            }
         });
     } else if (key === 'TECHNOLOGY 3') {
       this.technology3 = value;
       this.masterTableService
         .getAllBusinessSolutionByTech(randomValue, value)
         .subscribe((response: Response) => {
-          this.rowData['ALL BUSINESS SOLUTION 3'] = response;
+          if(!response['errorMessage']){
+            this.rowData['ALL BUSINESS SOLUTION 3'] = response;
+            }else{
+              this.rowData['ALL BUSINESS SOLUTION 3'] = '';
+            }
         });
     } else if (key === 'TECHNOLOGY 4') {
       this.technology4 = value;
       this.masterTableService
         .getAllBusinessSolutionByTech(randomValue, value)
         .subscribe((response: Response) => {
-          this.rowData['ALL BUSINESS SOLUTION 4'] = response;
+          if(!response['errorMessage']){
+            this.rowData['ALL BUSINESS SOLUTION 4'] = response;
+            }else{
+              this.rowData['ALL BUSINESS SOLUTION 4'] = '';
+            }
         });
     }
   }
