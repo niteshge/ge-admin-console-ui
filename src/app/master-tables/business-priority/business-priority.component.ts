@@ -137,7 +137,7 @@ export class BusinessPriorityComponent implements OnInit {
     console.log("THE TEM ROW OBJECT IS ",tempRowObject);
     console.log('The json going to the edit popup is ', value);
     let dialogEdit = this.dialog.open(BusinessPriorityEditComponent, {
-      width: '500px',
+      width: '900px',
       data: value
     });
     dialogEdit.afterClosed().subscribe(result => {
@@ -228,7 +228,7 @@ export class BusinessPriorityComponent implements OnInit {
       }
     }
     let dialogAdd = this.dialog.open(BusinessPriorityAddComponent, {
-      width: '400px',
+      width: '500px',
       data: rowDataJson
     });
     dialogAdd.afterClosed().subscribe(result => {
