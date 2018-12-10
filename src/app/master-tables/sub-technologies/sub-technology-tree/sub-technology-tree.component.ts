@@ -383,6 +383,7 @@ export class SubTechnologyTreeComponent implements OnInit {
     console.log('when add function is called the parent is ', parentNode);
     let editValue = {};
     editValue['Edit Item'] = parentNode.item;
+    let existingSubTechnology = editValue['Edit Item'];
     let techIdList = [];
     techIdList = parentNode.id;
     let horizontalId: number = techIdList[0];
@@ -414,6 +415,7 @@ export class SubTechnologyTreeComponent implements OnInit {
         result['level'] = editNodeData.level;
         result['id'] = editNodeData.id;
         result['Condition Four Status'] = 'edit';
+        result['OLD EXISTED SUB TECHNOLOGY'] = existingSubTechnology;
         console.log('The editNodeData is ', result);
         this.emitNode(result, 2);
       }

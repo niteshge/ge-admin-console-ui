@@ -305,32 +305,86 @@ export class SubTechnologiesComponent implements OnInit {
       });
   }
 
+  // update(node) {
+  //   this.loading = true;
+  //   this.subTechnologyService
+  //   .updateTechSubSegmentMarketMap(node)
+  //   .subscribe((response:Response)=>{
+  //     if(response['errorMessage']){
+  //       let dialogAlert = this.dialog.open(AlertBoxComponent, {
+  //         width: '300px',
+  //         data: response['errorMessage']
+  //       });
+  //       dialogAlert.afterClosed().subscribe(result => {
+  //         this.getAllTechSubSegment();
+  //       });
+  //     }else{
+  //       this.businessTractionIndustryDisruption
+  //       .updateBusinessTractionAndIndustrySegDisruption(node)
+  //       .subscribe((response: Response) => {
+  //         this.loading = false;
+  //         if (response['errorMessage']) {
+  //           let dialogAlert = this.dialog.open(AlertBoxComponent, {
+  //             width: '300px',
+  //             data: response['errorMessage']
+  //           });
+  //           dialogAlert.afterClosed().subscribe(result => {
+  //             this.getAllTechSubSegment();
+  //           });
+  //         } else {
+  //           this.treeDataJson = response;
+  //           let dialogAlert = this.dialog.open(AlertBoxComponent, {
+  //             width: '300px',
+  //             data: 'Sucessfull... This will be updated in technology sub segment table and other associated table at the time of job run.'
+  //           });
+  //           dialogAlert.afterClosed().subscribe(result => {
+  //             this.getAllTechSubSegment();
+  //           });
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
+
   update(node) {
+    this.loading = true;
     // this.subTechnologyService
     // .updateTechSubSegmentMarketMap(node)
-    this.loading = true;
-    this.businessTractionIndustryDisruption
-      .updateBusinessTractionAndIndustrySegDisruption(node)
-      .subscribe((response: Response) => {
-        this.loading = false;
-        if (response['errorMessage']) {
-          let dialogAlert = this.dialog.open(AlertBoxComponent, {
-            width: '300px',
-            data: response['errorMessage']
-          });
-          dialogAlert.afterClosed().subscribe(result => {
-            this.getAllTechSubSegment();
-          });
-        } else {
-          this.treeDataJson = response;
-          let dialogAlert = this.dialog.open(AlertBoxComponent, {
-            width: '300px',
-            data: 'Sucessfull... This will be updated in technology sub segment table and other associated table at the time of job run.'
-          });
-          dialogAlert.afterClosed().subscribe(result => {
-            this.getAllTechSubSegment();
-          });
-        }
-      });
-  }
+    // .subscribe((response:Response)=>{
+      // if(response['errorMessage']){
+        // let dialogAlert = this.dialog.open(AlertBoxComponent, {
+          // width: '300px',
+          // data: response['errorMessage']
+        // });
+        // dialogAlert.afterClosed().subscribe(result => {
+          // this.getAllTechSubSegment();
+        // });
+      // }else{
+        this.businessTractionIndustryDisruption
+        .updateBusinessTractionAndIndustrySegDisruption(node)
+        .subscribe((response: Response) => {
+          this.loading = false;
+          if (response['errorMessage']) {
+            let dialogAlert = this.dialog.open(AlertBoxComponent, {
+              width: '300px',
+              data: response['errorMessage']
+            });
+            dialogAlert.afterClosed().subscribe(result => {
+              this.getAllTechSubSegment();
+            });
+          } else {
+            this.treeDataJson = response;
+            let dialogAlert = this.dialog.open(AlertBoxComponent, {
+              width: '300px',
+              data: 'Sucessfull... This will be updated in technology sub segment table and other associated table at the time of job run.'
+            });
+            dialogAlert.afterClosed().subscribe(result => {
+              this.getAllTechSubSegment();
+            });
+          }
+        });
+      }
+    // });
+  // }
 }
