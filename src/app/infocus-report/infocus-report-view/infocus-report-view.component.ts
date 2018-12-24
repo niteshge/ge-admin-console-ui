@@ -37,7 +37,7 @@ export class InfocusReportViewComponent implements OnInit {
     console.log(value);
     this.rowValue = value;
     let dialogRef = this.dialog.open(DynamicReportPopupComponent, {
-      width: '500px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -65,6 +65,9 @@ export class InfocusReportViewComponent implements OnInit {
           this.publishInfocusReport(this.rowValue.ID);
         }
       });
+    }else if(value === '4'){
+      console.log("View On ", this.rowValue.ID);
+      this.viewPPT(this.rowValue.ID);
     }
   }
 
@@ -77,6 +80,10 @@ export class InfocusReportViewComponent implements OnInit {
 
         }
       )
+  }
+
+  viewPPT(id) {
+    window.open('http://'+myGlobals.server+':8787/infocus/viewinfocusppt/' + id + '.pptx' )
   }
 
   publishInfocusReport(reportMetaId){
